@@ -1,0 +1,421 @@
+S_{\Omega}:
+    Connected: No - Exercise 24.4
+    Path connected: No - because not connected
+    Locally connected: No - omega has no connected neighbourhood
+    Locally path connected: No - omega has no path connected neighbourhood
+    Compact: No - Example 28.2
+    Limit point compact: Yes - Example 28.2
+    Locally compact Hausdorff: Yes - Example 29.3
+    Hausdorff: Yes - Theorem 17.11
+    Regular: Yes - Exercise 31.3
+    Completely regular: Yes - Theorem 32.4
+    Normal: Yes - Theorem 32.4
+    First countable: Yes - Exercise 30.7
+    Second countable: No - Exercise 30.7
+    Lindelof: No - Exercise 30.7
+    Separable: No - Exercise 30.7
+    Locally metrizable: Yes - let U be a neighbourhood of alpha. Pick beta < alpha such that (beta, alpha] is a subset of U. Then (beta, alpha] is a neighbourhood of alpha that is imbeddable in R.
+    Metrizable: No - Example 28.3
+
+\overline{S_\Omega}:
+    Connected: No - Exercise 24.4
+    Path connected: No - because not connected
+    Locally connected: No - omega has no connected neighbourhood
+    Locally path connected: No - omega has no path connected neighbourhood
+    Compact: Yes - Exercise 29.7
+    Limit point compact: Yes - because compact
+    Locally compact Hausdorff: Yes - Example 29.3
+    Hausdorff: Yes - Theorem 17.11
+    Regular: Yes - Exercise 31.l3
+    Completely regular: Yes - Theorem 32.4
+    Normal: Yes - Theorem 32.4
+    First countable: No - Exercise 30.7
+    Second countable: No - Exercise 30.7
+    Lindelof: Yes - Exercise 30.7
+    Separable: No - Exercise 30.7
+    Locally metrizable: No - Exercise 34.7
+    Metrizable: No - Example 28.3
+
+S_\Omega \times \overline{S_\Omega}:
+    Connected: No - continuous image S_\Omega is not connected
+    Path connected: No - because not connected
+    Locally connected: No - (omega, omega) has no connected neighbourhood
+    Locally path connected: No - (omega, omega) has no path connected neighbourhood
+    Compact: No - continuous image S_Omega is not compact
+    Limit point compact: Yes
+
+Let A be an infinite subset.
+
+Case one: pi_1(A) is finite. Pick x such that there are infinitely many y such that (x,y) in A. Let l be a limit point of these y. Then (x,l) is a limit point of A.
+
+Case two: pi_1(A) is infinite. Let l be a limit point.
+
+Case 2a: l is a successor ordinal. Pick y such that (l-1, y) in A. Then (l, y) is a limit point of A.
+
+Case 2b: l is a limit ordinal. Pick a countable sequence x_n with limit l. For each n, pick an > xn and yn such that (an, yn) in A.
+
+Case 2b-i: {yn} is finite. Pick y that occurs infinitely often. Then (l, y) is a limit point of A.
+
+Case 2b-ii: {yn} is \infinite. Let m be a limit point. Then (l, m) is a limit point of A.
+
+    Locally compact Hausdorff: Yes - Exercise 29.2, Theorem 17.11
+    Hausdorff: Yes - Theorem 17.11
+    Regular: Yes - Theorem 31.2
+    Completely regular: Yes - Theorem 33.2
+    Normal: No - Example 32.2
+    First countable: No - (0, Omega) has no countable basis
+    Second countable: No - not first countable
+    Lindelof: No - Continuous image S_Omega not Lindelof
+    Separable: No - Continuous image S_Omega not eparable
+    Locally metrizable: No - subspace \overline{S_Omega} not locally metrizable
+    Metrizable: No - not normal
+
+The ordered square:
+    Connected: Yes - Example 24.1
+    Path connected: No - Example 24.6
+    Locally connected: Yes - Exercise 25.3
+    Locally path connected: No - Exercise 25.3
+    Compact: Yes - Theorem 27.1
+    Limit point compact: Yes - because compact
+    Locally compact Hausdorff: Yes - because compact Hausdorff
+    Hausdorff: Yes - Theorem 17.11
+    Regular: Yes - compact Hausdorff
+    Completely regular: Yes - compact Hausdorff
+    Normal: Yes - Compact Hausdorff
+    First countable: Yes - Exercise 21.4
+    Second countable: No - regular and not metrizable
+    Lindelof: Yes - Example 30.5
+    Separable: No - {{x} X (0,1) : x in [0,1]} is an uncountable set of disjoint open sets
+    Locally metrizable: No - Exercise 34.7
+    Metrizable: No - Exercise 30.6
+
+\mathbb{R}_l:
+    Connected: No - Exercise 23.7
+    Path connected: No - because not connected
+    Locally connected: No - 0 has no connected neighbourhood
+    Locally path connected: No - because not locally connected
+    Compact: No - {[n, n+1) : n in Z} has no finite subcover
+    Limit point compact: No - Z has no limit point
+    Locally compact Hausdorff: No - any basic neighbourhood [0, epsilon) can be partitioned into countably infinitely many disjoint open sets, which therefore do not have a finite subcover
+    Hausdorff: Yes - Example 31.2
+    Regular: Yes - Example 31.2
+    Completely regular: Yes - Example 31.2
+    Normal: Yes - Example 31.2
+    First countable: Yes - Example 30.3
+    Second countable: No - Example 30.3
+    Lindelof: Yes - Example 30.3
+    Separable: Yes - Example 30.3
+    Locally metrizable: No - Exercise 34.8
+    Metrizable: No - Exercise 30.6
+
+\mathbb{R}_l^2:
+    Connected: No - continuous image \mathbb{R}_l is not connected
+    Path connected: No - because not connected\
+    Locally connected: No - any basic open set [a,b) X [c,d) can be separated into [a,b) X [c,e) and [a,b) X [e,d)
+    Locally path connected: No - because not path connected
+    Compact: No - continuous image R_l is not compact
+    Limit point compact: No - Z X Z has no limit point
+    Locally compact Hausdorff: No - Exercise 29.2
+    Hausdorff: Yes - product of Hausdorff spaces
+    Regular: Yes - product of regular spaces
+    Completely regular: Yes - Example 33.1
+    Normal: No - Example 31.3
+    First countable: Yes: Given (a,b) we have {[a,a+q)X[b,b+r):q,r in Q} is a basis at (a,b)
+    Second countable: No - Theorem 30.3
+    Lindelof: No - Example 30.4
+    Separable: Yes - Exercise 30.10
+    Locally metrizable: No - Similar to Exercise 30.5
+    Metrizable: No - Exercise 30.5
+
+\mathbb{R}^\omega in the product topology:
+    Connected: Yes - Example 23.7
+    Path connected: Yes - Exercise 24.8
+    Locally connected: Yes - proof
+    Locally path connected: Yes - proof
+    Compact: No - R is not compact
+    Limit point compact: No - metrizable and not compact
+    Locally compact Hausdorff: No - Exercise 29.2
+    Hausdorff: Yes - Theorem 32.2
+    Regular: Yes - Theorem 32.2
+    Completely regular: Yes - Theorem 32.2
+    Normal: Yes - Theorem 32.2
+    First countable: Yes - because metrizable
+    Second countable: Yes - Example 30.1
+    Lindelof: Yes - Theorem 30.3
+    Separable: Yes - Theorem 30.3
+    Locally metrizable: Yes - because metrizable
+    Metrizable: Yes - Theorem 20.5
+
+\mathbb{R}^\omega in the uniform topology:
+    Connected: No - Example 23.8
+    Path connected: No - because not connected
+    Locally connected: Yes - for any neighbourhood U of x, the neighbourhood U n {y : y - x is bounded} is connected
+    Locally path connected: Yes - components are path connected
+Proof: Let y be such that y-x is bounded. Define p : [0,1] -> R^omega by
+p(t) = (x1 + t(y1 - x1), x2 + t(y2 - x2), ...)
+Let B be a bound
+Let t in [0,1] and epsilon > 0
+Let delta = epsilon / B
+Let |s-t| < delta
+Then rho(p(s),p(t)) = sup(|s-t|(y1-x1), |s-t|(y2-x2), ...)
+= |s-t| sup(y1 - x1, y2 - x2, ...)
+< delta B
+= epsilon
+    Compact: No - Exercise 30.4
+    Limit point compact: No - Theorem 28.2
+    Locally compact Hausdorff: No - Exercise 29.4
+    Hausdorff: Yes - Theorem 32.2
+    Regular: Yes - Theorem 32.2
+    Completely regular: Yes - Theorem 32.2
+    Normal: Yes - Theorem 32.2
+    First countable: Yes - comment after Theorem 21.3
+    Second countable: No - Example 30.1
+    Lindelof: No - Exercise 30.5
+    Separable: No - Exercise 30.5
+    Locally metrizable: Yes - because metrizable
+    Metrizable: Yes - by definition
+
+\mathbb{R}^\omega in the box topology:
+    Connected: No - Example 23.6
+    Path connected: No - because not connected
+    Locally connected: No - components not open (Exercise 25.2)
+    Locally path connected: No - not locally connected
+    Compact: No - can be covered by infinitely many disjoint open sets
+    Limit point compact: No - set of all integer sequences has no limit point
+    Locally compact Hausdorff: No - see https://math.stackexchange.com/questions/601469/is-mathbbr-omega-locally-compact-in-the-box-topology
+    Hausdorff: Yes - Exercise 33.9
+    Regular: Yes - Exercise 33.9
+    Completely regular: Yes - Exercise 33.9
+    Normal: Open problem - true if we assume Continuum Hypothesis (Exercise 32.5)
+    First countable: No - see https://math.stackexchange.com/questions/1050964/mathbb-r-omega-in-the-box-topology-is-not-first-countable
+    Second countable: No - Urysohn Metrization Theorem
+    Lindelof: No - can be covered by uncountably infinitely many disjoint open sets
+    Separable: No - R^omega uniform not separable
+    Locally metrizable: No - similar to Example 21.1
+    Metrizable: No - Example 21.1
+
+\mathbb{R}^I in the product topology:
+    Connected: Yes - product of connected spaces
+    Path connected: Yes - product of path connected spaces
+    Locally connected: Yes - product of locally connected spaces
+    Locally path connected: Yes - proof
+    Compact: No - R is not compact
+    Limit point compact: No - Z^I has no limit point
+    Locally compact Hausdorff: No - Exercise 29.2
+    Hausdorff: Yes - product of Hausdorff spaces
+    Regular: Yes - product of regular spaces
+    Completely regular: Yes - product of completely regular spaces
+    Normal: No - Example 32.1
+    First countable: No - Example 21.2
+    Second countable: No - not first countable
+    Lindelof: No - not normal
+    Separable: Yes - Exercise 30.16
+    Locally metrizable: No - every neighbourhood has a subspace homeomorphic to R^J for some uncountable J
+    Metrizable: No - not first countable
+
+\mathbb{R}_K:
+    Connected: Yes - Exercise 27.3
+    Path connected: No - Exercise 27.3
+    Locally connected: No - (-1,1) - K does not contain any connected neighbourhood of 0
+    Locally path connected: No - not locally connected
+    Compact: No - can be covered by inifinitely many disjoint open sets
+    Limit point compact: No - Z has no limit point
+    Locally compact Hausdorff: No - not locally compact at 0
+    Hausdorff: Yes - Example 31.1
+    Regular: No - Example 31.1
+    Completely regular: No - not regular
+    Normal: No - not regular
+    First countable: Yes - because second countable
+    Second countable: Yes - {(a,b) : a,b in Q} u {(a,b) - K : a,b in Q} is a basis
+    Lindelof: Yes - because second countable
+    Separable: Yes - because second countable
+    Locally metrizable: Yes - (-1,1) - K is a metrizable neighbourhood of 0. For every other point, pick an open interval that does not intersect K
+    Metrizable: No - not regular
+
+Every metric space:
+    Connected: No - R - {0} is disconnected
+    Path connected: No - because not necessarily connected
+    Locally connected: No - Topologist's sine curve
+    Locally path connected: No - Topologist's sine curve
+    Compact: No - R is not compact
+    Limit point compact: No - R is not limit point compact
+    Locally compact Hausdorff: No - R^omega is not locally compact
+    Hausdorff: Yes - Theorem 32.2
+    Regular: Yes - Theorem 32.2
+    Completely regular: Yes - Theorem 32.2
+    Normal: Yes - Theorem 32.2
+    First countable: Yes - comment after Theorem 21.3
+    Second countable: No - R^omega uniform is not second countable
+    Lindelof: No - R^omega uniform is not Lindelöf
+    Separable: No - R^omega uniform is not separable
+    Locally metrizable: Yes - because metrizable
+    Metrizable: Yes - trivial
+
+Every compact Hausdorff space:
+    Connected: No - [0,1] u [2,3] is disconnected
+    Path connected: No - because not necessarily connected
+    Locally connected: No - [0,1] n Q
+    Locally path connected: No - [0,1] n Q
+    Compact: Yes - trivial      
+    Limit point compact: Yes - Theorem 28.1
+    Locally compact Hausdorff: Yes - trivial
+    Hausdorff: Yes - trivial
+    Regular: Yes - Theorem 32.3
+    Completely regular: Yes - Theorem 32.3
+    Normal: Yes - Theorem 32.3
+    First countable: No - \overline{S_Omega} is not first countable
+    Second countable: No - \overline{S_Omega}
+    Lindelof: Yes - trivial
+    Separable: No - \overline{S_Omega}
+    Locally metrizable: No - \overline{S_Omega}
+    Metrizable: No - \overline{S_Omega}
+
+Inherited by subspaces:
+    Connected: No - Example 23.2
+    Path connected: No - [0,1] u [2,3] is not path connected
+    Locally connected: No - Q
+    Locally path connected: No - Q
+    Compact: No - (0,1) is a non-compact subspace of [0,1]
+    Limit point compact: Yes - Theorem 28.1
+    Locally compact Hausdorff: No - R is locally compact Hausdorff, Q is not locally compact
+    Hausdorff: Yes - Theorem 17.11
+    Regular: Yes - Theorem 31.2
+    Completely regular: Yes - Theorem 33.2
+    Normal: No - \overline{S_Omega}^2 is normal, S_\Omega \times \overline{S_\Omega} is not
+    First countable: Yes - Theorem 30.2
+    Second countable: Yes - Theorem 30.2
+    Lindelof: No - Example 30.5
+    Separable: No - Exercise 30.9
+    Locally metrizable: Yes
+Let X be locally metrizable and Y a subspace of X. Let y in Y. Pick a metrizable neighbourhood U of y in X. Then U n Y is a metrizable neighbourhood of y in Y.
+    Metrizable: Yes - Exercise 21.1
+
+Inherited by closed subspaces:
+    Connected: No - [-2, -1] u [0,1] is a disconnected closed subspace on R
+    Path connected: No - [-2, -1] u [0,1]
+    Locally connected: No - topologist's sine curve
+    Locally path connected: No - topologist's sine curve
+    Compact: Yes - Theorem 26.3
+    Limit point compact: Yes - Exercise 28.3
+    Locally compact Hausdorff: Yes - Corollary 29.3
+    Hausdorff: Yes - Theorem 17.11
+    Regular: Yes - Theorem 31.2
+    Completely regular: Yes - Theorem 33.2
+    Normal: Yes - Exercise 32.1
+    First countable: Yes - Theorem 30.2
+    Second countable: Yes - Theorem 30.2
+    Lindelof: Yes - Exercise 30.9
+    Separable: No - Exercise 30.9
+    Locally metrizable: Yes - see "Inherited by subspaces"
+    Metrizable: Yes - Exercise 21.1
+
+Inherited by open subspaces:
+    Connected: No - R - {0} is a disconnected open subspace of R
+    Path connected: No - R - {0}
+    Locally connected: Yes - easy proof
+    Locally path connected: Yes - easy proof
+    Compact: No - (0,1) is a non-compact subspace of [0,1]
+    Limit point compact: No - (0,1) is not limit point compact
+    Locally compact Hausdorff: Yes - Corollary 29.3
+    Hausdorff: Yes - Theorem 17.11
+    Regular: Yes - Theorem 31.2
+    Completely regular: Yes - Theorem 33.2
+    Normal: No - S_\Omega \times \overline{S_\Omega} is not normal
+    First countable: Yes - Theorem 30.2
+    Second countable: Yes - Theorem 30.2
+    Lindelof: No - Example 30.5
+    Separable: Yes
+Let X be separable and U <= X be open. Let D be a countable dense subset of X.
+Then D cap U is countable. For every open set V in U, we have V is open in X,
+hence V intersects D, hence V intersects D cap U.
+    Locally metrizable: Yes - see "Inherited by subspaces"
+    Metrizable: Yes - Exercise 21.1
+
+Preserved under finite product:
+    Connected: Yes - Theorem 23.6
+    Path connected: Yes - Exercise 24.8
+    Locally connected: Yes - proof
+    Locally path connected: Yes - proof
+    Compact: Yes - Theorem 26.7
+    Limit point compact: No - Exercise 28.3
+    Locally compact Hausdorff: Yes - Exercise 29.2
+    Hausdorff: Yes - Theorem 17.11
+    Regular: Yes - Theorem 31.2
+    Completely regular: Yes - Theorem 33.2
+    Normal: No - Example 31.3
+    First countable: Yes - Theorem 30.2
+    Second countable: Yes - Theorem 30.2
+    Lindelof: No - Example 30.4
+    Separable: Yes - Exercise 30.10
+    Locally metrizable: Yes - proof
+    Metrizable: Yes - Exercise 21.3
+
+Preserved under countable product:
+    Connected: Yes - Exercise 23.10
+    Path connected: Yes - Exercise 24.8
+    Locally connected: Yes - proof
+    Locally path connected: Yes - proof
+    Compact: Yes - Tychonoff Theorem
+    Limit point compact: No - Exercise 28.3
+    Locally compact Hausdorff: No - Exercise 29.2
+    Hausdorff: Yes - Theorem 19.4
+    Regular: Yes - Theorem 31.2
+    Completely regular: Yes - Theorem 33.2
+    Normal: No - Example 31.3
+    First countable: Yes - Theorem 30.2
+    Second countable: Yes - Theorem 30.2
+    Lindelof: No - Example 30.4
+    Separable: Yes - Exercise 30.10
+    Locally metrizable: No
+
+Let X be any locally metrizable space that is not metrizable (e.g. R_K). Suppose X^omega is locally metrizable. Pick x in X^omega and a metrizable basic neighbourhood prod_n U_n of x where U_n = X for all but finitely many n. Then X is metrizable, since it is homeomorphic to a subspace of prod_n U_n.
+
+    Metrizable: Yes - Exercise 21.3
+
+Preserved under product:
+    Connected: Yes - Exercise 23.10
+    Path connected: Yes - Exercise 24.8
+    Locally connected: Yes - proof
+    Locally path connected: Yes - proof
+    Compact: Yes - Tychonoff Theorem
+    Limit point compact: No - Exercise 28.3
+    Locally compact Hausdorff: No - Exercise 29.2
+    Hausdorff: Yes - Theorem 19.4
+    Regular: Yes - Theorem 31.2
+    Completely regular: Yes - Theorem 33.2
+    Normal: No - Example 31.3
+    First countable: No - Example 21.2
+    Second countable: No - Exercise 30.16
+    Lindelof: No - Example 30.4
+    Separable: No - Exercise 30.16
+    Locally metrizable: No - see countable product
+    Metrizable: No - Example 21.2
+
+Preserved by continuous maps:
+    Connected: Yes - Theorem 23.5
+    Path connected: Yes - Exercise 24.8
+    Locally connected: No - every discrete space is locally connected, and every space is the continuous image of the corresponding discrete space.
+    Locally path connected: No - every discrete space is locally path connected, and every space is the continuous image of the corresponding discrete space.
+    Compact: Yes - Theorem 26.5
+    Limit point compact: No - Exercise 28.3
+    Locally compact Hausdorff: No - Exercise 29.3
+    Hausdorff: No - every discrete space is Hausdorff.
+    Regular: No - every discrete space is regular.
+    Completely regular: No - every discrete space is completely regular.
+    Normal: No - every discrete space is normal.
+    First countable: Yes - Exercise 30.12
+    Second countable: Yes - Exercise 30.12
+    Lindelof: Yes - Exercise 30.11
+    Separable: Yes - Exercise 30.11
+    Locally metrizable: No - every discrete space is locally metrizable.
+    Metrizable: No - every discrete space is metrizable.
+
+Second countable => Lindelof and separable - Theorem 30.3
+Compact and metrizable => second countable - Exercise 30.4
+Metrizable and separable => second countable - Exercise 30.5
+Metrizable and Lindelof => second countable - Exercise 30.5
+Regular and second countable => metrizable - Urysohn Metrization Theorem
+Locally compact Hausdorff => completely regular - Exercise 33.7
+Regular Lindelof => normal - Exercise 32.4
+Compact Hausdorff and locally metrizable => metrizable - Exercise 34.7
+Regular Lindelof and locally metrizable => metrizable - Exercise 34.8

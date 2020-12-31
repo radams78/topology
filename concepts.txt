@@ -1,0 +1,9 @@
+Composition of functions
+Injective
+Surjective
+Identity function
+Retraction
+Section
+Isomorphism
+Part of a set
+Inclusion of parts

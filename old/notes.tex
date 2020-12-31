@@ -1,0 +1,4963 @@
+\documentclass{book}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\let\proof\relax
+\let\endproof\relax
+\let\qed\relax
+\usepackage{pf2}
+\usepackage{tikz-cd}
+
+\title{Understand the Universe}
+\author{Robin Adams}
+
+\newtheorem{lm}{Lemma}[chapter]
+\newtheorem{thm}[lm]{Theorem}
+\newtheorem{cor}{Corollary}[lm]
+\newtheorem{ax}{Axiom}
+\theoremstyle{definition}
+\newtheorem{df}[lm]{Definition}
+
+\newcommand{\id}[1]{\ensuremath{\mathrm{id}_{#1}}}
+\newcommand{\inv}[1]{\ensuremath{{#1}^{-1}}}
+\newcommand{\Set}{\ensuremath{\mathbf{Set}}}
+\newcommand{\op}[1]{\ensuremath{{#1}^{\mathrm{op}}}}
+\newcommand{\Top}{\ensuremath{\mathbf{Top}}}
+\newcommand{\im}{\ensuremath{\operatorname{im}}}
+
+\newcommand{\mc}[1]{\ensuremath{\mathcal{#1}}}
+\begin{document}
+  
+  \maketitle
+  
+  \chapter{Set Theory}
+  
+  \section{Primitive Terms}
+  
+  Let there be \emph{sets}.
+  
+  Given two sets $A$, $B$, let there be \emph{functions} from $A$ to $B$. We 
+  write $f : A \rightarrow B$ iff $f$ is a function from $A$ to $B$, and call 
+  $A$ 
+  the \emph{domain} of $f$ and $B$ the \emph{codomain}.
+  
+  Given functions $f : A \rightarrow B$ and $g : B \rightarrow C$, let there be 
+  a 
+  function $g \circ f : A \rightarrow C$, the \emph{composite} of $f$ and $g$.
+  
+  \begin{ax}[Associativity]
+    For any functions $f : A \rightarrow B$, $g : B \rightarrow C$ and $h : C 
+    \rightarrow D$, we have $h \circ (g \circ f) = (h \circ g) \circ f : A 
+    \rightarrow D$.
+  \end{ax}
+  
+  Henceforth, we write $f_1 \circ \cdots \circ f_n$ for $((\cdots(f_1 \circ 
+  f_2) 
+  \circ f_3) \circ \cdots ) \circ f_n$.
+  
+  \section{Identity Mapping}
+  
+  \begin{ax}[Identity Mapping]
+    For every set $A$, there exists a function $\id{A} : A \rightarrow A$, the 
+    \emph{identity mapping} on $A$, such that:
+    \begin{description}
+      \item[Left Unit Law] for every set $B$ and function $f : A \rightarrow B$, 
+      we 
+      have $f \circ 
+      i = f : A \rightarrow B$
+      \item[Right Unit Law] for every set $B$ and function $f : B \rightarrow 
+      A$, we 
+      have $i \circ f 
+      = f : B \rightarrow A$.
+    \end{description}
+  \end{ax}
+  
+  \begin{lm}
+    The identity mapping on any set is unique.
+  \end{lm}
+  
+  \begin{proof}
+    \pf
+    \step{1}{\pflet{$A$ be a set.}}
+    \step{2}{\pflet{$i, j : A \rightarrow A$ be identity mappings on $A$}}
+    \step{3}{$i = j$}
+    \begin{proof}
+      \pf
+      \begin{align*}
+        i & = i \circ j & (\text{\stepref{2}}) \\
+        & = j & (\text{\stepref{2}}) & \qed
+      \end{align*}
+    \end{proof}
+  \end{proof}
+  
+  \section{Sections and Retractions}
+  
+  \begin{df}[Section, Retraction]
+    Let $r : A \rightarrow B$ and $s : B \rightarrow A$. Then $r$ is a 
+    \emph{retraction} of $s$, and $s$ is a \emph{section} of $r$, iff $r \circ s 
+    = 
+    \id{B}$.
+  \end{df}
+  
+  \begin{lm}
+    \label{lm:section_retraction:equal}
+    Let $f : A \rightarrow B$.  If $r : B \rightarrow A$ is a retraction of $f$ 
+    and $s : B \rightarrow A$ is a section of $f$, then $r = s$.
+  \end{lm}
+  
+  \begin{proof}
+    \pf
+    \begin{align*}
+      r & = r \circ \id{B} & (\text{Right Unit Law}) \\
+      & = r \circ f \circ s & (\text{$s$ is a section of $f$}) \\
+      & = \id{A} \circ s & (\text{$r$ is a retraction of $f$}) \\
+      & = s & (\text{Left Unit Law}) & \qed
+    \end{align*}
+  \end{proof}
+  
+  \section{Bijections}
+  
+  \begin{df}[Bijection]
+    A function $f : A \rightarrow B$ is a \emph{bijection}, $f : A \cong B$, 
+    iff 
+    there exists a function $\inv{f} : B \rightarrow A$, the \emph{inverse} of 
+    $f$, 
+    such that $\inv{f}$ is a section of $f$ and a retraction of $f$.
+    
+    Two sets $A$ and $B$ are \emph{equinumerous}, $A \cong B$, iff there exists 
+    a 
+    bijection $f : A \cong B$.
+  \end{df}
+  
+  \begin{lm}
+    The inverse of any bijection is unique.
+  \end{lm}
+  
+  \begin{proof}
+    \pf\ Immediate from Lemma \ref{lm:section_retraction:equal}. \qed
+  \end{proof}
+  
+  \section{Terminal Set}
+  
+  \begin{ax}[Terminal Set]
+    There exists a set $1$, the \emph{terminal} set, such that, for every set 
+    $A$, 
+    there exists a unique function $A \rightarrow 1$.
+  \end{ax}
+  
+  \begin{thm}
+    The terminal set is unique up to unique bijection.
+  \end{thm}
+  
+  \begin{proof}
+    \step{1}{\pflet{$T$ and $T'$ be terminal sets.}}
+    \step{2}{There exists a bijection $b : T \cong T'$}
+    \begin{proof}
+      \step{2a}{\pflet{$b$ be the unique function $T \rightarrow T'$}}
+      \step{2b}{\pflet{$\inv{b}$ be the unique function $T' \rightarrow T$}}
+      \step{2c}{$\inv{b} \circ b = \id{T}$}
+      \begin{proof}
+        \pf\ By the uniqueness of the function $T \rightarrow T$.
+      \end{proof}
+      \step{2d}{$b \circ \inv{b} = \id{T'}$}
+      \begin{proof}
+        \pf\ By the uniqueness of the function $T' \rightarrow T'$.
+      \end{proof}
+    \end{proof}
+    \step{3}{If $b, b' : T \cong T'$ are bijections then $b = b'$.}
+    \begin{proof}
+      \pf\ By the uniqueness of the function $T \rightarrow T'$.
+    \end{proof}
+    \qed
+  \end{proof}
+  
+  \begin{df}[Element]
+    An \emph{element} of a set $A$ is a function $1 \rightarrow A$.
+    
+    We write $a \in A$ for $a : 1 \rightarrow A$.  We write $f(a)$ for $f \circ 
+    a$ 
+    when $a \in A$ and $f : A \rightarrow B$.
+  \end{df}
+  
+  \begin{ax}[Extensionality]
+    Let $f, g : A \rightarrow B$. If, for all $x \in A$, we have $f(x) = g(x)$, 
+    then $f = g$.
+  \end{ax}
+  
+  \section{Surjective Functions}
+  
+  \begin{df}[Surjective]
+    A function $f : A \rightarrow B$ is \emph{surjective}, $f : A 
+    \twoheadrightarrow B$, iff, for all $b \in B$, there exists $a \in A$ such 
+    that 
+    $f(a) = b$.
+  \end{df}
+  
+  \section{Injective Functions}
+  
+  \begin{df}[Injective]
+    A function $f : A \rightarrow B$ is \emph{injective}, $f : A 
+    \rightarrowtail 
+    B$, iff, for all $x, y \in A$, if $f(x) = f(y)$ then $x = y$.
+  \end{df}
+  
+  \begin{lm}
+    A function is a bijection iff it is injective and surjective.
+  \end{lm}
+  
+  %TODO
+  
+  \section{The Empty Set}
+  
+  \begin{ax}[Empty Set]
+    There exists an \emph{empty} set $\emptyset$ such that, for every set $A$, 
+    there exists a unique function $\emptyset \rightarrow A$.
+  \end{ax}
+  
+  \begin{ax}[Nondegeneracy of the Category of Sets]
+    $0 \not\cong 1$
+  \end{ax}
+  
+  \chapter{Category Theory}
+  
+  \begin{df}[Category]
+    A \emph{category} $\mathcal{C}$ consists of the following.
+    \begin{itemize}
+      \item A class $|\mathcal{C}|$ of \emph{objects}. We write $A \in
+      \mathcal{C}$ for $A \in |\mathcal{C}|$.
+      \item For any objects $A, B \in \mathcal{C}$, a set $\mathcal{C}[A,B]$ of
+      \emph{morphisms} from $A$ to $B$. We write $f:A\rightarrow B$ for
+      $f\in\mathcal{C}[A,B]$.
+      \item For any object $A \in \mathcal{C}$, a morphism $\id{A} : A
+      \rightarrow A$, the \emph{identity} morphism on $A$.
+      \item For any morphisms $f : A \rightarrow B$ and $g : B \rightarrow C$, a
+      morphism $g \circ f : A \rightarrow C$, the \emph{composite} of $g$ and 
+      $f$.
+    \end{itemize}
+    such that:
+    \begin{description}
+      \item[Associativity]
+      For any $f : A \rightarrow B$, $g : B \rightarrow C$ and $h : C 
+      \rightarrow
+      D$, we have
+      \[ h \circ (g \circ f) = (h \circ g) \circ f \enspace . \]
+      \item[Left Unit Law]
+      For any $f : A \rightarrow B$, we have
+      \[ \id{B} \circ f = f \enspace . \]
+      \item[Right Unit Law]
+      For any $f : A \rightarrow B$, we have
+      \[ f \circ \id{A} = f \enspace . \]
+    \end{description}
+  \end{df}
+  
+  \begin{df}[Category of Sets]
+    The \emph{category of sets} $\Set$ is the category with objects all
+    sets and morphisms all functions.
+  \end{df}
+  
+  \begin{df}[Isomorphism]
+    A morphism $f : A \rightarrow B$ is an \emph{isomorphism}, $f : A \cong B$,
+    iff there exists a morphism $\inv{f} : B \rightarrow A$, the \emph{inverse} 
+    of
+    $f$, such that
+    \[ \inv{f} \circ f = \id{A}, \qquad f \circ \inv{f} = \id{B} \enspace . \]
+  \end{df}
+  
+  \section{Opposite Category}
+  
+  \begin{df}
+    Let $\mathcal{C}$ be a category. The \emph{opposite category} 
+    $\mathcal{C}^{\mathrm{op}}$ is defined by:
+    \begin{itemize}
+      \item for every object $A$ of $\mathcal{C}$, there is an object 
+      $A^{\mathrm{op}}$ of $\mathcal{C}^{\mathrm{op}}$
+      \item for every morphism $f : A \rightarrow B : \mathcal{C}$, there is a 
+      morphism $f^{\mathrm{op}} : B^{\mathrm{op}} \rightarrow A^{\mathrm{op}} : 
+      \mathcal{C}^{\mathrm{op}}$
+      \item $\id{A^{\mathrm{op}}} = \id{A}^{\mathrm{op}}$
+      \item $f^{\mathrm{op}} \circ g^{\mathrm{op}} = (g \circ f)^{\mathrm{op}}$
+    \end{itemize}
+    
+  \end{df}
+  
+  \section{Functors}
+  
+  \begin{df}
+    Let $\mathcal{C}$ and $\mathcal{D}$ be categories. A \emph{functor} $F : 
+    \mathcal{C} \rightarrow \mathcal{D}$ consists of:
+    \begin{itemize}
+      \item for every object $A \in \mathcal{C}$, an object $FA \in 
+      \mathcal{D}$;
+      \item for every morphism $f : A \rightarrow B : \mathcal{C}$, a morphism 
+      $Ff : 
+      FA \rightarrow FB : \mathcal{D}$
+    \end{itemize}
+    such that:
+    \begin{itemize}
+      \item for every object $A \in \mathcal{C}$, we have $F \id{A} = \id{FA} : 
+      FA 
+      \rightarrow FA : \mathcal{D}$;
+      \item for any morphisms $f : A \rightarrow B, g : B \rightarrow C : 
+      \mathcal{C}$, we have $F(g \circ f) = Fg \circ Ff : FA \rightarrow FC : 
+      \mathcal{D}$
+    \end{itemize}
+  \end{df}
+  
+  \begin{df}[Hom-functor]
+    For any category $\mathcal{C}$, the \emph{hom-functor} $\mathcal{C}[-, +] : 
+    \mathcal{C}^{\mathrm{op}} \times \mathcal{C} \rightarrow \Set$ is defined 
+    by:
+    \begin{itemize}
+      \item $\mathcal{C}[A^{\mathrm{op}}, B]$ is the set of morphisms $A 
+      \rightarrow 
+      B$
+      \item Given $f : A \rightarrow A'$ and $g : B \rightarrow B'$, define 
+      $\mathcal{C}[f^{\mathrm{op}}, g] : \mathcal{C}[(A')^{\mathrm{op}}, B] 
+      \rightarrow \mathcal{C}[A^{\mathrm{op}}, B']$ by
+      \[ \mathcal{C}[f^{\mathrm{op}}, g](h) = g \circ h \circ f \]
+    \end{itemize}
+  \end{df}
+  
+  \section{Natural Transformations}
+  
+  \begin{df}[Natural Transformation]
+    Let $F, G : \mathcal{C} \rightarrow \mathcal{D}$ be functors. A 
+    \emph{natural 
+      transformation} $\tau : F \Rightarrow G$ consists of:
+    \begin{itemize}
+      \item for every object $A \in \mathcal{C}$, a morphism $\tau_A : FA 
+      \rightarrow G A : \mathcal{D}$, the \emph{component} of $\tau$ at $A$
+    \end{itemize}
+    such that:
+    \begin{itemize}
+      \item for any morphism $f : A \rightarrow B : \mathcal{C}$, the following 
+      diagram commutes:
+      \[ \begin{tikzcd}
+        FA \ar[r, "Ff"] \ar[d, "\tau_A"'] & FB \ar[d, "\tau_B"] \\
+        GA \ar[r, "Gf"'] & GB
+      \end{tikzcd} \]
+    \end{itemize}
+  \end{df}
+  
+  \begin{df}[Natural Isomorphism]
+    A natural transformation $\tau : F \Rightarrow G : \mathcal{C} \rightarrow 
+    \mathcal{D}$ is a \emph{natural isomorphism}, $\tau : F \cong G$, iff, for 
+    all 
+    $A \in \mathcal{C}$, we have $\tau_A : FA \cong GA : \mathcal{D}$ is an 
+    isomorphism.
+  \end{df}
+  
+  \begin{lm}
+    If $\tau : F \rightarrow G$ is a natural isomorphism, then the inverses 
+    $\inv{\tau_A} : GA \cong FA$ form a natural isomorphism $\inv{\tau} : G 
+    \cong 
+    F$.
+  \end{lm}
+  
+  \section{Product Categories}
+  
+  \begin{df}[Product Category]
+    Let $\mathcal{C}$ and $\mathcal{D}$ be categories. The \emph{product 
+      category} 
+    $\mathcal{C} \times \mathcal{D}$ is the category with:
+    \begin{itemize}
+      \item objects all pairs $(A, B)$ with $A \in \mathcal{C}$ and $B \in 
+      \mathcal{D}$;
+      \item morphisms $(A, B) \rightarrow (A', B')$ all pairs $(f, g)$ with $f : 
+      A 
+      \rightarrow A' : \mathcal{C}$ and $g : B \rightarrow B' : \mathcal{D}$
+      \item $\id{(A, B)} = (\id{A}, \id{B})$
+      \item $(f', g') \circ (f, g) = (f' \circ f, g' \circ g)$
+    \end{itemize}
+  \end{df}
+  
+  \section{Limits}
+  
+  \begin{df}[Cone]
+    Let $D : \mathcal{J} \rightarrow \mathcal{C}$ be a functor. A \emph{cone} 
+    $tau$ over $D$ with \emph{vertex} $C \in \mathcal{C}$ is a natural 
+    transformation $\tau : K C \Rightarrow D : \mathcal{J} \rightarrow 
+    \mathcal{C}$. That is, it consists of a
+    morphism $\tau_J : C \rightarrow D J$ for all $J \in \mathcal{J}$ such that,
+    for every morphism $t : I \rightarrow J : \mathcal{J}$, the following 
+    diagram 
+    commutes.
+    \[ \begin{tikzcd}
+      & C \ar[dl, "\tau_I"'] \ar[dr, "\tau_J"] & \\
+      DI \ar[rr, "Dt"'] & & DJ
+    \end{tikzcd} \]
+  \end{df}
+  
+  \begin{df}[Limit]
+    Let $D : \mathcal{J} \rightarrow \mathcal{C}$ be a functor. A \emph{limit} 
+    of 
+    $D$ consists of:
+    \begin{itemize}
+      \item an object $L \in \mathcal{C}$
+      \item a cone $\nu_J : L \rightarrow D J$ over $D$, the \emph{universal 
+        cone}
+    \end{itemize}
+    such that, for every cone $\tau_J : X \rightarrow D J$ over $D$, there 
+    exists a 
+    unique morphism $\overline{\tau} : X \rightarrow L$, the \emph{mediating} 
+    morphism, such that
+    \[ \nu_J \circ \overline{\tau} = \tau_J : X \rightarrow D J \]
+    for all $J \in \mathcal{J}$.
+  \end{df}
+  
+  \begin{df}[Preserves Limits]
+    A functor $F : \mathcal{C} \rightarrow \mathcal{D}$ \emph{preserves limits} 
+    of shape $\mathcal{J}$ iff, for any functor $D : \mathcal{J} \rightarrow 
+    \mathcal{C}$, if $L$ is a limit of $D$ with universal cone $\nu_J : L 
+    \rightarrow D J$, then $FL$ is a limit of $F \circ D$ with universal cone 
+    $F 
+    \nu_J : F L \rightarrow F (D J)$.
+  \end{df}
+  
+  \begin{df}[Reflects Limits]
+    A functor $F : \mathcal{C} \rightarrow \mathcal{D}$ \emph{reflects limits} 
+    of shape $\mathcal{J}$ iff, for any functor $D : \mathcal{J} \rightarrow 
+    \mathcal{C}$ and cone $\nu_J : L \rightarrow D J$ over $D$, if $F L$ is a 
+    limit 
+    of $F \circ D$ with universal cone $F \nu_J$, then $L$ is a limit of $D$ 
+    with 
+    universal cone $\nu$.
+  \end{df}
+  
+  \begin{df}[Creates Limits]
+    A functor $F : \mathcal{C} \rightarrow \mathcal{D}$ \emph{reflects limits} 
+    of shape $\mathcal{J}$ iff $F$ preserves and reflects limits of shape 
+    $\mathcal{J}$ and, for any functor $D : \mathcal{J} \rightarrow 
+    \mathcal{C}$, if $F \circ D$ has a limit then $D$ has a limit.
+  \end{df}
+  
+  \section{Terminal Objects}
+  
+  \begin{df}[Terminal Object]
+    An object $1$ is \emph{terminal} iff, for every object $X$, there exists a 
+    unique morphism $X \rightarrow 1$.
+  \end{df}
+  
+  \section{Products}
+  
+  \begin{df}
+    Let $\{X_j\}_{j \in J}$ be a family of objects in $\mathcal{C}$. A 
+    \emph{product} of $\{X_j\}_{j \in J}$ is a limit of the functor from the 
+    discrete category $J$ to $\mathcal{C}$ that maps $j$ to $X_j$. We write the 
+    limiting object as $\prod_{j \in J} X_j$, and call the components of the 
+    universal cone \emph{projections} $\pi_j : \prod_{j \in J} X_j \rightarrow 
+    X_j$.
+    
+    Given an object $A$ and morphisms $f_j : A \rightarrow X_j$ for all $j \in 
+    J$, 
+    we write $\langle f_j \mid j \in J \rangle$ for the mediating morphism
+    \begin{align*}
+      \langle f_j \mid j \in J \rangle & : A \rightarrow \prod_{j \in J} X_j \\
+      \pi_j \circ \langle f_j \mid j \in J \rangle & = f_j & (j \in J)
+    \end{align*}
+  \end{df}
+  
+  \begin{thm}
+    A category has finite products iff it has a terminal object and binary 
+    products.
+  \end{thm}
+  
+  \section{Multiplicative Categories}
+  
+  \begin{df}[Multiplicative Category]
+    A \emph{multiplicative category} $\mathcal{C}$ consists of a category 
+    $\mathcal{C}$ and a functor $\otimes : \mathcal{C}^2 \rightarrow 
+    \mathcal{C}$, 
+    the \emph{tensor product}.
+  \end{df}
+  
+  \begin{df}[Multiplicative Subcategory]
+    Let $(\mathcal{C}, \otimes_{\mathcal{C}})$ be a multiplicative category. A 
+    \emph{multiplicative subcategory} $(\mathcal{D}, \otimes_{\mathcal{D}})$ is 
+    a 
+    multiplicative category such that $\mathcal{D}$ is a subcategory of 
+    $\mathcal{C}$, and $\otimes_{\mathcal{D}}$ is the restriction of 
+    $\otimes_{\mathcal{C}}$ to $\mathcal{D}$. 
+  \end{df}
+  
+  \begin{df}
+    Let $\mathcal{C}$ be a multiplicative category, and $\mathcal{D}$ a 
+    subcategory 
+    of $\mathcal{C}$. The multiplicative subcategory \emph{generated} by 
+    $\mathcal{D}$ is the multiplicative subcategory $\langle \mathcal{D} 
+    \rangle$ 
+    defined by:
+    \begin{itemize}
+      \item the objects of $\langle \mathcal{D} \rangle$ are defined inductively 
+      by:
+      \begin{itemize}
+        \item every object of $\mathcal{D}$ is an object of $\langle 
+        \mathcal{D} 
+        \rangle$
+        \item $I \in \langle \mathcal{D} \rangle$
+        \item if $A, B \in \langle \mathcal{D} \rangle$ then $A \otimes B \in 
+        \langle 
+        \mathcal{D} \rangle$
+      \end{itemize}
+      \item the morphisms of $\langle \mathcal{D} \rangle$ are defined 
+      inductively 
+      by:
+      \begin{itemize}
+        \item every morphism in $\mathcal{D}$ is a morphism in $\langle 
+        \mathcal{D} 
+        \rangle$
+        \item for all $A \in \langle \mathcal{D} \rangle$ we have $\id{A} : A 
+        \rightarrow A : \langle \mathcal{D} \rangle$
+        \item for all $f : A \rightarrow B, g : B \rightarrow C : \langle 
+        \mathcal{D} \rangle$ we have $g \circ f : A \rightarrow C : \langle 
+        \mathcal{D} 
+        \rangle$
+        \item for all $f : A \rightarrow B, g : C \rightarrow D : \langle 
+        \mathcal{D} 
+        \rangle$ we have $f \otimes g : A \otimes C \rightarrow B \otimes D : 
+        \langle 
+        \mathcal{D} \rangle$.
+      \end{itemize}
+    \end{itemize}
+  \end{df}
+  
+  \begin{df}
+    Let $\mathcal{C}$ be a multiplicative category and $f : A \rightarrow B : 
+    \mathcal{C}$. The set of \emph{expansions} of $f$ is defined inductively by:
+    \begin{itemize}
+      \item $f$ is an expansion of $f$
+      \item If $g : C \rightarrow D$ is an expansion of $f$ and $E \in 
+      \mathcal{C}$ 
+      then $\id{E} \otimes g : E \otimes C \rightarrow E \otimes D$ and $g 
+      \otimes 
+      \id{E} : C \otimes E \rightarrow D \otimes E$ are expansions of $f$.
+    \end{itemize}
+  \end{df}
+  
+  \begin{lm}
+    The class of morphisms of $\langle \mathcal{D} \rangle$ is the class 
+    consisting of all the identity morphisms on objects of $\langle \mathcal{D} 
+    \rangle$, and all the composites of expansions in $\langle \mathcal{D} 
+    \rangle$ 
+    of morphisms in $\mathcal{D}$.
+  \end{lm}
+  
+  \begin{df}
+    Given multiplicative categories $\mathcal{C}$, $\mathcal{D}$ and functors 
+    $F, 
+    G : \mathcal{C} \rightarrow \mathcal{D}$, define the functor $F \otimes G : 
+    \mathcal{C} \rightarrow \mathcal{D}$ by:
+    \begin{align*}
+      (F \otimes G) C & = FC \otimes GC (C \in \mathcal{C}) \\
+      (F \otimes G) f & = Ff \otimes Gf : FC \otimes GC \rightarrow FD \otimes 
+      GD (f 
+      : C \rightarrow D : \mathcal{C})
+    \end{align*}
+    Given natural transformations $\sigma : F \Rightarrow F' : \mathcal{C} 
+    \rightarrow \mathcal{D}$ and $\tau : G \Rightarrow G' : \mathcal{C} 
+    \rightarrow 
+    \mathcal{D}$, define the natural transformation $\sigma \otimes \tau : F 
+    \otimes G \Rightarrow F' \otimes G' : \mathcal{C} \rightarrow \mathcal{D}$ 
+    by
+    \[ (\sigma \otimes \tau)_C = \sigma_C \otimes \tau_C : FC \otimes F'C 
+    \rightarrow GC \otimes G'C \]
+  \end{df}
+  
+  \begin{df}[Iterate]
+    Let $\mathcal{C}$ be a multiplicative category. The set of \emph{iterates} 
+    of 
+    $\otimes$ is the set of functors $\mathcal{C}^n \rightarrow \mathcal{C}$ 
+    for some $n$ defined inductively by:
+    \begin{itemize}
+      \item $\id{\mathcal{C}}$ is an iterate of $\otimes$
+      \item If $F$ and $G$ are iterates of $\otimes$ then so is $F \otimes G$
+    \end{itemize}
+    
+    Let $It_\otimes(\mathcal{C})$ be the multiplicative category whose objects 
+    are 
+    the iterates of $\otimes$, and whose morphisms are the natural 
+    transformations.
+  \end{df}
+  
+  \section{Semigroupal Categories}
+  
+  \begin{df}[Semigroupal Category]
+    A \emph{semigroupal category} $\mathcal{C}$ consists of:
+    \begin{itemize}
+      \item a multiplicative category $\mathcal{C}$
+      \item a natural isomorphism $\alpha_{XYZ} : X \otimes (Y \otimes Z) \cong 
+      (X 
+      \otimes Y) \otimes Z$, the \emph{associator}
+    \end{itemize}
+    such that, for any objects $W, X, Y, Z \in \mathcal{C}$, the following 
+    diagram 
+    (the \emph{pentagon equation}) commutes:
+    \[ \begin{tikzcd}
+      & ((W \otimes X) \otimes Y) \otimes Z \ar[ddl] \ar[dr] \\
+      & & (W \otimes (X \otimes Y)) \otimes Z \ar[dd] \\
+      (W \otimes X) \otimes (Y \otimes Z) \ar[ddr] \\
+      & & W \otimes ((X \otimes Y) \otimes Z) \ar[dl] \\
+      & W \otimes (X \otimes (Y \otimes Z))
+    \end{tikzcd} \]
+  \end{df}
+  
+  \begin{df}[Iterates of $\alpha$]
+    The \emph{iterates} of $\alpha$ are the morphisms of the multiplicative 
+    subcategory of $It_\otimes(\mathcal{C})$ generated by all natural 
+    isomorphisms
+    $\alpha(F \times G \times H) : F \otimes (G \otimes 
+    H) \cong (F \otimes G) \otimes H : \mathcal{C}^{m + n + k} \rightarrow 
+    \mathcal{C}$, where $F : \mathcal{C}^m \rightarrow \mathcal{C}$, $G : 
+    \mathcal{C}^n 
+    \rightarrow \mathcal{C}$, $H : \mathcal{C}^k \rightarrow \mathcal{C}$ are 
+    iterates of $\otimes$.
+  \end{df}
+  
+  \section{Monoidal Categories}
+  
+  \begin{df}[Monoidal Category]
+    A \emph{monoidal category} $\mathcal{C}$ consists of:
+    \begin{itemize}
+      \item a semigroupal category $\mathcal{C}$;
+      \item an item $I \in \mathcal{C}$, the \emph{unit};
+      \item a natural isomorphism $l_X : I \otimes X \cong X$, the \emph{left 
+        unitor};
+      \item a natural isomorphism $r_X : X \otimes I \cong X$, the \emph{right 
+        unitor};
+    \end{itemize}
+    such that:
+    for any objects $X, Y \in \mathcal{C}$, the following diagram (the 
+    \emph{triangle equation}) commutes:
+    \[ \begin{tikzcd}
+      X \otimes (I \otimes Y) \ar[rr, "\alpha_{XIY}"] \ar[dr, "\id{X} \otimes 
+      l_Y"] 
+      & & (X \otimes I) \otimes Y \ar[dl, "r_X \otimes \id{Y}"] \\
+      & X \otimes Y
+    \end{tikzcd} \]
+  \end{df}
+  
+  To read: S. Mac Lane, Natural associativity and commutativity, Rice Univ. 
+  Stud. 
+  49 (1963) 28–46.
+  
+  \begin{thm}
+    Every category with chosen finite products is a monoidal category with 
+    tensor 
+    product $\times$ and unit the terminal object.
+  \end{thm}
+  
+  \begin{df}[Cartesian Monodial Category]
+    A \emph{Cartesian} monoidal category is a monoidal category such that $A 
+    \otimes B$ is the product of $A$ and $B$, and the unit is terminal, with 
+    the 
+    associators and unitors being the canonical morphisms.
+  \end{df}
+  
+  \begin{df}[Clique]
+    A \emph{clique} in a category $\mathcal{C}$ consists of:
+    \begin{itemize}
+      \item a nonempty family $\{ C_i \}_{i \in I}$ of objects of $\mathcal{C}$;
+      \item for all $i, j \in I$, a morphism $\mu_{ij} : C_i \rightarrow C_j$
+    \end{itemize}
+    such that:
+    \begin{itemize}
+      \item for all $i \in I$, we have $\mu_{ii} = \id{C_i}$
+      \item for all $i, j, k \in I$, we have $\mu_{jk} \circ \mu_{ij} = 
+      \mu_{ik}$
+    \end{itemize}
+    
+    The \emph{category of cliques in $\mathcal{C}$} $\operatorname{clq} 
+    \mathcal{C}$ has objects all cliques, with a morphism $f : (\{ C_i \}_{i 
+      \in 
+      I}, \{ \mu_{ij} \}_{i,j \in I}) \rightarrow (\{ D_k \}_{k \in K}, \{ 
+    \nu_{kl} 
+    \}_{k,l \in K})$ being a family of morphisms
+    \[ f_{ik} : C_i \rightarrow D_k \]
+    such that, for all $i, j \in I$ and $k, l \in K$, the following diagram 
+    commutes
+    \[ \begin{tikzcd}
+      C_i \ar[r, "\mu_{ij}"] \ar[d, "f_{ik}"] & C_j \ar[d, "f_{jl}"] \\
+      D_k \ar[r, "\nu_{kl}"] & D_l
+    \end{tikzcd} \]
+  \end{df}
+  
+  \begin{lm}
+    In any clique, every morphism $\mu_{ij}$ is an isomorphism with inverse 
+    $\inv{\mu_{ij}} = \mu_{ji}$.
+  \end{lm}
+  
+  \begin{proof}
+    \pf\ $\mu_{ji} \circ \mu_{ij} = \mu_{ii} = \id{C_i}$
+  \end{proof}
+  
+  \begin{thm}[Coherence Theorem]
+    Let $\mathcal{C}$ be a monoidal category and $n \in \mathbb{N}$. 
+  \end{thm}
+  
+  \section{Braided Monoidal Categories}
+  
+  \begin{df}[Braided Monoidal Category]
+    A \emph{braided monoidal category} $\mathcal{C}$ consists of:
+    \begin{itemize}
+      \item a monoidal category $\mathcal{C}$
+      \item a natural isomorphism $b_{XY} : X \otimes Y \cong Y \otimes X$, the 
+      \emph{braiding}
+    \end{itemize}
+    such that, for all $X, Y, Z \in \mathcal{C}$, the following \emph{hexagon 
+      equations} hold:
+    \[ \begin{tikzcd}
+      X \otimes (Y \otimes Z) \ar[r, "\alpha_{XYZ}"] \ar[d, "b_{X,Y \otimes Z}"] 
+      &
+      (X \otimes Y) \otimes Z \ar[r, "b_{XY} \otimes \id{Z}"] &
+      (Y \otimes X) \otimes Z \ar[d, "\inv{\alpha_{YXZ}}"] \\
+      (Y \otimes Z) \otimes X &
+      Y \otimes (Z \otimes X) \ar[l, "\alpha_{YZX}"] &
+      Y \otimes (X \otimes Z) \ar[l, "\id{Y} \otimes b_{XZ}"]
+    \end{tikzcd} \]
+    \[ \begin{tikzcd}
+      (X \otimes Y) \otimes Z \ar[r, "\inv{\alpha_{XYZ}}"] \ar[d, "b_{X 
+        \otimes Y, Z}"] &
+      X \otimes (Y \otimes Z) \ar[r, "\id{X} \otimes b_{YZ}"] &
+      X \otimes (Z \otimes Y) \ar[d, "\alpha_{XZY}"] \\
+      Z \otimes (X \otimes Y) &
+      (Z \otimes X) \otimes Y \ar[l, "\inv{\alpha_{ZXY}}"] &
+      (X \otimes Z) \otimes Y \ar[l, "b_{XZ} \otimes \id{Y}"]
+    \end{tikzcd} \]
+  \end{df}
+  
+  To read: A. Joyal and R. Street, Braided monoidal categories, Macquarie Math 
+  Reports 860081 (1986). Available
+  at http://rutherglen.ics.mq.edu.au/∼street/JS86.pdf.
+  A. Joyal and R. Street, Braided tensor categories, Adv. Math. 102 (1993), 
+  20–78.
+  
+  \begin{thm}
+    Every Cartesian monoidal category is braided with $b_{XY} = \langle \pi_2, 
+    \pi_1 \rangle$.
+  \end{thm}
+  
+  \section{Symmetric Monoidal Categories}
+  
+  \begin{df}
+    A \emph{symmetric monoial category} is a braided monoidal category such 
+    that 
+    $b_{XY} = \inv{b_{YX}}$ for all objects $X$, $Y$.
+  \end{df}
+  
+  \begin{thm}
+    Every Cartesian monoidal category is symmetric monoidal.
+  \end{thm}
+  
+  \section{Closed Monoidal Categories}
+  
+  \begin{df}[Left Closed Monoidal Categories]
+    A \emph{left closed} monoidal category $\mathcal{C}$ consists of:
+    \begin{itemize}
+      \item a monoidal category $\mathcal{C}$;
+      \item a functor $\multimap : \op{\mathcal{C}} \times \mathcal{C} 
+      \rightarrow 
+      \mathcal{C}$, the \emph{internal hom functor};
+      \item a natural isomorphism $c_{XYZ} : \mathcal{C}[X \otimes Y, Z] \cong 
+      \mathcal{C}[X, Y \multimap Z]$, called \emph{currying}
+    \end{itemize}
+  \end{df}
+  
+  \begin{df}[Right Closed Monoidal Categories]
+    A \emph{right closed} monoidal category $\mathcal{C}$ consists of:
+    \begin{itemize}
+      \item a monoidal category $\mathcal{C}$;
+      \item a functor $\multimap : \op{\mathcal{C}} \times \mathcal{C} 
+      \rightarrow 
+      \mathcal{C}$, the \emph{internal hom functor};
+      \item a natural isomorphism $c_{XYZ} : \mathcal{C}[X \otimes Y, Z] \cong 
+      \mathcal{C}[Y, X \multimap Z]$, called \emph{currying}
+    \end{itemize}
+  \end{df}
+  
+  \begin{lm}
+    A braided monoidal category is left closed iff it is right closed.
+  \end{lm}
+  
+  \begin{lm}
+    $\Set$ is closed.
+  \end{lm}
+  
+  \begin{df}[Name]
+    In a closed braided monoidal category, the \emph{name} of a morphism $f : X 
+    \rightarrow Y$ is the morphism
+    \[ \ulcorner f \urcorner : I \rightarrow X \multimap Y \]
+    defined by
+    \[ \ulcorner f \urcorner = c(f \circ r_X) \enspace . \]
+  \end{df}
+  
+  \section{Compact Monoidal Categories}
+  
+  \begin{df}[Right Dual]
+    Let $\mathcal{C}$ be a monoidal category and $X \in \mathcal{C}$. A 
+    \emph{right dual} $X^*$ of $X$ consists of:
+    \begin{itemize}
+      \item an object $X^*$
+      \item a morphism $i_X : I \rightarrow X^* \otimes X$, the \emph{unit}
+      \item a morphism $e_X : X \otimes X^* \rightarrow I$, the \emph{counit}
+    \end{itemize}
+    such that the following diagrams (the \emph{zig-zag equations}) commute:
+    \[ \begin{tikzcd}
+      X \otimes I \ar[r, "\id{X} \otimes i_X"] \ar[d, "r_X"] &
+      X \otimes (X^* \otimes X) \ar[r, "\alpha_{XX^*X}"] &
+      (X \otimes X^*) \otimes X \ar[d, "e_X \otimes \id{X}"] \\
+      X & & I \otimes X \ar[ll, "l_X"]
+    \end{tikzcd} \]
+    \[ \begin{tikzcd}
+      I \otimes X^* \ar[d, "l_{X^*}"] \ar[r, "i_X \otimes \id{X^*}"] &
+      (X^* \otimes X) \otimes X^* \ar[r, "\inv{\alpha{X^*XX^*}}"] &
+      X^* \otimes (X \otimes X^*) \ar[d, "\id{X^*} \otimes e_X"] \\
+      X^* & & X^* \otimes I \ar[ll, "r_{X^*}"]
+    \end{tikzcd}\]
+    
+  \end{df}
+  
+  \begin{df}[Left Dual]
+    Let $\mathcal{C}$ be a monoidal category and $X \in \mathcal{C}$. A 
+    \emph{left dual} $X_*$ of $X$ consists of:
+    \begin{itemize}
+      \item an object $X_*$
+      \item a morphism $i_X : I \rightarrow X \otimes X_*$, the \emph{unit}
+      \item a morphism $e_X : X_* \otimes X \rightarrow I$, the \emph{counit}
+    \end{itemize}
+    such that the following diagrams (the \emph{zig-zag equations}) commute:
+    \[ \begin{tikzcd}
+      X_* \otimes I \ar[r, "\id{X_*} \otimes i_X"] \ar[d, "r_{X_*}"] &
+      X_* \otimes (X \otimes X_*) \ar[r, "\alpha_{X_*XX_*}"] &
+      (X_* \otimes X) \otimes X_* \ar[d, "e_X \otimes \id{X_*}"] \\
+      X_* & & I \otimes X_* \ar[ll, "l_{X_*}"]
+    \end{tikzcd} \]
+    \[ \begin{tikzcd}
+      I \otimes X \ar[d, "l_X"] \ar[r, "i_X \otimes \id{X}"] &
+      (X \otimes X_*) \otimes X \ar[r, "\inv{\alpha{XX_*X}}"] &
+      X \otimes (X_* \otimes X) \ar[d, "\id{X} \otimes e_X"] \\
+      X_* & & X_* \otimes I \ar[ll, "r_{X_*}"]
+    \end{tikzcd}\]
+    
+  \end{df}
+  
+  \begin{df}[Compact Monoidal Category]
+    A monoidal category is \emph{compact} iff every object has a left dual and 
+    a 
+    right dual.
+  \end{df}
+  
+  \begin{thm}
+    Every compact monoidal category is closed with $X \multimap Y = X^* \otimes 
+    Y$.
+  \end{thm}
+  
+  \section{Dagger Categories}
+  
+  \begin{df}[Dagger Category]
+    A \emph{dagger category} $\mathcal{C}$ consists of:
+    \begin{itemize}
+      \item a category $\mathcal{C}$
+      \item for every morphism $f : X \rightarrow Y$, a morphism $f^\dagger : Y 
+      \rightarrow X$
+    \end{itemize}
+    such that:
+    \begin{itemize}
+      \item for every morphism $f : X \rightarrow Y$, we have 
+      $(f^\dagger)^\dagger = 
+      f$
+      \item for any morphisms $f : X \rightarrow Y$ and $g : Y \rightarrow Z$, 
+      we 
+      have $(g \circ f)^\dagger = f^\dagger \circ g^\dagger$
+    \end{itemize}
+  \end{df}
+  
+  \begin{thm}
+    $\Set$ is not a dagger category.
+  \end{thm}
+  
+  \begin{proof}
+    \pf\ There is no morphism $1 \rightarrow \emptyset$.
+  \end{proof}
+  
+  \chapter{Topology}
+  
+  \section{Topological Spaces}
+  
+  \begin{df}[Topology]
+    A \emph{topology} on a set $X$ is a set $\mathcal{T} \subseteq \mathcal{P}
+    X$, whose elements we call \emph{open} sets, such that:
+    \begin{enumerate}
+      \item $\emptyset, X \in \mathcal{T}$
+      \item For all $\mathcal{A} \subseteq \mathcal{T}$, we have $\bigcup
+      \mathcal{A} \in \mathcal{T}$
+      \item For all $A, B \in \mathcal{T}$, we have $A \cap B \in \mathcal{T}$.
+    \end{enumerate}
+    A \emph{topological space} consists of a set $X$ and a topology on $X$.
+  \end{df}
+  
+  \begin{lm}
+    \label{lm:topology:open:membership}
+    Let $X$ be a topological space and $U \subseteq X$. Then $U$ is open if and 
+    only if, for all $x \in U$, there exists $V$ open such that $x \in V 
+    \subseteq 
+    U$.
+  \end{lm}
+  
+  \begin{proof}
+    \pf
+    \step{1}{If $U$ is open then, for all $x \in U$, there exists $V$ open such 
+      that $x \in V \subseteq U$}
+    \begin{proof}
+      \pf\ Trivial, taking $V = U$.
+    \end{proof}
+    \step{2}{If, for all $x \in U$, there exists $V$ open such that $x \in V 
+      \subseteq U$, then $U$ is open.}
+    \begin{proof}
+      \pf\ This follows because $U = \bigcup \{ V \text{ open} : V \subseteq U 
+      \}$.
+    \end{proof}
+  \end{proof}
+  
+  \begin{df}[Neighbourhood]
+    A \emph{neighbourhood} of a point $x$ is an open set that contains $x$.
+  \end{df}
+  
+  \begin{df}[Discrete Topology]
+    For any set $X$, the \emph{discrete} topology on $X$ is $\mathcal{P} X$.
+  \end{df}
+  
+  \begin{df}[Indiscrete Topology]
+    For any set $X$, the \emph{indiscrete} or \emph{trivial} topology on $X$ is
+    $\{ \emptyset, X \}$.
+  \end{df}
+  
+  \begin{df}[Finite Complement Topology]
+    For any set $X$, the \emph{finite complement topology} on $X$ is $\{ X
+    \setminus F : F \subseteq X \text{ is finite} \}$.
+  \end{df}
+  
+  \begin{df}[Finer, Coarser]
+    Let $\mathcal{T}$ and $\mathcal{T}'$ be topologies on $X$. Then:
+    \begin{itemize}
+      \item
+      $\mathcal{T}'$ is \emph{finer} than $\mathcal{T}$, and $\mathcal{T}$ is
+      \emph{coarser} than $\mathcal{T}'$, iff $\mathcal{T} \subseteq 
+      \mathcal{T}'$
+      \item
+      $\mathcal{T}'$ is \emph{strictly} finer than $\mathcal{T}$, and 
+      $\mathcal{T}$
+      is
+      \emph{strictly} coarser than $\mathcal{T}'$, iff $\mathcal{T} \subseteq
+      \mathcal{T}'$
+      \item
+      $\mathcal{T}$ and $\mathcal{T}'$ are \emph{comparable} iff one is finer 
+      than
+      the other.
+    \end{itemize}
+  \end{df}
+  
+  \begin{lm}
+    The discrete topology is the finest topology on a set. The indiscrete 
+    topology 
+    is the coarsest topology.
+  \end{lm}
+  
+  \subsection{Closed Sets}
+  
+  \begin{df}[Closed Set]
+    Let $X$ be a topological space. A set $C \subseteq X$ is \emph{closed} iff 
+    $X 
+    \setminus C$ is open.
+  \end{df}
+  
+  \begin{thm}
+    Let $X$ be a topological space and $\mathcal{C}$ the set of closed sets. 
+    Then:
+    \begin{enumerate}
+      \item $\emptyset, X \in \mathcal{C}$
+      \item $\mathcal{C}$ is closed under arbitrary intersection.
+      \item $\mathcal{C}$ is closed under finite union.
+    \end{enumerate}
+    
+    Conversely, if $\mathcal{C}$ satisfies 1--3, then there exists a unique 
+    topology $\mathcal{T}$ such that $\mathcal{C}$ is the set of closed sets 
+    under 
+    $\mathcal{T}$, namely
+    \[ \mathcal{T} = \{ X \setminus C : C \in \mathcal{C} \} \enspace . \]
+  \end{thm}
+  
+  \subsection{Closure}
+  
+  \begin{df}[Closure]
+    Let $X$ be a topological space and $A \subseteq X$. Then the \emph{closure} 
+    of 
+    $A$, $\overline{A}$, is the intersection of all the closed sets that 
+    include 
+    $A$.
+  \end{df}
+  
+  \begin{thm}
+    \label{thm:topology:closure:membership}
+    A point $x$ is in $\overline{A}$ if and only if every open set that 
+    contains 
+    $x$ intersects $A$.
+  \end{thm}
+  
+  \begin{proof}
+    \step{1}{If $x \in \overline{A}$ then every open set that contains $x$ 
+      intersects $A$.}
+    \begin{proof}
+      \step{1a}{\assume{$x \in \overline{A}$}}
+      \step{1b}{\pflet{$U$ be an open set that contains $x$}}
+      \step{1c}{$x \notin X \setminus U$}
+      \step{1d}{$X \setminus U$ does not include $A$.}
+      \step{1e}{$U$ intersects $A$}
+    \end{proof}
+    \step{2}{If every open set that contains $x$ intersects $A$ then $x \in 
+      \overline{A}$.}
+    \begin{proof}
+      \step{xxx}{\assume{Every open set that contains $x$ intersects $A$}}
+      \step{2a}{$X \setminus \overline{A}$ does not intersect $A$}
+      \step{2b}{$X \setminus \overline{A}$ does not contain $x$}
+      \step{2c}{$x \in \overline{A}$}
+    \end{proof}
+  \end{proof}
+  
+  \begin{thm}[Kuratowski Closure Axioms]
+    Let $X$ be a topological space and $A, B \subseteq X$. Then:
+    \begin{enumerate}
+      \item $\overline{\emptyset} = \emptyset$
+      \item $A \subseteq \overline{A}$
+      \item $\overline{\overline{A}} = \overline{A}$
+      \item $\overline{A \cup B} = \overline{A} \cup \overline{B}$
+    \end{enumerate}
+    
+    Conversely, let $X$ be a set and $\overline{\ } : \mathcal{P} X \rightarrow 
+    \mathcal{P} X$ an operation that satisfies 1--4. Then there exists a unique
+    topology on $X$ with respect to which $\overline{ }$ is the closure 
+    operator.
+  \end{thm}
+  
+  \begin{lm}
+    \label{lm:topology:closure:closed}
+    Let $C \subseteq X$. The following are equivalent.
+    \begin{enumerate}
+      \item $C$ is closed
+      \item There exists a set $A$ such that $C = \overline{A}$
+      \item $\overline{C} = C$
+      \item $\overline{C} \subseteq C$
+    \end{enumerate}
+  \end{lm}
+  
+  \subsection{Interior}
+  
+  \begin{df}[Interior]
+    Let $X$ be a topological space and $A \subseteq X$. The \emph{interior} of 
+    $A$, $A^\circ$, is the union of all the open subsets of $A$.
+  \end{df}
+  
+  \begin{thm}[Kuratowski Interior Axioms]
+    Let $X$ be a topological space and $A, B \subseteq X$. Then:
+    \begin{enumerate}
+      \item $X^\circ = X$
+      \item $A^\circ \subseteq A$
+      \item $(A^\circ)^\circ = A^\circ$
+      \item $(A \cap B)^\circ = A^\circ \cap B^\circ$
+    \end{enumerate}
+    
+    Conversely, let $X$ be a set and $^\circ : \mathcal{P} X \rightarrow 
+    \mathcal{P} X$ an operation that satisfies 1--4. Then there exists a unique
+    topology on $X$ with respect to which $^\circ$ is the interior operator.
+  \end{thm}
+  
+  \begin{lm}
+    Let $X$ be a topological space and $U \subseteq X$. Then the following are 
+    equivalent:
+    \begin{enumerate}
+      \item $U$ is open.
+      \item There exists a set $A$ such that $U = A^\circ$
+      \item $U = U^\circ$
+      \item $U \subseteq U^\circ$
+    \end{enumerate}
+  \end{lm}
+  
+  \subsection{Limit Points}
+  
+  \begin{df}[Limit Point]
+    Let $X$ be a topological space and $A \subseteq X$. A point $l \in X$ is a 
+    \emph{limit point} of $A$ iff every neighbourhood of $l$ intersects $A$ in 
+    a 
+    point other than $l$.
+  \end{df}
+  
+  \begin{thm}
+    Let $A$ be a subspace of the topological space $X$. Let $A'$ be the set of 
+    limit points of $A$. Then
+    \[ \overline{A} = A \cup A' \]
+  \end{thm}
+  
+  \begin{proof}
+    \step{1}{If $x \in \overline{A}$ then $x \in A$ or $x \in A'$}
+    \begin{proof}
+      \step{1a}{\assume{$x \in \overline{A}$ and $x \notin A$}}
+      \step{1b}{Every open set that contains $x$ intersects $A$}
+      \begin{proof}
+        \pf\ Theorem \ref{thm:topology:closure:membership}.
+      \end{proof}
+      \step{1c}{Every open set that contains $x$ intersects $A$ in a point 
+        other 
+        than $x$}
+      \step{1d}{$x \in A'$}
+    \end{proof}
+    \step{2}{$A \subseteq \overline{A}$}
+    \begin{proof}
+      \pf\ By definition of $\overline{A}$
+    \end{proof}
+    \step{3}{$A' \subseteq \overline{A}$}
+    \begin{proof}
+      \pf\ From Theorem \ref{thm:topology:closure:membership}.
+    \end{proof}
+  \end{proof}
+  
+  \begin{cor}
+    A set is closed if and only if it contains its limit points.
+  \end{cor}
+  
+  \subsection{Convergence}
+  
+  \begin{df}[Converge]
+    Let $X$ be a topological space. Let $(a_n)$ be a sequence of points in $X$, 
+    and $l \in X$. Then $a_n$ \emph{converges} to the \emph{limit} $l$, $a_n 
+    \rightarrow l$ as $n \rightarrow \infty$, iff, for every neighbourhood $U$ 
+    of 
+    $l$, there exists $N$ such that
+    \[ \forall n > N. a_n \in U \enspace . \]
+  \end{df}
+  
+  \begin{lm}
+    Let $X$ be a topological space and $A \subseteq X$. If $(a_n)$ is a 
+    sequence 
+    of points in $A$ and $a_n \rightarrow l$ as $n \rightarrow \infty$, then $l 
+    \in 
+    \overline{A}$.
+  \end{lm}
+  
+  \begin{proof}
+    \pf
+    \step{1}{\pflet{$U$ be a neighbourhood of $l$}}
+    \step{2}{\pick\ $N$ such that, for all $n \geq N$, we have $a_n \in U$}
+    \step{3}{$a_N \in A \cap U$}
+    \qedstep
+    \begin{proof}
+      \pf\ By Theorem \ref{thm:topology:closure:membership}.
+    \end{proof}
+  \end{proof}
+  
+  \subsection{Continuous Functions}
+  
+  \begin{df}[Continuous]
+    Let $X$ and $Y$ be topological spaces. A function $f : X \rightarrow Y$ is 
+    \emph{continuous} iff, for every open $V \subseteq Y$, we have that 
+    $f^{-1}(V)$ 
+    is open in $X$.
+  \end{df}
+  
+  \begin{lm}
+    \label{lm:topology:continuous:criteria}
+    Let $X$ and $Y$ be topological spaces and $f : X \rightarrow Y$. The 
+    following 
+    are equivalent.
+    \begin{enumerate}
+      \item $f$ is continuous
+      \item For every set $A \subseteq X$, we have $f(\overline{A}) \subseteq 
+      \overline{f(A)}$.
+      \item For every closed $C \subseteq Y$, we have that $f^{-1}(C)$ is closed 
+      in 
+      $X$.
+      \item For every point $x \in X$ and neighbourhood $V$ of $f(x)$, there 
+      exists a 
+      neighbourhood $U$ of $x$ such that $f(U) \subseteq V$.
+    \end{enumerate}
+  \end{lm}
+  
+  \begin{proof}
+    \step{1}{$1 \Rightarrow 2$}
+    \begin{proof}
+      \step{xxx}{\assume{$f$ is continuous}}
+      \step{1a}{\pflet{$A \subseteq X$}}
+      \step{1b}{\pflet{$x \in \overline{A}$} \prove{$f(x) \in \overline{f(A)}$}}
+      \step{1c}{\pflet{$V$ be a neighbourhood of $f(x)$} \prove{$V$ intersects 
+          $f(A)$}}
+      \step{1d}{$f^{-1}(V)$ is a neighbourhood of $x$}
+      \begin{proof}
+        \pf\ Using \stepref{xxx}
+      \end{proof}
+      \step{1e}{\pick\ $y \in f^{-1}(V) \cap A$}
+      \begin{proof}
+        \pf\ Using \stepref{1b}
+      \end{proof}
+      \step{1f}{$f(y) \in V \cap f(A)$}
+    \end{proof}
+    \step{2}{$2 \Rightarrow 3$}
+    \begin{proof}
+      \step{2a}{\assume{2 is true}}
+      \step{2b}{\pflet{$C \subseteq Y$ be closed}}
+      \step{2c}{\pflet{$A = f^{-1}(C)$} \prove{$\overline{A} \subseteq A$}}
+      \step{2d}{$f(\overline{A}) \subseteq C$}
+      \begin{proof}
+        \pf \begin{align*}
+          f(\overline{A}) & \subseteq \overline{f(A)} & (\text{\stepref{2a}}) \\
+          & \subseteq \overline{C} & (\text{lm:topology:closure:monotone}) \\
+          & = C & (\text{\stepref{2b}})
+        \end{align*}
+      \end{proof}
+      \step{2e}{$\overline{A} \subseteq A$}
+      \begin{proof}
+        \pf\ $\overline{A} \subseteq f^{-1}(C) = A$
+      \end{proof}
+      \qedstep
+      \begin{proof}
+        \pf\ By Lemma \ref{lm:topology:closure:closed}
+      \end{proof}
+    \end{proof}
+    \step{3}{$3 \Rightarrow 1$}
+    \begin{proof}
+      \step{3a}{\assume{3 is true}}
+      \step{3b}{\pflet{$V \subseteq Y$ be open}}
+      \step{3c}{$f^{-1}(Y \setminus V)$ is closed}
+      \begin{proof}
+        \pf\ By \stepref{3a}
+      \end{proof}
+      \step{3d}{$X \setminus f^{-1}(V)$ is closed}
+      \step{3e}{$f^{-1}(V)$ is open}
+    \end{proof}
+    \step{4}{$1 \Rightarrow 4$}
+    \begin{proof}
+      \pf\ Take $U = f^{-1}(V)$
+    \end{proof}
+    \step{5}{$4 \Rightarrow 1$}
+    \begin{proof}
+      \step{5a}{\assume{4 is true}}
+      \step{5b}{\pflet{$V \subseteq Y$ be open}}
+      \step{5c}{\pflet{$x \in f^{-1}(V)$}}
+      \step{5d}{There is a neighbourhood $U$ of $x$ such that $U \subseteq 
+        f^{-1}(V)$}
+      \begin{proof}
+        \pf\ By \stepref{5a}
+      \end{proof}
+      \step{5e}{$f^{-1}(V)$ is open}
+      \begin{proof}
+        \pf\ By Lemma \ref{lm:topology:open:membership}.
+      \end{proof}
+    \end{proof}
+  \end{proof}
+  
+  \begin{lm}
+    For any topological space $X$, the identity function on $X$ is continuous.
+  \end{lm}
+  
+  \begin{proof}
+    \pf\ For any open set $U$, we have that $\inv{\id{X}}(U) = U$ is open.
+  \end{proof}
+  
+  \begin{lm}
+    \label{lm:topology:continuous:composite}
+    The composite of two continuous functions is continuous.
+  \end{lm}
+  
+  \begin{proof}
+    \step{1}{\pflet{$f : X \rightarrow Y$ and $g : Y \rightarrow Z$ be 
+        continuous.}}
+    \step{2}{\pflet{$U \subseteq Z$ be open.}}
+    \step{3}{$\inv{g}(U)$ is open.}
+    \step{4}{$\inf{f}(\inv{g}(U))$ is open.}<
+  \end{proof}
+  
+  \begin{lm}
+    Let $f : X \rightarrow Y$ be continuous at $l$. If $x_n \rightarrow l$ as 
+    $n 
+    \rightarrow \infty$ in $X$, then $f(x_n) \rightarrow f(l)$ as $n 
+    \rightarrow 
+    \infty$ in $Y$.
+  \end{lm}
+  
+  \begin{proof}
+    \pf
+    \step{1}{\pflet{$V$ be a neighbourhood of $f(l)$}}
+    \step{2}{$\inv{f}(V)$ is a neighbourhood of $l$}
+    \begin{proof}
+      \pf\ $f$ is continuous.
+    \end{proof}
+    \step{3}{\pick\ $N$ such that, for all $n \geq N$, $x_n \in \inf{f}(V)$}
+    \begin{proof}
+      \pf\ $x_n \rightarrow l$ as $n \rightarrow \infty$.
+    \end{proof}
+    \step{4}{For all $n \geq N$, $f(x_n) \in V$}
+    \begin{proof}
+      \pf\ Immediate from \stepref{3}.
+    \end{proof}
+    \qed
+  \end{proof}
+  
+  \begin{df}[Category of Topological Spaces]
+    The \emph{category of topological spaces} $\Top$ has objects all 
+    topological spaces and morphisms all continuous functions.
+  \end{df}
+  
+  \begin{df}[Homeomorphism]
+    A \emph{homeomorphism} is an isomorphism in $\Top$.
+    
+    Two topological spaces are \emph{homeomorphic} iff they are isomorphic in 
+    $\Top$.
+  \end{df}
+  
+  \begin{lm}
+    Let $X$ and $Y$ be topological spaces.
+    Every constant function $X \rightarrow Y$ is continuous.
+  \end{lm}
+  
+  \begin{proof}
+    \step{1}{\pflet{$f : X \rightarrow Y$ be the constant function with value 
+        $b$.}}
+    \step{2}{\pflet{$U \subseteq Y$ be open}}
+    \step{3}{$\inv{f}(U)$ is either $X$ or $\emptyset$}
+    \begin{proof}
+      \pf\ $\inv{f}(U)$ is $X$ if $b \in U$, and $\emptyset$ if $b \notin U$.
+    \end{proof}
+  \end{proof}
+  
+  \subsection{Open and Closed Maps}
+  
+  \begin{df}[Open Map]
+    Let $X$ and $Y$ be topological spaces. A function $f : X \rightarrow Y$ is 
+    an 
+    \emph{open map} iff, for every open $U \subseteq X$, $f(U)$ is open in $Y$.
+  \end{df}
+  
+  \begin{df}[Closed Map]
+    Let $X$ and $Y$ be topological spaces. A function $f : X \rightarrow Y$ is 
+    an 
+    \emph{closed map} iff, for every closed $C \subseteq X$, $f(C)$ is closed 
+    in 
+    $Y$.
+  \end{df}
+  
+  \subsection{Bases for Topologies}
+  
+  \begin{df}
+    Let $X$ be a set. A \emph{basis for a topology} on $X$ is a set $\mathcal{B}
+    \subseteq \mathcal{P} X$, whose elements we call \emph{basis} elements, such
+    that
+    \begin{enumerate}
+      \item For each $x \in X$, there exists $B \in \mathcal{B}$ such that $x 
+      \in B$.
+      \item For all $B_1, B_2 \in \mathcal{B}$ and $x \in B_1 \cap B_2$, there
+      exists $B_3 \in \mathcal{B}$ such that $x \in B_3 \subseteq B_1 \cap B_2$.
+    \end{enumerate}
+    
+    The \emph{topology generated by $\mathcal{B}$} is then
+    \[ \{ U \subseteq X : \forall x \in U. \exists B \in \mathcal{B}. x \in B
+    \subseteq U \} \enspace . \]
+  \end{df}
+  
+  \begin{lm}
+    The topology generated by a basis is a topology.
+  \end{lm}
+  
+  \begin{proof}
+    Let $\mathcal{B}$ be a basis for a topology on $X$, and let $\mathcal{T}$ be
+    the topology generated by $\mathcal{B}$.
+    \begin{enumerate}
+      \item For all $x \in X$, there exists $B \in \mathcal{B}$ such that $x \in 
+      B
+      \subseteq X$. Thus, $X \in \mathcal{T}$.
+      
+      Vacuously, for all $x \in \emptyset$, there exists $B \in \mathcal{B}$ 
+      such
+      that $x \in B \subseteq \emptyset$. Thus, $\emptyset \in \mathcal{T}$.
+      \item Let $\mathcal{A} \subseteq \mathcal{T}$. Let $x \in \bigcup 
+      \mathcal{A}$.
+      Pick $U \in \mathcal{A}$ such that $x \in U$. Pick $B \in \mathcal{B}$ 
+      such
+      that $x \in B \subseteq U$. Then $x \in B \subseteq \bigcup \mathcal{A}$.
+      \item Let $U, V \in \mathcal{T}$. Let $x \in U \cap V$. Pick $B_1, B_2 \in
+      \mathcal{B}$ such that $x \in B_1 \subseteq U$ and $x \in B_2 \subseteq 
+      V$.
+      Pick $B_3 \in \mathcal{B}$ such that $x \in B_3 \subseteq B_1 \cap B_2$. 
+      Then
+      $x \in B_3 \subseteq U \cap V$.
+    \end{enumerate}
+  \end{proof}
+  
+  \begin{lm}
+    \label{lm:topology_basis:unions_of_subsets}
+    Let $X$ be a set. Let $\mathcal{B}$ be a basis for a topology on $X$. Then 
+    the
+    topology generated by $\mathcal{B}$ is the set of all unions of subsets of
+    $\mathcal{B}$.
+  \end{lm}
+  
+  \begin{proof}
+    Let $\mathcal{T}$ be the topology generated by $\mathcal{B}$.
+    
+    Let $U \in \mathcal{T}$. Let $\mathcal{A} = \{ B \in \mathcal{B} : B 
+    \subseteq
+    U \}$. Clearly $\bigcup \mathcal{A} \subseteq U$. Also, for all $x \in U$,
+    there exists $B \in \mathcal{B}$ such that $x \in B \subseteq U$. We have $B
+    \in \mathcal{A}$ hence $U \subseteq \bigcup \mathcal{A}$. Thus, $U = \bigcup
+    \mathcal{A}$.
+    
+    Conversely, let $\mathcal{A} \subseteq \mathcal{B}$. Let $x \in \bigcup
+    \mathcal{A}$. Then there exists $B \in \mathcal{A}$ such that $x \in B$, 
+    hence
+    there exists $B \in \mathcal{B}$ such that $x \in B \subseteq \bigcup
+    \mathcal{A}$. Thus, $\bigcup \mathcal{A} \in \mathcal{T}$.
+  \end{proof}
+  
+  \begin{lm}
+    \label{lm:topology:basis:criterion}
+    Let $X$ be a topological space. Suppose $\mathcal{B}$ is a set of open sets 
+    such that, for
+    every open set $U$ and point $x \in U$, there exists $B \in \mathcal{B}$ 
+    such 
+    that $x \in B \subseteq U$.
+    Then $\mathcal{B}$ is a basis for the topology on $X$.
+  \end{lm}
+  
+  \begin{proof}
+    \step{1}{$\mathcal{B}$ is the basis for a topology on $X$.}
+    \begin{proof}
+      \step{1a}{For all $x \in X$, there exists $B \in \mathcal{B}$ such that 
+        $x 
+        \in B$.}
+      \begin{proof}
+        \pf\ This follows from the hypothesis, since $X$ is open.
+      \end{proof}
+      \step{1b}{For all $B_1, B_2 \in \mathcal{B}$ and $x \in B_1 \cap B_2$, 
+        there 
+        exists $B_3 \in \mathcal{B}$ such that $x \in B_3 \subseteq B_1 \cap 
+        B_2$.}
+      \begin{proof}
+        \pf\ This follows from the hypothesis, since $B_1 \cap B_2$ is open.
+      \end{proof}
+    \end{proof}
+    \step{2}{The topology on $X$ is the one generated by $\mathcal{B}$.}
+    \begin{proof}
+      \step{2a}{For every open set $U$, we have $\forall x \in U. \exists B \in 
+        \mathcal{B}. x \in B \subseteq U$}
+      \begin{proof}
+        \pf\ By the hypothesis.
+      \end{proof}
+      \step{2b}{For any set $U$, if $\forall x \in U. \exists B \in 
+        \mathcal{B}. x 
+        \in B \subseteq U$ then $U$ is open.}
+      \begin{proof}
+        \step{i}{\pflet\ $U$ be a set such that $\forall x \in U. \exists B \in 
+          \mathcal{B}. x \in B \subseteq U$}
+        \step{ii}{$U = \bigcup \{ B \in \mathcal{B}: B \subseteq U \}$}
+        \begin{proof}
+          \step{a}{$\forall x \in U. \exists B \in \mathcal{B}. x \in B 
+            \subseteq 
+            U$}
+          \begin{proof}
+            \pf\ By \stepref{i}.
+          \end{proof}
+          \step{b}{If $x \in B \in \mathcal{B}$ and $B \subseteq U$ then $x \in 
+            U$.}
+          \begin{proof}
+            \pf\ This holds just by the definition of $\subseteq$.
+          \end{proof}
+        \end{proof}
+        \qedstep
+        \begin{proof}
+          \pf\ $U$ is the union of a subset of $\mathcal{B}$, and every element 
+          of 
+          $\mathcal{B}$ is open.
+        \end{proof}
+      \end{proof}
+    \end{proof}
+  \end{proof}
+  
+  \begin{lm}
+    \label{lm:topology:basis:criterion2}
+    Let $\mathcal{B}$ be a basis for the topology on $X$. Let $\mathcal{B}'$ be 
+    a 
+    set of open sets such that, for all $B \in \mathcal{B}$ and $x \in B$, 
+    there 
+    exists $B' \in \mathcal{B}'$ such that $x \in B' \subseteq B$. Then 
+    $\mathcal{B}'$ is also a basis for the topology on $X$.
+  \end{lm}
+  
+  \begin{proof}
+    \step{1}{\pflet{$U$ be an open set and $x \in U$}}
+    \step{2}{\pick\ $B \in \mathcal{B}$ such that $x \in B \subseteq U$}
+    \step{3}{\pick\ $B' \in \mathcal{B}'$ such that $x \in B' \subseteq B$}
+    \step{4}{$x \in B' \subseteq U$}
+    \qedstep
+    \begin{proof}
+      \pf\ By Lemma \ref{lm:topology:basis:criterion}.
+    \end{proof}
+  \end{proof}
+  
+  \begin{lm}
+    \label{lm:topology_basis:finer}
+    Let $\mathcal{B}$ and $\mathcal{B}'$ be bases for the topologies 
+    $\mathcal{T}$ 
+    and $\mathcal{T}'$ on $X$, respectively. Then $\mathcal{T}'$ is finer than 
+    $\mathcal{T}$ if and only if, for all $B \in \mathcal{B}$ and $x \in B$, 
+    there 
+    exists $B' \in \mathcal{B}'$ such that $x \in B' \subseteq B$.
+  \end{lm}
+  
+  \begin{proof}
+    \step{1}{If $\mathcal{T}$ is finer than $\mathcal{T}'$ then, for all $B \in 
+      \mathcal{B}$ and $x \in B$, there exists $B' \in \mathcal{B}'$ such that 
+      $x  
+      \in B' \subseteq B$.}
+    \begin{proof}
+      \step{1a}{\assume{$\mathcal{T}'$ is finer than $\mathcal{T}$}}
+      \step{1b}{\pflet{$B \in \mathcal{B}$ and $x \in B$}}
+      \step{1c}{$B \in \mathcal{T}$}
+      \begin{proof}
+        \pf\ From \stepref{1b} and Lemma 
+        \ref{lm:topology_basis:unions_of_subsets}.
+      \end{proof}
+      \step{1d}{$B \in \mathcal{T}'$}
+      \begin{proof}
+        \pf\ By \stepref{1a} and \stepref{1c}
+      \end{proof}
+      \step{1e}{There exists $B' \in \mathcal{B}'$ such that $x \in B' 
+        \subseteq 
+        B$}
+      \begin{proof}
+        \pf\ By \stepref{1d} and the definition of $\mathcal{T}'$.
+      \end{proof}
+    \end{proof}
+    \step{2}{If, for all $B \in \mathcal{B}$ and $x \in B$, there exists $B' 
+      \in 
+      \mathcal{B}'$ such that $x \in B' \subseteq B$, then $\mathcal{T}'$ is 
+      finer 
+      than $\mathcal{T}$}
+    \begin{proof}
+      \step{2a}{\assume{For all $B \in \mathcal{B}$ and $x \in B$, there exists 
+          $B'     \in \mathcal{B}'$ such that $x \in B' \subseteq B$}}
+      \step{2b}{\pflet{$U \in \mathcal{T}$} \prove{$U \in \mathcal{T}'$}}
+      \step{2c}{For all $x \in U$, there exists $B' \in \mathcal{B}'$ such that 
+        $x     \in B' \subseteq U$}
+      \begin{proof}
+        \step{i}{\pflet{$x \in U$}}
+        \step{ii}{\pick\ $B \in \mathcal{B}$ such that $x \in B \subseteq U$}
+        \begin{proof}
+          \pf\ From \stepref{2b} and \stepref{i}
+        \end{proof}
+        \step{iii}{\pick\ $B' \in \mathcal{B}'$ such that $x \in B' \subseteq 
+          B$}
+        \begin{proof}
+          \pf\ From \stepref{2a} and \stepref{ii}
+        \end{proof}
+        \step{iv}{$B' \subseteq U$}
+        \begin{proof}
+          \pf\ From \stepref{ii} and \stepref{iii}
+        \end{proof}
+      \end{proof}
+      \qedstep
+      \begin{proof}
+        \pf\ By the definition of $\mathcal{T}'$
+      \end{proof}
+    \end{proof}
+  \end{proof}
+  
+  \begin{lm}
+    \label{lm:topology:closure:membership2}
+    Let $\mathcal{B}$ be a basis. Then $x \in \overline{A}$ if and only if 
+    every 
+    basis element $B \in \mathcal{B}$ that contains $x$ intersects $A$.
+  \end{lm}
+  
+  \begin{proof}
+    \step{1}{If $x \in \overline{A}$ then every basis element $B \in 
+      \mathcal{B}$ 
+      that contains $x$ intersects $A$.}
+    \begin{proof}
+      \pf\ Immediate from Theorem \ref{thm:topology:closure:membership}.
+    \end{proof}
+    \step{2}{If every basis element $B \in \mathcal{B}$ that contains $x$ 
+      intersects $A$ then $x \in \overline{A}$.}
+    \begin{proof}
+      \step{2a}{\assume{Every basis element $B \in \mathcal{B}$ that contains 
+          $x$ 
+          intersects $A$.}}
+      \step{2b}{\pflet{$U$ be a neighbourhood of $x$.}}
+      \step{2c}{\pick\ $B \in \mathcal{B}$ such that $x \in B \subseteq U$}
+      \step{2d}{$B$ intersects $A$.}
+      \begin{proof}
+        \pf\ By \stepref{2a}
+      \end{proof}
+      \step{2e}{$U$ intersects $A$.}
+      \qedstep
+      \begin{proof}
+        \pf\ Be Theorem \ref{thm:topology:closure:membership}.
+      \end{proof}
+    \end{proof}
+  \end{proof}
+  
+  \begin{df}[Lower Limit Topology on $\mathbb{R}$]
+    The \emph{lower limit topology} on $\mathbb{R}$ is the topology generated 
+    by 
+    the half-open intervals of the form $[a,b)$.
+    
+    We write $\mathbb{R}_l$ for the topological space consisting of 
+    $\mathbb{R}$ 
+    under the lower limit topology.
+    
+    We prove that these intervals form a basis for a topology.
+  \end{df}
+  
+  \begin{proof}
+    \step{1}{For all $x \in \mathbb{R}$, there exist $a$, $b$ such 
+      that $x \in [a,b)$.}
+    \begin{proof}
+      \pf\ We have $x \in [x,x+1)$.
+    \end{proof}
+    \step{2}{For any $a$, $b$, $c$, $d$ and $x \in [a, b) \cap 
+      [c, 
+      d)$, there exist $e$, $f$ such that $x \in [e,f) \subseteq [a, b) \cap 
+      [c, d)$.}
+    \begin{proof}
+      \pf\ Take $e = \max(a,c)$ and $f= \min(b,d)$.
+    \end{proof}
+  \end{proof}
+  
+  \begin{df}[K-topology on $\mathbb{R}$]
+    The \emph{K-topology} on $\mathbb{R}$ is the topology generated by 
+    the open intervals $(a,b)$, together with all sets of the form $(a,b) 
+    \setminus 
+    K$ where $K = \{ 1/n : n \in \mathbb{Z}^+ \}$.
+    
+    We write $\mathbb{R}_K$ for the topological space consisting of 
+    $\mathbb{R}$ 
+    under the K-topology.
+    
+    We prove that these sets form a basis for a topology.
+  \end{df}
+  
+  \begin{proof}
+    \step{1}{\pflet{$\mathcal{B} = \{ (a,b) : a < b \} \cup \{ (a,b) \setminus K 
+        : 
+        a < b \}$}}
+    \step{2}{For all $x \in \mathbb{R}$, there exists $B \in \mathcal{B}$ such 
+      that $x \in B$.}
+    \begin{proof}
+      \pf\ Take $B = (x-1,x+1)$.
+    \end{proof}
+    \step{2}{For any $B_1, B_2 \in \mathcal{B}$ and $x \in B_1 \cap B_2$, there 
+      exists $B_3 \in \mathcal{B}$ such that $x \in B_3 \subseteq B_1 \cap 
+      B_2$.}
+    \begin{proof}
+      \step{2a}{\case{$B_1 = (a,b)$, $B_2 = (c,d)$}}
+      \begin{proof}
+        \pf\ Take $B_3 = (\max(a,c), \min(b,d))$
+      \end{proof}
+      \step{2b}{\case{$B_1 = (a,b) \setminus K$, $B_2 = (c,d)$}}
+      \begin{proof}
+        \pf\ Take $B_3 = (\max(a,c), \min(b,d)) \setminus K$
+      \end{proof}
+      \step{2c}{\case{$B_1 = (a,b)$, $B_2 = (c,d) \setminus K$}}
+      \begin{proof}
+        \pf\ Take $B_3 = (\max(a,c), \min(b,d)) \setminus K$
+      \end{proof}
+      \step{2b}{\case{$B_1 = (a,b) \setminus K$, $B_2 = (c,d) \setminus K$}}
+      \begin{proof}
+        \pf\ Take $B_3 = (\max(a,c), \min(b,d)) \setminus K$
+      \end{proof}
+    \end{proof}
+  \end{proof}
+  
+  \begin{lm}
+    The lower limit topology and the K-topology are incomparable.
+  \end{lm}
+  
+  \begin{proof}
+    \step{1}{$[0,1)$ is not open in the K-topology.}
+    \begin{proof}
+      \pf\ There is no open interval $(a,b)$ such that $0 \in (a,b) \setminus 
+      [0,1)$ or $0 \in (a,b) \setminus K \subseteq [0,1)$.
+    \end{proof}
+    \step{2}{$(-1,1) \setminus K$ is not open in the lower limit topology.}
+    \begin{proof}
+      \pf\ There is no interval $[a,b)$ such that $0 \in [a,b) \subseteq (-1,1) 
+      \setminus K$, as any such interval would have to include elements of $K$.
+    \end{proof}
+  \end{proof}
+  
+  \begin{lm}
+    \label{lm:topology:basis:continuous}
+    Let $X$ and $Y$ be topological spaces and
+    let $f : X \rightarrow Y$. Let $\mathcal{B}$ be a basis for $Y$. Then $f$ 
+    is 
+    continuous if and only if, for all $B \in \mathcal{B}$, we have $\inv{f}(B)$ 
+    is 
+    open in $X$.
+  \end{lm}
+  
+  \begin{proof}
+    \step{1}{If $f$ is continuous then, for all $B \in \mathcal{B}$, we have 
+      $\inv{f}(B)$ is open.}
+    \begin{proof}
+      \pf\ This holds because every $B \in \mathcal{B}$ is open by Lemma 
+      \ref{lm:topology_basis:unions_of_subsets}.
+    \end{proof}
+    \step{2}{If, for all $B \in \mathcal{B}$, we have $\inv{f}(B)$ is open, 
+      then 
+      $f$ is continuous.}
+    \begin{proof}
+      \step{2a}{\assume{for all $B \in \mathcal{B}$, we have $\inv{f}(B)$ is 
+          open.}}
+      \step{2b}{\pflet{$V \subseteq Y$ be open}}
+      \step{2c}{\pflet{$x \in \inv{f}(V)$}}
+      \step{2d}{\pick\ $B \in \mathcal{B}$ such that $f(x) \in B \subseteq V$}
+      \step{2e}{$x \in \inv{f}(B) \subseteq \inv{f}(V)$}
+      \step{2f}{$\inv{f}(B)$ is open}
+      \begin{proof}
+        \pf\ By \stepref{2a}
+      \end{proof}
+      \qedstep
+      \begin{proof}
+        \pf\ By Lemma \ref{lm:topology:open:membership}.
+      \end{proof}
+    \end{proof}
+  \end{proof}
+  
+  \subsection{Subbases}
+  
+  \begin{df}[Subbasis]
+    Let $X$ be a set. A \emph{subbasis for a topology} on $X$ is a set 
+    $\mathcal{S} \subseteq \mathcal{P} X$ such that $\bigcup \mathcal{S} = X$.
+    
+    The \emph{topology generated by $\mathcal{S}$} is then the set of all unions 
+    of 
+    finite intersections of elements of $\mathcal{S}$.
+  \end{df}
+  
+  \begin{lm}
+    The topology generated by a subbasis $\mathcal{S}$ is a topology.
+  \end{lm}
+  
+  \begin{proof}
+    \step{1}{\pflet{$\mathcal{B}$ be the set of all finite intersections of 
+        elements of $\mathcal{S}$.}}
+    \step{2}{$\mathcal{B}$ is a basis for a topology on $X$.}
+    \begin{proof}
+      \step{2a}{For all $x \in X$, there exists $B \in \mathcal{B}$ such that 
+        $x 
+        \in B$.}
+      \begin{proof}       
+        \step{i}{\pflet{$x \in X$}}
+        \step{ii}{\pick\ $S in \mathcal{S}$ such that $x \in S$}
+        \step{iii}{$S \in \mathcal{B}$}
+      \end{proof}
+      \step{2b}{Given $B_1, B_2 \in \mathcal{B}$ and $x \in B_1 \cap B_2$, 
+        there 
+        exists $B_3 \in \mathcal{B}$ such that $x \in B_3 \subseteq B_1 \cap 
+        B_2$.}
+      \begin{proof}
+        \pf\ Take $B_3 = B_1 \cap B_2$, which is in $\mathcal{B}$ because the 
+        intersection of two finite intersections of elements of $\mathcal{S}$ is 
+        a 
+        finite intersection of elements of $\mathcal{S}$.
+      \end{proof}
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ By Lemma \ref{lm:topology_basis:unions_of_subsets}.
+    \end{proof}
+  \end{proof}
+  
+  \begin{lm}
+    \label{lm:topology:subbasis:basis}
+    Let $\mathcal{S}$ be a subbasis for the topology $\mathcal{T}$ on $X$. Then 
+    the set of all finite intersections of elements of $\mathcal{S}$ is a basis 
+    for 
+    $\mathcal{T}$.
+  \end{lm}
+  
+  \begin{proof}
+    \step{1}{\pflet{$\mathcal{B}$ be the set of all finite intersections of 
+        elements of $\mathcal{S}$}}
+    \step{2}{$\mathcal{B}$ is a basis for a topology on $X$.}
+    \begin{proof}
+      \step{2a}{For all $x \in X$, there exists $B \in \mathcal{B}$ such that 
+        $x 
+        \in B$.}
+      \begin{proof}
+        \step{i}{\pick\ $S \in \mathcal{S}$ such that $x \in S$}
+        \begin{proof}
+          \pf\ Since $X = \bigcup \mathcal{S}$
+        \end{proof}
+        \step{ii}{Take $B = S$}
+      \end{proof}
+      \step{2b}{For all $B_1, B_2 \in \mathcal{B}$ and $x \in B_1 \cap B_2$, 
+        there exists $B_3 \in \mathcal{B}$ such that $x \in B_3 \subseteq B_1 
+        \cap 
+        B_2$.}
+      \begin{proof}
+        \pf\ Take $B_3 = B_1 \cap B_2$
+      \end{proof}
+    \end{proof}
+    \step{3}{$\mathcal{T}$ is the set of all unions of elements of 
+      $\mathcal{B}$.}
+    \begin{proof}
+      \pf\ Immediate from definitions.
+    \end{proof}
+  \end{proof}
+  
+  \subsection{Local Bases}
+  
+  \begin{df}[Local Basis]
+    Let $X$ be a topological space and $x \in X$. A \emph{(local) basis at the 
+      point $x$} $\mathcal{B}$ is a set of neighbourhoods of $x$ such that 
+    every 
+    neighbourhood of $x$ includes a member of $\mathcal{B}$.
+  \end{df}
+  
+  \subsection{Order Topology}
+  
+  \begin{df}[Order Topology]
+    Let $X$ be a linearly ordered set with more than one element. The 
+    \emph{order 
+      topology} is the topology generated by the basis $\mathcal{B}$ consisting 
+    of:
+    \begin{itemize}
+      \item all open intervals $(a,b)$ with $a < b$
+      \item all intervals of the form $[\bot, b)$ where $\bot$ is the least 
+      element 
+      of $X$, if any
+      \item all intervals of the form $(a, \top]$ where $\top$ is the greatest 
+      element of $X$, if any
+    \end{itemize}
+    
+    We prove that $\mathcal{B}$ is a basis for a topology.
+  \end{df}
+  
+  \begin{proof}
+    \step{1}{For all $x \in X$, there exists $B \in \mathcal{B}$ such that $x 
+      \in 
+      B$}
+    \begin{proof}
+      \step{1a}{If $x$ is the least element, then $x \in [x, b)$ where $b$ is 
+        any 
+        other element of $X$.}
+      \step{1b}{If $x$ is the greatest element, then $x \in (a, x]$ where $a$ 
+        is 
+        any other element of $X$.}
+      \step{1c}{If $x$ is neither least nor greatest, then $x \in (a, b)$ where 
+        $a$ is any element such that $a < x$ and $b$ is any element such that $x 
+        < b$.}
+    \end{proof}
+    \step{2}{For all $B_1, B_2 \in \mathcal{B}$ and $x \in B_1 \cap B_2$, there 
+      exists $B_3 \in \mathcal{B}$ such that $x \in B_3 \subseteq B_1 \cap B_2$}
+    \begin{proof}
+      \step{2a}{\case{$B_1 = (a,b)$, $B_2 = (c,d)$}}
+      \begin{proof}
+        \pf\ Take $B_3 = (\max(a,c), \min(b,d))$
+      \end{proof}
+      \step{2b}{\case{$B_1 = (a,b)$, $B_2 = [\bot, d)$}}
+      \begin{proof}
+        \pf\ Take $B_3 = (a, \min(b,d))$
+      \end{proof}
+      \step{2c}{\case{$B_1 = (a,b)$, $B_2 = (c, \top]$}}
+      \begin{proof}
+        \pf\ Take $B_3 = (\max(a,c), b)$
+      \end{proof}
+      \step{2d}{\case{$B_1 = [\bot, b)$, $B_2 = [\bot, d)$}}
+      \begin{proof}
+        \pf\ Take $B_3 = [\bot, \min(b,d))$
+      \end{proof}
+      \step{2e}{\case{$B_1 = [\bot, b)$, $B_2 = (c, \top]$}}
+      \begin{proof}
+        \pf\ Take $B_3 = (c, b)$
+      \end{proof}
+      \step{2f}{\case{$B_1 = (a, \top]$, $B_2 = (c, \top]$}}
+      \begin{proof}
+        \pf\ Take $B_3 = (\max(a,c), \top]$
+      \end{proof}
+    \end{proof}
+  \end{proof}
+  
+  \begin{lm}
+    \label{lm:topology:order:rays}
+    The open rays $(a, +\infty)$ and $(-\infty, a)$ form a subbasis for the 
+    order 
+    topology.
+  \end{lm}
+  
+  \begin{proof}
+    \step{1}{Every open ray is open in the order topology.}
+    \begin{proof}
+      \step{1a}{For all $a$, we have $(a, +\infty)$ is open.}
+      \begin{proof}
+        \step{i}{If there is a greatest element, then $(a, +\infty) = (a, 
+          \top]$}
+        \step{ii}{If not, then $(a, +\infty) = \bigcup \{ (a, b) : b > a \}$}
+      \end{proof}
+      \step{1b}{For all $a$, we have $(-\infty, a)$ is open.}
+      \begin{proof}
+        \pf\ Similar.
+      \end{proof}
+    \end{proof}
+    \step{2}{Every basis element of the order topolgy is a finite intersection 
+      of
+      open rays.}
+    \begin{proof}
+      \step{i}{$(a, b) = (a, +\infty) \cap (-\infty, b)$}
+      \step{ii}{$(a, \top]= (a, +\infty)$}
+      \step{iii}{$[\bot, b) = (-\infty, b)$}
+    \end{proof}
+  \end{proof}
+  
+  \begin{df}[Standard Topology on $\mathbb{R}$]
+    The \emph{standard topology} on $\mathbb{R}$ is the order topology.
+  \end{df}
+  
+  \begin{lm}
+    The lower limit topology is strictly finer than the standard topology.
+  \end{lm}
+  
+  \begin{proof}
+    \step{1}{The lower limit topology is finer than the standard topology.}
+    \begin{proof}
+      \step{1a}{\pflet{$x \in (a,b)$}}
+      \step{1b}{$x \in [x,b) \subseteq (a,b)$}
+      \qedstep
+      \begin{proof}
+        \pf\ By Lemma \ref{lm:topology_basis:finer}.
+      \end{proof}
+    \end{proof}
+    \step{2}{$[0,1)$ is not open in the standard topology.}
+    \begin{proof}
+      \pf\ There is no open interval $(a,b)$ such that $0 \in (a,b) \subseteq 
+      [0,1)$.
+    \end{proof}
+  \end{proof}
+  
+  \begin{lm}
+    The K-topology is strictly finer than the standard topology.
+  \end{lm}
+  
+  \begin{proof}
+    \step{1}{The K-topology is finer than the standard topology.}
+    \begin{proof}
+      \pf\ Every open interval is open in the K-topology.
+    \end{proof}
+    \step{2}{$(-1,1) \setminus K$ is not open in the standard topology.}
+    \begin{proof}
+      \pf\ There is no open interval $I$ such that $0 \in I \subseteq (-1, 1) 
+      \setminus K$, because any such $I$ would have to include elements of $K$.
+    \end{proof}
+  \end{proof}
+  
+  \subsection{Product Topology}
+  
+  \begin{df}
+    Let $\{ X_j \}_{j \in J}$ be a family of topological spaces. For $j \in J$, 
+    let $\mathcal{S}_j = \{ \inv{\pi_j}(U) : U \text{ open in } X_j \}$ and 
+    $\mathcal{S} = \bigcup_{j \in J} \mathcal{S}_j$. Then the \emph{product 
+      topology} on $\prod_{j \in J} X_j$ is the topology generated by the 
+    subbasis 
+    $\mathcal{S}$. The \emph{product space} $\prod_{j \in J} X_j$ is the set 
+    $\prod_{j \in J} X_j$ under the product topology.
+    
+    We prove this is a subbasis.
+  \end{df}
+  
+  \begin{proof}
+    \step{1}{For all $x \in \prod_{j \in J} X_j$, there exists $S \in 
+      \mathcal{S}$ 
+      such that $x \in S$}
+    \begin{proof}
+      \step{1a}{\pflet{$x \in \prod_{j \in J} X_j$}}
+      \step{1b}{\pick\ $j \in J$}
+      \step{1c}{$x \in \inv{\pi_j}(X_j) \in \mathcal{S}$}
+    \end{proof}
+  \end{proof}
+  
+  \begin{thm}
+    $\prod_{j \in J} X_j$ under the product topology is the product of the 
+    family 
+    $X_j$ in $\Top$ with projections $\pi_j : \prod_{j \in J} X_j \rightarrow 
+    X_j$ 
+    the same as the projections in $\Set$.
+  \end{thm}
+  
+  \begin{proof}
+    \step{1}{The projections $\pi_j$ are continuous.}
+    \begin{proof}
+      \pf\ By construction, if $U$ is open in $X_j$ then $\inv{\pi_j}(U)$ is 
+      open.
+    \end{proof}
+    \step{2}{Given continuous functions $f_j : A \rightarrow X_j$ for each $j$, 
+      the function $\langle f_j \mid j \in J \rangle : A \rightarrow \prod_{j 
+        \in J} 
+      X_j$ is continuous.}
+    \begin{proof}
+      \pf\ For $U$ open in $X_j$, we have
+      $\inv{(\langle f_j \mid j \in J \rangle)}(\inv{\pi_j}(U)) = \inv{f_j}(U)$ 
+      is open in $A$.
+    \end{proof}
+  \end{proof}
+  
+  \begin{cor}
+    The forgetful functor $\Top \rightarrow \Set$ preserves products.
+  \end{cor}
+  
+  \begin{cor}
+    \label{cor:topology:product:continuous}
+    Let $A$ be a topological space and $f : A \rightarrow \prod_{j \in J} X_j$. 
+    Then $f$ is continuous if and only if $\pi_j \circ f$ is continuous for all 
+    $j 
+    \in J$.
+  \end{cor}
+  
+  \begin{thm}
+    \label{thm:topology:product:basis1}
+    The product topology on $\prod_{j \in J} X_j$ has as basis all sets of the 
+    form $\prod_{j \in J} U_j$, where each $U_j$ is open in $X_j$ and $U_j = 
+    X_j$ 
+    except for finitely many values of $j$.
+  \end{thm}
+  
+  \begin{proof}
+    \step{1}{The finite intersections of elements of the canonical subbasis 
+      $\mathcal{S}$ are exactly the sets of the form $\prod_{j \in J} U_j$, 
+      where each 
+      $U_j$ is open in $X_j$ and $U_j = X_j$ 
+      except for finitely many values of $j$.}
+    \begin{proof}
+      \step{1a}{Every element of $\mathcal{S}$ has this form.}
+      \begin{proof}
+        \pf\ $\inv{\pi_j}(U) = \prod_{j' \in J} U_{j'}$, where $U_j = U$ and 
+        $U_{j'} = X_{j'}$ for $j' \neq j$.
+      \end{proof}
+      \step{1b}{The intersection of two sets of this form has this form.}
+      \begin{proof}
+        \step{i}{\pflet{$U = \prod_j U_j$ and $V = \prod_j V_j$ be of this 
+            form.}}
+        \step{ii}{$U \cap V = \prod_j (U_j \cap V_j)$}
+        \step{iii}{$U_j \cap V_j = X_j$ for all but finitely many values of 
+          $j$.}
+        \begin{proof}
+          \pf\ If $U_j = X_j$ and $V_j = X_j$ then $U_j \cap V_j = X_j$.
+        \end{proof}
+      \end{proof}
+      \step{1c}{Every set of this form is a finite intersection of elements of 
+        $\mathcal{S}$.}
+      \begin{proof}
+        \step{i}{\pflet{$U = \prod_j U_j$ where $U_j = X_j$ except for $j = 
+            j_1, 
+            \ldots, j_n$.}}
+        \step{ii}{$U = \inv{\pi_{j_1}}(U_{j_1}) \cap \cdots \cap 
+          \inv{\pi_{j_n}}(U_{j_n})$}
+      \end{proof}
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ By Lemma \ref{lm:topology:subbasis:basis}.
+    \end{proof}
+  \end{proof}
+  
+  \begin{thm}
+    \label{thm:topology:product:basis}
+    Let $\{ X_j \}_{j \in J}$ be a family of topological spaces and 
+    $\mathcal{B}_j$ 
+    be a basis for $X_j$ for all $j$. Then
+    \[ \mathcal{B} = \left\{ \prod_{j \in J} B_j : \forall j \in J. B_j \in 
+    \mathcal{B}_j, B_j = X_j \text{ for all but finitely many } j \right\} \]
+    is a basis for the product topology on $\prod_{j \in J} X_j$.
+  \end{thm}
+  
+  \begin{proof}
+    \step{1}{Every element of $\mathcal{B}$ is open in the product topology.}
+    \begin{proof}
+      \pf\ This holds because if $B_j \in \mathcal{B}_j$ then $B_j$ is open in 
+      $X_j$.
+    \end{proof}
+    \step{2}{If $U_j$ is open in $X_j$ for all $j$, $U_j = X_j$ for all but 
+      finitely many $j$, and $x \in \prod_{j \in J} U_j$, then there exists $B 
+      \in 
+      \mathcal{B}$ such that $x \in B \subseteq \prod_{j \in J} U_j$}
+    \begin{proof}
+      \step{2a}{For $j \in J$ such that $U_j \neq X_j$, \pick\ $B_j \in 
+        \mathcal{B}_j$ such that $x_j \in B_j \subseteq U_j$}
+      \step{2b}{For $j \in J$ such that $U_j = X_j$, let $B_j = X_j$}
+      \step{2c}{Take $B = \prod_{j \in J} B_j$}
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ By Lemma \ref{lm:topology:basis:criterion2}.
+    \end{proof}
+  \end{proof}
+  
+  \begin{thm}
+    Let $\{ X_j \}_{j \in J}$ be a family of topological spaces. Let $A_j 
+    \subseteq X_j$ for all $j \in J$. Then
+    \[ \prod_{j \in J} \overline{A_j} = \overline{\prod_{j \in J} A_j} \]
+  \end{thm}
+  
+  \begin{proof}
+    \step{1}{$\prod_{j \in J} \overline{A_j} = \overline{\prod_{j \in J} A_j}$}
+    \begin{proof}
+      \step{1a}{\pflet{$x \in \prod_{j \in J} \overline{A_j}$}}
+      \step{1b}{\pflet{$x \in \prod_{j \in J} U_j$ where each $U_j$ is open in 
+          $X_j$ and $U_j = X_j$ for all but finitely many $j$, say $j = j_1, 
+          \ldots, 
+          j_n$}}
+      \step{1c}{For $j \in j$, \pick\ $y_j \in U_j \cap A_j$}
+      \begin{proof}
+        \pf\ Possible as $x_j \in \overline{A_j} \cap U_j$. We do not need the 
+        Axiom of Choice as we can take $y_j = x_j$ for $j \neq j_1, \ldots, 
+        j_n$.
+      \end{proof}
+      \step{1d}{$y \in \prod_{j \in J} U_j$ and $y \in \prod_{j \in J} A_j$}
+      \qedstep
+      \begin{proof}
+        \pf\ By Lemma \ref{lm:topology:closure:membership2}.
+      \end{proof}
+    \end{proof}
+    \step{2}{$\overline{\prod_{j \in J} A_j} \subseteq \prod_{j \in J} 
+      \overline{A_j}$}
+    \begin{proof}
+      \step{2a}{\pflet{$x \in \overline{\prod{j \in J} A_j}$}}
+      \step{2b}{\pflet{$j \in J$} \prove{$x_j \in \overline{A_j}$}}
+      \step{2c}{\pflet{$U$ be a neighbourhood of $x_j$}}
+      \step{2d}{$\inv{\pi_j}(U)$ is a neighbourhood of $x$}
+      \step{2e}{$\inv{\pi_j}(U)$ intersects $\prod_{j \in J} A_j$ in $y$, say}
+      \step{2f}{$y_j \in U$ and $y_j \in A_j$}
+    \end{proof}
+  \end{proof}
+  
+  \subsection{Subspace Topology}
+  
+  \begin{df}[Subspace Topology]
+    Let $X$ be a topological space and $Y \subseteq X$. The \emph{subspace 
+      topology} on $Y$ is $\mathcal{T} = \{ U \cap Y : U \text{ open in } X \}$.
+    
+    A \emph{subspace} of $X$ is a subset of $X$ under the subspace topology.
+    
+    We prove that the subspace topology is a topology.
+  \end{df}
+  
+  \begin{proof}
+    \step{1}{$\emptyset \in \mathcal{T}$}
+    \begin{proof}
+      \pf\ $\emptyset = \emptyset \cap Y$
+    \end{proof}
+    \step{2}{$Y \in \mathcal{T}$}
+    \begin{proof}
+      \pf\ $Y = X \cap Y$
+    \end{proof}
+    \step{3}{$\mathcal{T}$ is closed under finite intersection}
+    \begin{proof}
+      \pf\ $(U \cap Y) \cap (V \cap Y) = (U \cap V) \cap Y$
+    \end{proof}
+    \step{4}{$\mathcal{T}$ is closed under union}
+    \begin{proof}
+      \pf\ For $\mathcal{A} \subseteq \mathcal{T}$, we have $\bigcup \mathcal{A} 
+      = 
+      (\bigcup \{ U : U \text{ open in } X, U \cap Y \in \mathcal{A} \}) \cap Y$
+    \end{proof}
+  \end{proof}
+  
+  \begin{lm}
+    \label{lm:topology:subspace:basis}
+    Let $Y \subseteq X$. If $\mathcal{B}$ is a basis for $X$. then $\{ B \cap Y 
+    : 
+    B \in \mathcal{B} \}$ is a basis for $Y$.
+  \end{lm}
+  
+  \begin{proof}
+    \step{1}{For all $B \in \mathcal{B}$, we have $B \cap Y$ is open in $Y$.}
+    \step{2}{For all $U$ open in $Y$ and $y \in U$, there exists $B \in 
+      \mathcal{B}$ such that $y \in B \cap Y \subseteq U$.} 
+    \begin{proof}
+      \step{2a}{\pflet{$U$ be open in $Y$ and $y \in U$}}
+      \step{2b}{\pick\ $V$ open in $X$ such that $U = V \cap Y$}
+      \step{2c}{\pick\ $B \in \mathcal{B}$ such that $y \in B \subseteq V$}
+      \step{2d}{$y \in B \cap Y \subseteq U$}
+    \end{proof}
+  \end{proof}
+  
+  \begin{lm}
+    \label{lm:topology:subspace:subbasis}
+    Let $Y \subseteq X$. If $\mathcal{S}$ is a subbasis for $X$. then $\{ S \cap 
+    Y 
+    : 
+    S \in \mathcal{S} \}$ is a subbasis for $Y$.
+  \end{lm}
+  
+  \begin{proof}
+    \step{1}{For all $y \in Y$, there exists $S \in \mathcal{S}$ such that $y 
+      \in 
+      S \cap Y$}
+    \step{2}{The set of all finite intersections of sets of the form $S \cap Y$ 
+      for $S \in \mathcal{S}$ is a basis for $Y$.}
+    \begin{proof}
+      \pf\ This is the same as $\{ B \cap Y : B \text{ a finite intersection of 
+        elements of } \mathcal{S} \}$, which is a basis by Lemma 
+      \ref{lm:topology:subspace:basis}.
+    \end{proof}
+  \end{proof}
+  
+  \begin{lm}
+    Let $Y$ be a subspace of $X$. If $U$ is open in $Y$ and $Y$ is open in $X$ 
+    then $U$ is open in $X$.
+  \end{lm}
+  
+  \begin{proof}
+    \pf\ Let $V$ be open in $X$ such that $U = V \cap Y$. Then $U$ is open in 
+    $X$, since it is the intersection of two open sets.
+  \end{proof}
+  
+  \begin{thm}
+    Let $\{ X_j \}_{j \in J}$ be a family of topological spaces and $A_j 
+    \subseteq 
+    X_j$ a subspace for all $j \in J$. Then the product topology on $\prod_{j 
+      \in 
+      J} A_j$ is the same as its topology as a subspace of $\prod_{j \in J} 
+    X_j$.
+  \end{thm}
+  
+  \begin{proof}
+    \step{0}{\pflet{$\pi_j : \prod_{j \in J} X_j \rightarrow X_j$ and $p_j : 
+        \prod_{j \in J} A_j \rightarrow A_j$ be the projections.}}
+    \step{1}{The subspace topology is finer than the product topology.}
+    \begin{proof}
+      \step{1a}{\pflet{$U$ be open in $A_j$} \prove{$\inv{p_j}(U)$ is open in 
+          the subspace topology.}}
+      \step{1b}{$\inv{p_j}(U) = \inv{\pi_j}(U) \cap \prod_{j \in J} A_j$}
+    \end{proof}
+    \step{2}{The product topology is finer than the subspace topology.}
+    \begin{proof}
+      \step{2a}{$\{ \inv{\pi_j}(U) \cap \prod_{j \in J} A_j : j \in J, U \text{ 
+          open in } X_j \}$ is a subbasis for the subspace topology.}
+      \begin{proof}
+        \pf\ By Lemma \ref{lm:topology:subspace:subbasis}.
+      \end{proof}
+      \step{2b}{For $j \in J$ and $U$ open in $X_j$, we have $\inv{\pi_j}(U) 
+        \cap 
+        \prod_{j \in J} A_j$ is open in the product topology.}
+      \begin{proof}
+        \pf\ $\inv{\pi_j}(U) \cap \prod_{j \in J} A_j = \inv{p_j}(U \cap A_j)$
+      \end{proof}
+    \end{proof}
+  \end{proof}
+  
+  \begin{thm}
+    Let $X$ be a linearly ordered set under the order topology, and $I 
+    \subseteq 
+    X$ an interval. Then the order topology on $I$ is the same as the subspace 
+    topology.
+  \end{thm}
+  
+  \begin{proof}
+    \step{1}{For $x \in I$, we have $\{ z \in I : z < x \}$ is open 
+      in the subspace topology.}
+    \begin{proof}
+      \pf\ $\{ z \in I : z < x \} = (-\infty, x) \cap I$
+    \end{proof}
+    \step{2}{For $x \in I$, we have $\{ z \in I : x < z \}$ is open in the 
+      subspace topology.} 
+    \begin{proof}
+      \pf\ $\{ z \in I : x < z \} = (x, +\infty) \cap I$
+    \end{proof}
+    \step{3}{For $x \in X$, we have $(-\infty, x) \cap I$ is open in the order 
+      topology.}
+    \begin{proof}
+      \step{3a}{\case{$x \in I$}}
+      \begin{proof}
+        \pf\ In this case, $(-\infty, x) \cap I = \{ z \in I : z < x \}$.
+      \end{proof}
+      \step{3b}{\case{$x \notin I$}}
+      \begin{proof}
+        \pf\ In this case, $(-\infty, x) \cap I$ is either $I$ or $\emptyset$.
+      \end{proof}
+    \end{proof}
+    \step{4}{For $x \in X$, we have $(x, +\infty) \cap I$ is open in the order 
+      topology.}
+    \begin{proof}
+      \pf\ Similar.
+    \end{proof}
+  \end{proof}
+  
+  \begin{lm}
+    \label{lm:topology:subspace:closed}
+    Let $Y$ be a subspace of $X$. Then a set $A \subseteq Y$ is closed in $Y$ 
+    iff 
+    it is the intersection of a closed set in $X$ with $Y$.
+  \end{lm}
+  
+  \begin{proof}
+    \pf\ \begin{align*}
+      A \text{ is closed in } Y
+      & \Leftrightarrow \exists U \text{ open in } Y. A = Y \setminus \\
+      & \Leftrightarrow \exists V \text{ open in } X. A = Y \setminus (Y \cap 
+      V) \\
+      & \Leftrightarrow \exists V \text{ open in } X. A = Y \cap (X \setminus 
+      V)
+    \end{align*}
+  \end{proof}
+  
+  \begin{thm}
+    \label{thm:topology:subspace:closed}
+    Let $Y$ be a subspace of $X$. If $A$ is closed in $Y$ and $Y$ is closed in 
+    $X$ 
+    then $A$ is closed in $X$.
+  \end{thm}
+  
+  \begin{proof}
+    \step{1}{$Y \setminus A$ is open in $Y$}
+    \step{2}{\pick\ $U$ open in $X$ such that $Y \setminus A = U \cap Y$}
+    \step{3}{$X \setminus A = (X \setminus Y) \cup U$}
+  \end{proof}
+  
+  \begin{thm}
+    Let $Y$ be a subspace of $X$ and $A \subseteq Y$. Then the closure of $A$ 
+    in 
+    $Y$ is the intersection of the closure of $A$ in $X$ with $Y$.
+  \end{thm}
+  
+  \begin{proof}
+    \step{1}{\pflet{$\overline{A}$ be the closure of $A$ in $X$}}
+    \step{2}{$\overline{A} \cap Y$ is closed in $Y$ and includes $A$}
+    \step{3}{If $C$ is any set closed in $Y$ that includes $A$ then 
+      $\overline{A} 
+      \cap Y \subseteq C$}
+    \begin{proof}
+      \step{3a}{\pflet{$C$ be a set closed in $Y$ that includes $A$}}
+      \step{3b}{\pick\ $D$ closed in $X$ such that $C = D \cap Y$}
+      \begin{proof}
+        \pf\ By Lemma \ref{lm:topology:subspace:closed}.
+      \end{proof}
+      \step{3c}{$\overline{A} \subseteq D$}
+      \step{3d}{$\overline{A} \cap Y \subseteq C$}
+    \end{proof}
+  \end{proof}
+  
+  \begin{lm}
+    If $Y$ is a subspace of $X$, then the inclusion $i : Y \rightarrowtail X$ 
+    is 
+    continuous.
+  \end{lm}
+  
+  \begin{proof}
+    \pf\ For any $U$ open in $X$, we have $\inv{i}(U) = U \cap Y$ is open in 
+    $Y$.
+  \end{proof}
+  
+  \begin{lm}
+    Let $f : X \rightarrow Y$ be continuous. Then $f$ is continuous considered 
+    as 
+    a map $X \rightarrow \im f$.
+  \end{lm}
+  
+  \begin{proof}
+    \step{1}{\pflet{$U$ be open in $\im f$}}
+    \step{2}{\pick\ $V$ open in $Y$ such that $U = V \cap \im f$}
+    \step{3}{$\inv{f}(U) = \inv{f}(V)$}
+    \step{4}{$\inv{f}(U)$ is open in $X$}
+  \end{proof}
+  
+  \begin{lm}[Local Formulation of Continuity]
+    Let $X$ and $Y$ be topological spaces and $f : X \rightarrow Y$. Then $f$ 
+    is 
+    continuous if and only if there exists a set of open sets $\mathcal{U}$ 
+    such 
+    that:
+    \begin{enumerate}
+      \item $X = \bigcup \mathcal{U}$
+      \item For all $U \in \mathcal{U}$, we have $f \restriction U$ is 
+      continuous.
+    \end{enumerate}
+  \end{lm}
+  
+  \begin{proof}
+    \step{1}{If $f$ is continuous then there exists a set $\mathcal{U}$ 
+      satisfying 1 and 2.}
+    \begin{proof}
+      \pf\ Take $\mathcal{U} = \{ X \}$.
+    \end{proof}
+    \step{2}{If there exists a set $\mathcal{U}$ satisfying 1 and 2, then $f$ 
+      is 
+      continuous.}
+    \begin{proof}
+      \step{2a}{\pflet{$\mathcal{U}$ be a set satisfying 1 and 2}}
+      \step{2b}{\pflet{$V \subseteq Y$ be open}}
+      \step{2c}{For all $U \in \mathcal{U}$, we have $\inv{f}(V) \cap U$ is 
+        open.}
+      \begin{proof}
+        \pf\ $\inv{f}(V) \cap U = \inv{(f \restriction U)}(V)$
+      \end{proof}
+      \step{2d}{$\inf{f}(V) = \bigcup_{U \in \mathcal{U}} (\inv{f}(V) \cap U)$}
+      \step{2e}{$\inf{f}(V)$ is open}
+    \end{proof}
+  \end{proof}
+  
+  \begin{thm}[Pasting Lemma]
+    Let $X = A \cup B$, where $A$ and $B$ are closed in $X$. Let $f : A 
+    \rightarrow Y$ and $g : B \rightarrow Y$ be f. If $f(x) = g(x)$ for 
+    all $x \in A \cap B$, then the function $h : X \rightarrow Y$ defined by
+    \[ h(x) = \begin{cases}
+      f(x) & \text{if } x \in A \\
+      g(x) & \text{if } x \in B
+    \end{cases} \]
+    is continuous.
+  \end{thm}
+  
+  \begin{proof}
+    \step{1}{\pflet{$C$ be closed in $Y$}}
+    \step{2}{$\inv{h}(C) = \inv{f}(C) \cup \inv{g}(C)$}
+    \step{3}{$\inv{f}(C)$ is closed in $X$}
+    \begin{proof}
+      \step{3a}{$\inv{f}(C)$ is closed in $A$}
+      \begin{proof}
+        \pf\ Lemma \ref{lm:topology:continuous:criteria}.
+      \end{proof}
+      \qedstep
+      \begin{proof}
+        \pf\ Theorem \ref{thm:topology:subspace:closed}.
+      \end{proof}
+    \end{proof}
+    \step{4}{$\inv{g}(C)$ is closed in $X$}
+    \begin{proof}
+      \pf\ Similar.
+    \end{proof}
+    \step{5}{$\inv{h}(C)$ is closed in $X$}
+    \qedstep
+    \begin{proof}
+      \pf\ By Lemma \ref{lm:topology:continuous:criteria}.
+    \end{proof}
+  \end{proof}
+  
+  \begin{df}[Imbedding]
+    Let $f : X \rightarrow Y$ be continuous. Then $f$ is an \emph{imbedding} 
+    iff 
+    $f$ is a homeomorphism between $X$ and $\im f$, considered as a subspace of 
+    $Y$.
+  \end{df}
+  
+  \subsection{Box Topology}
+  
+  \begin{df}[Box Topology]
+    Let $\{ X_j \}_{j \in J}$ be a family of topological spaces. The \emph{box 
+      topology} on $\prod_{j \in J} X_j$ is the topology generated by the basis 
+    $\mathcal{B} = \{ \prod_{j \in J} U_j: \forall j \in J. U_j \text{ open in 
+    } 
+    X_j \}$.
+    
+    We prove this is a basis.
+  \end{df}
+  
+  \begin{proof}
+    \step{1}{For all $x \in \prod_{j \in J} X_j$, there exists $B \in 
+      \mathcal{B}$ 
+      such that $x \in B$}
+    \begin{proof}
+      \pf\ Take $B = \prod_{j \in J} X_j$.
+    \end{proof}
+    \step{2}{For all $B_1, B_2 \in \mathcal{B}$ and $x \in B_1 \cap B_2$, there 
+      exists $B_3 \in \mathcal{B}$ such that $x \in B_3 \subseteq B_1 \cap 
+      B_2$.}
+    \begin{proof}
+      \pf\ If $B_1 = \prod_{j \in J} U_j$ and $B_2 = \prod_{j \in J} V_j$, take 
+      $B_3 = \prod_{j \in J} (U_j \cap V_j)$.
+    \end{proof}
+  \end{proof}
+  
+  \begin{thm}[AC]
+    Let $\{ X_j \}_{j \in J}$ be a family of topological spaces, and let 
+    $\mathcal{B}_j$ be a basis for $X_j$ for each $j$. Then
+    \[ \mathcal{B} = \{ \prod_{j \in J} B_j : \forall j \in J. B_j \in 
+    \mathcal{B}_j \} \]
+    is a basis for the box topology on $\prod_{j \in J} X_j$.
+  \end{thm}
+  
+  \begin{proof}
+    \step{1}{Every element of $\mathcal{B}$ is open in the box topology.}
+    \begin{proof}
+      \pf\ This holds since, if $B_j \in \mathcal{B}_j$, then $B_j$ is open in 
+      $X_j$.
+    \end{proof}
+    \step{2}{If $U_j$ is open in $X_j$ for all $j$ and $x \in \prod_{j \in J} 
+      U_j$, then there exists $B \in \mathcal{B}$ such that $x \in B \subseteq 
+      \prod_{j \in J} U_j$}
+    \begin{proof}
+      \step{2a}{\pflet{$U_j$ be open in $X_j$ for all $j$ and $x \in \prod_{j 
+            \in 
+            J} U_j$}}
+      \step{2b}{\pick\ $B_j \in \mathcal{B}_j$ such that $x_j \in B_j \subseteq 
+        U_j$ for all $j \in J$}
+      \begin{proof}
+        \pf\ Using the Axiom of Choice.
+      \end{proof}
+      \step{2c}{Take $B = \prod_{j \in J} B_j$}
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ By Lemma \ref{lm:topology:basis:criterion2}.
+    \end{proof}
+  \end{proof}
+  
+  \begin{thm}[AC]
+    Let $\{ X_j \}_{j \in J}$ be a family of topological spaces, and $A_j 
+    \subseteq X_j$ be a subspace for all $j \in J$. Then the box topology on 
+    $\prod_{j \in J} A_j$ is the same as its topology as a subspace of 
+    $\prod_{j 
+      \in J} X_j$ under the box topology.
+  \end{thm}
+  
+  \begin{proof}
+    \step{1}{The subspace topology is finer than the box topology.}
+    \begin{proof}
+      \step{1a}{\pflet{$U_j$ be open in $A_j$ for all $j \in J$.} 
+        \prove{$\prod_{j 
+            \in J} U_j$ is open in the subspace topology.}}
+      \step{1b}{For $j \in j$, \pick\ $V_j$ open in $X_j$ such that $U_j = V_j 
+        \cap 
+        A_j$}
+      \begin{proof}
+        \pf\ Using the Axiom of Choice.
+      \end{proof}
+      \step{1c}{$\prod_{j \in J} U_j = \prod_{j \in J} V_j \cap \prod_{j \in J} 
+        A_j$}
+    \end{proof}
+    \step{2}{The box topology is finer than the subspace topology.}
+    \begin{proof}
+      \step{2a}{$\{ \prod_{j \in J} U_j \cap \prod_{j \in J} A_j : \forall j \in 
+        J. 
+        U_j \text{ open in } x_j \}$ is a basis for the subspace topology.}
+      \begin{proof}
+        \pf\ By Lemma \ref{lm:topology:subspace:basis}.
+      \end{proof}
+      \step{2b}{\pflet{$U_j$ be open in $X_j$ for all $j$} \prove{$\prod_{j \in 
+            J} 
+          U_j \cap \prod_{j \in J} A_j$ is open in the box topology.}}
+      \step{2c}{$\prod_{j \in J} 
+        U_j \cap \prod_{j \in J} A_j = \prod_{j \in J} (U_j \cap A_j)$}
+    \end{proof}
+  \end{proof}
+  
+  \begin{thm}[AC]
+    Let $\{ X_j \}_{j \in J}$ be a family of topological spaces. Let $A_j 
+    \subseteq X_j$ for all $j \in J$. Then
+    \[ \prod_{j \in J} \overline{A_j} = \overline{\prod_{j \in J} A_j} \]
+    in $\prod_{j \in J} X_j$ under the box topology.
+  \end{thm}
+  
+  \begin{proof}
+    \step{1}{$\prod_{j \in J} \overline{A_j} = \overline{\prod_{j \in J} A_j}$}
+    \begin{proof}
+      \step{1a}{\pflet{$x \in \prod_{j \in J} \overline{A_j}$}}
+      \step{1b}{\pflet{$x \in \prod_{j \in J} U_j$ where each $U_j$ is open in 
+          $X_j$}}
+      \step{1c}{For $j \in j$, \pick\ $y_j \in U_j \cap A_j$}
+      \begin{proof}
+        \pf\ Possible as $x_j \in \overline{A_j} \cap U_j$, using the Axiom of 
+        Choice.
+      \end{proof}
+      \step{1d}{$y \in \prod_{j \in J} U_j$ and $y \in \prod_{j \in J} A_j$}
+      \qedstep
+      \begin{proof}
+        \pf\ By Lemma \ref{lm:topology:closure:membership2}.
+      \end{proof}
+    \end{proof}
+    \step{2}{$\overline{\prod_{j \in J} A_j} \subseteq \prod_{j \in J} 
+      \overline{A_j}$}
+    \begin{proof}
+      \step{2a}{\pflet{$x \in \overline{\prod{j \in J} A_j}$}}
+      \step{2b}{\pflet{$j \in J$} \prove{$x_j \in \overline{A_j}$}}
+      \step{2c}{\pflet{$U$ be a neighbourhood of $x_j$}}
+      \step{2d}{$\inv{\pi_j}(U)$ is a neighbourhood of $x$}
+      \step{2e}{$\inv{\pi_j}(U)$ intersects $\prod_{j \in J} A_j$ in $y$, say}
+      \step{2f}{$y_j \in U$ and $y_j \in A_j$}
+    \end{proof}
+  \end{proof}
+  
+  \subsection{Quotient Spaces}
+  
+  \begin{df}[Quotient Map]
+    Let $X$ and $Y$ be topological spaces. A function $q : X \rightarrow Y$ is 
+    a 
+    \emph{quotient map} iff $q$ is surjective and, for $U \subseteq Y$, $U$ is 
+    open if and only if $\inv{q}(U)$ is open in $X$.
+  \end{df}
+  
+  \begin{df}[Saturated Set]
+    Let $p : X \rightarrow Y$ be surjective and $C \subseteq X$. Then $C$ is 
+    \emph{saturated} with respect to $p$ if and only if, for all $x, y \in X$, 
+    if 
+    $x \in C$ and $p(x) = p(y)$ then $y \in C$.
+  \end{df}
+  
+  \begin{lm}
+    Let $X$ and $Y$ be topological spaces.
+    Let $q : X \rightarrow Y$ be surjective. Then the following are equivalent.
+    \begin{enumerate}
+      \item $q$ is a quotient map.
+      \item $q$ is continuous and maps saturated open sets to open sets.
+      \item $q$ is continuous and maps saturated closed sets to closed sets.
+    \end{enumerate}
+  \end{lm}
+  
+  \begin{cor}
+    Let $q : X \rightarrow Y$ be surjective. If $q$ is continuous and either an 
+    open map or a closed map, then $q$ is a quotient map.
+  \end{cor}
+  
+  \begin{lm}
+    Every project $\pi_j : \prod_{j \in J} X_j \rightarrow X_j$ is a quotient 
+    map.
+  \end{lm}
+  
+  \begin{lm}
+    Let $X$ be a topological space, $A$ a set, and $q : X \rightarrow A$ a 
+    surjective function. Then there exists a unique topology on $A$ such that 
+    $q$ 
+    is a quotient map.
+  \end{lm}
+  
+  \begin{proof}
+    \pf\ The topology is defined by: $U \subseteq A$ is open in $A$ iff 
+    $\inv{q}(U)$ is open in $X$. \qed
+  \end{proof}
+  
+  \begin{df}[Quontient Topology]
+    Let $X$ be a topological space, $A$ a set, and $q : X \rightarrow A$ a 
+    surjective function. The \emph{quotient topology} induced by $q$ is the 
+    unique 
+    topology on $A$ such that $q$ is a quotient map.
+  \end{df}
+  
+  \begin{df}[Quotient Space]
+    Let $X$ be a topological space and $X^*$ a partition of $X$. Then $X^*$ 
+    under 
+    the quotient topology induced by the canonical map $X \rightarrow X^*$ is a 
+    \emph{quotient space} of $X$.
+  \end{df}
+  
+  \section{$T_1$ Spaces}
+  
+  \begin{df}[$T_1$ Space]
+    A topological space $X$ satisfies the \emph{$T_1$ axiom} iff every finite 
+    set 
+    is closed.
+  \end{df}
+  
+  \begin{thm}
+    Let $X$ be a $T_1$ space and $A \subseteq X$. Then $x$ is a limit point of 
+    $A$ 
+    if and only if every neighbourhood of $x$ contains infinitely many points 
+    of 
+    $A$.
+  \end{thm}
+  
+  \begin{proof}
+    \step{1}{If $x$ is a limit point of $A$ then every neighbourhood of $x$ 
+      contains infinitely many points of $A$.}
+    \begin{proof}
+      \step{1a}{\assume{$x$ is a limit point of $A$.}}
+      \step{1b}{\pflet{$U$ be a neighbourhood of $x$.}}
+      \step{1c}{\assume{for a contradiction $U \cap A$ is finite.}}
+      \step{1d}{$X \setminus ((U \cap A) \setminus \{x\})$ is a neighbourhood 
+        of 
+        $x$.}
+      \step{1e}{$X \setminus ((U \cap A) \setminus \{x\})$ intersects $A$ in a 
+        point other than $x$.}
+      \step{1f}{This is a contradiction.}
+    \end{proof}
+    \step{2}{If every neighbourhood of $x$ contains infinitely many points of 
+      $A$ 
+      then $x$ is a limit point of $A$.}
+    \begin{proof}
+      \pf\ Immediate from the definition of limit point.
+    \end{proof}
+  \end{proof}
+  
+  \section{Hausdorff Spaces}
+  
+  \begin{df}[Hausdorff Space]
+    A topological space $X$ is a \emph{Hausdorff space} iff, for any points $x, 
+    y 
+    \in X$ with $x \neq y$, there exist disjoint neighbourhoods $U$ of $x$ and 
+    $V$ 
+    of $y$.
+  \end{df}
+  
+  \begin{thm}
+    Every Hausdorff space is $T_1$.
+  \end{thm}
+  
+  \begin{proof}
+    \step{1}{\pflet{$X$ be a Hausdorff space and $a \in X$}
+      \prove{$X \setminus \{ a \}$ is open}}
+    \step{2}{\pflet{$b \in X \setminus \{a\}$}}
+    \step{3}{\pick\ disjoint neighbourhoods $U$ of $a$ and $V$ of $b$}
+    \step{4}{$b \in V \subseteq X \setminus \{a\}$}
+    \step{5}{$X \setminus \{a\}$ is open.}
+    \begin{proof}
+      \pf\ By Lemma \ref{lm:topology:open:membership}.
+    \end{proof}
+  \end{proof}
+  
+  \begin{thm}
+    In a Hausdorff space, a sequence has at most one limit.
+  \end{thm}
+  
+  \begin{proof}
+    \step{1}{\assume{for a contradiction $a_n \rightarrow l$ and $a_n 
+        \rightarrow 
+        m$ as $n \rightarrow \infty$, and $l \neq m$.}}
+    \step{2}{\pick\ disjoint neighbourhoods $U$ of $l$ and $V$ of $m$.}
+    \step{3}{\pick\ numbers $M$ and $N$ such that $\forall n > M. a_n \in U$ 
+      and 
+      $\forall n > N. a_n \in V$}
+    \step{4}{$a_{\max(M,N) + 1}$ is in both $U$ and $V$.}
+    \step{5}{This contradicts the fact that $U$ and $V$ are disjoint.}
+  \end{proof}
+  
+  \begin{thm}
+    Every linearly ordered set is a Hausdorff space under the order topology.
+  \end{thm}
+  
+  \begin{proof}
+    \step{1}{\pflet{$X$ be a linearly ordered set and $a,b \in X$ with $a<b$}}
+    \step{2}{\assume{w.l.o.g. $a < b$}}
+    \step{3}{\case{There exists $c$ such that $a < c < b$}}
+    \begin{proof}
+      \pf\ In this case, $a \in (-\infty, c)$ and $b \in (c, +\infty)$.
+    \end{proof}
+    \step{4}{\case{There does not exist $c$ such that $a < c < b$}}
+    \begin{proof}
+      \pf\ In this case, $a \in (-\infty, b)$ and $b \in (a, +\infty)$.
+    \end{proof}
+  \end{proof}
+  
+  \begin{thm}
+    The product of a family of Hausdorff spaces is Hausdorff.
+  \end{thm}
+  
+  \begin{proof}
+    \step{1}{\pflet{$\{ X_j \}_{j \in J}$ be a family of Hausdorff spaces.}}
+    \step{2}{\pflet{$x, y \in \prod_{j \in J} X_j$ with $x \neq y$}}
+    \step{3}{\pick\ $j \in J$ such that $x_j \neq y_j$}
+    \step{4}{\pick\ $U$, $V$ disjoint neighbourhoods of $x_j$, $y_j$ 
+      respectively.}
+    \step{5}{$\inv{\pi_j}(U)$, $\inv{\pi_j}(V)$ are disjoint neighbourhoods of 
+      $x$ and $y$}
+  \end{proof}
+  
+  \begin{thm}
+    A subspace of a Hausdorff space is Hausdorff.
+  \end{thm}
+  
+  \begin{proof}
+    \step{1}{\pflet{$X$ be a Hausdorff space and $Y \subseteq X$}}
+    \step{2}{\pflet{$a, b$ be distinct points in $Y$.}}
+    \step{3}{\pick\ disjoint neighbourhoods $U$ of $a$ and $V$ of $b$ in $X$.}
+    \step{4}{We have $a \in U \cap Y$ and $b \in V \cap Y$}
+  \end{proof}
+  
+  \begin{thm}
+    Let $\{ X_j \}_{j \in J}$ be a family of Hausdorff spaces. Then $\prod_{j 
+      \in 
+      J} X_j$ is Hausdorff under the box topology.
+  \end{thm}
+  
+  \begin{proof}
+    \step{1}{\pflet{$\{ X_j \}_{j \in J}$ be a family of Hausdorff spaces.}}
+    \step{2}{\pflet{$x, y \in \prod_{j \in J} X_j$ with $x \neq y$}}
+    \step{3}{\pick\ $j \in J$ such that $x_j \neq y_j$}
+    \step{4}{\pick\ $U$, $V$ disjoint neighbourhoods of $x_j$, $y_j$ 
+      respectively.}
+    \step{5}{$\inv{\pi_j}(U)$, $\inv{\pi_j}(V)$ are disjoint neighbourhoods of 
+      $x$ and $y$}
+  \end{proof}
+  
+  \section{First Countability Axiom}
+  
+  \begin{lm}
+    \label{lm:topology:countabilty:decreasing_basis}
+    If there is a point $x$ has a countable local basis, then it has a 
+    countable 
+    local basis $\{ U_n : n \in \mathbb{N} \}$ such that $U_0 \supseteq U_1 
+    \supseteq U_2 \supseteq \cdots$. 
+  \end{lm}
+  
+  \begin{proof}
+    \pf\ Let $\{ V_n : n \in \mathbb{N} \}$ be a countable local basis. Take
+    \[ U_n = V_0 \cap V_1 \cap \cdots \cap V_n \enspace . \]
+  \end{proof}
+  
+  \begin{lm}[Sequence Lemma (CC)]
+    Let $X$ be a topological space and $A \subseteq X$. If $l \in \overline{A}$ 
+    and there is a countable basis at $l$, then there exists a sequence $(a_n)$ 
+    in 
+    $A$ such that $a_n \rightarrow l$ as $n \rightarrow \infty$.
+  \end{lm}
+  
+  \begin{proof}
+    \step{1}{\pick\ a countable basis $\{ U_n : n \in \mathbb{N} \}$ at $l$ 
+      such 
+      that $U_0 \supseteq U_1 \supseteq \cdots$}
+    \begin{proof}
+      \pf\ By Lemma \ref{lm:topology:countabilty:decreasing_basis}.
+    \end{proof}
+    \step{2}{For $n \in \mathbb{N}$, \pick\ a point $a_n \in U_n \cap A$}
+    \begin{proof}
+      \pf\ A point exists by Theorem \ref{thm:topology:closure:membership}. 
+      Apply 
+      the Axiom of Countable Choice.
+    \end{proof}
+    \step{3}{$a_n \rightarrow l$ as $n \rightarrow \infty$}
+    \begin{proof}
+      \pf
+      \step{3a}{\pflet{$U$ be a neighbourhood of $l$}}
+      \step{3b}{\pick\ $N$ such that $U_N \subseteq U$}
+      \begin{proof}
+        \pf\ By \stepref{1}
+      \end{proof}
+      \step{3c}{For $n \geq N$, we have $a_n \in U$}
+      \begin{proof}
+        \pf
+        \begin{align*}
+          a_n & \in U_n & (\text{\stepref{2}}) \\
+          & \subseteq U_N & (\text{\stepref{1}}) \\
+          & \subseteq U & (\text{\stepref{3b}})
+        \end{align*}
+      \end{proof}
+    \end{proof}
+    \qed
+  \end{proof}
+  
+  \begin{lm}[CC]
+    Let $X$ and $Y$ be topological spaces and $f : X \rightarrow Y$. Suppose 
+    there 
+    is a countable local basis at $l$ and, for every sequence $(x_n)$ in $X$ 
+    such 
+    that $x_n \rightarrow l$ as $n \rightarrow \infty$, we have $f(x_n) 
+    \rightarrow 
+    f(l)$ as $n \rightarrow \infty$. Then $f$ is continuous at $l$.
+  \end{lm}
+  
+  \begin{proof}
+    \step{1}{\pick\ a basis $\{ U_n : n \in \mathbb{N} \}$ at $l$ such that 
+      $U_0 
+      \supseteq U_1 \supseteq \cdots$.}
+    \step{2}{\pflet{$V$ be a neighbourhood of $f(l)$}}
+    \step{3}{\assume{for a contradiction $\inv{f}(V)$ is not open}}
+    \step{4}{For $n \in \mathbb{N}$, \pick\ $x_n \in U_n$ such that $x_n \notin 
+      \inv{f}(V)$}
+    \begin{proof}
+      \pf\ Using the Axiom of Countable Choice.
+    \end{proof}
+    \step{5}{$x_n \rightarrow l$ as $n \rightarrow \infty$}
+    \begin{proof}
+      \pf
+      \step{5a}{\pflet{$U$ be a neighbourhood of $l$}}
+      \step{5b}{\pick\ $N$ such that $U_N \subseteq U$}
+      \begin{proof}
+        \pf\ By \stepref{1}
+      \end{proof}
+      \step{5c}{For $n \geq N$, we have $x_n \in U$}
+      \begin{proof}
+        \pf
+        \begin{align*}
+          x_n & \in U_n & (\text{\stepref{4}}) \\
+          & \subseteq U_N & (\text{\stepref{1}}) \\
+          & \subseteq U & (\text{\stepref{5b}})
+        \end{align*}
+      \end{proof}
+    \end{proof}
+    \step{6}{$f(x_n) \rightarrow f(l)$ as $n \rightarrow \infty$}
+    \begin{proof}
+      \pf\ From \stepref{5} and hypothesis.
+    \end{proof}
+    \step{7}{\pick\ $N$ such that, for all $n \geq N$, $f(x_n) \in V$}
+    \qedstep
+    \begin{proof}
+      \pf\ This is a contradiction as $x_N \notin \inv{f}(V)$ by \stepref{4}.
+    \end{proof}
+  \end{proof}
+  
+  \begin{df}[First Countability Axiom]
+    A topological space $X$ satisfies the \emph{first countability axiom}, or 
+    is 
+    \emph{first countable}, iff every point has a countable local basis.
+  \end{df}
+  
+  \begin{lm}
+    $\mathbb{R}^\omega$ under the box topology is not first countable.
+  \end{lm}
+  
+  \begin{proof}
+    \step{1}{\assume{for a contradiction $\{ U_n : n \in \mathbb{N} \}$ is a 
+        countable basis at $\vec{0}$.}}
+    \step{2}{For $i, n \in \mathbb{N}$, \pick\ $a_{in}, b_{in}$ such that 
+      $\vec{0} \in \prod_{i=0}^\infty (a_{in}, b_{in}) \subseteq U_n$}
+    \step{3}{\pflet{$U = \prod_{n=0}^\infty (a_{nn}/2, b_{nn}/2)$}}
+    \step{4}{$\vec{0} \in U$}
+    \step{5}{There is no $n$ such that $U_n \subseteq U$}
+  \end{proof}
+  
+  \begin{lm}
+    If $J$ is uncountable then $\mathbb{R}^J$ is not first countable.
+  \end{lm}
+  
+  \begin{proof}
+    \step{1}{\assume{for a contradiction $\{ U_n : n \in \mathbb{N} \}$ is a 
+        countable basis for $\vec{0}$}}
+    \step{2}{For $n \in \mathbb{N}$, let $\vec{0} \in \prod_{j \in J} V_{nj} 
+      \subseteq U_n$, where $V_{nj} = \mathbb{R}$ for all but finitely many 
+      $j$.}
+    \step{3}{\pick\ $j_0 \in J$ such that $V_{nj_0} = \mathbb{R}$ for all $n$.}
+    \step{4}{\pflet{$W = \prod_{j \in J} W_j$ where $W_{j_0} = (-1, 1)$ and 
+        $W_j 
+        = \mathbb{R}$ for all other $j$}}
+    \step{5}{$\vec{0} \in W$}
+    \step{6}{$W$ is open}
+    \step{7}{There is no $n$ such that $U_n \subseteq W$}
+  \end{proof}
+  
+  \section{Metric Spaces}
+  
+  \begin{df}[Metric]
+    A \emph{metric} on a set $X$ is a function $d : X^2 \rightarrow \mathbb{R}$ 
+    such that:
+    \begin{enumerate}
+      \item For all $x, y \in X$, we have $d(x,y) \geq 0$
+      \item For all $x, y \in X$, we have $d(x, y) = 0$ if and only if $x = y$
+      \item For all $x, y \in X$, we have $d(x, y) = d(y, x)$
+      \item \textbf{Triangle Inequality} For all $x, y, z \in X$, we have $d(x, 
+      z) 
+      \leq d(x, y) + d(y, z)$
+    \end{enumerate}
+    
+    A \emph{metric space} consists of a set and a metric on that set. We call 
+    $d(x, 
+    y)$ the \emph{distance} between $x$ and $y$.
+  \end{df}
+  
+  \begin{df}[Ball]
+    Let $(X, d)$ be a metric space. Let $\epsilon > 0$ and $x \in X$. The 
+    \emph{$\epsilon$-ball} with \emph{centre} $x$ is the set
+    \[ B_d(x, \epsilon) = \{ y \in X : d(x, y) < \epsilon \} \enspace . \]
+  \end{df}
+  
+  \begin{df}[Induced Topology]
+    Let $(X, d)$ be a metric space. The topology \emph{induced} by $d$ is the 
+    topology generated by the basis consisting of all the balls.
+    
+    We prove this is a basis for a topology.
+  \end{df}
+  
+  \begin{proof}
+    \step{1}{For all $x \in X$, there exists a ball $B$ such that $x \in B$}
+    \begin{proof}
+      \pf\ Take $B = B(x, 1)$
+    \end{proof}
+    \step{2}{For any balls $B_1$, $B_2$ and point $x \in B_1 \cap B_2$, there 
+      exists a ball $B_3$ such that $x \in B_3 \subseteq B_1 \cap B_2$}
+    \begin{proof}
+      \step{2a}{\pflet{$B_1 = B(a_1, \epsilon_1)$ and $B_2 = B(a_2, 
+          \epsilon_2)$}}
+      \step{2b}{\pflet{$\epsilon = \min(\epsilon_1 - d(x, a_1), \epsilon_2 - 
+          d(x, 
+          a_2))$}}
+      \step{2c}{$\epsilon > 0$}
+      \step{2d}{$B(x, \epsilon) \subseteq B_1$}
+      \begin{proof}
+        \step{i}{\pflet{$y \in B(x, \epsilon)$}}
+        \step{ii}{$d(y, a_1) < \epsilon_1$}
+        \begin{proof}
+          \pf\ \begin{align*}
+            d(y, a_1) & \leq d(y, x) + d(x, a_1) & (\text{Triangle 
+              Inequality}) \\
+            & < \epsilon + d(x, a_1) & (\text{\stepref{i}}) \\
+            & \leq \epsilon_1 & (\text{\stepref{2b}})
+          \end{align*}
+        \end{proof}
+      \end{proof}
+      \step{2e}{$B(x, \epsilon) \subseteq B_2$}
+      \begin{proof}
+        \pf\ Similar
+      \end{proof}
+    \end{proof}
+  \end{proof}
+  
+  \begin{lm}
+    Let $(X, d)$ be a metric space and $Y \subseteq X$. Then the restriction of 
+    $d$ to $Y$ is a metric on $Y$ that induces the subspace topology on $Y$.
+  \end{lm}
+  
+  \begin{proof}
+    \pf\ The metric topology and the subspace topology are both the topology 
+    induced by $\{ B_{d'}(y, \epsilon) : y \in Y \} = \{ B_d(y, \epsilon) \cap Y 
+    : 
+    y \in Y \}$, where $d' = d \restriction Y^2$.
+  \end{proof}
+  
+  \begin{thm}
+    Every metric space is Hausdorff.
+  \end{thm}
+  
+  \begin{proof}
+    \step{1}{\pflet{$(X, d)$ be a metric space.}}
+    \step{2}{\pflet{$x, y \in X$ with $x \neq y$.}}
+    \step{3}{\pflet{$\epsilon = d(x,y)$}}
+    \step{4}{$\epsilon > 0$}
+    \begin{proof}
+      \pf\ Axiom 2 of metric spaces (\stepref{1}, \stepref{2}, \stepref{3}).
+    \end{proof}
+    \step{5}{\pflet{$U = B(x, \epsilon / 2)$, $V = B(y, \epsilon / 2)$} 
+      \prove{$U 
+        \cap V = \emptyset$}}
+    \step{6}{\assume{for a contradiction $z \in U \cap V$}}
+    \step{7}{$d(x, y) < \epsilon$}
+    \begin{proof}
+      \pf\ \begin{align*}
+        d(x, y) & \leq d(x, z) + d(z, y) & (\text{Triangle Inequality}) \\
+        & < \epsilon / 2 + \epsilon / 2 & (\text{\stepref{5}, \stepref{6}}) \\
+        & = \epsilon
+      \end{align*}
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ This contradicts \stepref{3}.
+    \end{proof}
+  \end{proof}
+  
+  \begin{thm}
+    Every metric space is first countable.
+  \end{thm}
+  
+  \begin{proof}
+    \pf\ For any point $x$, we have $\{ B(x, 1/n) : n \in \mathbb{Z}^+ \}$ is a 
+    local basis at $x$. \qed
+  \end{proof}
+  
+  \begin{lm}
+    Let $X$ and $Y$ be metric spaces and $f : X \rightarrow Y$. Then $f$ is 
+    continuous if and only if, for all $\epsilon > 0$ and $x \in X$, there 
+    exists 
+    $\delta > 0$ such that, for all $x' \in X$, if $d(x, x') < \delta$ then 
+    $d(f(x), f(x')) < \epsilon$.
+  \end{lm}
+  
+  \begin{proof}
+    \pf
+    \step{1}{If $f$ is continuous then, for all $\epsilon > 0$ and $x \in X$, 
+      there exists $\delta > 0$ such that, for all $x' \in X$, if $d(x, x') < 
+      \delta$ then $d(f(x), f(x')) < \epsilon$.}
+    \begin{proof}
+      \pf
+      \step{1a}{\assume{$f$ is continuous}}
+      \step{1b}{\pflet{$\epsilon > 0$}}
+      \step{1c}{$x \in X$}
+      \step{1d}{$\inv{f}(B(f(x), \epsilon))$ is open in $U$}
+      \begin{proof}
+        \pf\ Using \stepref{1a}.
+      \end{proof}
+      \step{1e}{$x \in \inv{f}(B(f(x), \epsilon)$}
+      \begin{proof}
+        \pf\ Since $d(f(x), f(x)) = 0$.
+      \end{proof}
+      \step{1f}{\pick\ $\delta > 0$ such that $B(x, \delta) \subseteq 
+        \inv{f}(B(f(x), \epsilon))$}
+      \begin{proof}
+        \pf\ From \stepref{1d} and \stepref{1e}.
+      \end{proof}
+      \step{1g}{\pflet{$x' \in X$ with $d(x, x') < \delta$}}
+      \step{1h}{$x' \in B(x, \delta)$}
+      \begin{proof}
+        \pf\ From \stepref{1g}.
+      \end{proof}
+      \step{1i}{$x' \in \inv{f}(B(f(x), \epsilon))$}
+      \begin{proof}
+        \pf\ From \stepref{1f} and \stepref{1h}.
+      \end{proof}
+      \step{1j}{$d(f(x), f(x')) < \epsilon$}
+      \begin{proof}
+        \pf\ From \stepref{1i}
+      \end{proof}
+    \end{proof}
+    \step{2}{If, for all $\epsilon > 0$ and $x \in X$, there exists $\delta > 
+      0$ 
+      such that, for all $x' \in X$, if $d(x, x') < \delta$ then $d(f(x), 
+      f(x')) 
+      < \epsilon$.}
+    \begin{proof}
+      \pf
+      \step{2a}{\assume{For all $\epsilon > 0$ and $x \in X$, there exists 
+          $\delta > 0$ such that, for all $x' \in X$, if $d(x, x') < \delta$ 
+          then 
+          $d(f(x), f(x')) < \epsilon$}}
+      \step{2b}{\pflet{$V$ be open in $Y$} \prove{$\inv{f}(V)$ is open in $X$}}
+      \step{2c}{\pflet{$x \in \inv{f}(V)$} \prove{There exists $\delta > 0$ 
+          such 
+          that $B(x, \delta) \subseteq \inv{f}(V)$}}
+      \step{2d}{\pick\ $\epsilon > 0$ such that $B(f(x), \epsilon) \subseteq V$}
+      \begin{proof}
+        \pf\ Such an $\epsilon$ exists because $f(x) \in V$ (\stepref{2c}) and 
+        $V$ is open (\stepref{2b}).
+      \end{proof}
+      \step{2e}{\pick\ $\delta > 0$ such that, for all $x' \in X$, if $d(x, x') 
+        < 
+        \delta$ then $d(f(x), f(x')) < \epsilon$ \prove{$B(x, \delta) \subseteq 
+          \inv{f}(V)$}}
+      \begin{proof}
+        \pf\ By \stepref{2a}
+      \end{proof}
+      \step{2f}{\pflet{$x' \in B(x, \delta)$} \prove{$x' \in \inv{f}(V)$}}
+      \step{2g}{$d(x, x') < \delta$}
+      \begin{proof}
+        \pf\ From \stepref{2f}
+      \end{proof}
+      \step{2h}{$d(f(x), f(x')) < \epsilon$}
+      \begin{proof}
+        \pf\ From \stepref{2e} and \stepref{2g}.
+      \end{proof}
+      \step{2i}{$f(x') \in V$}
+      \begin{proof}
+        \pf\ From \stepref{2h} and \stepref{2d}.
+      \end{proof}
+    \end{proof}
+    \qed
+  \end{proof}
+  
+  \begin{lm}
+    Let $(X, d)$ be a metric space. Then $x_n \rightarrow l$ as $n \rightarrow 
+    \infty$ in $X$ if and only if, for all $\epsilon > 0$, there exists $N$ 
+    such 
+    that, for all $n \geq N$, $d(x_n, l) < \epsilon$.
+  \end{lm}
+  
+  \begin{df}[Metrizable]
+    A topological space is \emph{metrizable} iff there exists a metric that 
+    induces its topology.
+  \end{df}
+  
+  \begin{df}[Bounded]
+    Let $X$ be a metric space and $A \subseteq X$. Then $A$ is \emph{bounded} 
+    iff 
+    $\{ d(x,y) : x,y \in A \}$ is bounded above, in which case the 
+    \emph{diameter} 
+    of $A$ is its supremum.
+  \end{df}
+  
+  \begin{df}[Standard Bounded Metric]
+    \label{df:topology:metric:standard_bounded}
+    Let $(X, d)$ be a metric space. The \emph{standard bounded metric} 
+    corresponding to $d$ is
+    \begin{align*}
+      \overline{d} & : X^2 \rightarrow \mathbb{R} \\
+      \overline{d}(x, y) & = \min(d(x, y), 1)
+    \end{align*}
+  \end{df}
+  
+  \begin{lm}
+    \label{lm:topology:metric:bounded}
+    The standard bounded metric corresponding to $d$ is a bounded metric that 
+    induces the 
+    same topology as $d$.
+  \end{lm}
+  
+  \begin{proof}
+    \step{1}{$\overline{d}$ is a metric on $X$}
+    \begin{proof}
+      \step{1a}{$\overline{d}(x, y) \geq 0$}
+      \begin{proof}
+        \pf\ \begin{align*}
+          \overline{d}(x, y) & = \min(d(x, y), 1) & (\text{Definition 
+            \ref{df:topology:metric:standard_bounded}}) \\
+          & \geq 0
+        \end{align*}
+        since $d(x, y) \geq 0$ because $d$ is a metric.
+      \end{proof}
+      \step{1b}{$\overline{d}(x, y) = 0$ iff $x = y$}
+      \begin{proof}
+        \pf\ \begin{align*}
+          \overline{d}(x, y) = 0 & \Leftrightarrow \min(d(x, y), 1) = 0 & 
+          (\text{Definition \ref{df:topology:metric:standard_bounded}}) \\
+          & \Leftrightarrow d(x, y) = 0 \\
+          & \Leftrightarrow x = y & (d \text{ is a metric})
+        \end{align*}
+      \end{proof}
+      \step{1c}{$\overline{d}(x, y) = \overline{d}(y, x)$}
+      \begin{proof}
+        \pf\ \begin{align*}
+          \overline{d}(x, y) & = \min(d(x, y), 1) & (\text{Definition 
+            \ref{df:topology:metric:standard_bounded}}) \\
+          & = \min(d(y, x), 1) & (d \text{ is a metric}) \\
+          & = \overline{d}(y, x) & (\text{Definition 
+            \ref{df:topology:metric:standard_bounded}})
+        \end{align*}
+      \end{proof}
+      \step{1d}{$\overline{d}(x, z) \leq \overline{d}(x, y) + \overline{d}(y, 
+        z)$}
+      \begin{proof}
+        \step{i}{\case{$d(x, y) \leq 1, d(y, z) \leq 1$}}
+        \begin{proof}
+          \pf\ In this case,
+          \begin{align*}
+            \overline{d}(x, z) & \leq d(x, z) & (\text{Definition 
+              \ref{df:topology:metric:standard_bounded}}) \\
+            & \leq d(x, y) + d(y, z) & (d \text{ is a metric}) \\
+            & = \overline{d}(x, y) + \overline{d}(y, z) & (\text{Definition 
+              \ref{df:topology:metric:standard_bounded}})
+          \end{align*}
+        \end{proof}
+        \step{ii}{\case{$d(y, z) > 1$}}
+        \begin{proof}
+          \pf\ In this case, we have
+          \begin{align*}
+            \overline{d}(x, z) & \leq 1 & (\text{Definition 
+              \ref{df:topology:metric:standard_bounded}}) \\
+            & \leq \overline{d}(x, y) + 1 & (\text{\stepref{1a}}) \\
+            & = \overline{d}(x, y) + \overline{d}(y, z) & (\text{Definition 
+              \ref{df:topology:metric:standard_bounded}})
+          \end{align*}
+        \end{proof}
+        \step{iii}{\case{$d(x, y) > 1$}}
+        \begin{proof}
+          \pf\ Similar.
+        \end{proof}
+      \end{proof}
+    \end{proof}
+    \step{2}{$\overline{d}$ induces the same topology as $d$}
+    \begin{proof}
+      \step{2a}{\pflet{$x \in X$ and $\epsilon > 0$}}
+      \step{2b}{$B_{\overline{d}}(x, \epsilon)$ is open in the $d$-topology.}
+      \begin{proof}
+        \step{i}{\case{$\epsilon > 1$}}
+        \begin{proof}
+          \pf\ In this case, $B_{\overline{d}}(x, \epsilon) = X$.
+        \end{proof}
+        \step{ii}{\case{$\epsilon \leq 1$}}
+        \begin{proof}
+          \pf\ In this case, $B_{\overline{d}}(x, \epsilon) = B_d(x, \epsilon)$.
+        \end{proof}
+      \end{proof}
+      \step{2c}{$B_d(x, \epsilon)$ is open in the $\overline{d}$-topology.}
+      \begin{proof}
+        \step{i}{\pflet{$y \in B_d(x, \epsilon0$}}
+        \step{ii}{$B_{\overline{d}}(y, \min(\epsilon, 1/2)) \subseteq B_d(x, 
+          \epsilon)$}
+      \end{proof}
+    \end{proof}
+  \end{proof}
+  
+  \begin{df}[Square Metric]
+    The \emph{square metric} on $\mathbb{R}^n$ is defined by
+    \[ \rho(\vec{x}, \vec{y}) = \max(|x_1 - y_1|, \ldots, |x_n - y_n|) \]
+  \end{df}
+  
+  \begin{lm}
+    \label{lm:topology:metric:open}
+    Let $X$ be a metric space and $U \subseteq X$. Then $U$ is open if and only 
+    if, for all $x \in U$, there exists $\epsilon > 0$ such that $B(x, 
+    \epsilon) 
+    \subseteq U$.
+  \end{lm}
+  
+  \begin{proof}
+    \step{1}{If $U$ is open then, for all $x \in U$, there exists $\epsilon > 
+      0$ 
+      such that $B(x, \epsilon) \subseteq U$}
+    \begin{proof}
+      \step{1a}{\assume{$U$ is open}}
+      \step{1b}{\pflet{$x \in U$}}
+      \step{1c}{\pick\ $y \in X$ and $\epsilon > 0$ such that $x \in B(y, 
+        \epsilon) \subseteq U$
+        \prove{$B(x, \epsilon - d(x, y)) \subseteq U$}}
+      \step{1d}{\pflet{$z \in B(x, \epsilon - d(x, y))$}}
+      \step{1e}{$d(z, y) < \epsilon$}
+      \begin{proof}
+        \pf\ \begin{align*}
+          d(z, y) & \leq d(z, x) + d(x, y) & (\text{Triangle Inequality}) \\
+          & < \epsilon & (\text{\stepref{1d}})
+        \end{align*}
+      \end{proof}
+      \qedstep
+      \begin{proof}
+        \pf\ From \stepref{1c} and \stepref{1e}
+      \end{proof}
+    \end{proof}
+    \step{2}{If, for all $x \in U$, there exists $\epsilon > 0$ such that $B(x, 
+      \epsilon) \subseteq U$, then $U$ is open.}
+    \begin{proof}
+      \pf\ Immediate from the definition of the topology.
+    \end{proof}
+  \end{proof}
+  
+  \begin{lm}
+    Let $d$ and $d'$ be two metrics on the set $X$. Let $\mathcal{T}_d$ and 
+    $\mathcal{T}_{d'}$ be the induced topologies. Then $\mathcal{T}_{d'}$ is 
+    finer 
+    than $\mathcal{T}_d$ if and only if, for all $x \in X$ and $\epsilon > 0$, 
+    there exists $\delta > 0$ such that
+    \[ B_{d'}(x, \delta) \subseteq B_d(x, \epsilon) \enspace . \]
+  \end{lm}
+  
+  \begin{proof}
+    \step{1}{If $\mathcal{T}_{d'}$ is finer than $\mathcal{T}_d$ then, for all 
+      $x 
+      \in X$ and $\epsilon > 0$, 
+      there exists $\delta > 0$ such that $B_{d'}(x, \delta) \subseteq B_d(x, 
+      \epsilon)$.}
+    \begin{proof}
+      \step{1a}{\assume{$\mathcal{T}_{d'}$ is finer than $\mathcal{T}_d$}}
+      \step{1b}{\pflet{$x \in X$ and $\epsilon > 0$}}
+      \step{1c}{$B_d(x, \epsilon)$ is open in $\mathcal{T}_{d'}$}
+      \begin{proof}
+        \pf\ From \stepref{1a}.
+      \end{proof}
+      \step{1d}{There exists $\delta > 0$ such that $B_{d'}(x, \delta) 
+        \subseteq 
+        B_d(x, \epsilon)$}
+      \begin{proof}
+        \pf\ By Lemma \ref{lm:topology:metric:open}.
+      \end{proof}
+    \end{proof}
+    \step{2}{If, for all $x \in X$ and $\epsilon > 0$, 
+      there exists $\delta > 0$ such that $B_{d'}(x, \delta) \subseteq B_d(x, 
+      \epsilon)$, then $\mathcal{T}_{d'}$ is finer than $\mathcal{T}_d$.}
+    \begin{proof}
+      \pf\ From Lemma \ref{lm:topology_basis:finer}
+    \end{proof}
+  \end{proof}
+  
+  \begin{thm}
+    \label{thm:topology:metric:square_product}
+    The topology induced by the square metric is the same as the product 
+    topology 
+    on $\mathbb{R}^n$.
+  \end{thm}
+  
+  \begin{proof}
+    \step{1}{Any set of the form $(a_1, b_1) \times \cdots \times (a_n, b_n)$ 
+      is 
+      open under the square metric.}
+    \begin{proof}
+      \step{1a}{\pflet{$\vec{x} \in (a_1, b_1) \times \cdots \times (a_n, 
+          b_n)$}}
+      \step{1b}{\pflet{$\epsilon = \min(x_1 - a_1, b_1 - x_1, \cdots, x_n - 
+          a_n, 
+          b_n - x_n)$}}
+      \step{1c}{$B_\rho(\vec{x}, \epsilon) \subseteq (a_1, b_1) \times \cdots 
+        \times (a_n, b_n)$}
+    \end{proof}
+    \step{2}{Any ball $B_\rho(\vec{x}, \epsilon)$ is open in the product 
+      topology.}
+    \begin{proof}
+      \pf\ $B_\rho(\vec{x}, \epsilon) = (x_1 - \epsilon, x_1 + \epsilon) \times 
+      \cdots \times (x_n - \epsilon, x_n + \epsilon)$.
+    \end{proof}
+  \end{proof}
+  
+  \begin{thm}
+    The product of a countable family of metrizable spaces is metrizable.
+  \end{thm}
+  
+  \begin{proof}
+    \step{1}{\pflet{$(X_n)_{n \in \mathbb{N}}$ be a family of metric spaces.} 
+      \pflet{$P = \prod_{n=0}^\infty X_n$}}
+    \step{2}{\pflet{$d_n$ be a metric that induces the topology on $X_n$ and is 
+        bounded by 1.}}
+    \begin{proof}
+      \pf\ Such a metric always exists by Lemma 
+      \ref{lm:topology:metric:bounded}.
+    \end{proof}
+    \step{3}{\pflet{$D : (\prod_{n=0}^\infty X_n)^2 \rightarrow \mathbb{R}$ be 
+        defined by
+        \[ D(\vec{x}, \vec{y}) = \sup_{n \in \mathbb{N}} \frac{d_n(x_n, 
+          y_n)}{n+1} \]}}
+    \step{4}{$D$ is a metric on $\prod_{n = 0}^\infty X_n$}
+    \begin{proof}
+      \step{1a}{For all $\vec{x}, \vec{y} \in P$, we have 
+        $D(\vec{x}, \vec{y}) \geq 0$}
+      \step{1b}{For all $\vec{x}, \vec{y} \in P$, we have 
+        $D(\vec{x}, \vec{y}) = 0$ if and only if $\vec{x} = \vec{y}$.}
+      \step{1c}{$D(\vec{x}, \vec{y}) = D(\vec{y}, \vec{x})$}
+      \step{1d}{$D(\vec{x}, \vec{z}) \leq D(\vec{x}, \vec{y}) + D(\vec{y}, 
+        \vec{z})$}
+      \begin{proof}
+        \step{i}{\pflet{$i \geq 0$}}
+        \step{ii}{$\frac{d_i(x_i, z_i)}{i+1} \leq \frac{d_i(x_i, 
+            y_1)}{i+1} + \frac{d_i(y_i, z_i)}{i+1}$}
+        \step{iii}{$\frac{d_i(x_i, z_i)}{i+1} \leq D(\vec{x}, \vec{y}) + 
+          D(\vec{y}, \vec{z})$}
+      \end{proof}
+    \end{proof}
+    \step{5}{Every $D$-ball is open in the product topology}
+    \begin{proof}
+      \step{5a}{\pflet{$\vec{x} \in P$ and $\epsilon > 0$}}
+      \step{5b}{\pick\ $N$ such that $1/N < \epsilon$}
+      \step{5c}{$B(\vec{x}, \epsilon) = \prod_{i=0}^N (x_i - (i+1)\epsilon, x_i 
+        + i 
+        \epsilon) \times \prod_{i=N+1}^\infty X_i$}
+    \end{proof}
+    \step{6}{Every subbasis element for the product topology is open under the 
+      $D$-metric.}
+    \begin{proof}
+      \step{3a}{\pflet{$U = \prod_{i=0}^\infty U_i$ where $U_{i_0} = B(a, 
+          \epsilon)$ and $U_i = X_i$ for all other $i$}}
+      \step{3b}{\pflet{$\vec{x} \in U$}}
+      \step{3d}{$B(\vec{x}, \epsilon / (i_0 + 1)) \subseteq U$}
+    \end{proof}
+  \end{proof}
+  
+  \begin{thm}
+    Let $(X_1, d_1)$, \ldots, $(X_n, d_n)$ be metric spaces. Define $d : (X_1 
+    \times \cdots \times X_n)^2 \rightarrow \mathbb{R}$ by
+    \[ d(\vec{x}, \vec{y}) = \max(d_1(x_1, y_1), \ldots, d_n(x_n, y_n)) \]
+    Then $d$ is a metric on $X_1 \times \cdots \times X_n$ that induces the 
+    product topology.
+  \end{thm}
+  
+  \subsection{Real Analysis}
+  
+  \begin{lm}
+    Addition is a continuous function $\mathbb{R}^2 \rightarrow \mathbb{R}$.
+  \end{lm}
+  
+  \begin{proof}
+    \step{1}{\pflet{$a, b \in \mathbb{R}$ and $\epsilon > 0$}}
+    \step{2}{\pflet{$\delta = \epsilon / 2$}}
+    \step{3}{\pflet{$(x, y) \in B((a, b), \delta)$ under the metric 
+        $\lambda ((x_1, y_1), (x_2, y_2)). \max(|x_1 - y_1|, |x_2 - y_2|)$}}
+    \step{4}{$|(x + y) - (a + b)| < \epsilon$}
+    \begin{proof}
+      \pf
+      \begin{align*}
+        |(x + y) - (a + b)| & \leq | x - a | + | y - b | \\
+        & < 2 \delta & (\text{\stepref{3}}) \\
+        & = \epsilon & (\text{\stepref{2}})
+      \end{align*}
+    \end{proof}
+  \end{proof}
+  
+  \begin{lm}
+    Mulitplication is a continuous function $\mathbb{R}^2 \rightarrow 
+    \mathbb{R}$.
+  \end{lm}
+  
+  \begin{proof}
+    \step{1}{\pflet{$a, b \in \mathbb{R}$ and $\epsilon > 0$}}
+    \step{2}{\pflet{$\delta = \min(\epsilon / (|a| + |b| + 1), 1)$}}
+    \step{3}{\pflet{$(x, y) \in B((a, b), \delta)$ under the metric 
+        $\lambda ((x_1, y_1), (x_2, y_2)). \max(|x_1 - y_1|, |x_2 - y_2|)$}}
+    \step{4}{$|xy - ab| < \epsilon$}
+    \begin{proof}
+      \pf
+      \begin{align*}
+        |xy - ab| & = |(x-a)(y-b) + a(y-b) + (x-a)b| \\
+        & \leq |x-a||y-b| + |a||y-b| + |x-a||b| \\
+        & < \delta^2 + |a| \delta + |b| \delta \\
+        & \leq \delta + |a| \delta + |b| \delta \\
+        & \leq \epsilon
+      \end{align*}
+    \end{proof}
+  \end{proof}
+  
+  \begin{lm}
+    The function $i = \lambda x. x^{-1}$ is a continuous function $\mathbb{R} 
+    \setminus \{0\} \rightarrow \mathbb{R}$.
+  \end{lm}
+  
+  \begin{proof}
+    \step{1}{\pflet{$a, b \in \mathbb{R}$ with $a < b$} \prove{$\inv{i}((a, 
+        b))$ 
+        is open}}
+    \step{2}{\case{$0 < a < b$}}
+    \begin{proof}
+      \pf\ In this case, we have $\inv{i}((a, b)) = (\inv{b}, \inv{a})$.
+    \end{proof}
+    \step{3}{\case{$a = 0$}}
+    \begin{proof}
+      \pf\ In this case, we have $\inv{i}((a, b)) = (\inv{b}, +\infty)$.
+    \end{proof}
+    \step{4}{\case{$a < 0 < b$}}
+    \begin{proof}
+      \pf\ In this case, we have $\inv{i}((a, b)) = (- \infty, \inv{a}) \cup 
+      (\inv{b}, + \infty)$.
+    \end{proof}
+    \step{5}{\case{$b = 0$}}
+    \begin{proof}
+      \pf\ In this case, we have $\inv{i}((a, b)) = (- \infty, \inv{a})$.
+    \end{proof}
+    \step{6}{\case{$a < b < 0$}}
+    \begin{proof}
+      \pf\ In this case, we have $\inv{i}((a, b)) = (\inv{b}, \inv{a})$.
+    \end{proof}
+    \qed
+  \end{proof}
+  
+  \begin{lm}
+    \label{lm:analysis:increasing_converge}
+    Every increasing sequence of real numbers bounded above converges to its 
+    supremum.
+  \end{lm}
+  
+  \begin{proof}
+    \step{1}{\pflet{$(s_n)_{n \in \mathbb{N}}$ be an increasing sequence of 
+        real 
+        numbers bounded above with supremum $u$.}}
+    \step{2}{\pflet{$\epsilon > 0$}}
+    \step{3}{$u - \epsilon$ is not an upper bound for $s$}
+    \step{4}{\pick $N$ such that $s_N > u - \epsilon$}
+    \step{5}{For $n \geq N$, we have $u - \epsilon < s_n \leq u$}
+  \end{proof}
+  
+  \begin{df}[Infinite Series]
+    Let $a$ be a sequence of real numbers. The \emph{infinite series} 
+    $\sum_{i=0}^\infty a_0$ \emph{converges} to the \emph{sum} $s$,
+    \[ \sum_{i=0}^\infty a_i = s \]
+    if and only if the sequence of \emph{partial sums}
+    \[ \sum_{i=0}^n a_i \]
+    converges to $s$ as $n \rightarrow \infty$.
+  \end{df}
+  
+  \begin{lm}
+    \label{lm:analysis:series_linear}
+    If $\sum_{i=0}^\infty a_i = s$ and $\sum_{i=0}^\infty b_i = t$ then 
+    $\sum_{i=0}^\infty (c a_i + b_i) = cs + t$.
+  \end{lm}
+  
+  \begin{proof}
+    \begin{align*}
+      \sum_{i=0}^n (c a_i + b_i) & = c \sum_{i=0}^n a_i + \sum_{i=0}^n b_i \\
+      & \rightarrow c s + t & \text{as } n \rightarrow \infty
+    \end{align*}
+  \end{proof}
+  
+  \begin{thm}[Comparison Test]
+    If $|a_i| \leq b_i$ for all $i$ and $\sum_{i=0}^\infty b_i$ converges then 
+    $\sum_{i=0}^\infty a_i$ converges.
+  \end{thm}
+  
+  \begin{proof}
+    \pf
+    \step{1}{$\sum_{i=0}^\infty |a_i|$ converges}
+    \begin{proof}
+      \pf\ By Lemma \ref{lm:analysis:increasing_converge}, since $\sum_{i=0}^n 
+      |a_i|$ is an increasing sequence bounded above by $\sum_{i=0}^\infty b_i$.
+    \end{proof}
+    \step{2}{$\sum_{i=0}^\infty (|a_i| + a_i)$ converges}
+    \begin{proof}\
+      \pf\ By Lemma \ref{lm:analysis:increasing_converge}, since $\sum_{i=0}^n 
+      (|a_i| + a_i)$ is an increasing sequence bounded above by $2 
+      \sum_{i=0}^\infty 
+      b_i$.
+    \end{proof}
+    \step{3}{$\sum_{i=0}^\infty a_i$ converges}
+    \begin{proof}
+      \pf\ From \stepref{1}, \stepref{2} and Lemma 
+      \ref{lm:analysis:series_linear}.
+    \end{proof}
+  \end{proof}
+  
+  \begin{thm}[Weierstrass $M$-test]
+    Let $f_n : X \rightarrow \mathbb{R}$ for all $n \in \mathbb{N}$. Let
+    \[ s_n(x) = \sum_{i=0}^n f_i(x) \qquad (n \in \mathbb{N}, x \in X) \enspace 
+    . 
+    \]
+    Suppose $|f_i(x)| \leq M_i$ for all $i \in \mathbb{N}$ and $x \in X$, and 
+    $\sum_{i=0}^\infty M_i$ converges. Then
+    \[ s_n(x) \rightarrow s(x) = \sum_{i=0}^\infty f_i(x) \]
+    uniformly as $n \rightarrow \infty$.
+  \end{thm}
+  
+  \begin{proof}
+    \pf
+    \step{1}{For all $x \in X$, we have $\sum_{i=0}^\infty f_i(x)$ converges.}
+    \begin{proof}
+      \pf\ By the Comparison Test.
+    \end{proof}
+    \step{2}{Let $r_n = \sum_{i=n+1}^\infty M_i$ for $n \in \mathbb{N}$.}
+    \begin{proof}
+      \pf\ The series converges because
+      \[ \sum_{i=n+1}^m M_i = \sum_{i=0}^m M_i - \sum_{i=0}^n M_i \rightarrow 
+      \sum_{i=0}^\infty M_i - \sum_{i=0}^n M_i \]
+      as $m \rightarrow \infty$.
+    \end{proof}
+    \step{2.5}{$r_n \rightarrow 0$ as $n \rightarrow \infty$}
+    \begin{proof}
+      \pf\ \begin{align*}
+        r_n & = \sum_{i=0}^\infty M_i - \sum_{i=0}^n M_i \\
+        & \rightarrow \sum_{i=0}^\infty M_i - \sum_{i=0}^\infty M_i & \text{as } 
+        n 
+        \rightarrow \infty \\
+        & = 0
+      \end{align*}
+    \end{proof}
+    \step{3}{For $k > n$, we have $|s_k(x) - s_n(x)| \leq r_n$ for all $x \in 
+      X$}
+    \begin{proof}
+      \pf\ \begin{align*}
+        |s_k(x) - s_n(x)| & = |\sum_{i=n+1}^k f_i(x)| \\
+        & \leq \sum_{i=n+1}^k |f_i(x)| \\
+        & = \sum_{i=n+1}^k M_i \\
+        & \leq \sum_{i=n+1}^\infty M_i \\
+        & = r_n
+      \end{align*}
+    \end{proof}
+    \step{4}{For all $n \in \mathbb{N}$, we have $|s(x) - s_n(x)| \leq r_n$}
+    \begin{proof}
+      \pf\ \[  |s(x) - s_n(x)| = \lim_{k \rightarrow \infty} |s_k(x) - s_n(x)| 
+      \leq r_n \]
+    \end{proof}
+    \step{5}{$s \rightarrow s_n$ uniformly as $n \rightarrow \infty$}
+    \begin{proof}
+      \step{5a}{\pflet{$\epsilon > 0$}}
+      \step{5b}{\pick\ $N$ such that $r_n < \epsilon$ for all $n \geq N$}
+      \begin{proof}
+        \pf\ By \stepref{2.5}
+      \end{proof}
+      \step{5c}{For $n \geq N$ and all $x \in X$, we have $|s(x) - s_n(x)| < 
+        \epsilon$}
+      \begin{proof}
+        \pf\ From \stepref{4}
+      \end{proof}
+    \end{proof}
+  \end{proof}
+  
+  \subsection{The Uniform Metric}
+  
+  \begin{df}[Uniform Metric]
+    Let $J$ be a nonempty set.
+    The \emph{uniform metric} on $\mathbb{R}^J$ is defined by
+    \[ \overline{\rho}(\vec{x}, \vec{y}) = \sup_{j \in J} \overline{d}(x_j, y_j) 
+    \]
+    where $\overline{d}$ is the standard bounded metric on $\mathbb{R}$.
+    
+    We prove this is a metric.
+  \end{df}
+  
+  \begin{proof}
+    \step{1}{For all $x, y \in \mathbb{R}^J$, we have $\overline{\rho}(x, y) 
+      \geq 
+      0$}
+    \step{2}{For all $x, y \in \mathbb{R}^J$, we have $\overline{\rho}(x, y) = 
+      0$ 
+      if and only if $x = y$}
+    \step{3}{For all $x, y \in \mathbb{R}^J$, we have $\overline{\rho}(x, y) = 
+      \overline{\rho}(y, x)$}
+    \step{4}{For all $x, y, z \in \mathbb{R}^J$, we have $\overline{\rho}(x, z) 
+      \leq \overline{\rho}(x, y) + \overline{\rho}(y, z)$}
+    \begin{proof}
+      \step{4a}{\pflet{$x, y, z \in \mathbb{R}^J$}}
+      \step{4b}{For all $j \in J$, we have $\overline{d}(x_j, z_j) \leq 
+        \overline{\rho}(x, y) + \overline{\rho}(y, z)$}
+      \begin{proof}
+        \pf\ \begin{align*}
+          \overline{d}(x_j, z_j) & \leq \overline{d}(x_j, y_j) + 
+          \overline{d}(y_j, z_j) \\
+          & \leq \overline{\rho}(x, y) + \overline{\rho}(y, z)
+        \end{align*}
+      \end{proof}
+      \step{4c}{$\overline{\rho}(x, z) \leq \overline{\rho}(x, y) + 
+        \overline{\rho}(y, z)$}
+    \end{proof}
+  \end{proof}
+  
+  \begin{df}[Uniform Topology]
+    The \emph{uniform topology} on $\mathbb{R}^J$ is the topology induced by 
+    the 
+    uniform metric.
+  \end{df}
+  
+  \begin{thm}[CC]
+    The uniform topology on $\mathbb{R}^J$ is finer than the product topology 
+    and 
+    coarser than the box topology. These three topologies are all different if 
+    and 
+    only if $J$ is infinite.
+  \end{thm}
+  
+  \begin{proof}
+    \step{1}{The uniform topology is finer than the product topology.}
+    \begin{proof}
+      \step{1a}{Let $U_\alpha = (a_\alpha, b_\alpha)$ for $\alpha = \alpha_1, 
+        \ldots, \alpha_n \in J$ and $U_\alpha = \mathbb{R}$ for all other 
+        $\alpha$.}
+      \step{1b}{\pflet{$x \in \prod_{\alpha \in J} U_\alpha$}}
+      \step{1c}{\pflet{$\epsilon = \min(x_{\alpha_1} - a_{\alpha_1}, 
+          b_{\alpha_1} - 
+          x_{\alpha_1}, \ldots, x_{\alpha_n} - a_{\alpha_n}, b_{\alpha_n} - 
+          x_{\alpha_n}, 
+          1/2)$}}
+      \step{1d}{$B_{\overline{\rho}}(x, \epsilon) \subseteq \prod_{\alpha \in 
+          J} 
+        U_\alpha$}
+    \end{proof}
+    \step{2}{The uniform topology is coarser than the box topology.}
+    \begin{proof}
+      \pf\ We have $B(x, \epsilon) = \prod_{\alpha \in J} (x_\alpha - \epsilon, 
+      x_\alpha + \epsilon)$ if $\epsilon < 1$, and $B(x, \epsilon) = 
+      \mathbb{R}^J$ if 
+      $\epsilon \geq 1$.
+    \end{proof}
+    \step{3}{If $J$ is finite, then the three topologies are equal.}
+    \step{4}{If $J$ is infinite, then the uniform topology is strictly finer 
+      than the product topology.}
+    \begin{proof}
+      \pf\ $B(0, 1/2)$ is not open in the product topology.
+    \end{proof}
+    \step{5}{If $J$ is infinite then the uniform topology is strictly coarser 
+      than 
+      the box topology.}
+    \begin{proof}
+      \step{5a}{\pick\ a countably infinite sequence $\alpha_1$, $\alpha_2$, 
+        \ldots in $J$.}
+      \begin{proof}
+        \pf\ This requires Countable Choice.
+      \end{proof}
+      \step{5b}{\pflet{$U = \prod_{\alpha \in J} U_\alpha$ where $U_{\alpha_i} 
+          = 
+          (-1/i, 1/i)$ for $i = 1, 2, \ldots$ and $U_\alpha = \mathbb{R}$ for 
+          all other 
+          $\alpha$}}
+      \step{5c}{$U$ is not open in the uniform topology.}
+      \begin{proof}
+        \pf\ There is no $\epsilon > 0$ such that $B(\vec{0}, \epsilon) 
+        \subseteq 
+        U$.
+      \end{proof}
+    \end{proof}
+  \end{proof}
+  
+  \begin{df}[Uniform Convergence]
+    Let $X$ be a set and $Y$ a metric space. Let $f_n : X 
+    \rightarrow Y$ for $n \in \mathbb{N}$ and $f : X \rightarrow Y$. Then $f_n 
+    \rightarrow f$ as $n \rightarrow \infty$ uniformly iff $f_n \rightarrow f$ 
+    as 
+    $n \rightarrow \infty$ in the space $Y^X$ under the uniform topology.
+  \end{df}
+  
+  \begin{thm}
+    Let $X$ be a set and $Y$ a metric space. Let $f_n : X 
+    \rightarrow Y$ for $n \in \mathbb{N}$ and $f : X \rightarrow Y$. Then $f_n 
+    \rightarrow f$ as $n \rightarrow \infty$ uniformly if 
+    and only if, for all $\epsilon > 0$, there exists $N$ such that, for all $x 
+    \in 
+    X$ and $n \geq N$,
+    \[ d(f_n(x), f(x)) < \epsilon \enspace . \]
+  \end{thm}
+  
+  \begin{proof}
+    \step{1}{If $f_n \rightarrow f$ as $n \rightarrow \infty$ uniformly then, 
+      for 
+      all $\epsilon > 0$, there exists $N$ such that, for all $x \in X$ and $n 
+      \geq 
+      N$, $d(f_n(x), f(x)) < \epsilon$.}
+    \begin{proof}
+      \step{1a}{\assume{$f_n \rightarrow f$ as $n \rightarrow \infty$}}
+      \step{1b}{\pflet{$\epsilon > 0$}}
+      \step{1c}{\pick\ $N$ such that, for all $n \geq N$, $\overline{\rho}(f_n, 
+        f) 
+        < \epsilon$}
+      \step{1d}{For all $x \in X$ and $n \geq N$, $d(f_n(x), f(x)) < \epsilon$.}
+    \end{proof}
+    \step{2}{If, for 
+      all $\epsilon > 0$, there exists $N$ such that, for all $x \in X$ and $n 
+      \geq 
+      N$, $d(f_n(x), f(x)) < \epsilon$, then $f_n \rightarrow f$ as $n 
+      \rightarrow 
+      \infty$ uniformly.}
+    \begin{proof}
+      \step{2a}{\assume{for 
+          all $\epsilon > 0$, there exists $N$ such that, for all $x \in X$ and 
+          $n \geq 
+          N$, $d(f_n(x), f(x)) < \epsilon$}}
+      \step{2b}{\pflet{$\epsilon > 0$}}
+      \step{2c}{\pick\ $N$ such that, for all $x \in X$ and $n \geq N$, 
+        $d(f_n(x), 
+        f(x)) < \epsilon / 2$}
+      \step{2d}{For $n \geq N$, $\overline{\rho}(f_n, f) < \epsilon$}
+      \begin{proof}
+        \pf\ $\overline{\rho}(f_n, f) \leq \epsilon / 2$.
+      \end{proof}
+    \end{proof}
+    \qed
+  \end{proof}
+  
+  \begin{thm}[Uniform Limit Theorem]
+    Let $X$ be a topological space and $Y$ a metric space. Let $f_n : X 
+    \rightarrow Y$ for $n \in \mathbb{N}$ and $f : X \rightarrow Y$. If every 
+    $f_n$ is continuous and $f_n \rightarrow f$ as $n \rightarrow \infty$ 
+    uniformly, then $f$ is continuous.
+  \end{thm}
+  
+  \begin{proof}
+    \step{1}{\pflet{$V$ be open in $Y$}}
+    \step{2}{\pflet{$x_0 \in \inv{f}(V)$} \prove{There exists a neighbourhood 
+        $U$ 
+        of $x_0$ such that $U \subseteq \inv{f}(V)$}}
+    \step{3}{\pflet{$y_0 = f(x_0)$}}
+    \step{4}{\pick\ $\epsilon > 0$ such that $B(y_0, \epsilon) \subseteq V$}
+    \step{5}{\pick\ $N$ such that, for all $n \geq N$ and $x \in X$, $d(f_n(x), 
+      f(x)) < \epsilon / 3$}
+    \step{6}{\pick\ a neighbourhood $U$ of $x_0$ such that $U \subseteq 
+      \inv{f_N}(B(f_N(x_0), \epsilon / 3))$ \prove{$U \subseteq \inv{f}(V)$}}
+    \step{7}{\pflet{$x' \in U$}}
+    \step{8}{$d(f(x'), y_0) < \epsilon$}
+    \begin{proof}
+      \pf
+      \begin{align*}
+        d(f(x'), y_0) & \leq d(f(x'), f_N(x')) + d(f_N(x'), f_N(x_0)) + 
+        d(f_N(x_0), y_0) & (\text{Triangle Inequality}) \\
+        & < \epsilon / 3 + \epsilon / 3 + \epsilon / 3 & (\text{\stepref{5}, 
+          \stepref{6}}) \\
+        & = \epsilon
+      \end{align*}
+    \end{proof}
+    \step{9}{$f(x') \in V$}
+    \begin{proof}
+      \pf\ By \stepref{4}.
+    \end{proof}
+    \qed
+  \end{proof}
+  
+  \chapter{Algebra}
+  
+  \section{Group Theory}
+  
+  \begin{df}[Action]
+    An \emph{action} of a group $G$ is a functor $G \rightarrow \Set$.
+  \end{df}
+  
+  \section{Polynomials}
+  
+  \begin{lm}
+    \[ d(P + Q) \leq \max(d(P), d(Q)) \]
+  \end{lm}
+  
+  \begin{lm}
+    \[ d(PQ) = d(P) + d(Q) \]
+  \end{lm}
+  
+  \begin{lm}[Division Algorithm for Polynomials]
+    For any two polynomials $P$ and $D$ with $D \neq 0$, there exist unique 
+    polynomials $Q$ and $R$ such that $P = DQ + R$ and $d(R) < d(D)$ or $R = 0$.
+  \end{lm}
+  
+  \begin{proof}
+    \pf
+    \step{A}{\pflet{$D$ be a non-zero polynomial.}}
+    \step{B}{For any polynomial $P$, there exist polynomials $Q$ and $R$ such 
+      that $P = DQ + R$ and $d(R) < d(D)$ or $R = 0$}
+    \begin{proof}
+      \step{2}{There exist polynomials $Q$ and $R$ such that $0 = DQ + R$ and 
+        $d(R)     < d(D)$ or $R = 0$}
+      \begin{proof}
+        \pf\ Take $Q = R = 0$.
+      \end{proof}
+      \step{3}{For every integer $n$ and every polynomial $P$ with $d(P) = n$, 
+        there exist polynomials $Q$ and $R$ such that $P = DQ + R$ and $d(R) < 
+        d(D)$   or $R = 0$}
+      \begin{proof}
+        \step{3a}{\assume{for all $k < n$ and every polynomial $P$ with $d(P) = 
+            k$,         there exist polynomials $Q$ and $R$ such that $P = DQ + 
+            R$ and $d(R) <         d(D)$ or  $R = 0$.}}
+        \step{3b}{\pflet{$P$ be a polynomial of degree $n$}}
+        \step{3c}{\case{$n < d(D)$}}
+        \begin{proof}
+          \pf\ Take $Q = 0$ and $R = P$.
+        \end{proof}
+        \step{3d}{\case{$n \geq d(D)$}}
+        \begin{proof}
+          \step{i}{\pflet{the leading term of $P$ be $ax^n$ and the leading term 
+              of           $D$ be $bx^m$}}
+          \step{ii}{\pflet{$P' = P - (a/b)x^{n-m}D$}}
+          \step{iii}{$d(P') < n$ or $P' = 0$}
+          \step{iv}{\pick{polynomials $Q'$ and $R'$ such that $P' = DQ' + R'$ 
+              and           $d(R') < d(D)$ or $R' = 0$}}
+          \step{v}{$P = D(Q' + (a/b)x^{n-m}) + R'$}
+        \end{proof}
+      \end{proof}
+    \end{proof}
+    \step{C}{If $DQ + R = DQ' + R'$ and $d(R) < d(D)$ or $R = 0$, and $d(R') < 
+      d(D)$ or $R' = 0$, then $Q = Q'$ and $R = R'$}
+    \begin{proof}
+      \step{1}{$D(Q - Q') = R - R'$}
+      \step{2}{$d(D(Q - Q')) < d(D)$ or $D(Q - Q') = 0$}
+      \step{3}{$d(Q - Q') < 1$ or $D(Q - Q') = 0$}
+      \step{4}{$Q - Q'$ is a constant $k$, say}
+      \step{5}{$kD = R - R'$}
+      \step{6}{$k = 0$}
+      \step{7}{$Q = Q'$ and $R = R'$}
+    \end{proof}
+    \qed
+  \end{proof}
+  
+  \begin{lm}
+   For any polynomial $P$ and number $t$, there exists a unique polynomial $Q$ 
+such that
+\[ P(x) = (x - t) Q(x) + P(t) \]
+  \end{lm}
+
+  \begin{proof}
+   \pf
+    \step{1}{\pflet{$Q$ and $R$ be the unique polynomials such that
+        \[ P(x) = (x - t) Q(x) + R \]
+        and $R$ is constant}}
+    \step{2}{$R = P(t)$}
+    \begin{proof}
+      \pf\ Take $x = t$ on both sides
+    \end{proof}
+    \qed
+  \end{proof}
+
+  \begin{cor}
+   For any polynomial $P$ and number $t$, $x - t$ divides $P$ if and only if 
+$P(t) = 0$.
+  \end{cor}
+
+  \begin{lm}
+   Any two non-zero polynomials $P$ and $Q$ have a greatest common divisor $D$. 
+Further, there exist polynomials $A$ and $B$ such that $D = AP + BQ$.
+  \end{lm}
+
+  \begin{proof}
+    \step{1}{\pick{$A_0$ and $B_0$ such that $A_0 P + B_0 Q$ has minimal degree 
+        out of all the non-zero polynomials of the form $AP+BQ$}}
+    \step{2}{\pflet{$D = A_0 P + B_0 Q$}}
+    \step{3}{$D \mid P$}
+    \begin{proof}
+      \step{3a}{\pflet{$E$, $R$ be the polynomials such that $P = ED + R$ and 
+          $d(R) < d(D)$ or $R = 0$}}
+      \step{3b}{$R = (1 - A_0 E)P - E B_0 Q$}
+      \step{3c}{$R = 0$}
+      \begin{proof}
+        \pf\ By minimality of $d(D)$ in \stepref{1}.
+      \end{proof}
+    \end{proof}
+    \step{4}{$D \mid Q$}
+    \begin{proof}
+      \pf\ Similar.
+    \end{proof}
+    \step{5}{If $R \mid P$ and $R \mid Q$ then $R \mid D$}
+    \begin{proof}
+      \pf\ Immediate from \stepref{2}.
+    \end{proof}
+    \qed
+  \end{proof}
+
+  \chapter{Linear Algebra}
+  
+  \section{Vector Spaces}
+  
+  \begin{df}[Vector Space]
+    Let $K$ be a field. A \emph{vector space} $V$ over $K$ consists of:
+    \begin{itemize}
+      \item a set $V$ whose elements are called \emph{vectors};
+      \item a vector $0 \in V$, the \emph{zero vector};
+      \item a function $- : V \rightarrow V$;
+      \item a function $+ : V^2 \rightarrow V$, called \emph{addition};
+      \item a function $\cdot : K \times V \rightarrow V$, called \emph{scalar 
+        multiplication}
+    \end{itemize}
+    such that, for all $u, v, w \in V$ and $\alpha, \beta \in K$:
+    \begin{itemize}
+      \item $u + (v + w) = (u + v) + w$
+      \item $u + v = v + u$
+      \item $v + 0 = v$
+      \item $v + (-v) = 0$
+      \item $\alpha (\beta v) = (\alpha \beta) v$
+      \item $(\alpha + \beta) v = \alpha v + \beta v$
+      \item $\alpha (u + v) = \alpha u + \alpha v$
+      \item $1 v = v$
+    \end{itemize}
+  \end{df}
+  
+  \begin{lm}
+    Let $V$ be a vector space over $K$ and $W \subseteq V$. If $W$ is a closed 
+    under the operations of $V$, then $W$ is a vector space under the 
+    restrictions 
+    of these operations.
+  \end{lm}
+  
+  \begin{df}[Subspace]
+    Let $V$ be a vector space over $K$. A \emph{subspace} of $V$ is a vector 
+    space $W$ such that $W \subseteq V$ and the operations of $W$ are the 
+    restrictions of the operations of $V$.
+  \end{df}
+  
+  \begin{thm}
+    Let $V$ be a vector space over $K$ and $A \subseteq V$. The set of all 
+    linear 
+    combinations of the elements of $A$ is a subspace of $V$.
+  \end{thm}
+  
+  \begin{df}[Span]
+    Let $V$ be a vector space over $K$ and $A \subseteq V$. The \emph{(linear) 
+      span} of $A$, $\langle A \rangle$, is the subspace of $V$ consisting of 
+    all 
+    linear 
+    combinations of the elements of $A$.
+  \end{df}
+  
+  \begin{df}[Linear Transformation]
+    Let $V$ and $W$ be vector spaces over $K$ and $T : V \rightarrow W$. Then 
+    $T$ 
+    is a \emph{linear transformation} or \emph{linear map} iff:
+    \begin{itemize}
+      \item for all $u, v \in V$, we have $T(u + v) = T(u) + T(v)$
+      \item for all $\alpha \in K$ and $v \in V$, we have $T(\alpha v) = \alpha 
+      T(v)$
+    \end{itemize}
+  \end{df}
+  
+  \begin{lm}
+    The composition of two linear transformations is linear.
+  \end{lm}
+  
+  \begin{df}[Unit Point]
+    The \emph{unit point} $e_i \in K^n$ is the vector with $i$th coordinate 1, 
+    and all other coordinates 0.
+  \end{df}
+  
+  \begin{lm}
+    Let $V$ be a vector space over $K$ and $T : K^n \rightarrow V$. Then $T$ is 
+    a 
+    linear transformation iff
+    \[ T(x_1, \ldots, x_n) = \sum_{i=1}^n x_i \beta_i \]
+    where $\beta_i = T(e_i)$.
+    
+    This defines a bijection from $V^n$ to the set of all linear 
+    transformations 
+    $K^n \rightarrow V$.
+  \end{lm}
+  
+  \begin{thm}
+    A function $T : K^n \rightarrow K^m$ is linear if and only if
+    \[ T(x_1, \ldots, x_n) = (\sum_{j=1}^n t_{1j} x_j, ldots, \sum_{j=1}^n 
+    t_{mj} 
+    x_j) \]
+    where the values $t_{ij} \in K$ are given by:
+    \[ T(e_j) = (t_{1j}, \ldots, t_{mj}) \]
+    
+    This defines a bijection from the set of $m \times n$-matrices over $K$ to 
+    the 
+    set of all linear transformations $K^n \rightarrow K^m$.
+  \end{thm}
+  
+  \begin{thm}
+    If $T : V \rightarrow W$ is linear then $T(\langle A \rangle) = \langle 
+    T(A) 
+    \rangle$.
+  \end{thm}
+  
+  \begin{thm}
+    If $T : V \rightarrow W$ is linear and $A$ is a subspace of $V$ then $T(A)$ 
+    is a subspace of $W$.
+  \end{thm}
+  
+  \begin{thm}
+    If $T : V \rightarrow W$ is linear and $Y$ is a subspace of $W$ then 
+    $\inv{T}(Y)$ is a subspace of $V$.
+  \end{thm}
+  
+  \begin{df}[Kernel]
+    The \emph{kernel} of a linear transformation $T : V \rightarrow W$ is $\ker 
+    T 
+    = \{ v \in V : T(v) = 0 \}$.
+  \end{df}
+  
+  \begin{lm}
+    \label{lm:linear:injective_kernel}
+    A linear transformation $T$ is injective iff $\ker T = \{ 0 \}$.
+  \end{lm}
+  
+  \begin{lm}
+    Let $\{X_j\}_{j \in J}$ be a family of vector spaces over $K$. There exists 
+    a 
+    unique way to make $\prod_{j \in J} X_j$ into a vector space such that the 
+    projections $\pi_j : \prod_{j \in J} X_j \rightarrow X_j$ are all linear, 
+    namely:
+    \begin{align*}
+      0 & = (0)_{j \in J} \\
+      -(x_j)_{j \in J} & = (-x_j)_{j \in J} \\
+      (x_j)_{j \in J} + (y_j)_{j \in J} & = (x_j + y_j)_{j \in J} \\
+      \alpha (x_j)_{j \in J} & = (\alpha x_j)_{j \in J}
+    \end{align*}
+  \end{lm}
+  
+  \begin{df}[Direct Sum]
+    The \emph{direct sum} $\bigoplus_{j \in J} X_j$ is the vector space in the 
+    previous lemma.
+    
+    The $j$th \emph{injection} $\theta_j : X_j \rightarrow \prod_{j \in J} X_j$ 
+    is defined by: $\theta_j(x)$ is the element whose $j$th component is $x$, 
+    and 
+    whose other components are all zero.
+  \end{df}
+  
+  \begin{lm}
+    The injections are all linear.
+  \end{lm}
+  
+  \begin{lm}
+    \[ \pi_j \circ \theta_j = \id{X_j} \]
+  \end{lm}
+  
+  \begin{lm}
+    \[ \pi_j \circ \theta_i = 0 \text{ if } i \neq j \]
+  \end{lm}
+  
+  \begin{lm}
+    If $J$ is finite then \[ \sum_{j \in J} \theta_j \circ \pi_j = \id{\prod_{j 
+        \in J} X_j} \]
+  \end{lm}
+  
+  \begin{thm}
+    If $T_j : V \rightarrow W_j$ is linear for each $j$ in the set $J$, 
+    then there exists a unique linear transformation $T : V \rightarrow 
+    \prod_{j 
+      \in J} W_j$ such that $T_j = \pi_j \circ T$ for all $j \in J$.
+  \end{thm}
+  
+  \begin{thm}
+    If $T_j : V_j \rightarrow W$ is linear for each $j$ in the finite set $J$, 
+    then there exists a unique linear transformation $T : \prod_{j \in J} V_j 
+    \rightarrow W$ such that $T_j = T \circ \theta_j$ for all $j \in J$.
+  \end{thm}
+  
+  \begin{df}
+    Subspaces $V_1$, \ldots, $V_n$ of $V$ are \emph{independent} iff the 
+    map $\bigoplus_{i=1}^n V_i \rightarrow V$ defined by
+    \[ v_1 \oplus \cdots \oplus v_n \mapsto v_1 + \cdots + v_n \]
+    is injective.
+  \end{df}
+  
+  \begin{lm}
+    $V_1$, \ldots, $V_n$ are independent if and only if, for all $v_1 \in V_1$, 
+    \ldots, $v_n \in V_n$, if $v_1 + \cdots + v_n = 0$ then $v_1 = \cdots = v_n 
+    = 
+    0$.
+  \end{lm}
+  
+  \begin{proof}
+    \pf
+    \step{1}{\pflet{$T : V_1 \oplus \cdots \oplus V_n \rightarrow V$ be the 
+        function $T(v_1 \oplus \cdots \oplus v_n) = v_1 + \cdots + v_n$}}
+    \step{2}{$T$ is injective if and only if, for all $v_1 \in V_1$, \ldots, 
+      $v_n 
+      \in V_n$, if $v_1 + \cdots + v_n = 0$ then $v_1 = \cdots = v_n = 0$}
+    \begin{proof}
+      \pf\ From Lemma \ref{lm:linear:injective_kernel}.
+    \end{proof}
+    \qed
+  \end{proof}
+  
+  \begin{cor}
+    Two subspaces $M$, $N$ are independent if and only if $M \cap N = \{ 0 \}$.
+  \end{cor}
+  
+  \begin{proof}
+    \pf
+    \step{1}{If $M$ and $N$ are independent then $M \cap N = \{ 0 \}$.}
+    \begin{proof}
+      \step{1a}{\assume{$M$ and $N$ are independent.}}
+      \step{1b}{\pflet{$v \in M \cap N$}}
+      \step{1c}{$v - v = 0$}
+      \step{1d}{$v = 0$}
+      \begin{proof}
+        \pf\ By the lemma.
+      \end{proof}
+    \end{proof}
+    \step{2}{If $M \cap N = \{ 0 \}$ then $M$ and $N$ are independent.}
+    \begin{proof}
+      \step{2a}{\assume{$M \cap N = \{ 0 \}$}}
+      \step{2b}{\pflet{$m \in M$, $n \in N$} \assume{$m + n = 0$}}
+      \step{2c}{$m = -n$}
+      \step{2d}{$m \in M \cap N$}
+      \step{2e}{$m = 0$}
+      \step{2f}{$n = 0$}
+    \end{proof}
+    \qed
+  \end{proof}
+  
+  \begin{cor}
+    Let $M$ and $N$ be subspaces of $V$. Then $V \cong M \oplus N$ via the 
+    canonical isomorphism if and only if $V = M + N$ and $M \cap N = \{ 0 \}$.
+  \end{cor}
+  
+  \begin{df}
+    In this case, we say $M$ and $N$ are \emph{complementary} subspaces, and 
+    each 
+    is a \emph{complement} of the other.
+  \end{df}
+  
+  \begin{lm}
+    If $V_1$, \ldots, $V_n$ are independent subspaces of $V$, and $U_{i1}$, 
+    \ldots, $U_{ir_i}$ are independent subspaces of $V_i$, then $U_{11}$, 
+    \ldots, 
+    $U_{nr_n}$ are independent subspaces of $V$.
+  \end{lm}
+  
+  \begin{thm}
+    \label{thm:linear:direct_sum}
+    Let $P_1, \ldots, P_n : V \rightarrow V$ satisfy $\sum_{i=1}^n P_i = I$ and 
+    $P_i \circ P_j = 0$ for $i \neq j$. Let $V_i = \im P_i$. Then $V \cong 
+    \bigoplus_{i=1}^n V_i$ and $P_i$ is the projection onto $V_i$.
+  \end{thm}
+  
+  \begin{proof}
+    \pf
+    \step{1}{$V = V_1 + \cdots + V_n$}
+    \begin{proof}
+      $v = P_1(v) + \cdots + P_n(v)$.
+    \end{proof}
+    \step{2}{If $v \in V_i$ then $P_i(v) = v$}
+    \begin{proof}
+      \pf $v = P_1(v) + \cdots + P_n(v) = P_i(v)$.
+    \end{proof}
+    \step{3}{$V_1$, \ldots, $V_n$ are independent.}
+    \begin{proof}
+      \step{2a}{\pflet{$v_1 \in V_1$, \ldots, $v_n \in V_n$}}
+      \step{2b}{\pflet{$v_1 = P_1(u_1)$, \ldots, $v_n = P_n(u_n)$}}
+      \step{2c}{\assume{$v_1 + \cdots + v_n = 0$}}
+      \step{2d}{For each $i$, $v_i = 0$}
+      \begin{proof}
+        \pf
+        \begin{align*}
+          v_i & = P_i(v_i) & (\text{\stepref{2}}) \\
+          & = P_i(v_1 + \cdots + v_n) \\
+          & = P_i(0) \\
+          & = 0
+        \end{align*}
+      \end{proof}
+    \end{proof}
+    \qed
+  \end{proof}
+  
+  \begin{thm}
+    Let $P : V \rightarrow V$ satisfy $P \circ P = P$. Then $V \cong \im P 
+    \oplus 
+    \ker P$ and $P$ is the projection $V \cong \im P \oplus \ker P \rightarrow 
+    \im 
+    P$.
+  \end{thm}
+  
+  \begin{proof}
+    \step{1}{\pflet{$Q = I - P$}}
+    \step{2}{$PQ = 0$}
+    \begin{proof}
+      \pf $PQ = P-P^2 = 0$
+    \end{proof}
+    \step{3}{$QP = 0$}
+    \begin{proof}
+      \pf\ Similar.
+    \end{proof}
+    \step{4}{$V \cong \im P \oplus \im Q$}
+    \begin{proof}
+      \pf\ By Theorem \ref{thm:linear:direct_sum}.
+    \end{proof}
+    \step{5}{$\im Q = \ker P$}
+    \begin{proof}
+      \step{5a}{For all $v \in V$ we have $Q(v) \in \ker P$}
+      \begin{proof}
+        \pf\ By \stepref{2}.
+      \end{proof}
+      \step{5b}{For all $v \in \ker P$ we have $v \in \im Q$}
+      \begin{proof}
+        \pf $Q(v) = v - P(v) = v$.
+      \end{proof}
+    \end{proof}
+    \qed
+  \end{proof}
+  
+  \begin{thm}
+    If $V$ and $W$ are vector spaces over $K$, then $\mathbf{Vect}_K[V, W]$ is 
+    a 
+    subspace of $W^V$.
+  \end{thm}
+  
+  \begin{thm}
+    Composition is a bilinear map $\mathbf{Vect}_K[W, X] \times 
+    \mathbf{Vect}_K[V, W] \rightarrow \mathbf{Vect}_K[V, X]$.
+  \end{thm}
+  
+  \begin{thm}
+    Let $T$ be a surjective linear map from the vector space $V$ to the vector 
+    space $W$, and let $N$ be its kernel. Then a subspace $M$ is a complement 
+    of $N$ if and only if the restriction of $T$ to $M$ is an isomorphism from 
+    $M$ to $W$. The mapping $M \mapsto \inv{(T \restriction M)}$ is a bijection 
+    from the set of all such complementary subspaces of $M$ to the set of all 
+    linear right inverses of $T$.
+  \end{thm}
+  
+  \begin{proof}
+    \pf\ 
+    The inverse of the mapping takes a right inverse $S$ to $\im S$. \qed
+  \end{proof}
+  
+  
+  \subsection{Affine Subspaces}
+  
+  \begin{df}[Affine Subspace]
+    Let $V$ be a vector space over $K$, $N$ a subspace of $V$, and $\alpha \in 
+    V$.
+    Then the \emph{coset} of $N$ containing $\alpha$, or the \emph{affine 
+      subspace} of $V$ through $\alpha$ and parallel to $N$, or the 
+    \emph{translate} of $N$ through $\alpha$, is the set
+    \[ N + \alpha = \{ \xi + \alpha : \xi \in N \} \enspace . \]
+  \end{df}
+  
+  \begin{lm}
+    \label{lm:linear:affine:coset}
+    If $\gamma \in N + \alpha$ then $N + \gamma = N + \alpha$.
+  \end{lm}
+  
+  \begin{proof}
+    \pf
+    \step{1}{\assume{$\gamma = n + \alpha$}}
+    \step{2}{$N + \gamma \subseteq N + \alpha$}
+    \begin{proof}
+      \pf\ For all $n' \in N$, we have $n' + \gamma = (n' + n) + \alpha$.
+    \end{proof}
+    \step{3}{$N + \alpha \subseteq N + \gamma$}
+    \begin{proof}
+      \pf\ For all $n' \in N$, we have $n' + \alpha = (n' - n) + \gamma$.
+    \end{proof}
+    \qed
+  \end{proof}
+  
+  \begin{lm}
+    The cosets of $N$ partition $V$.
+  \end{lm}
+  
+  \begin{proof}
+    \pf\ If $N + \alpha$ and $N + \beta$ are not disjoint, say $\gamma \in N + 
+    \alpha \cap N + \beta$, then $N + \alpha = N + \gamma = N + \beta$. \qed
+  \end{proof}
+  
+  \begin{lm}
+    Given a family of cosets $\{ N_i + \alpha_i \}_{i \in I}$, we have
+    $\bigcap_{i \in I} (N_i + \alpha_i)$ is either empty or a coset of 
+    $\bigcap_{i \in I} N_i$.
+  \end{lm}
+  
+  \begin{proof}
+    \pf
+    \step{1}{\assume{$\beta \in \bigcap_{i \in I} (N_i + \alpha_i)$}}
+    \step{2}{$\bigcap_{i \in I} (N_i + \alpha_i) = \bigcap_{i \in I} N_i + 
+      \beta$}
+    \begin{proof}
+      \pf
+      \begin{align*}
+        \bigcap_{i \in I} (N_i + \alpha_i) & = \bigcap_{i \in I} (N_i + \beta) 
+        & 
+        (\text{Lemma \ref{lm:linear:affine:coset}}) \\
+        & = \bigcap_{i \in I} N_i + \beta
+      \end{align*}
+    \end{proof}
+  \end{proof}
+  
+  \begin{lm}
+    The sum of two cosets is a coset.
+  \end{lm}
+  
+  \begin{proof}
+    \pf\ $(M + \alpha) + (N + \beta) = (M + N) + (\alpha + \beta)$. \qed
+  \end{proof}
+  
+  \begin{lm}
+    Let $T : V \rightarrow W$ be a linear transformation. The image under $T$ of 
+    a 
+    coset in $V$ is a coset in $W$.
+  \end{lm}
+  
+  \begin{proof}
+    \pf\ $T(N + \alpha) = T(N) + T(\alpha)$. \qed
+  \end{proof}
+  
+  \begin{cor}
+    For any coset $A = N + \alpha$ and $\lambda \in K$, we have that $\lambda 
+    A$ 
+    is a coset, namely $\lambda A = N + \lambda \alpha$.
+  \end{cor}
+  
+  \begin{lm}
+    Let $T : V \rightarrow W$ be a linear transformation and $A$ a coset in 
+    $W$. 
+    Then $\inv{T}(A)$ is either empty or a coset in $V$.
+  \end{lm}
+  
+  \begin{proof}
+    \pf
+    \step{1}{\pflet{$\alpha \in \inv{T}(A)$}}
+    \step{2}{\pflet{$A = N + T(\alpha)$}}
+    \step{3}{$\inv{T}(A) = \inv{T}(N) + \alpha$}
+    \qed
+  \end{proof}
+  
+  \begin{df}[Affine Transformation]
+    Let $V$ and $W$ be vector spaces over $K$. An \emph{affine transformation} 
+    $S 
+    : V \rightarrow W$ is a function of the form
+    \[ S(v) = T(v) + \alpha \]
+    where $T : V \rightarrow W$ is a linear transformation, and $\alpha \in W$.
+  \end{df}
+  
+  \begin{lm}
+    The image of a coset under an affine transformation is a coset.
+  \end{lm}
+  
+  \begin{proof}
+    \pf\ Let $S(v) = T(v) + \alpha$. Then $S(N + \beta) = T(N) + (T(\beta) + 
+    \alpha)$. \qed
+  \end{proof}
+  
+  \begin{thm}
+    Let $N$ be a subspace of $V$. The cosets of $N$ form a vector space $V / N$ 
+    under 
+    \begin{align*}
+      (N + \alpha) + (N + \beta) & = N + (\alpha + \beta)
+      \lambda (N + \alpha) & = N + \lambda \alpha
+    \end{align*}
+    The mapping $\pi : V \rightarrow V / N$
+    \[ \pi(v) = N + v \]
+    is a surjective linear transformation with kernel $N$.
+    
+    For any vector space $W$ and linear transformation $T : V \rightarrow W$ 
+    such 
+    that $N \subseteq \ker T$, there exists a unique linear transformation 
+    $\overline{T} : V / N \rightarrow W$ such that the following diagram 
+    commutes.
+    \[ \begin{tikzcd}
+      V \ar[r, "\pi"] \ar[dr, "T"] & V / N \ar[d, "\overline{T}"] \\
+      & W
+    \end{tikzcd} \]
+  \end{thm}
+  
+  \begin{thm}
+    Let $T : V \rightarrow V$ and $N$ be a subspace of $V$. If $T(N) \subseteq 
+    N$, 
+    then there exists a unique $S : V / N \rightarrow V / N$ such that $S \circ 
+    \pi 
+    = \pi \circ T$.
+  \end{thm}
+  
+  \begin{thm}[Second Isomorphism Theorem]
+    Let $M$ and $N$ be subspaces of $V$. Then $(M+N)/N \cong M/(M\cap N)$.
+  \end{thm}
+  
+  \begin{thm}[Third Isomorphism Theorem]
+    Let $N$ be a subspace of $V$ and $M$ a subspace of $N$. Then $M/N$ is a 
+    subspace of $V/N$, and
+    \[ (V/N)/(M/N) \cong V/M \]
+  \end{thm}
+  
+  \begin{proof}
+    \step{1}{\pflet{$T : V / N \rightarrow V/M$ be the unique linear 
+        transformation such that $T \circ \pi_N = \pi_M$}}
+    \step{2}{\pflet{$S : (V/N)/(M/N) \rightarrow V/M$ be the unique linear 
+        transformation such that $S \circ \pi = T$}}
+    \step{3}{$S$ is injective}
+    \step{4}{$S$ is surjective}
+  \end{proof}
+  
+  \section{Normed Spaces}
+  
+  \begin{df}[Norm]
+    Let $V$ be a vector space over $K = \mathbb{R}$ or $K = \mathbb{C}$. A 
+    \emph{norm} on $V$ is a function $\| \
+    \| : V \rightarrow \mathbb{R}$ such that, for all $x, y \in V$ and $\lambda 
+    \in
+    K$,
+    \begin{enumerate}
+      \item $\| x \| \geq 0$
+      \item If $\| x \| = 0$ then $x=0$
+      \item $\| \lambda x \| = | \lambda | \| x \|$
+      \item (\emph{Triangle Inequality}) $\| x + y \| \leq \| x \| + \| y \|$
+    \end{enumerate}
+    A \emph{normed space} consists of a complex vector space and a norm.
+  \end{df}
+  
+  \begin{df}
+    In a normed space, the metric \emph{induced} by the norm is $d(x, y) = \| x 
+    - 
+    y \|$.
+    
+    We prove this is a metric.
+  \end{df}
+  
+  \begin{proof}
+    \step{1}{$\| x - y \| \geq 0$}
+    \begin{proof}
+      \pf\ This follows from the positivity of the norm.
+    \end{proof}
+    \step{2}{If $\| x - y \| = 0$ then $x = y$}
+    \begin{proof}
+      \pf\ If $\| x - y \| = 0$ then $x - y = 0$ so $x = y$.
+    \end{proof}
+    \step{3}{$\| x - y \| = \| y - x \|$}
+    \begin{proof}
+      \pf\ \begin{align*}
+        \| x - y \| & = | -1 | \| y - x \| \\
+        & = \| y - x \|
+      \end{align*}
+    \end{proof}
+    \step{4}{$\| x - z \| \leq \| x - y \| + \| y - z \|$}
+    \begin{proof}
+      \pf\ Immediate from the triangle inequality in the definition of norm.
+    \end{proof}
+  \end{proof}
+  
+  \begin{df}[Cauchy Sequence]
+    Let $V$ be a normed space. A sequence $(a_n)$ in $V$ is a \emph{Cauchy
+      sequence} iff, for all $\epsilon > 0$, there exists $N$ such that, for all 
+    $m,
+    n > N$, we have $\| a_m - a_n \| < \epsilon$.
+  \end{df}
+  
+  \begin{df}[Converge]
+    Let $V$ be a normed space. A sequence $(a_n)$ \emph{converges} to the
+    \emph{limit} $l$, $a_n \rightarrow l$ as $n \rightarrow \infty$, iff, for 
+    all
+    $\epsilon > 0$, there exists $N$ such that, for all $n > N$, we have $\| x_n 
+    -
+    l \| < \epsilon$.
+  \end{df}
+  
+  \begin{df}[Complete]
+    A normed space is \emph{complete} or a \emph{Banach space} iff every Cauchy
+    sequence converges.
+  \end{df}
+  
+  \begin{df}[Bounded]
+    Let $U$ and $V$ be normed spaces and $T : U \rightarrow V$ be a linear
+    transformation. Then $T$ is \emph{bounded} iff there exists $M > 0$ such 
+    that,
+    for all $x \in U$,
+    \[x \| T(x) \| \leq M \| x \| \]
+  \end{df}
+  
+  \begin{lm}
+    For any normed space $V$, the identity linear transformation on $V$ is
+    bounded.
+  \end{lm}
+  
+  \begin{proof}
+    We have $\| id{V}(x) \| = 1 \| x \|$.
+  \end{proof}
+  
+  \begin{lm}
+    The composite of two bounded linear transformations is bounded.
+  \end{lm}
+  
+  \begin{proof}
+    Let $S : U \rightarrow V$ and $T : V \rightarrow W$ satisfy
+    \[ \| S(x) \| \leq M \| x \|, \qquad \| T(y) \| \leq N \| y \| \]
+    for $x \in U$ and $y \in V$, where $M, N > 0$. Then
+    \[ \| T(S(x)) \| \leq MN \| x \| \]
+    for $x \in U$.
+  \end{proof}
+  
+  \section{Inner Product Spaces}
+  
+  \begin{df}[Inner Product]
+    Let $V$ be a vector space over $K = \mathbb{R}$ or $K = \mathbb{C}$. An 
+    \emph{inner product} on $V$ is
+    a function $\langle \ , \ \rangle : V^2 \rightarrow K$ such that, for
+    all $x,y,z \in V$ and $\alpha, \beta \in K$:
+    \begin{enumerate}
+      \item $\langle x,y \rangle = \overline{\langle y,x \rangle}$
+      \item $\langle \alpha x + \beta y, z \rangle = \alpha \langle x,z \rangle 
+      +
+      \beta \langle y, z \rangle$
+      \item $\langle x,x \rangle \geq 0$
+      \item If $\langle x,x \rangle = 0$ then $x = 0$.
+    \end{enumerate}
+    An \emph{inner product space} consists of a vector space with an inner
+    product.
+  \end{df}
+  
+  \begin{df}
+    We make $\mathbb{R}^n$ into an inner product space by defining
+    \[ \langle x, y \rangle = x_1 y_1 + \cdots + x_n y_n \]
+    We prove this is an inner product.
+  \end{df}
+  
+  \begin{proof}
+    \step{1}{$\langle x,y \rangle = \langle y,x \rangle$}
+    \begin{proof}
+      \pf\ \begin{align*}
+        \langle x,y \rangle & = x_1 y_1 + \cdots + x_n y_n \\
+        & = y_1 x_1 + \cdots + y_n x-n \\
+        & = \langle y, x \rangle
+      \end{align*}
+    \end{proof}
+    \step{2}{$\langle \alpha x + \beta y, z \rangle = \alpha \langle x,z \rangle 
+      +
+      \beta \langle y, z \rangle$}
+    \begin{proof}
+      \pf\ \begin{align*}
+        \langle \alpha x + \beta y, z \rangle & = (\alpha x_1 + \beta y_1) 
+        z_1 + \cdots + (\alpha x_n + \beta y_n) z_n \\
+        & = \alpha x_1 z-1 + \cdots + \alpha x_n z_n + \beta y_1 z_1 + \cdots + 
+        \beta 
+        y_n z_n \\
+        & = \alpha \langle x, z \rangle + \beta \langle y, z \rangle
+      \end{align*}
+    \end{proof}
+    \step{3}{$\langle x, x \rangle \geq 0$}
+    \begin{proof}
+      \pf\ $\langle x, x \rangle = x_1^2 + \cdots + x_n^2 \geq 0$
+    \end{proof}
+    \step{4}{If $\langle x,x \rangle = 0$ then $x = 0$}
+    \begin{proof}
+      \pf\ If $\langle x, x \rangle = 0$ then $x_1^2 + \cdots + x_n^2 = 0$ so 
+      $x_1 = \cdots = x_n = 0$.
+    \end{proof}
+  \end{proof}
+  
+  \begin{lm}
+    \[ \langle x, \alpha y + \beta z \rangle = \overline{\alpha} \langle x,z
+    \rangle + \overline{\beta} \langle x, z \rangle \]
+  \end{lm}
+  
+  \begin{proof}
+\begin{align*}
+  \langle x, \alpha y + \beta z \rangle & = \overline{\langle \alpha y + \beta
+z, x \rangle} \\
+& = \overline{\alpha} \overline{\langle y, x \rangle} + \overline{\beta}
+\overline{\langle z, x \rangle} \\
+& = \overline{\alpha} \langle x,y \rangle + \overline{\beta} \langle x, z
+\rangle
+\end{align*}
+\end{proof}
+
+\begin{df}
+  Given an inner product space $V$, define the \emph{norm} $\| \ \| : V
+\rightarrow \mathbb{R}$ by
+\[ \| x \| = \sqrt{\langle x,x \rangle} \]
+\end{df}
+
+\begin{lm}[Schwarz Inequality]
+  \[ |\langle x,y \rangle| \leq \| x \| \| y \| \]
+\end{lm}
+
+\begin{proof}
+Let $\lambda = - \langle x,y \rangle / \| y \|^2$. Then
+  \begin{align*}
+  0 & \leq \| x + \lambda y \|^2 \\
+  & = \langle x + \lambda y, x + \lambda y \rangle \\
+  & = \| x \|^2 + \lambda \langle y,x \rangle + \overline{\lambda} \langle x,y
+\rangle + |\lambda|^2 \| y \|^2 \\
+& =\| x \|^2 - |\langle x,y \rangle|^2/\|y\|^2
+  \end{align*}
+and the desired inequality follows.
+\end{proof}
+
+\begin{lm}
+  The norm on an inner product space is a norm.
+\end{lm}
+
+\begin{proof}
+  \begin{enumerate}
+  \item If $\| x \| = 0$ then $\langle x,x \rangle = 0$ and so $x = 0$.
+  \item \begin{align*}
+          \| \lambda x \|^2 & = \langle \lambda x, \lambda x \rangle \\
+          & = \lambda \overline{\lambda} \langle x,x \rangle \\
+          & = | \lambda |^2 \| x \|^2
+        \end{align*}
+  \item \begin{align*}
+          \| x + y \|^2 & = \langle x + y, x + y \rangle \\
+          & = \| x \|^2 + \langle x,y \rangle + \overline{\langle x,y \rangle}
++ \| y \|^2 \\
+& = \| x \|^2 + 2 \Re \langle x,y \rangle + \| y \|^2 \\
+& \leq \| x \|^2 + 2 |\langle x,y \rangle| + \| y \|^2 \\
+& \leq \| x \|^2 + 2 \| x \| \| y \| + \| y \|^2 & (\text{Schwarz inequality})
+\\
+& = (\| x \| + \| y \|)^2
+        \end{align*}
+  \end{enumerate}
+\end{proof}
+
+\begin{df}[Euclidean Metric]
+The \emph{Euclidean metric} on $\mathbb{R}^n$ is the metric induced by the 
+inner product.
+\end{df}
+
+\begin{lm}
+The topology induced by the Euclidean metric is the same as that induced by 
+the square metric.
+\end{lm}
+
+\begin{proof}
+  \step{0}{\pflet{$d$ be the Euclidean metric and $\rho$ the square metric on 
+$\mathbb{R}^n$}}
+\step{1}{For all $\vec{x} \in \mathbb{R}^n$ and $\epsilon > 0$, we have 
+$B_\rho(\vec{x}, \epsilon / \sqrt{n}) \subseteq B_d(\vec{x}, \epsilon)$}
+  \begin{proof}
+    \step{i}{$d(\vec{x}, \vec{y}) \leq \sqrt{n} \rho(\vec{x}, \vec{y})$}
+    \begin{proof}
+      \pf\ \begin{align*}
+            d(\vec{x}, \vec{y})^2 & = (y_1 - x_1)^2 + \cdots + (y_n - x_n)^2
+            & \leq n \max((y_1 - x_1)^2, \ldots, (y_n - x_n)^2) \\
+            & = n \rho(\vec{x}, \vec{y})^2
+          \end{align*}
+    \end{proof}
+  \end{proof}
+\step{2}{For all $\vec{x} \in \mathbb{R}^n$ and $\epsilon > 0$, we have 
+$B_d(\vec{x}, \epsilon) \subseteq B_\rho(\vec{x}, \epsilon)$}
+  \begin{proof}
+    \step{i}{$\rho(\vec{x}, \vec{y}) \leq d(\vec{x}, \vec{y})$}
+    \begin{proof}
+      \pf\ \begin{align*}
+            \rho(\vec{x}, \vec{y})
+            & = \max(|y_1 - x_1|, \ldots, |y_n - x_n|) \\
+            & \leq \sqrt((y_1 - x_1)^2 + \cdots + (y_n - x_n)^2) \\
+            & = d(\vec{x}, \vec{y})
+          \end{align*}
+    \end{proof}
+  \end{proof}
+\end{proof}
+
+\begin{cor}
+The topology induced by the Euclidean metric is the product topology on 
+$\mathbb{R}^n$.
+\end{cor}
+
+\begin{proof}
+From Theorem \ref{thm:topology:metric:square_product}.
+\end{proof}
+
+\begin{df}[Category of Hilbert Spaces]
+  The \emph{category of Hilbert spaces} $\mathbf{Hilb}$ has objects all Hilbert
+spaces and morphisms all bounded linear transformations.
+\end{df}
+
+\begin{thm}
+$\mathbf{Hilb}$ is a compact symmetric monoidal category under $\otimes$ with 
+unit $\mathbb{C}$
+\end{thm}
+
+\begin{thm}
+$\mathbf{Hilb}$ is a dagger category.
+\end{thm}
+
+\begin{proof}
+\pf\ Given $f : U \rightarrow V$, let $f^\dagger : V \rightarrow U$ be the 
+unique linear transformation such that
+\[ \langle f^\dagger(v), u \rangle = \langle v, f(u) \rangle \]
+for all $u \in U$ and $v \in V$.
+\end{proof}
+
+\begin{thm}
+$\mathbf{Hilb}$ is a Cartesian monoidal category under $\oplus$ with unit 
+$\{0\}$.
+\end{thm}
+
+\begin{df}[Representation]
+A \emph{representation} of a group $G$ on a Hilbert space is a functor $G 
+\rightarrow \mathbf{Hilb}$.
+
+An \emph{intertwining operator} between representations $A, B : G \rightarrow 
+\mathbf{Hilb}$ is a natural transformation $A \Rightarrow B$.
+\end{df}
+
+\begin{thm}
+$\mathbf{Hilb}$ is not Cartesian.
+\end{thm}
+
+To read:
+
+J. S. Bell, On the Einstein-Podolsky-Rosen paradox, Physics 1 (1964), 195–200.
+
+W. K. Wootters and W. H. Zurek, A single quantum cannot be cloned, Nature 299 
+(1982), 802–803.
+
+\subsection{The $l^2$-metric}
+
+\begin{lm}
+Let $\vec{x}$ and $\vec{y}$ be two sequences of real numbers such that 
+$\sum_{i=0}^\infty x_i^2 < \infty$ and $\sum_{i=0}^\infty y_i^2 < \infty$. Then
+$\sum_{i=0}^\infty |x_i y_i| < \infty$.
+\end{lm}
+
+\begin{proof}
+\pf
+\step{1}{$\{ \sum_{i=0}^n |x_i y_i| : n \in \mathbb{N} \}$ is bounded above by 
+$\sqrt{\sum_{i=0}^\infty x_i^2 \sum_{i=0}^\infty y_i^2}$}
+\begin{proof}
+\step{1a}{\pflet{$n \in \mathbb{N}$}}
+\step{1b}{\pflet{$\vec{a} = (|x_0|, \ldots, |x_n|), \vec{b} = (|y_0|, \ldots, 
+|y_n|)$}}
+\step{1c}{$\sum_{i=0}^n |x_i y_i| \leq \sqrt{\sum_{i=0}^\infty x_i^2 
+\sum_{i=0}^\infty y_i^2}$}
+\begin{proof}
+\pf
+\begin{align*}
+  \sum_{i=0}^n |x_i y_i| & = \langle \vec{a}, \vec{b} \rangle \\
+  & \leq \| \vec{a} \| \| \vec{b} \| & (\text{Schwarz Inequality}) \\
+  & \leq \sqrt{\sum_{i=0}^\infty x_i^2} \sqrt{\sum_{i=0}^\infty y_i^2}
+\end{align*}
+\end{proof}
+\end{proof}
+\qedstep
+\begin{proof}
+\pf\ By Lemma \ref{lm:analysis:increasing_converge}.
+\end{proof}
+\end{proof}
+
+\section{Algebras}
+
+\begin{df}[Algebra]
+  Let $K$ be a field. An \emph{algebra} $V$ over $K$ consists of:
+  \begin{itemize}
+  \item a vector space $V$ over $K$
+  \item a function $\cdot : V^2 \rightarrow V$, the \emph{multiplication}
+  \end{itemize}
+such that, for all $x,y,z \in V$ and $\alpha \in K$,
+\begin{itemize}
+\item $x(yz) = (xy)z$
+\item $x(y+z) = xy+xz$
+\item $(x+y)z = xz+yz$
+\item $\alpha(xy) = (\alpha x)y = x (\alpha y)$
+\end{itemize}
+\end{df}
+
+\begin{thm}
+  If $V$ is a vector space over $K$, then $\mathbf{Vect}_K[V, V]$ is an algebra 
+over $K$ under composition.
+\end{thm}
+
+\begin{lm}
+For any set $A$, the vector space $K^A$ is an algebra over $K$ under pointwise 
+multiplication.
+\end{lm}
+
+\begin{lm}
+  The vector space $\mathcal{C}([0,1])$ is a real algebra under pointwise 
+multiplication.
+\end{lm}
+
+\section{Cobordisms}
+
+\begin{df}
+Let $n\mathbf{Cob}$ be the category whose objects are 
+$(n-1)$-dimensional manifolds, and morphisms are $n$-dimensional cobordisms.
+\end{df}
+
+To read: S. Sawin, Links, quantum groups and TQFTs, Bull. Amer. Math. Soc. 33 
+(1996), 413-445. Also available
+as arXiv:q-alg/9506002
+
+\begin{thm}
+$n\mathbf{Cob}$ is a compact symmetric monoidal category, with $\otimes$ given 
+by 
+disjoint union.
+\end{thm}
+
+\begin{thm}
+$n\mathbf{Cob}$ is a dagger category, with $f^\dagger : Y \rightarrow X$ the 
+reflection of $f : X \rightarrow Y$.
+\end{thm}
+
+\section{Tangles}
+
+\begin{df}
+Let $\mathbf{Tang}_k$ be the category whose morphisms are $k$-codimensional 
+tangles.
+\end{df}
+
+To read:
+P. Freyd and D. Yetter, Braided compact monoidal categories with applications 
+to 
+low dimensional topol-
+ogy, Adv. Math. 77 (1989), 156–182.
+
+C. Kassel, Quantum Groups, Springer, Berlin, 1995.
+
+S. Sawin, Links, quantum groups and TQFTs, Bull. Amer. Math. Soc. 33 (1996), 
+413-445. Also available
+as arXiv:q-alg/9506002.
+
+M.-C. Shum, Tortile tensor categories, Jour. Pure Appl. Alg. 93 (1994), 57–110.
+
+V. G. Turaev, Quantum Invariants of Knots and 3-Manifolds, de Gruyter, Berlin, 
+1994.
+
+D. N. Yetter, Functorial Knot Theory: Categories of Tangles, Coherence, 
+Categorical Deformations, and
+Topological Invariants, World Scientific, Singapore, 2001.
+
+J. Baez and J. Dolan, Higher-dimensional algebra and topological quantum field 
+theory, Jour. Math. Phys.
+36 (1995), 6073–6105. Also available as arXiv:q-alg/9503002.
+
+M.-C. Shum, Tortile tensor categories, Jour. Pure Appl. Alg. 93 (1994), 57–110.
+
+\begin{thm}
+The category $\mathbf{Tang}_k$ is a dagger category with $f^\dagger : Y 
+\rightarrow X$ being the reflection of $f : X \rightarrow Y$.
+\end{thm}
+
+\begin{thm}
+If $k \geq 1$ then $\mathbf{Tang}_k$ is a compact monoidal category, with 
+$\otimes$ given by disjoint 
+union.
+\end{thm}
+
+\begin{thm}
+If $k \geq 2$ then $\mathbf{Tang}_k$ is a braided monoidal category.
+\end{thm}
+
+\begin{thm}
+If $k \geq 3$ then $\mathbf{Tang}_k$ is a symmetric monoidal category.
+\end{thm}
+
+\begin{thm}
+For all $m, n \geq 3$, the categories $\mathbf{Tang}_m$ andn $\mathbf{Tang}_n$ 
+are equivalent.
+\end{thm}
+
+Proof: See J. Baez and J. Dolan, Higher-dimensional algebra and topological 
+quantum field theory, Jour. Math. Phys.
+36 (1995), 6073–6105. Also available as arXiv:q-alg/9503002.
+
+\chapter{Knot Theory}
+
+\begin{df}[Unit Ball]
+  For $n \in \mathbb{N}$, the \emph{unit $n$-ball} is the subspace
+  \[ D^n = \{ x \in \mathbb{R}^n : |x| \leq 1 \} \]
+\end{df}
+
+\begin{df}[Unit Sphere]
+  For $n \in \mathbb{N}$, the \emph{unit $n$-sphere} is the subspace
+  \[ S^{n-1} = \{ x \in \mathbb{R}^n : |x| = 1 \} \]
+\end{df}
+
+\begin{df}[Knot]
+Let $X$ be a topological space.
+  A \emph{knot} in $X$ is a subspace of $X$ that is homeomorphic with $S^p$ for
+some $p$.
+
+A \emph{link} is a sequence of disjoint knots.
+
+Two knots $K$, $K'$ are \emph{equivalent} iff there exists an automorphism
+$\phi : X \cong X$ such that $\phi(K) = K'$.
+
+Two links of the same length $(K_1, \ldots, K_n)$ and $(K_1', \ldots, K_n')$
+are \emph{equivalent} iff there exists an automorphism $\phi : X \cong X$ such
+that $\phi(K_i) = K_i'$ for all $i$.
+
+A \emph{knot type} is an equivalence class of knots.
+
+A \emph{link type} is an equivalence class of links.
+\end{df}
+
+\end{document}

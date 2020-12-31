@@ -1,0 +1,1370 @@
+\chapter{Set Theory}
+
+\section{Primitive Notions}
+
+Let there be \emph{sets}.
+
+Given sets $A$ and $B$, let there be \emph{functions} from $A$ to $B$. We
+write $f : A \rightarrow B$ iff $f$ is a function from $A$ to $B$.
+
+Given functions $f : A \rightarrow B$ and $g : B \rightarrow C$, let there be
+a function $g \circ f : A \rightarrow C$, the \emph{composite} of $f$ and $g$.
+
+\begin{df}[Injective]
+  A function $f : A \rightarrow B$ is \emph{injective}, $f : A
+  \rightarrowtail B$, iff, for every set $X$ and functions $g, h : X
+  \rightarrow
+  A$, if $f \circ g = f \circ h$ then $g = h$.
+\end{df}
+
+\begin{df}[Surjective]
+  Let $f : A \rightarrow B$. Then $f$ is \emph{surjective}, $f : A
+\twoheadrightarrow B$, iff, for any set
+  $X$ and functions $g, h : B \rightarrow X$, if $g \circ f = h \circ f$ then
+  $g
+  = h$.
+\end{df}
+
+\section{Axioms}
+
+\subsection{Axioms for a Category}
+
+\begin{ax}[Associativity]
+  Let $f : A \rightarrow B$, $g : B \rightarrow C$ and $h : C \rightarrow D$.
+  Then $h \circ (g \circ f) = (h \circ g) \circ f : A \rightarrow D$.
+\end{ax}
+
+From now on we write $h \circ g \circ f$ for the composite of $f$, $g$ and
+$h$, and similarly for more than three functions.
+
+\begin{lm}
+ Let $f : A \rightarrow B$ and $g : B \rightarrow C$. If $f$ and $g$ are
+injective then $g \circ f$ is injective.
+\end{lm}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\assume{$f$ and $g$ are injective.}}
+ \step{<1>2}{\pflet{$X$ be a set and $x, y : X \rightarrow A$}}
+ \step{<1>3}{\assume{$g \circ f \circ x = g \circ f \circ y$}}
+ \step{<1>4}{$f \circ x = f \circ y$}
+ \begin{proof}
+   \pf\ $g$ is injective (\stepref{<1>1})
+ \end{proof}
+ \step{<1>5}{$x = y$}
+ \begin{proof}
+   \pf\ $f$ is injective (\stepref{<1>1})
+ \end{proof}
+ \qed
+\end{proof}
+
+\begin{lm}
+ Let $f : A \rightarrow B$ and $g : B \rightarrow C$. If $f$ and $g$ are
+surjective then $g \circ f$ is surjective.
+\end{lm}
+
+\begin{proof}
+ \pf\ Dual. \qed
+\end{proof}
+
+\begin{lm}
+ Let $f : A \rightarrow B$ and $g : B \rightarrow C$. If $g \circ f$ is
+injective then $f$ is injective.
+\end{lm}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\assume{$g \circ f$ is injective.}}
+ \step{<1>2}{\pflet{$X$ be any set and $x, y : X \rightarrow A$}}
+ \step{<1>3}{\assume{$f \circ x = f \circ y$}}
+ \step{<1>4}{$g \circ f \circ x = g \circ f \circ y$}
+ \step{<1>5}{$x = y$}
+ \begin{proof}
+   \pf\ Using \stepref{<1>1}.
+ \end{proof}
+ \qed
+\end{proof}
+
+\begin{lm}
+ Let $f : A \rightarrow B$ and $g : B \rightarrow C$. If $g \circ f$ is
+surjective then $g$ is surjective.
+\end{lm}
+
+\begin{proof}
+ \pf\ Dual. \qed
+\end{proof}
+
+\begin{ax}[Identity Function]
+  For any set $A$, there exists a function $\id{A} : A \rightarrow A$, the
+  \emph{identity} function on $A$, such that:
+  \begin{description}
+    \item[Left Unit Law] for every set $B$ and function $f : B \rightarrow A$
+    we have $\id{A}      \circ f = f : B \rightarrow A$;
+    \item[Right Unit Law] for every set $B$ and function $f : A \rightarrow
+    B$
+    we have $f      \circ \id{A} = f : A \rightarrow B$.
+  \end{description}
+\end{ax}
+
+\begin{prop}
+  The identity function on a set is unique.
+\end{prop}
+
+\begin{proof}
+  \pf If $i, j : A \rightarrow A$ are both identity functions, then
+  \begin{align*}
+    i & = i \circ j & (\text{Right Unit Law for } j) \\
+    & = j & (\text{Left Unit Law for } i) \\
+    & : A \rightarrow A & \qed
+  \end{align*}
+\end{proof}
+
+\begin{prop}
+ Every identity function is injective.
+\end{prop}
+
+\begin{proof}
+  \pf\ If $\id{B} \circ x = \id{B} \circ y$ then $x = y$ by the Left Unit
+Law. \qed
+\end{proof}
+
+\begin{prop}
+Every identity function is surjective.
+\end{prop}
+
+\begin{proof}
+\pf\ Dual. \qed
+\end{proof}
+
+\begin{df}[Retraction, Section]
+  Let $r : A \rightarrow B$ and $s : B \rightarrow A$. Then $r$ is a
+  \emph{retraction} of $s$, and $s$ is a \emph{section} of $r$, iff $r \circ
+  s = \id{B}$.
+\end{df}
+
+\begin{prop}
+\label{prop:sets:retraction:comp}
+If $r_1 : A \rightarrow B$ is a retraction of $s_1 : B \rightarrow A$ and $r_2 : B \rightarrow C$ is a retraction of $s_2 : C \rightarrow B$ then $r_2 \circ r_1$ is a retraction of $s_1 \circ s_2$.
+\end{prop}
+
+\begin{proof}
+\pf
+\begin{align*}
+r_2 \circ r_1 \circ s_1 \circ s_2 & = r_2 \circ \id{B} \circ s_2 & (\text{$r_1$ is a retraction of $s_1$}) \\
+& = r_2 \circ s_2 & (\text{Unit Laws}) \\
+& = \id{C} & (\text{$r_2$ is a retraction of $s_2$})
+\end{align*}
+\qed
+\end{proof}
+
+\begin{prop}
+\label{prop:sets:retraction:surjective}
+Every retraction is surjective.
+\end{prop}
+
+\begin{proof}
+\pf
+\step{<1>1}{\pflet{$r : A \rightarrow B$ be a retraction of $s$}}
+\step{<1>2}{\pflet{$X$ be a set and $x, y : B \rightarrow X$ with $x \circ r = y \circ r$}}
+\step{<1>3}{$x \circ r \circ s = y \circ r \circ s$}
+\step{<1>4}{$x = y$}
+\qed
+\end{proof}
+
+\begin{prop}
+\label{prop:sets:section:injective}
+Every section is injective.
+\end{prop}
+
+\begin{proof}
+\pf\ Dual. \qed
+\end{proof}
+
+\begin{prop}
+\label{prop:sets:retraction:id}
+Every identity function is a retraction of itself.
+\end{prop}
+
+\begin{proof}
+\pf\ Immediate from the Unit Laws. \qed
+\end{proof}
+
+\begin{prop}
+\label{prop:sets:retraction:ret_sect_unique}
+If $r : B \rightarrow A$ is a retraction of $f : A \rightarrow B$ and $s$ is a section of $f$  then $ r = s$.
+\end{prop}
+
+\begin{proof}
+\pf
+\begin{align*}
+r & = r \circ \id{B} & (\text{Right Unit Law}) \\
+& = r \circ f \circ s & (\text{$s$ is a section of $f$}) \\
+& = \id{A} \circ s & (\text{$r$ is a retraction of $f$}) \\
+& = s & (\text{Left Unit Law})
+\end{align*}
+\end{proof}
+
+\subsection{Isomorphisms}
+
+\begin{df}[Isomorphism]
+Let $A$ and $B$ be sets. A function $i : A \rightarrow B$  is an
+\emph{isomorphism} between $A$ and $B$, $i : A \cong B$, iff there exists a
+function $\inv{i} : B \rightarrow A$, the \emph{inverse} to $i$, that is a
+section and a retraction of $i$.
+\end{df}
+
+\begin{prop}
+The inverse of an isomorphism is unique.
+\end{prop}
+
+\begin{proof}
+\pf\ Immediate from Proposition \ref{prop:sets:retraction:ret_sect_unique}. \qed
+\end{proof}
+
+\begin{prop}
+Every isomorphism is injective.
+\end{prop}
+
+\begin{proof}
+\pf\ Immediate from Proposition \ref{prop:sets:section:injective}. \qed
+\end{proof}
+
+\begin{prop}
+Every isomorphism is surjective.
+\end{prop}
+
+\begin{proof}
+\pf\ Immediate from Proposition \ref{prop:sets:retraction:surjective}. \qed
+\end{proof}
+
+\begin{prop}
+\label{prop:sets:isomorphism:identity}
+Every identity function is an isomorphism and is its own inverse.
+\end{prop}
+
+\begin{proof}
+\pf\ Immediate from Proposition \ref{prop:sets:retraction:id}. \qed
+\end{proof}
+
+\begin{prop}
+\label{prop:sets:isomorphism:inverse}
+If $i : A \cong B$ is an isomorphism then $\inv{i} : B \cong A$ is an
+isomorphism and $\inv{(\inv{i})} = i$.
+\end{prop}
+
+\begin{proof}
+\pf\ Immediate from the definition of isomorphism. \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:sets:isomorphism:comp}
+If $i : A \cong B$ and $j : B \cong C$ then $j \circ i : A \cong C$ and
+$\inv{(j \circ i)} = \inv{i} \circ \inv{j}$.
+\end{prop}
+
+\begin{proof}
+\pf\ Immediate from Proposition \ref{prop:sets:retraction:comp}. \qed
+\end{proof}
+
+
+\subsection{Parts of a Set}
+
+\begin{df}[Part]
+  A \emph{part} $S$ of a set $A$ consists of:
+  \begin{itemize}
+   \item a set $\dom S$;
+   \item an injective function $i : S \hookrightarrow A$
+  \end{itemize}
+\end{df}
+
+\begin{df}
+  Two parts $i : S \hookrightarrow A$, $j : T \hookrightarrow A$ are
+  \emph{equivalent}, $i \equiv_A j$, iff there exists an isomorphism $\phi :
+S \cong T$ such that $i = j \circ \phi$.
+\end{df}
+
+\begin{prop}
+ Any part of a set is equivalent to itself.
+\end{prop}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\pflet{$i : S \hookrightarrow A$ be a part of $A$.} \prove{$i
+     \equiv_A i$}}
+ \step{<1>2}{$\id{S} : S \cong S$}
+ \begin{proof}
+   \pf\ By Proposition \ref{prop:sets:isomorphism:identity}
+ \end{proof}
+ \step{<1>3}{$i = i \circ \id{S}$}
+ \begin{proof}
+   \pf\ By the Right Unit Law.
+ \end{proof}
+ \qed
+\end{proof}
+
+\begin{prop}
+ If $i \equiv_A j$ then $j \equiv_A i$.
+\end{prop}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\pflet{$i : S \hookrightarrow A$ and $j : T \hookrightarrow A$}}
+ \step{<1>2}{\assume{$i \equiv_A j$}}
+ \step{<1>3}{\pick\ an isomorphism $\phi : S \cong T$ such that $i = j \circ
+   \phi$}
+ \step{<1>4}{$\inv{\phi} : T \cong S$}
+ \begin{proof}
+   \pf\ By Proposition \ref{prop:sets:isomorphism:inverse}.
+ \end{proof}
+ \step{<1>5}{$j = i \circ \inv{\phi}$}
+ \begin{proof}
+   \pf\ Compose both sides of \stepref{<1>3} with $\inv{\phi}$.
+ \end{proof}
+ \qed
+\end{proof}
+
+\begin{prop}
+  If $i \equiv_A j$ and $j \equiv_A k$ then $i \equiv_A k$.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$i : R \hookrightarrow A$, $j : S \hookrightarrow A$ and $k : T \rightarrow A$}}
+  \step{<1>2}{\pick\ isomorphisms $\phi : R \cong S$ and $\psi : S \cong T$ such that $i = j \circ \phi$ and $j = k \circ \psi$}
+  \step{<1>3}{$\psi \circ \phi : R \cong T$}
+  \begin{proof}
+    \pf\ By Proposition \ref{prop:sets:isomorphism:comp}.
+  \end{proof}
+  \step{<1>4}{$i = k \circ \psi \circ \phi$}
+\qed
+\end{proof}
+
+\begin{df}[Inclusion]
+ Let $i : U \hookrightarrow A$ and $j : V \hookrightarrow A$ be parts of $A$.
+ Then $i$ is \emph{included} in $j$, $i \subseteq_A j$, iff there exists a
+ function $\phi : U \rightarrow V$ such that $i = j \circ \phi$.
+\end{df}
+
+\begin{prop}
+  If $i \equiv_A i'$ and $j \equiv_A j'$ and $i \subseteq_A j$ then $i' \subseteq_A j'$.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$i : S \hookrightarrow A$, $i' : S' \hookrightarrow A$, $j : T \hookrightarrow A$, $j' : T' \hookrightarrow A$}}
+  \step{<1>2}{\pick\ $\phi : S \cong S'$, $\psi : T \cong T'$ and $\chi : S \rightarrow T$ such that $i = i' \circ \phi$, $j = j' \circ \psi$ and $i = j \circ \chi$}
+  \step{<1>3}{$\psi \circ \chi \circ \inv{\phi} : S' \rightarrow T'$}
+  \step{<1>4}{$i' = j' \circ \psi \circ \chi \circ \inv{\phi}$}
+  \qed
+\end{proof}
+
+\begin{prop}
+  For any part $i$ of $A$ we have $i \subseteq_A i$.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$i : S \hookrightarrow A$}}
+  \step{<1>2}{$\id{S} : S \rightarrow S$}
+  \step{<1>3}{$i = i \circ \id{S}$}
+  \qed
+\end{proof}
+
+\begin{prop}
+  If $i \subseteq_A j$ and $j \subseteq_A k$ then $i \subseteq_A k$.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$i : R \hookrightarrow A$, $j : S \hookrightarrow A$ and $k : T \hookrightarrow A$}}
+  \step{<1>2}{\pick\ $\phi : R \rightarrow S$ and $\psi : S \rightarrow T$ such that $i = j \circ \phi$ and $j = k \circ \psi$}
+  \step{<1>3}{$\psi \circ \phi : R \rightarrow T$}
+  \step{<1>4}{$i = k \circ \psi \circ \phi$}
+  \qed
+\end{proof}
+
+\begin{prop}
+  If $i \subseteq_A j$ and $j \subseteq_A i$ then $i \equiv_A j$.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$i : R \hookrightarrow A$, $j : S \hookrightarrow A$}}
+  \step{<1>2}{\pick\ $\phi : R \rightarrow S$ and $\inv{\phi} : S \rightarrow R$ such that $i = j \circ \phi$ and $j = i \circ \inv{\phi}
+  $}
+  \step{<1>3}{$\phi \circ \inv{\phi} = \id{S}$}
+  \begin{proof}
+    \step{<2>1}{$j \circ \phi \circ \inv{\phi} = j$}
+    \qedstep
+    \begin{proof}
+      \pf\ The result follows because $j$ is injective.
+    \end{proof}
+  \end{proof}
+  \step{<1>4}{$\inv{\phi} \circ \phi = \id{T}$}
+  \begin{proof}
+    \pf\ Similar.
+  \end{proof}
+  \qed
+\end{proof}
+
+\subsection{The Empty Set}
+
+\begin{ax}[Empty Set]
+  There exists a set $\emptyset$, the \emph{empty set}, such that, for every
+  set $X$, there exists a unique function $\magic_X : \emptyset \rightarrow
+  X$.
+\end{ax}
+
+\begin{prop}[Uniqueness of Empty Set]
+  Let $E$ be any set. Then $E$ is empty if and only if there exists an isomorphism $E \cong \emptyset$, in which case the isomorphism is unique.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{If $E$ is empty then $E \cong \emptyset$}
+  \begin{proof}
+    \step{<2>1}{\assume{$E$ is empty}}
+    \step{<2>2}{\pflet{$\phi$ be the unique function $E \rightarrow \emptyset$}}
+    \step{<2>3}{$\magic_E \circ \phi = \id{E}$}
+    \begin{proof}
+      \pf\ There is only one function $E \rightarrow E$.
+    \end{proof}
+    \step{<2>4}{$\phi \circ \magic_E = \id{\emptyset}$}
+    \begin{proof}
+      \pf\ There is only one function $\emptyset \rightarrow \emptyset$.
+    \end{proof}
+  \end{proof}
+  \step{<1>2}{If $E \cong \emptyset$ then $E$ is empty}
+  \begin{proof}
+    \step{<2>1}{\pflet{$\phi : E \cong \emptyset$}}
+    \step{<2>2}{\pflet{$X$ be a set} \prove{There is a unique function $E \rightarrow X$}}
+    \step{<2>3}{$\magic_X \circ \phi : E \rightarrow X$}
+    \step{<2>4}{If $f : E \rightarrow X$ then $f = \magic_X \circ \phi$}
+    \begin{proof}
+      \step{<3>1}{\pflet{$f : E \rightarrow X$}}
+      \step{<3>2}{$f \circ \inv{\phi} : \emptyset \rightarrow X$}
+      \step{<3>3}{$f \circ \inv{\phi} = \magic_X$}
+      \begin{proof}
+        \pf\ Uniqueness of $\magic_X$.
+      \end{proof}
+      \qedstep
+    \end{proof}
+  \end{proof}
+  \step{<1>3}{There is at most one isomorphism $E \cong \emptyset$}
+  \begin{proof}
+    \pf\ This holds because there is at most one function $E \rightarrow \emptyset$.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{prop}
+  \[ \magic_\emptyset = \id{\emptyset} \]
+\end{prop}
+
+\begin{proof}
+  \pf\ By the uniqueness of $\magic_\emptyset$.
+\end{proof}
+
+\subsection{The Terminal Set}
+
+\begin{ax}[Terminal Set]
+  There exists a set $1$, the \emph{terminal set}, such that, for every set
+  $X$, there exists a unique function $!_X : X \rightarrow 1$.
+\end{ax}
+
+\begin{prop}[The Terminal Set is Unique up to Unique Canonical Isomorphism]
+  If $T$ and $T'$ are terminal sets with unique functions $b_X : X \rightarrow T$ and $b_X' : X \rightarrow T'$ for all $X$,
+  then there exists a unique isomorphism $\phi : T \cong T'$ such that, for all $X$, we have $\phi \circ b_X = b_X'$.
+\end{prop}
+
+\begin{proof}
+  \pf\ Dual to Proposition \ref{prop:sets:empty:unique}.
+\end{proof}
+
+\begin{prop}
+  \[ !_1 = \id{1} \]
+\end{prop}
+
+\begin{proof}
+  \pf\ From the uniqueness of $!_1$. \qed
+\end{proof}
+
+\begin{df}[Element]
+  An \emph{element} of a set $A$ is a function $1 \rightarrow A$. We write $a
+  \in A$ for $a : 1 \rightarrow A$. We write $f(a)$ for $f \circ a$ when $f :
+  A \rightarrow B$ and $a \in A$.
+\end{df}
+
+\begin{ax}[Extensionality]
+ Let $A$ and $B$ be sets and $f, g : A \rightarrow B$ be functions. If, for
+all $a \in A$, we have $f(a) = g(a) \in B$, then $f = g$.
+\end{ax}
+
+\begin{prop}
+  \label{prop:sets:injective:elements}
+  Let $f : A \rightarrow B$. Then $f$ is injective if and only if, for all $x, y \in A$, if $f(x) = f(y) \in B$ then $x = y \in A$.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{If $f$ is injective and $f(x) = f(y) \in B$ then $x = y \in A$}
+  \begin{proof}
+    \pf\ Immediate from the definition of injective.
+  \end{proof}
+  \step{<1>2}{If, for all $x, y \in A$, if $f(x) = f(y) \in B$ then $x = y \in A$}
+  \begin{proof}
+    \step{<2>1}{\assume{For all $x, y \in A$, if $f(x) = f(y)$, then $x = y$}}
+    \step{<2>2}{\pflet{$X$ be any set and $g,h : X \rightarrow A$ with $f \circ g = f \circ h$} \prove{$g = h$}}
+    \step{<2>3}{\pflet{$x \in X$} \prove{$g(x) = h(x)$}}
+    \step{<2>4}{$f(g(x)) = f(h(x))$}
+    \begin{proof}
+      \pf\ From \stepref{<2>2}.
+    \end{proof}
+    \step{<2>5}{$g(x) = h(x)$}
+    \begin{proof}
+      \pf\ By \stepref{<2>1}
+    \end{proof}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{prop}
+  Any element $e \in X$ is a section of the unique function $!_X : X \rightarrow 1$.
+\end{prop}
+
+\begin{proof}
+  \pf
+  $!_X \circ e = \id{1}$ because there is only one function $1 \rightarrow 1$.
+  \qed
+\end{proof}
+
+\begin{ax}[Non-degeneracy]
+ The empty set $\emptyset$ has no elements.
+\end{ax}
+
+\begin{prop}
+  For any set $X$, the function $\magic_X : \emptyset \rightarrow X$ is injective.
+\end{prop}
+
+\begin{proof}
+  \pf\ From Proposition \ref{prop:sets:injective:elements}. \qed
+\end{proof}
+
+\begin{df}[Empty Part]
+  For any set $X$, the \emph{empty part} of $X$ is $\emptyset = \magic_X : \emptyset \hookrightarrow X$.
+\end{df}
+
+  \begin{df}[Constant Function]
+  A function $f : A \rightarrow B$ is \emph{constant} iff there exists $b \in
+  B$ such that $f = b \circ !_A$.
+\end{df}
+
+\begin{df}[Membership]
+ Let $i : U \hookrightarrow A$ be a part of $A$ and $a \in A$. Then $a$ is a
+ \emph{member} of $i$, $a \in_A i$, iff there exists $\overline{a} \in U$ such that $i(\overline{a}) = a$.
+\end{df}
+
+\begin{prop}
+ Let $A$ be a set. Let $i$, $j$ be parts of $A$ and $a \in A$. If $a \in_A i$
+ and $i \subseteq_A j$ then $a \in_A j$.
+\end{prop}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\pick\ $\overline{a} \in \dom i$ such that $a =
+i(\overline{a})$.}
+ \step{<1>2}{\pick\ $\phi : \dom i \rightarrow \dom j$ such that $i = j \circ
+   \phi$}
+ \step{<1>3}{$a = j(\phi(\overline{a}))$}
+ \qed
+\end{proof}
+
+\subsection{Products}
+
+\begin{ax}[Products]
+  For any sets $A$ and $B$, there exists a set $A \times B$, the
+  \emph{product} of $A$ and $B$, and functions $\pi_1 : A \times B
+  \rightarrow A$, $\pi_2 : A \times B \rightarrow B$, the \emph{projections},
+  such that, for any set $C$ and functions $f : C \rightarrow A$, $g : C
+  \rightarrow B$, there exists a unique function $\langle f, g \rangle : C
+  \rightarrow A \times B$ such that
+  \[ \pi_1 \circ \langle f, g \rangle = f; \qquad \pi_2 \circ \langle f,g
+  \rangle
+  = g \enspace . \]
+\end{ax}
+
+\begin{df}
+  Given functions $f : A \rightarrow B$ and $g : C \rightarrow D$, define $f
+  \times g : A \times C \rightarrow B \times D$ by
+  \[ f \times g = \langle f \circ \pi_1, g \circ \pi_2 \rangle \]
+\end{df}
+
+\subsection{Coproducts}
+
+\begin{ax}[Coproducts]
+  For any sets $A$ and $B$, there exists a set $A \uplus B$, the
+  \emph{coproduct} or \emph{sum} of $A$ and $B$, and functions $\kappa_1 : A
+\rightarrow A
+  \uplus B$, $\kappa_2 : B \rightarrow A \uplus B$, the \emph{injections},
+  such that, for any set $C$ and functions $f : A \rightarrow C$, $g : B
+  \rightarrow C$, there exists a unique function $[f, g] : A \uplus B
+  \rightarrow
+  C$ such that
+  \[ [f,g] \circ \kappa_1 = f; \qquad [f,g] \circ \kappa_2 = g \enspace . \]
+\end{ax}
+
+  \begin{df}[Complement]
+ Let $i : I \hookrightarrow J$ and $i' : I' \hookrightarrow J$ be parts of
+ $J$. Then $i'$ is the \emph{complement} of $i$ iff $J$ is the sum of $I$ and
+ $I'$ with injections $i$ and $i'$.
+\end{df}
+
+
+\subsection{Equalizers}
+
+\begin{ax}[Equalizers]
+  For any sets $A$ and $B$ and functions $f, g : A \rightarrow B$, there
+  exists a set $E$ and function $e : E \rightarrow A$, the \emph{equalizer}
+  of
+  $A$ and $B$, such that:
+  \begin{itemize}
+    \item $f \circ e = g \circ e : E \rightarrow B$;
+    \item For any set $C$ and function $h : C \rightarrow A$ such that $f
+    \circ h
+    = g \circ h$, there exists a unique function $\overline{h} : C
+    \rightarrow
+    E$
+    such that $h = e \circ \overline{h}$.
+  \end{itemize}
+\end{ax}
+
+\begin{prop}
+  \label{prop:set_theory:equalizer:injective}
+ All equalizers are injective.
+\end{prop}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\pflet{$e : E \rightarrow A$ be the equalizer of $f, g : A
+     \rightarrow B$}}
+ \step{<1>2}{\pflet{$x, y : X \rightarrow E$ with $e \circ x = e \circ y$}}
+ \step{<1>3}{$f \circ e \circ x = g \circ e \circ x$}
+ \begin{proof}
+   \pf\ $f \circ e = g \circ e$ by \stepref{<1>1}1.
+ \end{proof}
+ \step{<1>4}{$x = y$}
+ \begin{proof}
+   \pf\ $x$ and $y$ are both the unique $z : X \rightarrow E$ such that $e
+   \circ z = e \circ x$.
+ \end{proof}
+ \qed
+\end{proof}
+
+\subsection{Coequalizers}
+
+\begin{ax}[Coequalizers]
+  For any sets $A$ and $B$ and functions $f, g : A \rightarrow B$, there
+  exists a set $C$ and function $c : B \rightarrow C$, the \emph{coequalizer}
+  of $f$ and $g$, such that:
+  \begin{itemize}
+    \item $c \circ f = c \circ g : A \rightarrow C$
+    \item For any set $X$ and function $h : B \rightarrow X$ such that $h
+    \circ f
+    = h \circ g$, there exists a unique function $\overline{h} : C
+    \rightarrow
+    X$
+    such that $\overline{h} \circ c = h$.
+  \end{itemize}
+\end{ax}
+
+\subsection{Pullbacks}
+
+  \begin{df}[Pullback]
+  The diagram below is a \emph{pullback diagram} iff:
+  \begin{itemize}
+    \item $f \circ p = g \circ q$
+    \item for every set $X$ and
+    functions $x : X \rightarrow B$ and $y : X \rightarrow C$ such that $f
+    \circ x
+    = g \circ y$, there exists a unique function $\langle x, y \rangle : X
+    \rightarrow A$ such that $p \circ \langle x,y \rangle = x$ and $q \circ
+    \langle
+    x, y \rangle = y$.
+  \end{itemize}
+\[      \xymatrix{ A \ar[r]^p \ar[d]_q & B \ar[d]^f \\
+      C \ar[r]_g & D } \]
+\end{df}
+
+   \begin{prop}
+     \label{prop:sets:axioms:pullback}
+ Let $f : A \rightarrow C$ and $g : B \rightarrow C$. Then $f$ and $g$ have a
+ pullback.
+\end{prop}
+
+   \[ \xymatrix{
+  E \ar[dr]^e \\
+  & A \times B \ar[r]^{\pi_1} \ar[d]_{\pi_2} & A \ar[d]^f \\
+  & B \ar[r]_g & C}
+ \]
+
+\begin{proof}
+ \pf
+ \step{<1>1}{Construct the product $\pi_1 : A \times B \rightarrow A$, $\pi_2
+:
+   A \times B \rightarrow B$.}
+ \step{<1>2}{Construct the equalizer $e : E \rightarrow A$ of $f \circ \pi_1$
+   and $g \circ \pi_2$.
+   \prove{$\pi_1 \circ e$ and $\pi_2 \circ e$ form a pullback of $f$ and $g$}}
+ \step{<1>3}{$f \circ \pi_1 \circ e = g \circ \pi_2 \circ e$}
+ \step{<1>4}{\pflet{$X$ be a set and $x : X \rightarrow A$, $y : X
+\rightarrow
+     B$ satisfy $f \circ x = g \circ y$}}
+ \step{<1>5}{$f \circ \pi_1 \circ \langle x, y \rangle = g \circ \pi_2 \circ
+   \langle x, y \rangle$}
+ \step{<1>6}{\pflet{$m : X \rightarrow E$ be the function such that $e \circ
+     m = \langle x, y \rangle$}}
+ \step{<1>7}{$\pi_1 \circ e \circ m = x$ and $\pi_2
+   \circ e \circ m = y$}
+ \step{<1>8}{$m$ is unique.}
+ \begin{proof}
+   \pf
+   \step{<2>1}{\pflet{$n : X \rightarrow E$ be such that $\pi_1 \circ e \circ n
+       = x$ and $\pi_2 \circ e \circ n = y$}}
+   \step{<2>2}{$e \circ n = \langle x, y \rangle$}
+   \step{<2>3}{$n = m$}
+   \begin{proof}
+     \pf\ By \stepref{<1>6}
+   \end{proof}
+ \end{proof}
+ \qed
+\end{proof}
+
+\begin{prop}
+ Pullbbacks are unique up to isomorphism.
+
+ That is, let $P$ be a pullback of $f : A \rightarrow C$ and $g : B
+\rightarrow C$ with projections $p : P \rightarrow A$ and $q : P \rightarrow
+B$. Let $Q$ be a set and $p' : Q \rightarrow A$, $q' : Q \rightarrow B$. Then
+$Q$ is a pullback of $f$ and $g$ with projections $p'$ and $q'$ if and only if
+there exists a bijection $\phi : Q \cong P$ such that $p \circ \phi = p'$ and
+$q \circ \phi = q'$, in which case $\phi$ is unique.
+
+ \[ \xymatrix{
+   Q \ar@/^/[rrd]^{p'} \ar@/_/[ddr]_{q'} \ar[dr]^{\phi} \\
+  & P \ar[r]_p \ar[d]^q & A \ar[d]^{f} \\
+  & B \ar[r]_g & C
+}
+ \]
+
+\end{prop}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{If $Q$ is a pullback then there exists a bijection $\phi : Q
+\cong
+   P$ such that $p \circ \phi = p'$ and $q \circ \phi = q'$}
+ \begin{proof}
+   \step{<2>1}{\assume{$Q$ is a pullback with projections $p'$ and $q'$}}
+   \step{<2>2}{\pflet{$\phi : Q \rightarrow P$ be the unique function such that
+       $p \circ \phi = p'$ and $q \circ \phi = q'$}}
+   \begin{proof}
+     \pf\ Such a $\phi$ exists because $f \circ p' = g \circ q'$.
+   \end{proof}
+   \step{<2>3}{\pflet{$\inv{\phi} : P \rightarrow Q$ be the unique function such
+       that $p' \circ \inv{\phi} = p$ and $q' \circ \inv{\phi} = q$}}
+   \begin{proof}
+     \pf\ Such a function exists because $f \circ p = g \circ q$.
+   \end{proof}
+   \step{<2>4}{$\phi \circ \inv{\phi} = \id{P}$}
+   \begin{proof}
+     \pf\ Each is the unique function $x$ such that $p \circ x = p$ and $q
+     \circ x = q$.
+   \end{proof}
+   \step{<2>5}{$\inv{\phi} \circ \phi = \id{Q}$}
+   \begin{proof}
+     \pf\ Similar.
+   \end{proof}
+ \end{proof}
+ \step{<1>2}{If $\phi : Q \cong P$ is a bijection then $Q$ is a pullback with
+   projections $p \circ \phi$ and $q \circ \phi$}
+ \begin{proof}
+   \step{<2>1}{$f \circ p \circ \phi = g \circ q \circ \phi$}
+   \begin{proof}
+     \pf\ This holds because $f \circ p = g \circ q$
+   \end{proof}
+   \step{<2>2}{For any set $X$ and functions $x : X \rightarrow A$, $y : X
+     \rightarrow B$ such that $f \circ x = g \circ y$, there exists a unique
+     function $m : X \rightarrow Q$ such that $p \circ \phi \circ m = x$ and
+$q \circ
+     \phi \circ m = y$}
+   \begin{proof}
+     \pf\
+     \begin{align*}
+       & p \circ \phi \circ m = x \text{ and } q \circ \phi \circ m = y \\
+      \Leftrightarrow & \phi \circ m = \langle x, y \rangle \\
+      \Leftrightarrow & m = \inv{\phi} \circ \langle x, y \rangle
+     \end{align*}
+   \end{proof}
+ \end{proof}
+ \step{<1>3}{If $\phi, \phi' : P \cong Q$ are bijections such that $p \circ \phi
+   = p \circ \phi'$ and $q \circ \phi = q \circ \phi'$}
+ \begin{proof}
+   \pf\ This follows from the definition of pullback.
+ \end{proof}
+ \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:sets:pullback:injective}
+ The pullback of an injective function is injective.
+
+ That is, if the diagram below is a pullback diagram and $f$ is injective
+then $q$ is injective.
+\[      \xymatrix{ A \ar[r]^p \ar@{>->}[d]_q & B \ar@{>->}[d]^f \\
+     C \ar[r]_g & D } \]
+\end{prop}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\pflet{$X$ be a set and $x, y : X \rightarrow A$ with $q \circ x =
+     q \circ y$}}
+ \step{<1>2}{$f \circ p \circ x = g \circ q \circ x$}
+ \step{<1>3}{\pflet\ $z : X \rightarrow A$ be the function such that $p \circ z
+   =      p \circ x$ and $q \circ z = q \circ x$}
+ \step{<1>4}{$z = x$}
+ \step{<1>5}{$z = y$}
+ \begin{proof}
+   \step{<2>1}{$q \circ x = q \circ y$}
+   \begin{proof}
+     \pf\ By \stepref{<1>1}.
+   \end{proof}
+   \step{<2>2}{$f \circ p \circ x = f \circ p \circ y$}
+   \begin{proof}
+     \pf
+     \begin{align*}
+       f \circ p \circ x & = g \circ q \circ x & (\text{\stepref{<1>2}}) \\
+       & = g \circ q \circ y & (\text{\stepref{<1>1}}) \\
+       & = f \circ p \circ y & (\text{the diagram is a pullback})
+     \end{align*}
+   \end{proof}
+   \step{<2>3}{$p \circ x = p \circ y$}
+   \begin{proof}
+     \pf\ $f$ is injective.
+   \end{proof}
+ \end{proof}
+ \qed
+\end{proof}
+
+\subsection{Function Sets}
+
+\begin{ax}[Function Sets]
+  For any sets $A$ and $B$, there exists a set $A^B$ and a function $\epsilon
+  : A^B \times B \rightarrow A$, the \emph{evaluation} function, such that,
+  for any set $C$ and function $f : C \times B \rightarrow A$, there exists a
+  unique function $\lambda f : C \rightarrow A^B$ such that
+  \[ \epsilon \circ (\lambda f \times \id{B}) = f \enspace . \]
+\end{ax}
+
+\subsection{The Subset Classifier}
+
+\begin{df}
+  The set $2$ is $1 + 1$. We write $\top$ (\emph{truth}) for $\kappa_1 : 1
+  \rightarrow 2$, and $\bot$ (\emph{falsehood}) for $\kappa_2 : 1 \rightarrow
+  2$.
+\end{df}
+
+\begin{ax}[Subset Classifier]
+  For every injective function $m : A \rightarrowtail B$, there exists a
+  unique function $\chi_m : B \rightarrow 2$, the \emph{characteristic
+    function} of $m$, such that the following diagram is a pullback diagram:
+
+  \[
+  \xymatrix{
+    A \ar[d]_m \ar[r]^{!} & 1 \ar[d]^{\top} \\
+    B \ar[r]_{\chi_m} & 2
+  }
+  \]
+\end{ax}
+
+\begin{prop}
+ Every function $\phi : A \rightarrow 2$ is the characteristic function of a
+ part of $A$.
+\end{prop}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{Construct a pullback
+   \[ \xymatrix{
+     I \ar[r] \ar[d]^{q} & 1 \ar[d]^{\top} \\
+     A \ar[r]_{\phi} & 2 }
+   \]}
+ \begin{proof}
+   \pf\ By Proposition \ref{prop:sets:axioms:pullback}.
+ \end{proof}
+ \step{<1>2}{$q$ is injective}
+ \begin{proof}
+   \pf\ By Proposition \ref{prop:sets:pullback:injective}.
+ \end{proof}
+ \qed
+\end{proof}
+
+\begin{ax}[Boolean]
+  For any $p \in 2$ we have $p = \top$ or $p = \bot$.
+\end{ax}
+
+ \begin{prop}
+Let $i : U \hookrightarrow A$ and $j : V \hookrightarrow A$ be parts of $A$.
+Then the following are equivalent:
+\begin{enumerate}
+\item $i \subseteq_A j$ and $j \subseteq_A i$
+\item There exist $h : U \rightarrow V$ and $k : V \rightarrow U$ such that $i
+= j \circ h$, $j = i \circ k$, $k \circ h = \id{U}$ and $h \circ k = \id{V}$.
+\item The characteristic function of $i$ is the characteristic function of $j$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+\pf
+\step{<1>1}{$1 \Rightarrow 2$}
+\begin{proof}
+  \step{<2>1}{\assume{$i \subseteq_A j$ and $j \subseteq_A i$}}
+  \step{<2>2}{\pflet{$h : U \rightarrow V$ be such that $i = j \circ h$}}
+  \step{<2>3}{\pflet{$k : V \rightarrow U$ be such that $j = i \circ k$}}
+  \step{<2>4}{$k \circ h = \id{U}$}
+  \begin{proof}
+    \step{<3>1}{$i \circ k \circ h = i$}
+    \begin{proof}
+      \pf\ From \stepref{<2>2} and \stepref{<2>3}.
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ Since $i$ is injective.
+    \end{proof}
+  \end{proof}
+  \step{<2>5}{$h \circ k = \id{V}$}
+  \begin{proof}
+    \pf\ Similar.
+  \end{proof}
+\end{proof}
+\step{<1>2}{$2 \Rightarrow 1$}
+\begin{proof}
+  \pf\ Trivial.
+\end{proof}
+\step{<1>3}{$2 \Rightarrow 3$}
+\begin{proof}
+  \step{<2>1}{\assume{2}}
+  \step{<2>2}{\pflet{$\phi : A \rightarrow 2$ be the characteristic function
+of
+      $i$} \prove{$\phi$ is the characteristic function of $j$}
+    \[ \xymatrix{
+      X \ar[rrrdd] \ar[dddrr] \ar[dr] \\
+      & V \ar[rrd] \ar[ddr] \ar[dr] \\
+      & & U \ar[r] \ar[d] & 1 \ar[d]^{\top} \\
+      & & A \ar[r]_{\phi} & 2
+    }
+    \]
+  }
+  \begin{proof}
+    \pf\ By the Subset Classifier Axiom.
+  \end{proof}
+  \step{<2>3}{\pflet{$X$ be a set and $x : X \rightarrow 1$, $y : X
+\rightarrow
+      A$ satisfy $\phi \circ y = \top \circ x$}}
+  \step{<2>4}{\pflet{$\langle x,y \rangle : X \rightarrow U$ be the unique
+function such that $! \circ \langle x,y \rangle = x$ and $i \circ \langle x,y
+\rangle = y$}}
+\begin{proof}
+\pf\ By \stepref{<2>2}.
+\end{proof}
+\step{<2>5}{$h \circ \langle x,y \rangle$ is the unique function $X \rightarrow
+V$
+such that $! \circ h \circ \langle x,y \rangle = x$ and $j \circ h \circ
+\langle x,y \rangle = y$}
+\begin{proof}
+\step{<3>1}{$! \circ h \circ \langle x,y \rangle = x$}
+\begin{proof}
+  \pf\ Since 1 is terminal.
+\end{proof}
+\step{<3>2}{$j \circ h \circ \langle x,y \rangle = y$}
+\begin{proof}
+  \pf\ From \stepref{<2>1} and \stepref{<2>4}.
+\end{proof}
+\step{<3>3}{If $! \circ f = x$ and $j \circ f = y$ then $f = h  \circ \langle
+x,y
+  \rangle$}
+\begin{proof}
+  \step{<4>1}{\pflet{$f : X \rightarrow V$ satisfy $! \circ f = x$ and $j
+\circ
+      f = y$}}
+  \step{<4>2}{$! \circ k \circ f = x$}
+  \begin{proof}
+    \pf\ As 1 is terminal.
+  \end{proof}
+  \step{<4>3}{$i \circ k \circ f = y$}
+  \begin{proof}
+    \pf\ From \stepref{<2>1} and \stepref{<4>1}.
+  \end{proof}
+  \step{<4>4}{$k \circ f = \langle x, y \rangle$}
+  \begin{proof}
+    \pf\ From \stepref{<2>4}, \stepref{<4>2} and \stepref{<4>3}.
+  \end{proof}
+  \step{<4>5}{$f = h \circ \langle x,y \rangle$}
+  \begin{proof}
+    \pf\ From \stepref{<2>1} and \stepref{<4>4}.
+  \end{proof}
+\end{proof}
+\end{proof}
+%TODO Extract lemma
+\end{proof}
+\step{<1>4}{$3 \Rightarrow 2$
+  \[ \xymatrix{
+    U \ar[dr] \ar[rrd] \ar[ddr]_{i} \\
+    &  V \ar[r] \ar[d]_{j} \ar[ul] & 1 \ar[d]^{\top} \\
+   &  A \ar[r]_{\phi} & 2
+  } \]
+}
+\begin{proof}
+  \step{<2>1}{\assume{3}}
+  \step{<2>2}{\pflet{$\phi$ be the characteristic function of $i$ and $j$}}
+  \step{<2>3}{\pflet{$h : U \rightarrow V$ be the unique function such that
+$!
+      \circ h = !$ and $j \circ h = i$}}
+  \begin{proof}
+    \step{<3>1}{$\top \circ ! = \phi \circ i$}
+    \begin{proof}
+      \pf\ This holds because $\phi$ is the characteristic function of $i$.
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ Since $\phi$ is the characteristic function of $j$.
+    \end{proof}
+  \end{proof}
+  \step{<2>4}{\pflet{$k : V \rightarrow U$ be the unique function such that
+$!
+      \circ k = !$ and $i \circ k = j$}}
+  \begin{proof}
+    \pf\ Similar.
+  \end{proof}
+  \step{<2>5}{$k \circ h = \id{U}$}
+  \begin{proof}
+    \pf\ Each is the unique function $f$ such that $! \circ f = !$ and $i
+\circ f = i$
+\end{proof}
+  \step{<2>6}{$h \circ k = \id{V}$}
+  \begin{proof}
+    \pf\ Each is the unique function $f$ such that $! \circ f = !$ and $j
+\circ f = j$
+\end{proof}
+\end{proof}
+\qed
+\end{proof}
+
+\section{The Basics}
+
+
+\begin{lm}
+  \label{lm:set_theory:union_of_subsets}
+  Let $X$ be a set, $\mathcal{B} \subseteq \mathcal{P} X$ and $U \subseteq
+  X$. Then the following are equivalent:
+  \begin{enumerate}
+    \item For all $x \in U$ there exists $B \in \mathcal{B}$ such that $x \in
+    B \subseteq U$.
+    \item There exists $\mathcal{B}_0 \subseteq \mathcal{B}$ such that $U =
+    \bigcup \mathcal{B}_0$.
+  \end{enumerate}
+\end{lm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{$1 \Rightarrow 2$}
+  \begin{proof}
+    \pf\ If 1 is true then $U = \bigcup \{ B \in \mathcal{B} : B \subseteq U
+    \}$.
+  \end{proof}
+  \step{<1>2}{$2 \Rightarrow 1$}
+  \begin{proof}
+    \pf\ Trivial.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{df}[Fixed Point]
+  Let $X$ be a set, $f : X \rightarrow X$, and $x \in X$. Then $x$ is a
+  \emph{fixed point} of $f$ iff $f(x) = x$.
+\end{df}
+
+\begin{df}[Saturated]
+  Let $X$, $Y$ be sets and $p : X \twoheadrightarrow Y$ be a surjective
+  function. Let $C \subseteq X$. Then $C$ is \emph{saturated} with respect to
+  $p$ iff, for all $x, x' \in X$, if $x \in C$ and $p(x) = p(x')$ then $x'
+  \in
+  C$.
+\end{df}
+
+\begin{df}[Cover]
+  Let $A$ be a set and $\mathcal{C} \subseteq \mathcal{P}
+  A$. Then $\mathcal{C}$ \emph{covers} $A$ iff $\bigcup \mathcal{C} = A$.
+\end{df}
+
+\begin{df}[Finite Intersection Property]
+  Let $X$ be a set and $\mathcal{C} \subseteq \mathcal{P} X$. Then
+  $\mathcal{C}$ has the \emph{finite intersection property} if and only if
+  every finite nonempty subset of $\mathcal{C}$ has nonempty intersection.
+\end{df}
+
+\begin{lm}[AC]
+  \label{lm:sets:finite_intersection_property:maximal}
+  Let $X$ be a set and $\mathcal{A} \subseteq \mathcal{P} X$ have the finite intersection property. Then there exists
+  a maximal $\mathcal{D} \subseteq \mathcal{P} X$ that has the finite intersection property and includes $\mathcal{A}$.
+\end{lm}
+
+\begin{proof}
+  \pf\ A straightforward application of Zorn's lemma, since the union of a chain of sets that has the finite intersection property has the finite intersection property. \qed
+\end{proof}
+
+\begin{lm}
+  \label{lm:sets:finite_intersection_property:finite_intersection}
+  Let $X$ be a set and $\mathcal{D} \subseteq \mathcal{P} X$ be maximal with respect to the finite intersection property. Then any finite intersection of elements of $\mathcal{D}$ is an element of $\mathcal{D}$.
+\end{lm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$A$ be a finite intersection of elements of $\mathcal{D}$}}
+  \step{<1>2}{$\mathcal{D} \cup \{ A \}$ has the finite intersection property.}
+  \step{<1>3}{$\mathcal{D} \cup \{ A \} = \mathcal{D}$}
+  \qed
+\end{proof}
+
+\begin{lm}
+  \label{lm:sets:finite_intersection_property:intersect_all}
+  Let $X$ be a set and $\mathcal{D} \subseteq \mathcal{P} X$ be maximal with respect to the finite intersection property. If $A \subseteq X$ intersects every element of $\mathcal{D}$ then $A \in \mathcal{D}$.
+\end{lm}
+
+\begin{proof}
+  \pf\ This holds because $\mathcal{D} \cup \{ A \}$ satisfies the finite intersection property. \qed
+\end{proof}
+
+\begin{df}[Graph]
+  Let $f : A \rightarrow B$. The \emph{graph} of $f$ is the set $\{ (x, f(x))
+  : x \in A \} \subseteq A \times B$.
+\end{df}
+
+ \begin{df}[Point-Finite]
+ Let $X$ be a set and $\{ A_\alpha \}_{\alpha \in J}$ be a family of subsets
+ of $X$. Then $\{ A_\alpha \}_{\alpha \in J}$ is \emph{point-finite} iff, for
+all $x \in X$, there are only finitely many $\alpha \in J$ such that $x \in
+A_\alpha$.
+\end{df}
+
+\begin{df}[Countable Intersection Property]
+  A family of parts of a set $X$ has the \emph{countable intersection property} iff every countable subfamily has nonempty intersection.
+\end{df}
+
+\section{Order Theory}
+
+  \begin{df}[Cofinal]
+  Let $J$ be a poset and $K \subseteq J$. Then $K$ is \emph{cofinal} iff, for
+all $x \in J$, there exists $y \in K$ such that $x \leq y$.
+\end{df}
+
+  \begin{df}[Directed Set]
+  A \emph{directed set} is a poset $J$ such that, for all $x, y \in J$, there
+exists $z \in J$ such that $x \leq z$ and $y \leq z$.
+\end{df}
+
+\begin{df}[Linear Order]
+  Let $X$ be a set. A \emph{linear order} on $X$ is a relation $\leq
+  \subseteq X^2$ such that:
+  \begin{itemize}
+    \item For all $x \in X$, $x \leq x$
+    \item For all $x, y, z \in X$, if $x \leq y$ and $y \leq z$ then $x \leq
+    z$
+    \item For all $x, y \in X$, if $x \leq y$ and $y \leq x$ then $x = y$
+    \item For all $x, y \in X$, we have $x \leq y$ or $y \leq x$
+  \end{itemize}
+  We write $x < y$ iff $x \leq y$ and $x \neq y$.
+
+  A \emph{linearly ordered set} consists of a set and a linear order on the
+  set.
+\end{df}
+
+\begin{df}[Convex]
+  Let $L$ be a linearly ordered set and $A \subseteq L$. Then $A$ is
+  \emph{convex} iff, for all $x, y \in A$ and $z \in L$, if $x < z < y$ then
+  $z \in A$.
+\end{df}
+
+\begin{df}[Least Upper Bound Property]
+  A linearly ordered set $L$ has the \emph{least upper bound property} iff
+  every subset of $L$ bounded above has a least upper bound.
+\end{df}
+
+\begin{df}[Linear Continuum]
+  A \emph{linear continuum} is a linearly ordered set $L$ such that:
+  \begin{itemize}
+    \item $L$ has the least upper bound property.
+    \item For all $x, y \in L$ with $x < y$, there exists $z \in L$ such that
+    $x < z < y$.
+  \end{itemize}
+\end{df}
+
+\begin{prop}
+  If $L$ is a linear continuum then every convex subset of $L$ is a linear
+  continuum.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$L$ be a linear continuum and $C \subseteq L$ be convex}}
+  \step{<1>2}{$C$ satisfies the least upper bound property.}
+  \begin{proof}
+    \step{<2>1}{\pflet{$S \subseteq C$ be nonempty and bounded above by $u$
+        in
+        $C$.}}
+    \step{<2>2}{\pflet{$s$ be the supremum of $S$ in $L$}}
+    \step{<2>3}{\pick\ $x \in S$}
+    \step{<2>4}{$x \leq s \leq u$}
+    \step{<2>5}{$s \in C$}
+    \begin{proof}
+      \pf\ $C$ is convex.
+    \end{proof}
+    \step{<2>6}{$s$ is the supremum of $S$ in $C$}
+  \end{proof}
+  \step{<1>3}{$C$ is dense.}
+  \begin{proof}
+    \pf
+    \step{<2>1}{\pflet{$x, y \in C$ satisfy $x < y$}}
+    \step{<2>2}{\pick\ $z \in L$ such that $x < z < y$}
+    \step{<2>3}{$z \in C$}
+    \begin{proof}
+      \pf\ $C$ is convex.
+    \end{proof}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{lm}
+  \label{lm:order:half_open}
+  For any real numbers $a$, $b$ with $a < b$ we have $[a, b) \cong [0, 1)$.
+\end{lm}
+
+\begin{proof}
+  \pf\ The map $\phi : [a, b) \cong [0, 1)$ where $\phi(x) = (x - a) / (b -
+  a)$ is an order isomorphism. \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:order:zero_one_twice}
+  Let $X$ be a linearly ordered set. Let $a, b, c \in X$ with $a < c < b$.
+  Then $[a, b) \cong [0, 1)$ if and only if $[a, c) \cong [c, b) \cong [0,
+  1)$.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{If $[a, b) \cong [0, 1)$ then $[a, c) \cong [c, b) \cong [0,
+    1)$.}
+  \begin{proof}
+    \step{<2>1}{\assume{$\phi : [a, b) \cong [0, 1)$ is an order
+        isomorphism.}}
+    \step{<2>2}{$[a, c) \cong [0, 1)$}
+    \begin{proof}
+      \pf
+      \begin{align*}
+        [a ,c) & \cong [0, \phi(c)) & (\text{under } \phi) \\
+        & \cong [0, 1) & (\text{Lemma \ref{lm:order:half_open} })
+      \end{align*}
+    \end{proof}
+    \step{<2>3}{$[c, b) \cong [0, 1)$}
+    \begin{proof}
+      \pf\ Similar.
+    \end{proof}
+  \end{proof}
+  \step{<1>2}{If $[a, c) \cong [c, b) \cong [0, 1)$ then $[a, b) \cong [0,
+    1)$.}
+  \begin{proof}
+    \step{<2>1}{\assume{$[a, c) \cong [c, b) \cong [0, 1)$}}
+    \step{<2>2}{\pflet{$\phi : [a, c) \cong [0, 1/2)$ and $\psi : [c, b)
+        \cong
+        [1/2, 1)$}}
+    \step{<2>3}{\pflet{$\chi : [a, b) \rightarrow [0, 1)$ be given by
+        $\chi(x)
+        =
+        \begin{cases} \phi(x) & \text{if } x < c \\ \psi(x) & \text{if } x
+          \geq c \end{cases}$}}
+    \step{<2>4}{$\chi : [a, b) \cong [0, 1)$}
+    \begin{proof}
+      \pf\ Easy to check. % TODO Extract lemma
+    \end{proof}
+  \end{proof}
+  \qed
+\end{proof}
+
+
+\begin{prop}[CC]
+  \label{prop:order:zero_one_countable}
+  Let $X$ be a linearly ordered set. Let $\{ x_n \}_{n \geq 0}$ be an
+  increasing sequence of points of $X$. Suppose $b$ is the supremum of $\{
+  x_n : n \geq 0 \}$. Then $[x_0, b) \cong [0, 1)$ if and only if $[x_i,
+  x_{i+1}) \cong [0,1)$ for all $i$.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{If $[x_0, b) \cong [0, 1)$ then for all $i$ $[x_i, x_{i+1})
+    \cong
+    [0, 1)$.}
+  \begin{proof}
+    \pf\ If $\phi : [x_0, b) \cong [0, 1)$ then $[x_i, x_{i+1}) \cong
+    [\phi(x_i), \phi(x_{i+1})) \cong [0, 1)$ by Lemma
+    \ref{lm:order:half_open}.
+  \end{proof}
+  \step{<1>2}{If for all $i$ $[x_i, x_{i+1}) \cong [0, 1)$ then $[x_0, b)
+    \cong
+    [0, 1)$.}
+  \begin{proof}
+    \pf
+    \step{<2>1}{\pflet{$\phi_i : [x_i, x_{i+1}) \cong [0, 1)$ for all $i$}}
+    \step{<2>2}{Define $\phi : [x_0, b) \cong [0, 1)$ by: $\phi(y) =
+      \phi_i(y) \qquad (x_0 \leq y < b)$ where $i$ is least such that $y <
+      i_{i+1}$}
+    \begin{proof}
+      \pf\ There exists such an $i$ because $y$ is not an upper bound for
+      $\{x_n : n \geq 0 \}$.
+    \end{proof}
+    \step{<2>3}{$\phi$ is an order isomorphism.}
+    \begin{proof}
+      \pf\ Easy to check.
+    \end{proof}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{prop}[CC]
+  \label{prop:order:long_line_zero_one}
+  For all $0 < \alpha < \Omega$, the interval $[(0, 0), (\alpha, 0))$ in
+  $S_\Omega \times [0, 1)$ is order isomorphic to $[0, 1)$ in $\mathbb{R}$.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{If $[(0, 0), (\alpha, 0)) \cong [0, 1)$ then $[(0, 0), (\alpha
+    +
+    1,
+    0)) \cong [0, 1)$}
+  \begin{proof}
+    \pf\ By Proposition \ref{prop:order:zero_one_twice}.
+  \end{proof}
+  \step{<1>2}{Let $\lambda$ be a limit ordinal, $0 < \lambda < \Omega$. If,
+    for
+    all $\alpha$ with $0 < \alpha < \lambda$, we have $[(0, 0), (\alpha, 0))
+    \cong [0, 1)$, then $[(0, 0), (\lambda, 0)) \cong [0, 1)$.}
+  \begin{proof}
+    \pf\ By Propositoin \ref{prop:order:zero_one_countable}.
+  \end{proof}
+  \qedstep
+  \begin{proof}
+    \pf\ By transfinite induction.
+  \end{proof}
+  \qed
+\end{proof}
