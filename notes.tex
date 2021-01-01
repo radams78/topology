@@ -8718,6 +8718,70 @@ $\mathcal{T}'$ is compact then $\mathcal{T}$ is compact.
   \qed
 \end{proof}
 
+\begin{thm}
+  In a compact Hausdorff space, the components and the quasicomponents coincide.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$X$ be a compact Hausdorff space and $x, y \in X$ lie in the same quasicomponent.} \prove{$x$ and $y$ are in the same component.}}
+  \step{<1>2}{\pflet{$\mathcal{A}$ be the set of all closed subspaces $A$ of $X$ such that $x$ and $y$ lie in the same quasicomponent of $A$.}}
+  \step{<1>3}{Every chain in $\mathcal{A}$ has a lower bound.}
+  \begin{proof}
+    \step{<2>1}{\pflet{$\mathcal{B} \subseteq \mathcal{A}$ be a chain} \prove{$Y = \bigcap \mathcal{B} \in \mathcal{A}$}}
+    \step{<2>2}{\assume{for a contradiction $Y = C \cup D$ were $C$ and $D$ are disjoint and open in $Y$, $x \in C$ and $y \in D$}}
+    \step{<2>3}{\pick\ disjoint open sets $U$ and $V$ in $X$ such that $C \subseteq U$ and $D \subseteq V$}
+    \begin{proof}
+      \pf\ By Lemma \ref{lm:topology:compact:normal}.
+    \end{proof}
+    \step{<2>4}{$\{ B \setminus (U \cup V) : B \in \mathcal{B} \}$ satisfies the finite intersection property.}
+    \begin{proof}
+      \step{<3>1}{\pflet{$B_1, \ldots, B_n \in \mathcal{B}$}}
+      \step{<3>2}{$B_1 \cap \cdots \cap B_n \in \mathcal{B}$}
+      \begin{proof}
+        \pf\ By \stepref{<2>1}.
+      \end{proof}
+      \step{<3>3}{$B_1 \cap \cdots \cap B_n \setminus (U \cap V)$ is nonempty}
+      \begin{proof}
+        \pf\ $B_1 \cap \cdots \cap B_n \cap U$ and $B_1 \cap \cdots \cap B_n \cap V$ cannot be disjoint, because $x$ and $y$ are in the same quasicomponent of $B_1 \cap \cdots \cap B_n$.
+      \end{proof}
+    \end{proof}
+    \step{<2>5}{$Y \setminus (U \cup V)$ is nonempty.}
+    \begin{proof}
+      \pf\ By Proposition \ref{prop:topology:compact:finite_intersection}.
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ This is a contradiction since $Y \setminus (U \cup V) = Y \setminus (C \cup D)$.
+    \end{proof}
+  \end{proof}
+  \step{<1>4}{\pick\ a minimal element $D \in \mathcal{A}$}
+  \begin{proof}
+    \pf\ One exists by Zorn's Lemma.
+  \end{proof}
+  \step{<1>5}{$D$ is connected.}
+  \begin{proof}
+    \step{<2>1}{\assume[for a contradiction $D = U \uplus V$ is a separation of $D$]}
+    \step{<2>2}{\case{$x, y \in U$}}
+    \begin{proof}
+      \pf\ In this case we have $U \in \mathcal{A}$ contradicting the minimality of $D$.
+    \end{proof}
+    \step{<2>3}{\case{$x \in U, y \in V$}}
+    \begin{proof}
+      \pf\ This is a contradiction because $x$ and $y$ are in the same quasicomponent of $D$.
+    \end{proof}
+    \step{<2>4}{\case{$x \in V, y \in U$}}
+    \begin{proof}
+      \pf\ Similar to \stepref{<2>3}.
+    \end{proof}
+    \step{<2>5}{\case{$x, y \in V$}}
+    \begin{proof}
+      \pf\ Similar to \stepref{<2>2}.
+    \end{proof}
+  \end{proof}
+  \qed
+\end{proof}
+
   \section{Perfect Maps}
 
     \begin{prop}
@@ -13149,9 +13213,5 @@ Not every metric space is locally path connected.
 \begin{proof}
   \pf\ We have $i \circ \magic_S = \magic_X$ by the uniqueness of $\magic_X$. \qed
 \end{proof}
-
-\begin{df}[Countable Intersection Property]
-  A family of parts of a set $X$ has the \emph{countable intersection property} iff every countable subfamily has nonempty intersection.
-\end{df}
 
 \end{document}

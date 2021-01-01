@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.12.13)  31 DEC 2020 23:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.12.13)  1 JAN 2021 09:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -456,10 +456,14 @@ Chapter 1.
 [4
 
 
-] [5] [6] [7] [8] [9] [10] [11] <xymatrix 2x2 182> <xymatrix 3x3 235>
-[12] <xymatrix 3x3 331> [13] <xymatrix 2x2 182> [14] <xymatrix 2x2 182>
-<xymatrix 2x2 175> [15] <xymatrix 4x4 400> [16] <xymatrix 3x3 330> [17]
-[18] [19] [20]) [21]
+] [5] [6] [7] [8] [9]
+
+LaTeX Warning: Reference `prop:sets:empty:unique' on page 10 undefined on input
+ line 481.
+
+[10] [11] <xymatrix 2x2 182> <xymatrix 3x3 235> [12] <xymatrix 3x3 331>
+[13] <xymatrix 2x2 182> [14] <xymatrix 2x2 182> <xymatrix 2x2 175> [15]
+<xymatrix 4x4 400> [16] <xymatrix 3x3 330> [17] [18] [19] [20]) [21]
 Chapter 2.
 [22
 
@@ -563,15 +567,15 @@ cmm/m/it/10 g[]\OT1/cmr/m/n/10 ((\OMS/cmsy/m/n/10 ^^@1\OML/cmm/m/it/10 ; ^^O\OT
  []
 
 [121] [122] [123] [124] [125] [126] [127] [128] [129] [130]
-Overfull \hbox (2.18787pt too wide) in paragraph at lines 9148--9148
+Overfull \hbox (2.18787pt too wide) in paragraph at lines 9212--9212
 []$\OML/cmm/m/it/10 Y \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 X \OMS/cmsy/m/n/10 [ f
 1g$ \OT1/cmr/m/n/10 un-der the topol-ogy $\OMS/cmsy/m/n/10 T \OT1/cmr/m/n/10 = 
 \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 U \OMS/cmsy/m/n/10 ^^R \OML/cmm/m/it/10 X \O
 T1/cmr/m/n/10 : \OML/cmm/m/it/10 U[]X\OMS/cmsy/m/n/10 g [
  []
 
-
-Overfull \hbox (1.25256pt too wide) in paragraph at lines 9215--9215
+[131]
+Overfull \hbox (1.25256pt too wide) in paragraph at lines 9279--9279
 []$[] \OMS/cmsy/m/n/10 A \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 Y \OMS/cmsy/m/n/10 
 n \OT1/cmr/m/n/10 ([]\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 D \OMS/cmsy/m/n/10 ^^R 
 \OML/cmm/m/it/10 X \OT1/cmr/m/n/10 : \OML/cmm/m/it/10 D[]; Y \OMS/cmsy/m/n/10 n
@@ -579,12 +583,12 @@ n \OT1/cmr/m/n/10 ([]\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 D \OMS/cmsy/m/n/10 ^^R
 /n/10 :
  []
 
-[131] [132] [133] [134] [135]
+[132] [133] [134] [135] [136]
 Chapter 10.
-[136
+[137
 
-] [137] [138] [139] [140] [141] [142] [143] [144] [145]
-Overfull \hbox (2.36778pt too wide) in paragraph at lines 10435--10435
+] [138] [139] [140] [141] [142] [143] [144] [145] [146]
+Overfull \hbox (2.36778pt too wide) in paragraph at lines 10499--10499
 []\OT1/cmr/m/sc/10 Pick $\OML/cmm/m/it/10 ^^N > \OT1/cmr/m/n/10 0$ such that, f
 or all $\OML/cmm/m/it/10 x[] \OMS/cmsy/m/n/10 2 \OML/cmm/m/it/10 X$\OT1/cmr/m/n
 /10 , if $\OML/cmm/m/it/10 d\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x; x[]\OT1/cmr/m/
@@ -595,59 +599,59 @@ n/10 ) \OML/cmm/m/it/10 < ^^N$ \OT1/cmr/m/n/10 then $\OML/cmm/m/it/10 d\OT1/cmr
  []
 
 
-Overfull \hbox (0.7718pt too wide) in paragraph at lines 10493--10493
+Overfull \hbox (0.7718pt too wide) in paragraph at lines 10557--10557
 []$\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 s[]\OMS/cmsy/m/n/10 g[]$ \OT1/cmr/m/n/10 
 be a mono-tone in-creas-ing se-quence of real num-bers bounded
  []
 
-[146]
-Overfull \hbox (6.28944pt too wide) in paragraph at lines 10528--10530
+[147]
+Overfull \hbox (6.28944pt too wide) in paragraph at lines 10592--10594
 []\OT1/cmr/m/sc/10 Proof\OT1/cmr/m/n/10 : $[][] \OMS/cmsy/m/n/10 j\OML/cmm/m/it
 /10 a[]\OMS/cmsy/m/n/10 j$ \OT1/cmr/m/n/10 is a mono-tone in-creas-ing se-quenc
 e bounded above by $[][] \OML/cmm/m/it/10 b[]$\OT1/cmr/m/n/10 . 
  []
 
 
-Overfull \hbox (12.99199pt too wide) in paragraph at lines 10534--10537
+Overfull \hbox (12.99199pt too wide) in paragraph at lines 10598--10601
 []\OT1/cmr/m/sc/10 Proof\OT1/cmr/m/n/10 : $[][] \OML/cmm/m/it/10 c[]$ \OT1/cmr/
 m/n/10 is a mono-tone in-creas-ing se-quence bounded above by $2 [][] \OMS/cmsy
 /m/n/10 j\OML/cmm/m/it/10 a[]\OMS/cmsy/m/n/10 j$\OT1/cmr/m/n/10 . 
  []
 
-[147] [148] [149] [150] [151] [152] [153] [154] [155] [156] [157] [158]
+[148] [149] [150] [151] [152] [153] [154] [155] [156] [157] [158] [159]
 Chapter 11.
-[159
+[160
 
-] [160] [161]
+] [161] [162]
 Chapter 12.
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 11671.
+(hyperref)                removing `math shift' on input line 11735.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 11671.
+(hyperref)                removing `superscript' on input line 11735.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 11671.
+(hyperref)                removing `math shift' on input line 11735.
 
-[162
+[163
 
-] [163] [164] [165]
+] [164] [165] [166]
 Chapter 13.
-[166
+[167
 
-] [167] [168] [169] <xymatrix 3x2 305> [170] [171] [172] [173] [174]
-Overfull \hbox (18.02438pt too wide) in paragraph at lines 12704--12704
+] [168] [169] [170] <xymatrix 3x2 305> [171] [172] [173] [174] [175]
+Overfull \hbox (18.02438pt too wide) in paragraph at lines 12768--12768
 []\OT1/cmr/m/n/10 Given $\OML/cmm/m/it/10 V[]$\OT1/cmr/m/n/10 , \OT1/cmr/m/sc/1
 0 Pick \OT1/cmr/m/n/10 a sym-met-ric neigh-bour-hood $\OML/cmm/m/it/10 V[]$ \OT
 1/cmr/m/n/10 of $\OML/cmm/m/it/10 e$ \OT1/cmr/m/n/10 such that $\OML/cmm/m/it/1
 0 V[]V[] \OMS/cmsy/m/n/10 ^^R
  []
 
-[175] [176]
-Overfull \hbox (0.2876pt too wide) in paragraph at lines 12867--12867
+[176] [177]
+Overfull \hbox (0.2876pt too wide) in paragraph at lines 12931--12931
 []$\OML/cmm/m/it/10 k \OT1/cmr/m/n/10 : \OML/cmm/m/it/10 Z[] \OMS/cmsy/m/n/10 !
  \OT1/cmr/m/n/10 [0\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 1]$ be the con-tin-u-ous 
 func-tion such that $\OML/cmm/m/it/10 k\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p\OT1/
@@ -655,7 +659,7 @@ cmr/m/n/10 (\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 )) =
  []
 
 
-Overfull \hbox (13.86353pt too wide) in paragraph at lines 12876--12879
+Overfull \hbox (13.86353pt too wide) in paragraph at lines 12940--12943
 []\OT1/cmr/m/sc/10 Proof\OT1/cmr/m/n/10 : If $\OML/cmm/m/it/10 g$ \OT1/cmr/m/n/
 10 is such a con-tin-u-ous func-tion then $\OML/cmm/m/it/10 g[]\OT1/cmr/m/n/10 
 ([0\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 1\OML/cmm/m/it/10 =\OT1/cmr/m/n/10 2))$ a
@@ -663,14 +667,14 @@ nd $\OML/cmm/m/it/10 g[]\OT1/cmr/m/n/10 ((1\OML/cmm/m/it/10 =\OT1/cmr/m/n/10 2\
 OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 1])$
  []
 
-[177] [178] [179]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 13157.
- [180]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 13157.
+[178] [179] [180]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 13217.
+ [181]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 13217.
  (./notes.aux (./set_theory.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 13157.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 13217.
 
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 13157
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 13217
 .
 Package rerunfilecheck Info: File `notes.out' has not changed.
 (rerunfilecheck)             Checksum: 131AB009CA7682F20C63FC38C6905F98;5744.
@@ -681,12 +685,12 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 13157.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 13217.
  ) 
 Here is how much of TeX's memory you used:
- 9998 strings out of 483140
- 135536 string characters out of 5965150
- 437157 words of memory out of 5000000
+ 9999 strings out of 483140
+ 135543 string characters out of 5965150
+ 436071 words of memory out of 5000000
  23770 multiletter control sequences out of 15000+600000
  545789 words of font info for 78 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
@@ -714,10 +718,10 @@ nts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msbm7.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/public/xypic/xyatip10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
 lic/xypic/xybtip10.pfb>
-Output written on notes.pdf (181 pages, 769517 bytes).
+Output written on notes.pdf (182 pages, 771656 bytes).
 PDF statistics:
- 2718 PDF objects out of 2984 (max. 8388607)
- 2444 compressed objects within 25 object streams
- 1081 named destinations out of 1200 (max. 500000)
+ 2723 PDF objects out of 2984 (max. 8388607)
+ 2448 compressed objects within 25 object streams
+ 1082 named destinations out of 1200 (max. 500000)
  729 words of extra memory for PDF output out of 10000 (max. 10000000)
 
