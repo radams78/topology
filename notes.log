@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.12.13)  3 JAN 2021 23:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.12.13)  3 JAN 2021 23:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -456,14 +456,10 @@ Chapter 1.
 [4
 
 
-] [5] [6] [7] [8] [9]
-
-LaTeX Warning: Reference `prop:sets:empty:unique' on page 10 undefined on input
- line 481.
-
-[10] [11] <xymatrix 2x2 182> <xymatrix 3x3 235> [12] <xymatrix 3x3 331>
-[13] <xymatrix 2x2 182> [14] <xymatrix 2x2 182> <xymatrix 2x2 175> [15]
-<xymatrix 4x4 400> [16] <xymatrix 3x3 330> [17] [18] [19] [20]) [21]
+] [5] [6] [7] [8] [9] [10] [11] <xymatrix 2x2 182> <xymatrix 3x3 235>
+[12] <xymatrix 3x3 331> [13] <xymatrix 2x2 182> [14] <xymatrix 2x2 182>
+<xymatrix 2x2 175> [15] <xymatrix 4x4 400> [16] <xymatrix 3x3 330> [17]
+[18] [19] [20]) [21]
 Chapter 2.
 [22
 
@@ -588,7 +584,7 @@ Chapter 10.
 [140
 
 ] [141] [142] [143] [144] [145] [146] [147] [148] [149]
-Overfull \hbox (2.36778pt too wide) in paragraph at lines 10688--10688
+Overfull \hbox (2.36778pt too wide) in paragraph at lines 10693--10693
 []\OT1/cmr/m/sc/10 Pick $\OML/cmm/m/it/10 ^^N > \OT1/cmr/m/n/10 0$ such that, f
 or all $\OML/cmm/m/it/10 x[] \OMS/cmsy/m/n/10 2 \OML/cmm/m/it/10 X$\OT1/cmr/m/n
 /10 , if $\OML/cmm/m/it/10 d\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x; x[]\OT1/cmr/m/
@@ -599,20 +595,20 @@ n/10 ) \OML/cmm/m/it/10 < ^^N$ \OT1/cmr/m/n/10 then $\OML/cmm/m/it/10 d\OT1/cmr
  []
 
 
-Overfull \hbox (0.7718pt too wide) in paragraph at lines 10746--10746
+Overfull \hbox (0.7718pt too wide) in paragraph at lines 10751--10751
 []$\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 s[]\OMS/cmsy/m/n/10 g[]$ \OT1/cmr/m/n/10 
 be a mono-tone in-creas-ing se-quence of real num-bers bounded
  []
 
 [150]
-Overfull \hbox (6.28944pt too wide) in paragraph at lines 10781--10783
+Overfull \hbox (6.28944pt too wide) in paragraph at lines 10786--10788
 []\OT1/cmr/m/sc/10 Proof\OT1/cmr/m/n/10 : $[][] \OMS/cmsy/m/n/10 j\OML/cmm/m/it
 /10 a[]\OMS/cmsy/m/n/10 j$ \OT1/cmr/m/n/10 is a mono-tone in-creas-ing se-quenc
 e bounded above by $[][] \OML/cmm/m/it/10 b[]$\OT1/cmr/m/n/10 . 
  []
 
 
-Overfull \hbox (12.99199pt too wide) in paragraph at lines 10787--10790
+Overfull \hbox (12.99199pt too wide) in paragraph at lines 10792--10795
 []\OT1/cmr/m/sc/10 Proof\OT1/cmr/m/n/10 : $[][] \OML/cmm/m/it/10 c[]$ \OT1/cmr/
 m/n/10 is a mono-tone in-creas-ing se-quence bounded above by $2 [][] \OMS/cmsy
 /m/n/10 j\OML/cmm/m/it/10 a[]\OMS/cmsy/m/n/10 j$\OT1/cmr/m/n/10 . 
@@ -626,15 +622,15 @@ Chapter 11.
 Chapter 12.
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 11924.
+(hyperref)                removing `math shift' on input line 11929.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 11924.
+(hyperref)                removing `superscript' on input line 11929.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 11924.
+(hyperref)                removing `math shift' on input line 11929.
 
 [166
 
@@ -643,7 +639,7 @@ Chapter 13.
 [170
 
 ] [171] [172] [173] <xymatrix 3x2 305> [174] [175] [176] [177] [178]
-Overfull \hbox (18.02438pt too wide) in paragraph at lines 12957--12957
+Overfull \hbox (18.02438pt too wide) in paragraph at lines 12962--12962
 []\OT1/cmr/m/n/10 Given $\OML/cmm/m/it/10 V[]$\OT1/cmr/m/n/10 , \OT1/cmr/m/sc/1
 0 Pick \OT1/cmr/m/n/10 a sym-met-ric neigh-bour-hood $\OML/cmm/m/it/10 V[]$ \OT
 1/cmr/m/n/10 of $\OML/cmm/m/it/10 e$ \OT1/cmr/m/n/10 such that $\OML/cmm/m/it/1
@@ -651,7 +647,7 @@ Overfull \hbox (18.02438pt too wide) in paragraph at lines 12957--12957
  []
 
 [179] [180]
-Overfull \hbox (0.2876pt too wide) in paragraph at lines 13120--13120
+Overfull \hbox (0.2876pt too wide) in paragraph at lines 13125--13125
 []$\OML/cmm/m/it/10 k \OT1/cmr/m/n/10 : \OML/cmm/m/it/10 Z[] \OMS/cmsy/m/n/10 !
  \OT1/cmr/m/n/10 [0\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 1]$ be the con-tin-u-ous 
 func-tion such that $\OML/cmm/m/it/10 k\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p\OT1/
@@ -659,7 +655,7 @@ cmr/m/n/10 (\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 )) =
  []
 
 
-Overfull \hbox (13.86353pt too wide) in paragraph at lines 13129--13132
+Overfull \hbox (13.86353pt too wide) in paragraph at lines 13134--13137
 []\OT1/cmr/m/sc/10 Proof\OT1/cmr/m/n/10 : If $\OML/cmm/m/it/10 g$ \OT1/cmr/m/n/
 10 is such a con-tin-u-ous func-tion then $\OML/cmm/m/it/10 g[]\OT1/cmr/m/n/10 
 ([0\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 1\OML/cmm/m/it/10 =\OT1/cmr/m/n/10 2))$ a
@@ -668,13 +664,13 @@ OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 1])$
  []
 
 [181] [182] [183] [184]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 13466.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 13471.
  [185]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 13466.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 13471.
  (./notes.aux (./set_theory.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 13466.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 13471.
 
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 13466
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 13471
 .
 Package rerunfilecheck Info: File `notes.out' has not changed.
 (rerunfilecheck)             Checksum: 131AB009CA7682F20C63FC38C6905F98;5744.
@@ -682,15 +678,12 @@ Package rerunfilecheck Info: File `notes.out' has not changed.
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 13466.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 13471.
  ) 
 Here is how much of TeX's memory you used:
- 10012 strings out of 483140
- 135784 string characters out of 5965150
- 436185 words of memory out of 5000000
+ 10013 strings out of 483140
+ 135795 string characters out of 5965150
+ 436236 words of memory out of 5000000
  23774 multiletter control sequences out of 15000+600000
  545789 words of font info for 78 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
@@ -718,10 +711,10 @@ nts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msbm7.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/public/xypic/xyatip10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
 lic/xypic/xybtip10.pfb>
-Output written on notes.pdf (186 pages, 783182 bytes).
+Output written on notes.pdf (186 pages, 783442 bytes).
 PDF statistics:
- 2768 PDF objects out of 2984 (max. 8388607)
- 2475 compressed objects within 25 object streams
- 1091 named destinations out of 1200 (max. 500000)
+ 2770 PDF objects out of 2984 (max. 8388607)
+ 2477 compressed objects within 25 object streams
+ 1092 named destinations out of 1200 (max. 500000)
  729 words of extra memory for PDF output out of 10000 (max. 10000000)
 
