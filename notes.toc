@@ -52,10 +52,10 @@
 \contentsline {section}{\numberline {6.1}$T_1$ Spaces}{64}{section.6.1}%
 \contentsline {section}{\numberline {6.2}Hausdorff Spaces}{65}{section.6.2}%
 \contentsline {section}{\numberline {6.3}Regular Spaces}{67}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Completely Regular Spaces}{69}{section.6.4}%
+\contentsline {section}{\numberline {6.4}Completely Regular Spaces}{70}{section.6.4}%
 \contentsline {section}{\numberline {6.5}Normal Spaces}{73}{section.6.5}%
 \contentsline {section}{\numberline {6.6}Completely Normal Spaces}{83}{section.6.6}%
-\contentsline {section}{\numberline {6.7}Perfectly Normal Spaces}{85}{section.6.7}%
+\contentsline {section}{\numberline {6.7}Perfectly Normal Spaces}{86}{section.6.7}%
 \contentsline {chapter}{\numberline {7}Countability Axioms}{87}{chapter.7}%
 \contentsline {section}{\numberline {7.1}The First Countability Axiom}{87}{section.7.1}%
 \contentsline {section}{\numberline {7.2}Separable Spaces}{90}{section.7.2}%

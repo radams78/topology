@@ -3902,6 +3902,23 @@ and
    \pf\ The identity map from the discrete two-point space to the indiscrete two-point space is continuous. \qed
  \end{proof}
 
+ \begin{lm}
+   \label{lm:topology:Hausdorff:continuous_extension}
+   Let $A$ be a subspace of $X$ and $Z$ be Hausdorff. Let $f : A \rightarrow Z$ be contiuous. Then there is at most one extension of $f$ to a continuous function $\overline{A} \rightarrow Z$.
+ \end{lm}
+
+ \begin{proof}
+   \pf
+   \step{<1>1}{\assume{for a contradiction $g,h : \overline{A} \rightarrow Z$ are continuous extensions of $f$ with $g(x) \neq h(x)$}}
+   \step{<1>2}{\pick\ disjoint open neighbourhoods $U$ of $g(x)$ and $V$ of $h(x)$}
+   \step{<1>3}{\pick\ a point $a \in A \cap \inv{g}(U) \cap \inv{h}(V)$}
+   \begin{proof}
+     \pf\ One exists because $\inv{g}(U) \cap \inv{h}(V)$ is a neighbourhood of $x \in \overline{A}$.
+   \end{proof}
+   \step{<1>4}{$g(a) \in U \cap V$}
+   \qed
+ \end{proof}
+
   \section{Regular Spaces}
 
   \begin{df}[Regular]
@@ -13392,20 +13409,4 @@ Not every metric space is locally path connected.
   \qed
 \end{proof}
 
-\begin{lm}
-  \label{lm:topology:Hausdorff:continuous_extension}
-  Let $A$ be a subspace of $X$ and $Z$ be Hausdorff. Let $f : A \rightarrow Z$ be contiuous. Then there is at most one extension of $f$ to a continuous function $\overline{A} \rightarrow Z$.
-\end{lm}
-
-\begin{proof}
-  \pf
-  \step{<1>1}{\assume{for a contradiction $g,h : \overline{A} \rightarrow Z$ are continuous extensions of $f$ with $g(x) \neq h(x)$}}
-  \step{<1>2}{\pick\ disjoint open neighbourhoods $U$ of $g(x)$ and $V$ of $h(x)$}
-  \step{<1>3}{\pick\ a point $a \in A \cap \inv{g}(U) \cap \inv{h}(V)$}
-  \begin{proof}
-    \pf\ One exists because $\inv{g}(U) \cap \inv{h}(V)$ is a neighbourhood of $x \in \overline{A}$.
-  \end{proof}
-  \step{<1>4}{$g(a) \in U \cap V$}
-  \qed
-\end{proof}
 \end{document}
