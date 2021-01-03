@@ -9289,6 +9289,7 @@ $a_i$ is the point with $i$th component 1 and all other components 0. \qed
   \end{df}
 
   \begin{lm}
+    \label{lm:topology:compactification:factorization}
     Let $h : X \rightarrow Z$ be an imbedding. Then there exists a compactification $c : X \rightarrow Y$ of $X$, unique up to equivalence,
     and an imbedding $i : Y \rightarrow Z$ such that $h = i \circ c$.
   \end{lm}
@@ -13331,4 +13332,80 @@ Not every metric space is locally path connected.
   \pf\ We have $i \circ \magic_S = \magic_X$ by the uniqueness of $\magic_X$. \qed
 \end{proof}
 
+\begin{thm}
+  Let $X$ be a completely regular space. Then there exists a compactification $Y$ of $X$ such that every bounded continuous map $X \rightarrow \mathbb{R}$
+  extends uniquely to a continuous map $Y \rightarrow \mathbb{R}$.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$J$ be the set of all bounded continuous functions $X \rightarrow \mathbb{R}$}}
+  \step{<1>2}{For $\alpha \in J$, \pflet{$I_\alpha = [\inf \alpha, \sup \alpha]$}}
+  \step{<1>3}{\pflet{$Z = \prod_{\alpha \in J} I_\alpha$}}
+  \step{<1>4}{\pflet{$h : X \rightarrow Z$ be defined by
+  $$ h(x)_\alpha = \alpha(x)$$}}
+  \step{<1>5}{$Z$ is compact Hausdorff}
+  \begin{proof}
+    \step{<2>1}{$Z$ is compact}
+    \begin{proof}
+      \pf\ By Tychonoff's Theorem.
+    \end{proof}
+    \step{<2>2}{$Z$ is Hausdorff}
+    \begin{proof}
+      \pf\ By Theorem \ref{thm:topology:Hausdorff:product}
+    \end{proof}
+  \end{proof}
+  \step{<1>6}{$h$ is an imbedding}
+  \begin{proof}
+    \step{<2>1}{The set $J$ separates points from closed sets}
+    \begin{proof}
+      \pf\ This holds because $X$ is completely regular.
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ By the Imbedding Theorem.
+    \end{proof}
+  \end{proof}
+  \step{<1>7}{\pflet{$Y$ be the compactification of $X$ such that $X \subseteq Y \rightarrow Z$ factors $h$}}
+  \begin{proof}
+    \pf\ By Lemma \ref{lm:topology:compactification:factorization}
+  \end{proof}
+  \step{<1>8}{Every bounded continuous map $X \rightarrow \mathbb{R}$ extends uniquely to a continuous map $Y \rightarrow \mathbb{R}$}
+  \begin{proof}
+    \step{<2>1}{\pflet{$\alpha : X \rightarrow \mathbb{R}$ be a bounded continuous function}}
+    \step{<2>2}{\pflet{$k : Y \rightarrow Z$ be the imbedding from \stepref{<1>7}}}
+    \step{<2>3}{\pflet{$\overline{\alpha} = \pi_\alpha \circ k : Y \rightarrow \mathbb{R}$}}
+    \step{<2>4}{$\overline{\alpha}$ extends $\alpha$}
+    \begin{proof}
+      \pf For $x \in X$, we have
+      \begin{align*}
+        \overline{\alpha}(x) & = k(x)_\alpha \\
+        & = h(x)_\alpha \\
+        & = \alpha(x)
+      \end{align*}
+    \end{proof}
+    \step{<2>5}{If $f : Y \rightarrow Z$ is continuous and extends $\alpha$ then $f = \overline{\alpha}$}
+    \begin{proof}
+      \pf\ By Lemma \ref{lm:topology:Hausdorff:continuous_extension}.
+    \end{proof}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{lm}
+  \label{lm:topology:Hausdorff:continuous_extension}
+  Let $A$ be a subspace of $X$ and $Z$ be Hausdorff. Let $f : A \rightarrow Z$ be contiuous. Then there is at most one extension of $f$ to a continuous function $\overline{A} \rightarrow Z$.
+\end{lm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\assume{for a contradiction $g,h : \overline{A} \rightarrow Z$ are continuous extensions of $f$ with $g(x) \neq h(x)$}}
+  \step{<1>2}{\pick\ disjoint open neighbourhoods $U$ of $g(x)$ and $V$ of $h(x)$}
+  \step{<1>3}{\pick\ a point $a \in A \cap \inv{g}(U) \cap \inv{h}(V)$}
+  \begin{proof}
+    \pf\ One exists because $\inv{g}(U) \cap \inv{h}(V)$ is a neighbourhood of $x \in \overline{A}$.
+  \end{proof}
+  \step{<1>4}{$g(a) \in U \cap V$}
+  \qed
+\end{proof}
 \end{document}
