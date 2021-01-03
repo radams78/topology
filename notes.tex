@@ -8197,6 +8197,24 @@ $\mathcal{T}'$ is compact then $\mathcal{T}$ is compact.
     \qed
   \end{proof}
 
+  \begin{lm}
+    \label{lm:topology:compact:tube_lemma2}
+    Let $\mathcal{A}$ be a set of basis elements for $X \times Y$ such that no finite subset of $\mathcal{A}$ covers $X \times Y$.
+    If $X$ is compact, then there exists a point $x \in X$ such that no finite subset of $\mathcal{A}$ covers $\{x\} \times Y$.
+  \end{lm}
+
+  \begin{proof}
+    \pf
+    \step{<1>1}{\assume{$X$ is compact.}}
+    \step{<1>2}{\assume{For all $x \in X$, there is a finite subset of $\mathcal{A}$ that covers $\{x\} \times Y$}
+    \prove{A finite subset of $\mathcal{A}$ covers $X \times Y$}}
+    \step{<1>3}{$\{ U \text{ open in } X : \exists U_1 \times V_1, \ldots, U_r \times V_r \in \mathcal{A}. U = U_1 \cap \cdots \cap U_r, Y = V_1 \cup \cdots \cup V_r \}$ covers $X$.}
+    \step{<1>4}{\pick\ a finite subcover $\{ U_1, \ldots, U_n \}$}
+    \step{<1>5}{For $1 \leq i \leq n$, \pick $U_{i1} \times V_{i1}, \ldots, U_{ir_i} \times V_{ir_i} \in \mathcal{A}$ such that $U_i = U_{i1} \cap \cdots \cap U_{ir_i}$ and $Y = V_{i1} \cup \cdots \cup V_{ir_i}$}
+    \step{<1>6}{$\{ U_{ij} : 1 \leq i \leq n, 1 \leq j \leq r_i \}$ covers $X \times Y$}
+    \qed
+  \end{proof}
+
   \begin{prop}
     \label{prop:topology:compact:product}
     The product of two compact spaces is compact.
@@ -8718,6 +8736,94 @@ $\mathcal{T}'$ is compact then $\mathcal{T}$ is compact.
   \qed
 \end{proof}
 
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$\{ X_\alpha \}_{\alpha \in J}$ be a family of compact spaces and $X = \prod_{\alpha \in J} X_\alpha$.}}
+  \step{<1>2}{\pick\ a well-ordering $<$ of $J$ such that $J$ has a greatest elemeent $\top$}
+  \step{<1>3}{For all $\alpha \in J$ and every family of points $p = \{ p_i \in X_i \}_{i \leq \alpha}$,
+  \pflet{$Y_\alpha(p) = \{ x \in X : \forall i \leq \alpha. x_i = p_i \}$}}
+  \step{<1>4}{For all $\beta \in J$ and every family of points $p = \{ p_i \in X_i \}_{i < \beta}$,
+  \pflet{$Z_\beta(p) = \bigcap_{\alpha < \beta} Y_\alpha = \{ x \in X : \forall i < \beta. x_i = p_i \}$}}
+  \step{<1>5}{Given $\beta \in J$, a family of points $\{ p_i \in X_i \}_{i < \beta}$, and a finite set $\mathcal{A}$ of basis elements
+  that covers $Z_\beta(p)$, there exists $\alpha < \beta$ such that $\mathcal{A}$ covers $Y_\alpha(p)$}
+  \begin{proof}
+    \step{<2>1}{\assume(w.l.o.g. $\beta$ has no immediate predecessor)}
+    \step{<2>2}{For $A \in \mathcal{A}$, \pflet{$J_A = \{ i < \beta : \pi_i(A) \neq X_i \}$}}
+    \step{<2>3}{\pflet{$\alpha$ be the largest element of $\bigcup_{A \in \mathcal{A}} J_A$}}
+    \begin{proof}
+      \pf\ The set has a greatest element because each $J_A$ is finite and $\mathcal{A}$ is finite.
+    \end{proof}
+    \step{<2>4}{$\mathcal{A}$ covers $Y_\alpha(p)$}
+    \begin{proof}
+      \step{<3>1}{\pflet{$x \in Y_\alpha(p)$}}
+      \step{<3>2}{\pflet{$y \in Z_\beta(p)$ be the point with
+        $$ y_i = \begin{cases}
+        p_i & \text{if } i < \beta \\
+        x_i & \text{if } i \geq \beta
+        \end{cases} $$}}
+      \step{<3>3}{\pick\ $A \in \mathcal{A}$ such that $y \in A$}
+      \step{<3>4}{$x \in A$}
+      \begin{proof}
+        \step{<4>1}{For $i \leq \alpha$ we have $x_i \in \pi_i(A)$}
+        \begin{proof}
+          \step{<5>1}{$x_i = p_i$}
+          \begin{proof}
+            \pf\ From \stepref{<3>1} and \stepref{<1>3}.
+          \end{proof}
+          \step{<5>2}{$y_i = p_i$}
+          \begin{proof}
+            \pf\ From \stepref{<3>2}
+          \end{proof}
+          \step{<5>3}{$y_i \in \pi_i(A)$}
+          \begin{proof}
+            \pf\ From \stepref{<3>3}.
+          \end{proof}
+        \end{proof}
+        \step{<4>2}{For $\alpha < i < \beta$ we have $x_i \in \pi_i(A)$}
+        \begin{proof}
+          \step{<5>1}{$i \notin J_A$}
+          \begin{proof}
+            \pf\ From \stepref{<2>3}
+          \end{proof}
+          \step{<5>2}{$\pi_i(A) = X_i$}
+          \begin{proof}
+            \pf\ From \stepref{<2>2}
+          \end{proof}
+        \end{proof}
+        \step{<4>3}{For $i \geq \beta$ we have $x_i \in \pi_i(A)$}
+        \begin{proof}
+          \step{<5>1}{$x_i = y_i$}
+          \begin{proof}
+            \pf\ By \stepref{<3>2}
+          \end{proof}
+          \step{<5>2}{$y_i \in \pi_i(A)$}
+          \begin{proof}
+            \pf\ By \stepref{<3>3}
+          \end{proof}
+        \end{proof}
+      \end{proof}
+    \end{proof}
+  \end{proof}
+  \step{<1>6}{\assume{for a contradiction $\mathcal{A}$ is a set of basis elements such that no finite subset covers $X$}}
+  \step{<1>7}{For all $\alpha \in J$ there exists a family of points $\{p_i \in X_i \}_{i \leq \alpha}$ such that no finite subset of $\mathcal{A}$ covers $Y_\alpha(p)$}
+  \begin{proof}
+    \step{<2>1}{\assume{as induction hypothesis $\beta \in J$ and $p_i$ has been chosen for all $i < \beta$ such that, for all $\alpha < \beta$, no finite subset of $\mathcal{A}$ covers $Y_\alpha(p)$}}
+    \step{<2>2}{No finite subset of $\mathcal{A}$ covers $Z_\beta(p)$}
+    \begin{proof}
+      \pf\ By \stepref{<1>5}
+    \end{proof}
+    \step{<2>3}{\pick\ $p_\beta \in X_\beta$ such that no finite subset of $\mathcal{A}$ covers $Z_\beta(p) \times \{ p_\beta \} = Y_\beta(p)$}
+    \begin{proof}
+      \pf\ By Lemma \ref{lm:topology:compact:tube_lemma2}.
+    \end{proof}
+  \end{proof}
+  \qedstep
+  \begin{proof}
+    \pf\ This is a contradiction since $Y_\top(p) = \{ p \}$ and so must be covered by a single element of $\mathcal{A}$.
+  \end{proof}
+  \qed
+\end{proof}
+
 \begin{thm}
   In a compact Hausdorff space, the components and the quasicomponents coincide.
 \end{thm}
@@ -9178,6 +9284,8 @@ $a_i$ is the point with $i$th component 1 and all other components 0. \qed
     Let $X$ and $Y$ be spaces. Then $Y$ is a \emph{compactification} of $X$ iff
     $Y$ is a compact Hausdorff space and $X$ is a subspace of $Y$ with
     $\overline{X} = Y$.
+
+    Two compcactificatons $Y_1$, $Y_2$ of $X$ are \emph{equivalent} iff there exists a homeomorphism between $Y_1$ and $Y_2$ that is the identity on $X$.
   \end{df}
 
   \begin{df}[One-Point Compactification]
