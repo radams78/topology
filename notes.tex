@@ -4371,6 +4371,7 @@ m' \}$}}
  \end{proof}
 
   \begin{thm}[AC]
+    \label{thm:topology:completely_regular:imdbeddable}
   A space is completely regular iff it is homeomorphic to a subspace of
 $[0,1]^J$ for some $J$.
  \end{thm}
@@ -9755,6 +9756,59 @@ and $C$ are locally compact Hausdorff spaces, then $p \times q : A \times C
 \ref{prop:topology:quotient:composite} because $p \times q = (\id{B} \times q)
 \circ (p \times
 \id{C})$. \qed
+  \end{proof}
+
+  \begin{thm}
+    Let $X$ be a completely regular space. Let $Y$ be a compactification of $X$ such that every bounded continuous map $X \rightarrow \mathbb{R}$
+    extends uniquely to a continuous map $Y \rightarrow \mathbb{R}$. Then, for every compact Hausdorff space $C$, every continuous map $X \rightarrow C$ extends uniquely to a continuous map $Y \rightarrow C$.
+  \end{thm}
+
+  \begin{proof}
+    \pf
+    \step{<1>1}{\pflet{$C$ be a compact Hausdorff space and $f : X \rightarrow C$ a continuous function}}
+    \step{<1>2}{\pick\ a set $J$ and an imedding $C \subseteq [0,1]^J$}
+    \begin{proof}
+      \step{<2>1}{$C$ is normal}
+      \begin{proof}
+        \pf\ By Lemma \ref{lm:topology:compact:normal}
+      \end{proof}
+      \qedstep
+      \begin{proof}
+        \pf\ By Theorem \ref{thm:topology:completely_regular:imdbeddable}.
+      \end{proof}
+    \end{proof}
+    \step{<1>3}{For $\alpha \in J$, \pflet{$g_\alpha : Y \rightarrow \mathbb{R}$ be the unique continuous extension of $\pi_\alpha \circ f$}}
+    \step{<1>4}{Define $g : Y \rightarrow \mathbb{R}^J$ by $g(y)_\alpha = g_\alpha(y)$}
+    \step{<1>5}{$g$ is continuous}
+    \begin{proof}
+      \pf\ By Theorem \ref{thm:topology:continuous:product}.
+    \end{proof}
+    \step{<1>6}{$g$ extends $f$}
+    \step{<1>7}{We have $g : Y \rightarrow C$}
+    \begin{proof}
+      \pf
+      \begin{align*}
+        g(Y) & = g(\overline{X}) \\
+        & \subseteq \overline{g(X)} & (\text{Theorem \ref{thm:topology:continuous:characterisation}})\\
+        & = \overline{f(X)} & (\text{\stepref{<1>6}})\\
+        & \subseteq \overline{C} \\
+        & = C & (\text{Proposition \ref{prop:topology:compact:compact_is_closed}})
+      \end{align*}
+    \end{proof}
+    \step{<1>8}{$g$ is unique}
+    \begin{proof}
+      \step{<2>1}{\pflet{$h : Y \rightarrow C$ be a continuous extension of $f$}}
+      \step{<2>2}{For all $\alpha \in J$, $\pi_\alpha \circ h$ extends $\pi_\alpha \circ f$}
+      \step{<2>3}{For all $\alpha \in J$, $\pi_\alpha \circ h = g_\alpha$}
+      \begin{proof}
+        \pf\ By \stepref{<1>3}
+      \end{proof}
+      \step{<2>4}{$h = g$}
+      \begin{proof}
+        \pf\ By \stepref{<1>4}
+      \end{proof}
+    \end{proof}
+    \qed
   \end{proof}
 
   \chapter{Metric Spaces}

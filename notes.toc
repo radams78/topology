@@ -77,15 +77,15 @@
 \contentsline {section}{\numberline {9.6}Sequential Compactness}{130}{section.9.6}%
 \contentsline {section}{\numberline {9.7}Local Compactness}{130}{section.9.7}%
 \contentsline {section}{\numberline {9.8}Compactifications}{133}{section.9.8}%
-\contentsline {chapter}{\numberline {10}Metric Spaces}{139}{chapter.10}%
-\contentsline {section}{\numberline {10.1}The Metric Topology}{139}{section.10.1}%
-\contentsline {section}{\numberline {10.2}Isometries}{155}{section.10.2}%
-\contentsline {section}{\numberline {10.3}Lebesgue Numbers}{155}{section.10.3}%
-\contentsline {section}{\numberline {10.4}Uniform Continuity}{158}{section.10.4}%
-\contentsline {section}{\numberline {10.5}Locally Metrizable Spaces}{159}{section.10.5}%
-\contentsline {chapter}{\numberline {11}Manifolds}{162}{chapter.11}%
-\contentsline {section}{\numberline {11.1}Manifolds}{162}{section.11.1}%
-\contentsline {chapter}{\numberline {12}Normed Spaces}{165}{chapter.12}%
-\contentsline {section}{\numberline {12.1}The Norm on $\mathbb {R}^n$}{165}{section.12.1}%
-\contentsline {chapter}{\numberline {13}Topological Groups}{169}{chapter.13}%
-\contentsline {section}{\numberline {13.1}Topological Groups}{169}{section.13.1}%
+\contentsline {chapter}{\numberline {10}Metric Spaces}{140}{chapter.10}%
+\contentsline {section}{\numberline {10.1}The Metric Topology}{140}{section.10.1}%
+\contentsline {section}{\numberline {10.2}Isometries}{156}{section.10.2}%
+\contentsline {section}{\numberline {10.3}Lebesgue Numbers}{156}{section.10.3}%
+\contentsline {section}{\numberline {10.4}Uniform Continuity}{159}{section.10.4}%
+\contentsline {section}{\numberline {10.5}Locally Metrizable Spaces}{160}{section.10.5}%
+\contentsline {chapter}{\numberline {11}Manifolds}{163}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Manifolds}{163}{section.11.1}%
+\contentsline {chapter}{\numberline {12}Normed Spaces}{166}{chapter.12}%
+\contentsline {section}{\numberline {12.1}The Norm on $\mathbb {R}^n$}{166}{section.12.1}%
+\contentsline {chapter}{\numberline {13}Topological Groups}{170}{chapter.13}%
+\contentsline {section}{\numberline {13.1}Topological Groups}{170}{section.13.1}%
