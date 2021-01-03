@@ -9288,6 +9288,15 @@ $a_i$ is the point with $i$th component 1 and all other components 0. \qed
     Two compcactificatons $Y_1$, $Y_2$ of $X$ are \emph{equivalent} iff there exists a homeomorphism between $Y_1$ and $Y_2$ that is the identity on $X$.
   \end{df}
 
+  \begin{lm}
+    Let $h : X \rightarrow Z$ be an imbedding. Then there exists a compactification $c : X \rightarrow Y$ of $X$, unique up to equivalence,
+    and an imbedding $i : Y \rightarrow Z$ such that $h = i \circ c$.
+  \end{lm}
+
+  \begin{proof}
+    \pf\ Simply take $Y$ to be the closure of $X$ in $Z$. \qed
+  \end{proof}
+
   \begin{df}[One-Point Compactification]
     A \emph{one-point compactification} of $X$ is a compactification $Y$ of $X$
     such that $Y \setminus X$ is a singleton.
@@ -13320,15 +13329,6 @@ Not every metric space is locally path connected.
 
 \begin{proof}
   \pf\ We have $i \circ \magic_S = \magic_X$ by the uniqueness of $\magic_X$. \qed
-\end{proof}
-
-\begin{lm}
-  Let $h : X \rightarrow Z$ be an imbedding. Then there exists a compactification $c : X \rightarrow Y$ of $X$, unique up to equivalence,
-  and an imbedding $i : Y \rightarrow Z$ such that $h = i \circ c$.
-\end{lm}
-
-\begin{proof}
-  \pf\ Simply take $Y$ to be the closure of $X$ in $Z$. \qed
 \end{proof}
 
 \end{document}
