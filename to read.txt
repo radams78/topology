@@ -1,0 +1,249 @@
+GENERAL
+
+Coecke, B. (2005)On a categorical foundation for quantum information. In preparation.
+
+Physics, topology, logic and computation: a Rosetta Stone, with Mike Stay, in New structures for physics, pp. 95-172. Springer, Berlin, Heidelberg, 2010.
+
+A prehistory of n-categorical physics, with Aaron D. Lauda, in Deep Beauty: Mathematical Innovation and the Search for an Underlying Intelligibility of the Quantum World, ed. Hans Halvorson, Cambridge U. Press, Cambridge, 2011, pp. 13-128.
+
+F. W. Lawvere, Functorial Semantics of Algebraic Theories, Ph.D. Dissertation, Columbia University,
+1963. Also available at http://www.tac.mta.ca/tac/reprints/articles/5/tr5abs.html.
+
+J. Baez and L. Langford, Higher-dimensional algebra IV: 2-tangles, Adv. Math. 180 (2003), 705–764. Also
+available as arXiv:q-alg/9703033.
+
+J. Baez and A. Lauda, A prehistory of n-categorical physics, to appear in proceedings of Deep Beauty:
+Mathematical Innovation and the Search for an Underlying Intelligibility of the Quantum World, Princeton,
+October 3, 2007, ed. Hans Halvorson. Also available at http://math.ucr.edu/home/baez/history.pdf.
+
+P. Selinger, Dagger compact closed categories and completely positive maps, Proceedings of the 3rd Inter-
+national Workshop on Quantum Programming Languages (QPL 2005), Elsevier, 2007, pp. 139–163. Also
+available at http://www.mscs.dal.ca/∼selinger/papers/#dagger.
+
+STRING DIAGRAMS
+
+A. Joyal and R. Street, The geometry of tensor calculus I, Adv. Math. 88 (1991), 55–113.
+
+A. Joyal and R. Street, The geometry of tensor calculus II. Available at
+http://www.math.mq.edu.au/ street/GTCII.pdf.
+
+D. N. Yetter, Functorial Knot Theory: Categories of Tangles, Coherence, Categorical Deformations, and
+Topological Invariants, World Scientific, Singapore, 2001.
+
+CATEGORY THEORY
+
+J. Baez and L. Langford, Higher-dimensional algebra IV: 2-tangles, Adv. Math. 180 (2003), 705–764. Also
+available as arXiv:q-alg/9703033.
+
+QUANTUM THEORY
+
+J. Baez, Quantum quandaries: a category-theoretic perspective, in Structural Foundations of Quantum
+Gravity, eds. S. French, D. Rickles and J. Saatsi, Oxford U. Press, Oxford, 2006, pp. 240-265. Also
+available as arXiv:quant-ph/0404040.
+
+C. Kassel, Quantum Groups, Springer, Berlin, 1995.
+
+L. H. Kauffman, Knots and Physics, World Scientific, Singapore, 1991.
+
+S. Abramsky, Abstract scalars, loops, and free traced and strongly compact closed categories, in Pro-
+ceedings of CALCO 2005, Lecture Notes in Computer Science 3629, Springer, Berlin, 2005, 1–31. Also
+available at
+http://web.comlab.ox.ac.uk/oucl/work/samson.abramsky/calco05.pdf.
+[3] S. Abramsky and B. Coecke, A categorical semantics of quantum protocols, available at
+arXiv:quant-ph/0402130.
+[4] S. Abramsky and R. Duncan, A categorical quantum logic, to appear in Mathematical Structures in Com-
+puter Science, 2006. Also available as arXiv:quant-ph/0512114.
+
+B. Coecke, De-linearizing linearity: projective quantum axiomatics from strong compact closure, Proceed-
+ings of the 3rd International Workshop on Quantum Programming Languages (QPL 2005), Elsevier, 2007,
+pp. 49–72. Also available as arXiv:quant-ph/0506134.
+
+B. Coecke and E. O. Paquette, POVMs and Naimark’s theorem without sums, to appear in Proceedings
+of the 4th International Workshop on Quantum Programming Languages (QPL 2006). Also available as
+arXiv:quant-ph/0608072.
+[33] B. Coecke and D. Pavlovic, Quantum measurements without sums, to appear in The Mathematics of Quan-
+tum Computation and Technology, eds. Chen, Kauffman and Lomonaco, Taylor and Francis. Also available
+as arXiv:quant-ph/0608035.
+
+B. Coecke, Kindergarten quantum mechanics, to appear in Proceedings of QTRF-III. Also available as
+arXiv:quant-ph/0510032.
+
+QUANTUM GRAVITY
+
+J. Baez, Higher-dimensional algebra and Planck-scale physics, in Physics Meets Philosophy at the Planck
+Length, eds. C. Callender and N. Huggett, Cambridge U. Press, Cambridge, 2001, pp. 177–195. Also
+available as arXiv:gr-qc/9902017.
+
+C. Isham, Canonical quantum gravity and the problem of time, inIntegral Systems, QuantumGroups,  and  Quantum  Field  Theories,eds. L. Ibort and M. Rodriguez, Kluwer, Dordrecht,1993, pp. 157-207.
+
+A. Ashtekar,Lectures  on  Non-perturbative  Canonical  Quantum  Gravity,Singapore, WorldScientific, 1991.
+
+LOOP QUANTUM GRAVITY
+
+J. Baez, An introduction to spin foam models of quantum gravity and BF theory, in Geometry and
+Quantum Physics, eds. H. Gausterer and H. Grosse, Springer, Berlin, 2000, pp. 25–93. Also available
+at arXiv:gr-qc/9905087.
+
+TOPOLOGICAL QUANTUM FIELD THEORY
+
+G. Segal, The definition of a conformal field theory, in Topology, Geometry and Quantum Field Theory:
+Proceedings of the 2002 Oxford Symposium in Honour of the 60th Birthday of Graeme Segal, ed. U. L.
+Tillmann, Cambridge U. Press, 2004.
+
+J. Baez and J. Dolan, Higher-dimensional algebra and topological quantum field theory, Jour. Math. Phys.
+36 (1995), 6073–6105. Also available as arXiv:q-alg/9503002.
+
+G. Segal, The definition of a conformal field theory, in Topology, Geometry and Quantum Field Theory:
+Proceedings of the 2002 Oxford Symposium in Honour of the 60th Birthday of Graeme Segal, ed. U. L.
+Tillmann, Cambridge U. Press, 2004
+
+M. F. Atiyah, Topological quantum field theories, Publ. Math. IHES Paris 68 (1989), 175–186.
+M. F. Atiyah, The Geometry and Physics of Knots, Cambridge U. Press, Cambridge, 1990.
+
+L. H. Kauffman and S. Lins, Temperley–Lieb Recoupling Theory and Invariants of 3-Manifolds, Princeton
+U. Press, Princeton, 1994.
+
+L. Smolin, The future of spin networks, The Geometric Universe: Science, Geometry, and the Work of
+Roger Penrose, eds. S. Hugget, P. Tod, and L. J. Mason, Oxford U. Press, Oxford, 1998. Also available as
+arXiv:gr-qc/9702030.
+
+V. G. Turaev, Quantum Invariants of Knots and 3-Manifolds, de Gruyter, Berlin, 1994.
+
+B. Bakalov and A. Kirillov, Jr., Lectures on Tensor Categories and Modular Functors, Amer-
+ican Mathematical Society, Providence, Rhode Island, 2001. Preliminary version available at
+http://www.math.sunysb.edu/∼kirillov/tensor/tensor.html.
+
+J. Kock, Frobenius Algebras and 2D Topological Quantum Field Theories, London Mathematical Society
+Student Texts 59, Cambridge U. Press, Cambridge, 2004.
+
+GAUGE FIELD THEORY
+
+P. Cvitanovic, Group Theory, Princeton U. Press, Princeton, 2003. Available at
+http://www.nbi.dk/GroupTheory/.
+
+STRING THEORY
+
+E. Witten, Quantum field theory and the Jones polynomial, Comm. Math. Phys. 121 (1989), 351–399.
+
+T. Kohno, ed., New Developments in the Theory of Knots, World Scientific, Singapore, 1990.
+
+B. Bakalov and A. Kirillov, Jr., Lectures on Tensor Categories and Modular Functors, Amer-
+ican Mathematical Society, Providence, Rhode Island, 2001. Preliminary version available at
+http://www.math.sunysb.edu/∼kirillov/tensor/tensor.html.
+
+V. G. Turaev, Quantum Invariants of Knots and 3-Manifolds, de Gruyter, Berlin, 1994.
+
+ANYONS
+
+A. Stern, Anyons and the quantum Hall effect – a pedagogical review, Ann. Phys. 323 (2008), 204–249.
+available as arXiv:0711.4697.
+[93] M. Stone, ed., Quantum Hall Effect, World Scientific, Singapore, 1992.
+
+G. Moore and N. Read, Nonabelions in the the fractional quantum Hall effect, Nucl. Phys. B 360 (1991),
+362–396.
+
+E. Rowell, R. Stong and Z. Wang, On classification of modular tensor categories, available as
+arXiv:0712.1377.
+
+M. Freedman, A. Kitaev, M. Larsen and Z. Wang, Topological quantum computation, available as
+arXiv:quant-ph/0101025.
+M. Freedman, A. Kitaev and Z. Wang, Simulation of topological field theories by quantum computers,
+Comm. Math. Phys. 227 (2002), 587–603. Also available as arXiv:quant-ph/0001071.
+M. Freedman, A. Kitaev and Z. Wang, A modular functor which is universal for quantum computation,
+Comm. Math. Phys. 227 (2002), 605–622. Also available as arXiv:quant-ph/0001108.
+
+LOGIC
+
+J.-Y. Girard, Y. Lafont and P. Taylor, Proofs and Types, Cambridge U. Press, Cambridge, 1990. Also
+available at http://www.monad.me.uk/stable/Proofs%2BTypes.html.
+
+J.-Y. Girard, Linear logic, Theor. Comp. Sci. 50 (1987), 1–102. Also available at
+http://iml.univ-mrs.fr/ girard/linear.pdf.
+
+M. Hasegawa, Logical predicates for intuitionistic linear type theories, Typed Lambda Calculi and Appli-
+cations: 4th International Conference, TLCA ’99, ed. J.-Y. Girard, Lecture Notes in Computer Science
+1581, Springer, Berlin, 1999. Also available at http://citeseer.ist.psu.edu/187161.html.
+
+A. Schalk, What is a categorical model for linear logic? Available at
+http://www.cs.man.ac.uk/∼schalk/notes/llmodel.pdf.
+
+R. A. G. Seely, Weak adjointness in proof theory, Applications of Sheaves, Lecture Notes in Mathematics
+753, Springer, Berlin, 697–701. Also available at
+http://www.math.mcgill.ca/rags/WkAdj/adj.pdf.
+R. A. G. Seely, Modeling computations: a 2-categorical framework, in Proc. Symp. Logic Comp. Sci.
+1987, Computer Society of the IEEE, pp. 65–71. Also available at
+http://www.math.mcgill.ca/rags/WkAdj/LICS.pdf.
+
+T. Trimble, Linear Logic, Bimodules, and Full Coherence for Autonomous Categories, Ph.D. thesis, Rut-
+gers University, 1994.
+
+C. B. Jay, The structure of free closed categories, Jour. Pure Appl. Alg. 66 (1990), 271–285.
+
+S. Soloviev, Proof of a conjecture of S. Mac Lane, Ann. Pure Appl. Logic 90 (1997), 101–162.
+
+G. M. Kelly and S. Mac Lane, Coherence in closed categories, Jour. Pure Appl. Alg. 1 (1971), 97–140 and
+219.
+
+G. M. Kelly and M. L. Laplaza, Coherence for compact closed categories, Jour. Pure Appl. Alg. 19 (1980),
+
+
+F. W. Lawvere, Functorial Semantics of Algebraic Theories, Ph.D. Dissertation, Columbia University,
+1963. Also available at http://www.tac.mta.ca/tac/reprints/articles/5/tr5abs.html.
+
+S. N. Burris and H. P. Sankappanavar, A Course in Universal Algebra, Springer, Berlin, 1981. Also avail-
+able at http://www.math.uwaterloo.ca/∼snburris/htdocs/ualg.html.
+
+R. L. Crole, Categories for Types, Cambridge U. Press, Cambridge, 1993.
+
+G. Bierman, On Intuitionistic Linear Logic, PhD Thesis, Cambridge University. Available at
+http://research.microsoft.com/∼gmb/Papers/thesis.pdf.
+
+R. Di Cosmo and D. Miller, Linear logic, Stanford Encyclopedia of Philosophy, available at
+http://plato.stanford.edu/entries/logic-linear/
+
+A. S. Troelstra, Lectures on Linear Logic, Center for the Study of Language and Information, Stanford,
+California, 1992.
+
+R. Blute and P. Scott, Category theory for linear logicians, in Linear Logic in Computer Science, eds. T.
+Ehrhard, J.-Y. Girard, P. Ruet, P. Scott, Cambridge U. Press, Cambridge, 2004, pp. 3–64. Also available at
+http://www.site.uottawa.ca/∼phil/papers/catsurv.web.pdf.
+193–213.
+
+J. Lambek and P. J. Scott, Introduction to Higher-order Categorical Logic, Cambridge U. Press, Cambridge,
+1986.
+
+J. Moschovakis, Intuitionistic logic, Stanford Encyclopedia of Philosophy, available at
+http://plato.stanford.edu/entries/logic-intuitionistic/.
+
+TYPE THEORY
+
+B. Hilken, Towards a proof theory of rewriting: the simply-typed 2λ-calculus, Theor. Comp. Sci. 170
+(1996), 407–444.
+
+P. Melliès, Axiomatic rewriting theory I: a diagrammatic standardisation theorem, in Processes, Terms
+and Cycles: Steps on the Road to Infinity, Lecture Notes in Computer Science 3838, Springer, 2005, pp.
+554–638. Also available at http://www.pps.jussieu.fr/ mellies/papers/jwkfestschrift.pdf.
+
+P. Scott, Some aspects of categories in computer science, in Handbook of Algebra, Vol. 2, ed. M.
+Hazewinkel, Elsevier, Amsterdam, 2000. Also available at
+http://www.site.uottawa.ca/ phil/papers/handbook.ps.
+
+QUANTUM TYPE THEORY
+
+N. Benton, G. M. Bierman, V. de Paiva and J. M. E. Hyland, Linear lambda-calculus and categorical models
+revisited, in Computer Science Logic (CSL’92), Selected Papers, Lecture Notes in Computer Science 702,
+Springer, Berlin, 1992, pp. 61–84. Also available at http://citeseer.ist.psu.edu/benton92linear.html
+
+A. van Tonder, A lambda calculus for quantum computation, SIAM Jour. Comput. 33 (2004), 1109–1135.
+Also available as arXiv:quant-ph/0307150.
+
+P. Selinger and B. Valiron, A lambda calculus for quantum computation with classical control, Math.
+Struct. Comp. Sci. 13 (2006), 527–552. Also available at
+http://www.mathstat.dal.ca/∼selinger/papers/#qlambda.
+
+S. Abramsky and N. Tzevelokos, Introduction to categories and categorical logic, in this volume. Also
+available at http://web.comlab.ox.ac.uk/people/Bob.Coecke/AbrNikos.pdf.
+[7] S. Ambler, First order logic in symmetric monoidal closed categories, Ph.D. thesis, U. of Edinburgh, 1991.
+Available at http://www.lfcs.inf.ed.ac.uk/reports/92/ECS-LFCS-92-194/ .
+
+C. B. Jay, Languages for monoidal categories, Jour. Pure Appl. Alg. 59 (1989), 61–85.C. B. Jay, Languages for monoidal categories, Jour. Pure Appl. Alg. 59 (1989), 61–85.
