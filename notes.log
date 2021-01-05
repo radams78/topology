@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.10.15)  5 JAN 2021 23:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.10.15)  5 JAN 2021 23:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -415,7 +415,7 @@ Package xypdf Info: Line width: 0.39998pt on input line 39.
 sed, duplicate ignored
 <to be read again> 
                    \relax 
-l.34 ....13}Accumulation Points}{39}{section.3.13}
+l.34 ...rline {3.13}Convergence}{38}{section.3.13}
                                                    [1
 
 ] [2])
@@ -665,8 +665,8 @@ Package rerunfilecheck Warning: File `notes.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `notes.out':
-(rerunfilecheck)             Before: 54B21A172D8A4447BC7E89BB22B348C1;5886
-(rerunfilecheck)             After:  FDE84641C7FC019B6C27E00D8F73A855;5963.
+(rerunfilecheck)             Before: FDE84641C7FC019B6C27E00D8F73A855;5963
+(rerunfilecheck)             After:  B37B5483E5D26A351EE5F56BD2F55F1C;6021.
 
 LaTeX Warning: There were undefined references.
 
@@ -676,35 +676,23 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 13510.
  ) 
 Here is how much of TeX's memory you used:
- 9609 strings out of 493029
- 127478 string characters out of 6136233
- 257022 words of memory out of 5000000
- 11928 multiletter control sequences out of 15000+600000
+ 9608 strings out of 493029
+ 127476 string characters out of 6136233
+ 257026 words of memory out of 5000000
+ 11929 multiletter control sequences out of 15000+600000
  16756 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  31i,16n,31p,3212b,812s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{lm.3.12.4} has been referenced but does not exist
+pdfTeX warning (dest): name{lm.1.7.11} has been referenced but does not exist
 , replaced by a fixed one
 
-pdfTeX warning (dest): name{lm.3.7.5} has been referenced but does not exist, r
+pdfTeX warning (dest): name{lm.1.7.10} has been referenced but does not exist, 
+replaced by a fixed one
+
+pdfTeX warning (dest): name{lm.1.7.9} has been referenced but does not exist, r
 eplaced by a fixed one
 
-pdfTeX warning (dest): name{lm.3.7.8} has been referenced but does not exist, r
-eplaced by a fixed one
-
-pdfTeX warning (dest): name{lm.3.7.6} has been referenced but does not exist, r
-eplaced by a fixed one
-
-pdfTeX warning (dest): name{cor.3.11.2.1} has been referenced but does not exis
-t, replaced by a fixed one
-
-pdfTeX warning (dest): name{lm.3.7.4} has been referenced but does not exist, r
-eplaced by a fixed one
-
-pdfTeX warning (dest): name{lm.3.7.3} has been referenced but does not exist, r
-eplaced by a fixed one
-
-pdfTeX warning (dest): name{lm.3.7.2} has been referenced but does not exist, r
+pdfTeX warning (dest): name{lm.1.7.8} has been referenced but does not exist, r
 eplaced by a fixed one
 
 </usr/share/texmf/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf/f
@@ -725,10 +713,10 @@ ublic/amsfonts/symbols/msam7.pfb></usr/share/texmf/fonts/type1/public/amsfonts/
 symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/symbols/msbm7.
 pfb></usr/share/texmf/fonts/type1/public/xypic/xyatip10.pfb></usr/share/texmf/f
 onts/type1/public/xypic/xybtip10.pfb>
-Output written on notes.pdf (187 pages, 786100 bytes).
+Output written on notes.pdf (187 pages, 786602 bytes).
 PDF statistics:
- 2799 PDF objects out of 2984 (max. 8388607)
- 2505 compressed objects within 26 object streams
- 1108 named destinations out of 1200 (max. 500000)
- 745 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2801 PDF objects out of 2984 (max. 8388607)
+ 2507 compressed objects within 26 object streams
+ 1106 named destinations out of 1200 (max. 500000)
+ 753 words of extra memory for PDF output out of 10000 (max. 10000000)
 

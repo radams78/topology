@@ -16,7 +16,8 @@
 \contentsline {subsection}{\numberline {1.5.10}Function Sets}{15}{subsection.1.5.10}
 \contentsline {subsection}{\numberline {1.5.11}The Subset Classifier}{15}{subsection.1.5.11}
 \contentsline {section}{\numberline {1.6}The Basics}{17}{section.1.6}
-\contentsline {section}{\numberline {1.7}Order Theory}{19}{section.1.7}
+\contentsline {section}{\numberline {1.7}Refinements}{19}{section.1.7}
+\contentsline {section}{\numberline {1.8}Order Theory}{19}{section.1.8}
 \contentsline {chapter}{\numberline {2}Real Analysis}{22}{chapter.2}
 \contentsline {chapter}{\numberline {3}Topological Spaces}{23}{chapter.3}
 \contentsline {section}{\numberline {3.1}Topologies}{23}{section.3.1}
