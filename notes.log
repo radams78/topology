@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.10.15)  5 JAN 2021 23:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.10.15)  5 JAN 2021 23:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -415,7 +415,7 @@ Package xypdf Info: Line width: 0.39998pt on input line 39.
 sed, duplicate ignored
 <to be read again> 
                    \relax 
-l.34 ...rline {3.13}Convergence}{38}{section.3.13}
+l.34 ...mberline {3.12}Subbases}{37}{section.3.12}
                                                    [1
 
 ] [2])
@@ -458,19 +458,19 @@ Chapter 3.
 [38] [39] [40]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1682.
+(hyperref)                removing `math shift' on input line 1688.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 1682.
+(hyperref)                removing `subscript' on input line 1688.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\delta' on input line 1682.
+(hyperref)                removing `\delta' on input line 1688.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1682.
+(hyperref)                removing `math shift' on input line 1688.
 
 [41]
 Chapter 4.
@@ -484,20 +484,20 @@ Chapter 5.
 Chapter 6.
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 3670.
+(hyperref)                removing `math shift' on input line 3676.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 3670.
+(hyperref)                removing `subscript' on input line 3676.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 3670.
+(hyperref)                removing `math shift' on input line 3676.
 
 [65
 
 ] [66] [67] [68] [69] [70] [71]
-Overfull \hbox (50.90086pt too wide) in paragraph at lines 4241--4241
+Overfull \hbox (50.90086pt too wide) in paragraph at lines 4247--4247
 []$\OML/cmm/m/it/10 C[] \OT1/cmr/m/n/10 = (\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 n
  \OT1/cmr/m/n/10 + 1 \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 1\OML/cmm/m/it/10 =k\
 OMS/cmsy/m/n/10 g\OML/cmm/m/it/10 home=robin=fun=RogOMatic=src=actuatortimes\OT
@@ -518,27 +518,27 @@ Chapter 8.
 [110] [111]
 
 LaTeX Warning: Reference `prop:topology:path_connected:product' on page 112 und
-efined on input line 7519.
+efined on input line 7525.
 
 [112] [113] [114]
 Chapter 9.
 [115
 
 ] [116] [117] [118] [119]
-Overfull \hbox (0.47768pt too wide) in paragraph at lines 8139--8141
+Overfull \hbox (0.47768pt too wide) in paragraph at lines 8145--8147
 []\OT1/cmr/bx/n/10 Corollary 9.4.10.1. \OT1/cmr/m/it/10 Let $\OMS/cmsy/m/n/10 f
 \OML/cmm/m/it/10 X[]\OMS/cmsy/m/n/10 g[]$ \OT1/cmr/m/it/10 be a fam-ily of topo
 -log-i-cal spaces. If $[][] \OML/cmm/m/it/10 X[]$
  []
 
 [120] [121]
-Overfull \hbox (6.39398pt too wide) in paragraph at lines 8314--8316
+Overfull \hbox (6.39398pt too wide) in paragraph at lines 8320--8322
 []\OT1/cmr/bx/n/10 Proposition 9.4.15. \OT1/cmr/m/it/10 A topo-log-i-cal space 
 is com-pact if and only if ev-ery nonempty
  []
 
 
-Overfull \hbox (2.62741pt too wide) in paragraph at lines 8365--8367
+Overfull \hbox (2.62741pt too wide) in paragraph at lines 8371--8373
 []\OT1/cmr/m/sc/10 Proof\OT1/cmr/m/n/10 : Let $\OML/cmm/m/it/10 g\OT1/cmr/m/n/1
 0 (\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 ) = \OML/cmm/m/it/10 f\OT1/cmr/m/n/10 (\OM
 L/cmm/m/it/10 x\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 f[]\OT1/
@@ -549,7 +549,7 @@ cmm/m/it/10 g[]\OT1/cmr/m/n/10 ((\OMS/cmsy/m/n/10 ^^@1\OML/cmm/m/it/10 ; ^^O\OT
  []
 
 [122] [123] [124] [125] [126] [127] [128] [129] [130] [131] [132] [133]
-Overfull \hbox (2.18787pt too wide) in paragraph at lines 9382--9382
+Overfull \hbox (2.18787pt too wide) in paragraph at lines 9388--9388
 []$\OML/cmm/m/it/10 Y \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 X \OMS/cmsy/m/n/10 [ f
 1g$ \OT1/cmr/m/n/10 un-der the topol-ogy $\OMS/cmsy/m/n/10 T \OT1/cmr/m/n/10 = 
 \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 U \OMS/cmsy/m/n/10 ^^R \OML/cmm/m/it/10 X \O
@@ -557,7 +557,7 @@ T1/cmr/m/n/10 : \OML/cmm/m/it/10 U[]X\OMS/cmsy/m/n/10 g [
  []
 
 [134]
-Overfull \hbox (1.25256pt too wide) in paragraph at lines 9449--9449
+Overfull \hbox (1.25256pt too wide) in paragraph at lines 9455--9455
 []$[] \OMS/cmsy/m/n/10 A \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 Y \OMS/cmsy/m/n/10 
 n \OT1/cmr/m/n/10 ([]\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 D \OMS/cmsy/m/n/10 ^^R 
 \OML/cmm/m/it/10 X \OT1/cmr/m/n/10 : \OML/cmm/m/it/10 D[]; Y \OMS/cmsy/m/n/10 n
@@ -570,7 +570,7 @@ Chapter 10.
 [141
 
 ] [142] [143] [144] [145] [146] [147] [148] [149] [150]
-Overfull \hbox (2.36778pt too wide) in paragraph at lines 10732--10732
+Overfull \hbox (2.36778pt too wide) in paragraph at lines 10738--10738
 []\OT1/cmr/m/sc/10 Pick $\OML/cmm/m/it/10 ^^N > \OT1/cmr/m/n/10 0$ such that, f
 or all $\OML/cmm/m/it/10 x[] \OMS/cmsy/m/n/10 2 \OML/cmm/m/it/10 X$\OT1/cmr/m/n
 /10 , if $\OML/cmm/m/it/10 d\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x; x[]\OT1/cmr/m/
@@ -581,20 +581,20 @@ n/10 ) \OML/cmm/m/it/10 < ^^N$ \OT1/cmr/m/n/10 then $\OML/cmm/m/it/10 d\OT1/cmr
  []
 
 
-Overfull \hbox (0.7718pt too wide) in paragraph at lines 10790--10790
+Overfull \hbox (0.7718pt too wide) in paragraph at lines 10796--10796
 []$\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 s[]\OMS/cmsy/m/n/10 g[]$ \OT1/cmr/m/n/10 
 be a mono-tone in-creas-ing se-quence of real num-bers bounded
  []
 
 [151]
-Overfull \hbox (6.28944pt too wide) in paragraph at lines 10825--10827
+Overfull \hbox (6.28944pt too wide) in paragraph at lines 10831--10833
 []\OT1/cmr/m/sc/10 Proof\OT1/cmr/m/n/10 : $[][] \OMS/cmsy/m/n/10 j\OML/cmm/m/it
 /10 a[]\OMS/cmsy/m/n/10 j$ \OT1/cmr/m/n/10 is a mono-tone in-creas-ing se-quenc
 e bounded above by $[][] \OML/cmm/m/it/10 b[]$\OT1/cmr/m/n/10 . 
  []
 
 
-Overfull \hbox (12.99199pt too wide) in paragraph at lines 10831--10834
+Overfull \hbox (12.99199pt too wide) in paragraph at lines 10837--10840
 []\OT1/cmr/m/sc/10 Proof\OT1/cmr/m/n/10 : $[][] \OML/cmm/m/it/10 c[]$ \OT1/cmr/
 m/n/10 is a mono-tone in-creas-ing se-quence bounded above by $2 [][] \OMS/cmsy
 /m/n/10 j\OML/cmm/m/it/10 a[]\OMS/cmsy/m/n/10 j$\OT1/cmr/m/n/10 . 
@@ -608,15 +608,15 @@ Chapter 11.
 Chapter 12.
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 11968.
+(hyperref)                removing `math shift' on input line 11974.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 11968.
+(hyperref)                removing `superscript' on input line 11974.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 11968.
+(hyperref)                removing `math shift' on input line 11974.
 
 [167
 
@@ -625,7 +625,7 @@ Chapter 13.
 [171
 
 ] [172] [173] [174] <xymatrix 3x2 305> [175] [176] [177] [178] [179]
-Overfull \hbox (18.02438pt too wide) in paragraph at lines 13001--13001
+Overfull \hbox (18.02438pt too wide) in paragraph at lines 13007--13007
 []\OT1/cmr/m/n/10 Given $\OML/cmm/m/it/10 V[]$\OT1/cmr/m/n/10 , \OT1/cmr/m/sc/1
 0 Pick \OT1/cmr/m/n/10 a sym-met-ric neigh-bour-hood $\OML/cmm/m/it/10 V[]$ \OT
 1/cmr/m/n/10 of $\OML/cmm/m/it/10 e$ \OT1/cmr/m/n/10 such that $\OML/cmm/m/it/1
@@ -633,7 +633,7 @@ Overfull \hbox (18.02438pt too wide) in paragraph at lines 13001--13001
  []
 
 [180] [181]
-Overfull \hbox (0.2876pt too wide) in paragraph at lines 13164--13164
+Overfull \hbox (0.2876pt too wide) in paragraph at lines 13170--13170
 []$\OML/cmm/m/it/10 k \OT1/cmr/m/n/10 : \OML/cmm/m/it/10 Z[] \OMS/cmsy/m/n/10 !
  \OT1/cmr/m/n/10 [0\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 1]$ be the con-tin-u-ous 
 func-tion such that $\OML/cmm/m/it/10 k\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p\OT1/
@@ -641,7 +641,7 @@ cmr/m/n/10 (\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 )) =
  []
 
 
-Overfull \hbox (13.86353pt too wide) in paragraph at lines 13173--13176
+Overfull \hbox (13.86353pt too wide) in paragraph at lines 13179--13182
 []\OT1/cmr/m/sc/10 Proof\OT1/cmr/m/n/10 : If $\OML/cmm/m/it/10 g$ \OT1/cmr/m/n/
 10 is such a con-tin-u-ous func-tion then $\OML/cmm/m/it/10 g[]\OT1/cmr/m/n/10 
 ([0\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 1\OML/cmm/m/it/10 =\OT1/cmr/m/n/10 2))$ a
@@ -650,13 +650,13 @@ OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 1])$
  []
 
 [182] [183] [184] [185]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 13510.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 13516.
  [186]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 13510.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 13516.
  (./notes.aux (./set_theory.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 13510.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 13516.
 
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 13510
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 13516
 .
 
 
@@ -665,34 +665,58 @@ Package rerunfilecheck Warning: File `notes.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `notes.out':
-(rerunfilecheck)             Before: FDE84641C7FC019B6C27E00D8F73A855;5963
-(rerunfilecheck)             After:  B37B5483E5D26A351EE5F56BD2F55F1C;6021.
+(rerunfilecheck)             Before: B37B5483E5D26A351EE5F56BD2F55F1C;6021
+(rerunfilecheck)             After:  B7C3C4A8B1470993D014A45E29775793;6085.
 
 LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 13510.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 13516.
  ) 
 Here is how much of TeX's memory you used:
- 9608 strings out of 493029
- 127476 string characters out of 6136233
+ 9619 strings out of 493029
+ 127586 string characters out of 6136233
  257026 words of memory out of 5000000
- 11929 multiletter control sequences out of 15000+600000
+ 11930 multiletter control sequences out of 15000+600000
  16756 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  31i,16n,31p,3212b,812s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{lm.1.7.11} has been referenced but does not exist
+pdfTeX warning (dest): name{lm.3.13.4} has been referenced but does not exist
 , replaced by a fixed one
 
-pdfTeX warning (dest): name{lm.1.7.10} has been referenced but does not exist, 
-replaced by a fixed one
-
-pdfTeX warning (dest): name{lm.1.7.9} has been referenced but does not exist, r
+pdfTeX warning (dest): name{lm.3.8.5} has been referenced but does not exist, r
 eplaced by a fixed one
 
-pdfTeX warning (dest): name{lm.1.7.8} has been referenced but does not exist, r
+pdfTeX warning (dest): name{lm.3.8.8} has been referenced but does not exist, r
+eplaced by a fixed one
+
+pdfTeX warning (dest): name{lm.3.8.6} has been referenced but does not exist, r
+eplaced by a fixed one
+
+pdfTeX warning (dest): name{cor.3.4.3.1} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{lm.3.4.4} has been referenced but does not exist, r
+eplaced by a fixed one
+
+pdfTeX warning (dest): name{cor.3.12.2.1} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{cor.3.4.2.1} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{lm.3.8.4} has been referenced but does not exist, r
+eplaced by a fixed one
+
+pdfTeX warning (dest): name{lm.3.8.3} has been referenced but does not exist, r
+eplaced by a fixed one
+
+pdfTeX warning (dest): name{lm.3.8.2} has been referenced but does not exist, r
+eplaced by a fixed one
+
+pdfTeX warning (dest): name{lm.3.3.3} has been referenced but does not exist, r
 eplaced by a fixed one
 
 </usr/share/texmf/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf/f
@@ -713,10 +737,10 @@ ublic/amsfonts/symbols/msam7.pfb></usr/share/texmf/fonts/type1/public/amsfonts/
 symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/symbols/msbm7.
 pfb></usr/share/texmf/fonts/type1/public/xypic/xyatip10.pfb></usr/share/texmf/f
 onts/type1/public/xypic/xybtip10.pfb>
-Output written on notes.pdf (187 pages, 786602 bytes).
+Output written on notes.pdf (187 pages, 787215 bytes).
 PDF statistics:
- 2801 PDF objects out of 2984 (max. 8388607)
- 2507 compressed objects within 26 object streams
- 1106 named destinations out of 1200 (max. 500000)
- 753 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2816 PDF objects out of 2984 (max. 8388607)
+ 2522 compressed objects within 26 object streams
+ 1116 named destinations out of 1200 (max. 500000)
+ 761 words of extra memory for PDF output out of 10000 (max. 10000000)
 
