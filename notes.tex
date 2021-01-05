@@ -1147,10 +1147,25 @@
 
   \begin{proof}
     \pf
-    \step{1}{\pflet{$\{A_i\}_{i \in I}$ be a locally finite family of subsets of the space $X$.}}
-    \step{2}{\pflet{$x \in X$}}
-    \step{3}{\pick\ a neighbourhood $U$ of $x$ that intersects only $A_{i_1}$, \ldots, $A_{i_n}$.}
-    \step{4}{$U$ intersects only $\overline{A_{i_1}}$, \ldots, $\overline{A_{i_n}}$.}
+    \step{<1>1}{\pflet{$\{A_i\}_{i \in I}$ be a locally finite family of subsets of the space $X$.}}
+    \step{<1>2}{\pflet{$x \in X$}}
+    \step{<1>3}{\pick\ a neighbourhood $U$ of $x$ that intersects only $A_{i_1}$, \ldots, $A_{i_n}$.}
+    \step{<1>4}{$U$ intersects only $\overline{A_{i_1}}$, \ldots, $\overline{A_{i_n}}$.}
+    \qed
+  \end{proof}
+
+  \begin{lm}
+    Let $\{ A_i \}_{i \in I}$ be locally finite. Then $\overline{\bigcup_{i \in I} A_i} = \bigcup_{i \in I} \overline{A_i}$.
+  \end{lm}
+
+  \begin{proof}
+    \pf
+    \step{<1>1}{\pflet{$x \in \overline{\bigcup_{i \in I} A_i}$}}
+    \step{<1>2}{\pick\ a neighbourhood $U$ of $x$ that intersects only $A_{i_1}$, \ldots, $A_{i_n}$.}
+    \step{<1>3}{$x \in \overline{A_{i_1}} \cup \cdots \cup \overline{A_{i_n}}$}
+    \begin{proof}
+      \pf\ If not, then $U - \overline{A_{i_1}} - \cdots - \overline{A_{i_n}}$ would be a neighbourhood of $x$ that does not intersect $\bigcup_{i \in I} A_i$.
+    \end{proof}
     \qed
   \end{proof}
 
@@ -13485,5 +13500,4 @@ Not every metric space is locally path connected.
   \end{proof}
   \qed
 \end{proof}
-
 \end{document}
