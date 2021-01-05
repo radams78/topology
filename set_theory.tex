@@ -10,24 +10,7 @@ write $f : A \rightarrow B$ iff $f$ is a function from $A$ to $B$.
 Given functions $f : A \rightarrow B$ and $g : B \rightarrow C$, let there be
 a function $g \circ f : A \rightarrow C$, the \emph{composite} of $f$ and $g$.
 
-\begin{df}[Injective]
-  A function $f : A \rightarrow B$ is \emph{injective}, $f : A
-  \rightarrowtail B$, iff, for every set $X$ and functions $g, h : X
-  \rightarrow
-  A$, if $f \circ g = f \circ h$ then $g = h$.
-\end{df}
-
-\begin{df}[Surjective]
-  Let $f : A \rightarrow B$. Then $f$ is \emph{surjective}, $f : A
-\twoheadrightarrow B$, iff, for any set
-  $X$ and functions $g, h : B \rightarrow X$, if $g \circ f = h \circ f$ then
-  $g
-  = h$.
-\end{df}
-
-\section{Axioms}
-
-\subsection{Axioms for a Category}
+\section{The Axiom of Associativity}
 
 \begin{ax}[Associativity]
   Let $f : A \rightarrow B$, $g : B \rightarrow C$ and $h : C \rightarrow D$.
@@ -37,7 +20,17 @@ a function $g \circ f : A \rightarrow C$, the \emph{composite} of $f$ and $g$.
 From now on we write $h \circ g \circ f$ for the composite of $f$, $g$ and
 $h$, and similarly for more than three functions.
 
+\section{Injective Functions}
+
+\begin{df}[Injective]
+  A function $f : A \rightarrow B$ is \emph{injective}, $f : A
+  \rightarrowtail B$, iff, for every set $X$ and functions $g, h : X
+  \rightarrow
+  A$, if $f \circ g = f \circ h$ then $g = h$.
+\end{df}
+
 \begin{lm}
+\label{lm:sets:injective:comp}
  Let $f : A \rightarrow B$ and $g : B \rightarrow C$. If $f$ and $g$ are
 injective then $g \circ f$ is injective.
 \end{lm}
@@ -59,15 +52,7 @@ injective then $g \circ f$ is injective.
 \end{proof}
 
 \begin{lm}
- Let $f : A \rightarrow B$ and $g : B \rightarrow C$. If $f$ and $g$ are
-surjective then $g \circ f$ is surjective.
-\end{lm}
-
-\begin{proof}
- \pf\ Dual. \qed
-\end{proof}
-
-\begin{lm}
+  \label{lm:sets:injective:compr}
  Let $f : A \rightarrow B$ and $g : B \rightarrow C$. If $g \circ f$ is
 injective then $f$ is injective.
 \end{lm}
@@ -85,14 +70,35 @@ injective then $f$ is injective.
  \qed
 \end{proof}
 
+\section{Surjective Functions}
+
+\begin{df}[Surjective]
+  Let $f : A \rightarrow B$. Then $f$ is \emph{surjective}, $f : A
+\twoheadrightarrow B$, iff, for any set
+  $X$ and functions $g, h : B \rightarrow X$, if $g \circ f = h \circ f$ then
+  $g
+  = h$.
+\end{df}
+
+\begin{lm}
+ Let $f : A \rightarrow B$ and $g : B \rightarrow C$. If $f$ and $g$ are
+surjective then $g \circ f$ is surjective.
+\end{lm}
+
+\begin{proof}
+ \pf\ Dual to Lemma \ref{lm:sets:injective:comp}. \qed
+\end{proof}
+
 \begin{lm}
  Let $f : A \rightarrow B$ and $g : B \rightarrow C$. If $g \circ f$ is
 surjective then $g$ is surjective.
 \end{lm}
 
 \begin{proof}
- \pf\ Dual. \qed
+ \pf\ Dual to Lemma \ref{lm:sets:injective:compr}. \qed
 \end{proof}
+
+\section{Identity Functions}
 
 \begin{ax}[Identity Function]
   For any set $A$, there exists a function $\id{A} : A \rightarrow A$, the
