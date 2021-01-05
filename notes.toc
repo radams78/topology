@@ -26,19 +26,20 @@
 \contentsline {section}{\numberline {3.4}Local Bases}{26}{section.3.4}
 \contentsline {section}{\numberline {3.5}Bases}{26}{section.3.5}
 \contentsline {section}{\numberline {3.6}Closed Sets}{31}{section.3.6}
-\contentsline {section}{\numberline {3.7}Locally Finite Families}{32}{section.3.7}
-\contentsline {section}{\numberline {3.8}Countably Locally Finite Sets}{32}{section.3.8}
-\contentsline {section}{\numberline {3.9}Closure of a Set}{32}{section.3.9}
-\contentsline {section}{\numberline {3.10}Interior of a Set}{35}{section.3.10}
-\contentsline {section}{\numberline {3.11}Boundary}{36}{section.3.11}
-\contentsline {section}{\numberline {3.12}Limit Points}{37}{section.3.12}
-\contentsline {section}{\numberline {3.13}Subbases}{37}{section.3.13}
-\contentsline {section}{\numberline {3.14}Convergence}{38}{section.3.14}
-\contentsline {section}{\numberline {3.15}Accumulation Points}{40}{section.3.15}
-\contentsline {section}{\numberline {3.16}Dense Sets}{41}{section.3.16}
-\contentsline {section}{\numberline {3.17}$G_\delta $ Sets}{41}{section.3.17}
-\contentsline {section}{\numberline {3.18}Separated Sets}{41}{section.3.18}
-\contentsline {section}{\numberline {3.19}Coherent Topology}{41}{section.3.19}
+\contentsline {section}{\numberline {3.7}Closed Refinements}{32}{section.3.7}
+\contentsline {section}{\numberline {3.8}Locally Finite Families}{32}{section.3.8}
+\contentsline {section}{\numberline {3.9}Countably Locally Finite Sets}{32}{section.3.9}
+\contentsline {section}{\numberline {3.10}Closure of a Set}{33}{section.3.10}
+\contentsline {section}{\numberline {3.11}Interior of a Set}{35}{section.3.11}
+\contentsline {section}{\numberline {3.12}Boundary}{36}{section.3.12}
+\contentsline {section}{\numberline {3.13}Limit Points}{37}{section.3.13}
+\contentsline {section}{\numberline {3.14}Subbases}{37}{section.3.14}
+\contentsline {section}{\numberline {3.15}Convergence}{38}{section.3.15}
+\contentsline {section}{\numberline {3.16}Accumulation Points}{40}{section.3.16}
+\contentsline {section}{\numberline {3.17}Dense Sets}{41}{section.3.17}
+\contentsline {section}{\numberline {3.18}$G_\delta $ Sets}{41}{section.3.18}
+\contentsline {section}{\numberline {3.19}Separated Sets}{41}{section.3.19}
+\contentsline {section}{\numberline {3.20}Coherent Topology}{41}{section.3.20}
 \contentsline {chapter}{\numberline {4}Constructions of Topological Spaces}{42}{chapter.4}
 \contentsline {section}{\numberline {4.1}The Order Topology}{42}{section.4.1}
 \contentsline {section}{\numberline {4.2}The Product Topology}{46}{section.4.2}
