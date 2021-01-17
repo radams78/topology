@@ -98,6 +98,61 @@ surjective then $g$ is surjective.
  \pf\ Dual to Lemma \ref{lm:sets:injective:compr}. \qed
 \end{proof}
 
+\section{Retractions and Sections}
+
+\begin{df}[Retraction, Section]
+  Let $r : A \rightarrow B$ and $s : B \rightarrow A$. Then $r$ is a
+  \emph{retraction} of $s$, and $s$ is a \emph{section} of $r$, iff $r \circ
+  s = \id{B}$.
+\end{df}
+
+\begin{prop}
+\label{prop:sets:retraction:comp}
+If $r_1 : A \rightarrow B$ is a retraction of $s_1 : B \rightarrow A$ and $r_2 : B \rightarrow C$ is a retraction of $s_2 : C \rightarrow B$ then $r_2 \circ r_1$ is a retraction of $s_1 \circ s_2$.
+\end{prop}
+
+\begin{proof}
+\pf
+\begin{align*}
+r_2 \circ r_1 \circ s_1 \circ s_2 & = r_2 \circ \id{B} \circ s_2 & (\text{$r_1$ is a retraction of $s_1$}) \\
+& = r_2 \circ s_2 & (\text{Unit Laws}) \\
+& = \id{C} & (\text{$r_2$ is a retraction of $s_2$})
+\end{align*}
+\qed
+\end{proof}
+
+\begin{prop}
+\label{prop:sets:section:injective}
+Every section is injective.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$s : A \rightarrow B$ be a section of $r : B \rightarrow A$}}
+  \step{<1>2}{\pflet{$x, y : X \rightarrow A$ satisfy $s \circ x = s \circ y$}}
+  \step{<1>3}{$x = y$}
+  \begin{proof}
+    \pf
+    \begin{align*}
+      x & = \id{A} \circ x & (\text{Left Unit Law}) \\
+      & = r \circ s \circ x & (\text{\stepref{<1>1}}) \\
+      & = r \circ s \circ y & (\text{\stepref{<1>2}}) \\
+      & = \id{A} \circ y & (\text{\stepref{<1>1}}) \\
+      & = y & (\text{Left Unit Law})
+    \end{align*}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:sets:retraction:surjective}
+  Every retraction is surjective.
+\end{prop}
+
+\begin{proof}
+  \pf\ Dual. \qed
+\end{proof}
+
 \section{Identity Functions}
 
 \begin{ax}[Identity Function]
@@ -105,10 +160,9 @@ surjective then $g$ is surjective.
   \emph{identity} function on $A$, such that:
   \begin{description}
     \item[Left Unit Law] for every set $B$ and function $f : B \rightarrow A$
-    we have $\id{A}      \circ f = f : B \rightarrow A$;
+    we have $\id{A} \circ f = f : B \rightarrow A$;
     \item[Right Unit Law] for every set $B$ and function $f : A \rightarrow
-    B$
-    we have $f      \circ \id{A} = f : A \rightarrow B$.
+    B$ we have $f \circ \id{A} = f : A \rightarrow B$.
   \end{description}
 \end{ax}
 
@@ -136,50 +190,6 @@ Law. \qed
 
 \begin{prop}
 Every identity function is surjective.
-\end{prop}
-
-\begin{proof}
-\pf\ Dual. \qed
-\end{proof}
-
-\begin{df}[Retraction, Section]
-  Let $r : A \rightarrow B$ and $s : B \rightarrow A$. Then $r$ is a
-  \emph{retraction} of $s$, and $s$ is a \emph{section} of $r$, iff $r \circ
-  s = \id{B}$.
-\end{df}
-
-\begin{prop}
-\label{prop:sets:retraction:comp}
-If $r_1 : A \rightarrow B$ is a retraction of $s_1 : B \rightarrow A$ and $r_2 : B \rightarrow C$ is a retraction of $s_2 : C \rightarrow B$ then $r_2 \circ r_1$ is a retraction of $s_1 \circ s_2$.
-\end{prop}
-
-\begin{proof}
-\pf
-\begin{align*}
-r_2 \circ r_1 \circ s_1 \circ s_2 & = r_2 \circ \id{B} \circ s_2 & (\text{$r_1$ is a retraction of $s_1$}) \\
-& = r_2 \circ s_2 & (\text{Unit Laws}) \\
-& = \id{C} & (\text{$r_2$ is a retraction of $s_2$})
-\end{align*}
-\qed
-\end{proof}
-
-\begin{prop}
-\label{prop:sets:retraction:surjective}
-Every retraction is surjective.
-\end{prop}
-
-\begin{proof}
-\pf
-\step{<1>1}{\pflet{$r : A \rightarrow B$ be a retraction of $s$}}
-\step{<1>2}{\pflet{$X$ be a set and $x, y : B \rightarrow X$ with $x \circ r = y \circ r$}}
-\step{<1>3}{$x \circ r \circ s = y \circ r \circ s$}
-\step{<1>4}{$x = y$}
-\qed
-\end{proof}
-
-\begin{prop}
-\label{prop:sets:section:injective}
-Every section is injective.
 \end{prop}
 
 \begin{proof}
