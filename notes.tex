@@ -5241,6 +5241,206 @@ function
    \pf\ The identity map from the discrete two-point space to the indiscrete two-point space is continuous. \qed
  \end{proof}
 
+ \begin{lm}
+   Let $X$ be a regular space with a countably locally finite basis. Then $X$ is normal and every closed set is $G_\delta$.
+ \end{lm}
+
+ \begin{proof}
+   \pf
+   \step{<1>1}{\pflet{$X$ be regular with a countably locally finite basis.}}
+   \step{<1>2}{For every open set $W$, there exists a countable set $\mathcal{U}$ of open sets such that $W = \bigcup \mathcal{U} = \bigcup_{U \in \mathcal{U}} \overline{U}$}
+   \begin{proof}
+     \step{<2>1}{\pick\ a locally finite set $\mathcal{B}_n$ for $n \in \mathbb{N}$ such that $\bigcup_{n=0}^\infty \mathcal{B}_n$ is a basis.}
+     \begin{proof}
+       \pf\ By \stepref{<1>1}.
+     \end{proof}
+     \step{<2>2}{For $n \in \mathbb{N}$, \pflet{$\mathcal{C}_n = \{ B \in \mathcal{B}_n : \overline{B} \subseteq W \}$}}
+     \step{<2>3}{For $n \in \mathbb{N}$, $\mathcal{C}_n$ is locally finite.}
+     \begin{proof}
+       \pf\ This holds because $\mathcal{C}_n \subseteq \mathcal{B}_n$ (\stepref{<2>1}, \stepref{<2>2}).
+     \end{proof}
+     \step{<2>4}{For $n \in \mathbb{N}$, \pflet{$U_n = \bigcup \mathcal{C}_n$}}
+     \step{<2>5}{For $n \in \mathbb{N}$, $U_n$ is open.}
+     \begin{proof}
+       \pf\ This holds because every element of $\mathcal{C}_n$ is open (\stepref{<2>1}, \stepref{<2>2}, \stepref{<2>4}).
+     \end{proof}
+     \step{<2>6}{For $n \in \mathbb{N}$, $\overline{U_n} = \bigcup_{B \in \mathcal{C}_n} \overline{B}$}
+     \begin{proof}
+       \pf\ By Lemma \ref{lm:topology:closure:locally_finite_union}.
+     \end{proof}
+     \step{<2>7}{For $n \in \mathbb{N}$, $\overline{U_n} \subseteq W$}
+     \begin{proof}
+       \pf\ From \stepref{<2>2} and \stepref{<2>6}.
+     \end{proof}
+     \step{<2>8}{$W \subseteq \bigcup_{n=0}^\infty U_n$}
+     \begin{proof}
+       \step{<3>1}{\pflet{$x \in W$}}
+       \step{<3>2}{\pick\ a neighbourhood $U$ of $x$ such that $\overline{U} \subseteq W$}
+       \begin{proof}
+         \pf\ By Proposition \ref{prop:topology:regular:closure} and \stepref{<3>1} since $X$ is regular (\stepref{<1>1}).
+       \end{proof}
+       \step{<3>3}{\pick\ $n \in \mathbb{N}$ and $B \in \mathcal{B}_n$ such that $x \in B \subseteq U$}
+       \begin{proof}
+         \pf\ By \stepref{<2>1} and \stepref{<3>2}.
+       \end{proof}
+       \step{<3>4}{$B \in \mathcal{C}_n$}
+       \begin{proof}
+         \step{<4>1}{$\overline{B} \subseteq W$}
+         \begin{proof}
+           \pf
+           \begin{align*}
+             \overline{B} & \subseteq \overline{U} & (\text{Proposition \ref{prop:topology:closure:monotone}, \stepref{<3>3}}) \\
+             & \subseteq W & (\text{\stepref{<3>2}})
+           \end{align*}
+         \end{proof}
+         \qedstep
+         \begin{proof}
+           \pf\ \stepref{<2>2}, \stepref{<3>3}, \stepref{<4>1}
+         \end{proof}
+       \end{proof}
+       \step{<3>5}{$x \in U_n$}
+       \begin{proof}
+         \pf\ \stepref{<2>4}, \stepref{<3>3}, \stepref{<3>4}.
+       \end{proof}
+     \end{proof}
+   \end{proof}
+   \step{<1>3}{Every closed set is $G_\delta$}
+   \begin{proof}
+     \pf
+     \step{<2>1}{\pflet{$C$ be closed}}
+     \step{<2>2}{\pick\ a countable set $\mathcal{U}$ of open sets such that $X \setminus C = \bigcup \mathcal{U} = \bigcup_{U \in \mathcal{U}} \overline{U}$}
+     \begin{proof}
+       \pf\ By \stepref{<1>2}
+     \end{proof}
+     \step{<2>3}{$C = \bigcap_{U \in \mathcal{U}} X \setminus \overline{U}$}
+     \begin{proof}
+       \pf\ From \stepref{<2>2} and De Morgan's laws.
+     \end{proof}
+   \end{proof}
+   \step{<1>4}{$X$ is normal} % TODO Duplication?
+   \begin{proof}
+     \step{<2>1}{\pflet{$C$ and $D$ be disjoint closed sets.}}
+     \step{<2>2}{\pick\ a countable sequence of open sets $U_n$ such that $X \setminus D = \bigcup_{n=0}^\infty U_n = \bigcup_{n=0}^\infty \overline{U_n}$}
+     \begin{proof}
+       \pf\ By \stepref{<1>2} and \stepref{<2>1}.
+     \end{proof}
+     \step{<2>3}{\pick\ a countable sequence of open sets $V_n$ such that $X \setminus C = \bigcup_{n=0}^\infty V_n = \bigcup_{n=0}^\infty \overline{V_n}$}
+     \begin{proof}
+       \pf\ By \stepref{<1>2} and \stepref{<2>1}.
+     \end{proof}
+     \step{<2>4}{For $n \in \mathbb{N}$, \pflet{$U_n' = U_n \setminus \bigcup_{i=0}^n \overline{V_i}$}}
+     \step{<2>5}{For $n \in \mathbb{N}$, \pflet{$V_n' = V_n \setminus \bigcup_{i=0}^n \overline{U_i}$}}
+     \step{<2>6}{\pflet{$U = \bigcup_{n=0}^\infty U_n'$}}
+     \step{<2>7}{\pflet{$V = \bigcup_{n=0}^\infty V_n'$}}
+     \step{<2>8}{$U$ is open}
+     \begin{proof}
+       \step{<3>1}{For each $n$, $U_n'$ is open}
+       \begin{proof}
+         \step{<4>1}{\pflet{$n \in \mathbb{N}$}}
+         \step{<4>2}{$U_n$ is open}
+         \begin{proof}
+           \pf\ By \stepref{<2>2}.
+         \end{proof}
+         \step{<4>3}{$\bigcup_{i=0}^n \overline{V_i}$ is closed}
+         \begin{proof}
+           \pf\ By Proposition \ref{prop:topology:closed:union} and Proposition \ref{prop:topology:closure:closed}.
+         \end{proof}
+         \qedstep
+         \begin{proof}
+           \pf\ Since $U_n' = U_n \cap (X \setminus \bigcup_{i=0}^n \overline{V_i})$ %TODO Extract lemma
+         \end{proof}
+       \end{proof}
+       \qedstep
+       \begin{proof}
+         \pf\ By \stepref{<2>6}
+       \end{proof}
+     \end{proof}
+     \step{<2>9}{$V$ is open}
+     \begin{proof}
+       \pf\ Similar.
+     \end{proof}
+     \step{<2>10}{$U \cap V = \emptyset$}
+     \begin{proof}
+       \step{<3>1}{\assume{for a contradiction $x \in U \cap V$}}
+       \step{<3>2}{\pick\ $m$, $n$ such that $x \in U_m'$ and $x \in V_n'$}
+       \begin{proof}
+         \pf\ \text{\stepref{<2>6}, \stepref{<2>7}, \stepref{<3>1}}
+       \end{proof}
+       \step{<3>3}{\assume{w.l.o.g.~ $m \leq n$}}
+       \step{<3>4}{$x \in V_n'$ and $x \in U_m$}
+       \begin{proof}
+         \pf\ From \stepref{<2>4} and \stepref{<3>2}.
+       \end{proof}
+       \qedstep
+       \begin{proof}
+         \pf\ This contradicts \stepref{<2>5}.
+       \end{proof}
+     \end{proof}
+     \step{<2>11}{$C \subseteq U$}
+     \begin{proof}
+       \step{<3>1}{\pflet{$x \in C$}}
+       \step{<3>2}{$x \in X \setminus D$}
+       \begin{proof}
+         \pf\ By \stepref{<2>1} and \stepref{<3>1}.
+       \end{proof}
+       \step{<3>3}{\pick\ $n$ such that $x \in U_n$}
+       \begin{proof}
+         \pf\ By \stepref{<2>2} and \stepref{<3>2}.
+       \end{proof}
+       \step{<3>4}{$x \in U_n'$}
+       \begin{proof}
+         \step{<4>1}{For all $i$, $x \notin V_i$}
+         \begin{proof}
+           \pf\ From \stepref{<2>3} and \stepref{<3>4}.
+         \end{proof}
+         \qedstep
+         \begin{proof}
+           \pf\ From \stepref{<2>4} and \stepref{<3>3} and \stepref{<4>1}.
+         \end{proof}
+       \end{proof}
+       \qedstep
+       \begin{proof}
+         \pf\ By \stepref{<2>6}.
+       \end{proof}
+     \end{proof}
+     \step{<2>12}{$D \subseteq V$}
+     \begin{proof}
+       \pf\ Similar.
+     \end{proof}
+   \end{proof}
+   \qed
+ \end{proof}
+
+ \begin{lm}
+ Let $X$ be a normal space. Let $A$ be a closed $G_\delta$ set in $X$. Then there exists a continuous $f : X \rightarrow [0,1]$ such that $f(x) = 0$ for $x \in A$ and $f(x) > 0$ for $x \notin A$.
+ \end{lm}
+
+ \begin{proof}
+   \pf
+   \step{<1>1}{\pflet{$X$ be a normal space.}}
+   \step{<1>2}{\pflet{$A$ be a closed $G_\delta$ set in $X$.}}
+   \step{<1>3}{\pick\ open sets $U_n$ such that $A = \bigcup_{n=0}^\infty U_n$}
+   \begin{proof}
+     \pf\ From \stepref{<1>2}
+   \end{proof}
+   \step{<1>4}{For $n \in \mathbb{N}$, \pick\ $f_n : X \rightarrow [0,1]$ continuous such that $f(x) = 0$ for $x \in A$ and $f(x) = 1$ for $x \notin U_n$}
+   \begin{proof}
+     \pf\ By the Urysohn lemma,
+     \stepref{<1>1}, \stepref{<1>2} and \stepref{<1>3}.
+   \end{proof}
+   \step{<1>5}{\pflet{$f: X \rightarrow [0,1]$ with $f(x) = \sum_{n=0}^\infty f_n(x) / 2^{n+1}$}}
+   \begin{proof}
+     \pf\ The sequence converges by the Comparison Test with $\sum_{n=0}^\infty 1/2^{n+1}$.
+   \end{proof}
+   \step{<1>6}{$f$ is continuous}
+   \begin{proof}
+     \pf\ By the Weierstrass M-test and the Uniform Limit Theorem.
+   \end{proof}
+   \step{<1>7}{$f$ vanishes on $A$}
+   \step{<1>8}{$f$ is positive on $X \setminus A$}
+   \qed
+ \end{proof}
+
   \section{Completely Normal Spaces}
 
     \begin{df}[Completely Normal]
@@ -13638,174 +13838,7 @@ Not every metric space is locally path connected.
   \qed
 \end{proof}
 
-\begin{lm}
-  Let $X$ be a regular space with a countably locally finite basis. Then $X$ is normal and every closed set is $G_\delta$.
-\end{lm}
-
-\begin{proof}
-  \pf
-  \step{<1>1}{\pflet{$X$ be regular with a countably locally finite basis.}}
-  \step{<1>2}{For every open set $W$, there exists a countable set $\mathcal{U}$ of open sets such that $W = \bigcup \mathcal{U} = \bigcup_{U \in \mathcal{U}} \overline{U}$}
-  \begin{proof}
-    \step{<2>1}{\pick\ a locally finite set $\mathcal{B}_n$ for $n \in \mathbb{N}$ such that $\bigcup_{n=0}^\infty \mathcal{B}_n$ is a basis.}
-    \begin{proof}
-      \pf\ By \stepref{<1>1}.
-    \end{proof}
-    \step{<2>2}{For $n \in \mathbb{N}$, \pflet{$\mathcal{C}_n = \{ B \in \mathcal{B}_n : \overline{B} \subseteq W \}$}}
-    \step{<2>3}{For $n \in \mathbb{N}$, $\mathcal{C}_n$ is locally finite.}
-    \begin{proof}
-      \pf\ This holds because $\mathcal{C}_n \subseteq \mathcal{B}_n$ (\stepref{<2>1}, \stepref{<2>2}).
-    \end{proof}
-    \step{<2>4}{For $n \in \mathbb{N}$, \pflet{$U_n = \bigcup \mathcal{C}_n$}}
-    \step{<2>5}{For $n \in \mathbb{N}$, $U_n$ is open.}
-    \begin{proof}
-      \pf\ This holds because every element of $\mathcal{C}_n$ is open (\stepref{<2>1}, \stepref{<2>2}, \stepref{<2>4}).
-    \end{proof}
-    \step{<2>6}{For $n \in \mathbb{N}$, $\overline{U_n} = \bigcup_{B \in \mathcal{C}_n} \overline{B}$}
-    \begin{proof}
-      \pf\ By Lemma \ref{lm:topology:closure:locally_finite_union}.
-    \end{proof}
-    \step{<2>7}{For $n \in \mathbb{N}$, $\overline{U_n} \subseteq W$}
-    \begin{proof}
-      \pf\ From \stepref{<2>2} and \stepref{<2>6}.
-    \end{proof}
-    \step{<2>8}{$W \subseteq \bigcup_{n=0}^\infty U_n$}
-    \begin{proof}
-      \step{<3>1}{\pflet{$x \in W$}}
-      \step{<3>2}{\pick\ a neighbourhood $U$ of $x$ such that $\overline{U} \subseteq W$}
-      \begin{proof}
-        \pf\ By Proposition \ref{prop:topology:regular:closure} and \stepref{<3>1} since $X$ is regular (\stepref{<1>1}).
-      \end{proof}
-      \step{<3>3}{\pick\ $n \in \mathbb{N}$ and $B \in \mathcal{B}_n$ such that $x \in B \subseteq U$}
-      \begin{proof}
-        \pf\ By \stepref{<2>1} and \stepref{<3>2}.
-      \end{proof}
-      \step{<3>4}{$B \in \mathcal{C}_n$}
-      \begin{proof}
-        \step{<4>1}{$\overline{B} \subseteq W$}
-        \begin{proof}
-          \pf
-          \begin{align*}
-            \overline{B} & \subseteq \overline{U} & (\text{Proposition \ref{prop:topology:closure:monotone}, \stepref{<3>3}}) \\
-            & \subseteq W & (\text{\stepref{<3>2}})
-          \end{align*}
-        \end{proof}
-        \qedstep
-        \begin{proof}
-          \pf\ \stepref{<2>2}, \stepref{<3>3}, \stepref{<4>1}
-        \end{proof}
-      \end{proof}
-      \step{<3>5}{$x \in U_n$}
-      \begin{proof}
-        \pf\ \stepref{<2>4}, \stepref{<3>3}, \stepref{<3>4}.
-      \end{proof}
-    \end{proof}
-  \end{proof}
-  \step{<1>3}{Every closed set is $G_\delta$}
-  \begin{proof}
-    \pf
-    \step{<2>1}{\pflet{$C$ be closed}}
-    \step{<2>2}{\pick\ a countable set $\mathcal{U}$ of open sets such that $X \setminus C = \bigcup \mathcal{U} = \bigcup_{U \in \mathcal{U}} \overline{U}$}
-    \begin{proof}
-      \pf\ By \stepref{<1>2}
-    \end{proof}
-    \step{<2>3}{$C = \bigcap_{U \in \mathcal{U}} X \setminus \overline{U}$}
-    \begin{proof}
-      \pf\ From \stepref{<2>2} and De Morgan's laws.
-    \end{proof}
-  \end{proof}
-  \step{<1>4}{$X$ is normal} % TODO Duplication?
-  \begin{proof}
-    \step{<2>1}{\pflet{$C$ and $D$ be disjoint closed sets.}}
-    \step{<2>2}{\pick\ a countable sequence of open sets $U_n$ such that $X \setminus D = \bigcup_{n=0}^\infty U_n = \bigcup_{n=0}^\infty \overline{U_n}$}
-    \begin{proof}
-      \pf\ By \stepref{<1>2} and \stepref{<2>1}.
-    \end{proof}
-    \step{<2>3}{\pick\ a countable sequence of open sets $V_n$ such that $X \setminus C = \bigcup_{n=0}^\infty V_n = \bigcup_{n=0}^\infty \overline{V_n}$}
-    \begin{proof}
-      \pf\ By \stepref{<1>2} and \stepref{<2>1}.
-    \end{proof}
-    \step{<2>4}{For $n \in \mathbb{N}$, \pflet{$U_n' = U_n \setminus \bigcup_{i=0}^n \overline{V_i}$}}
-    \step{<2>5}{For $n \in \mathbb{N}$, \pflet{$V_n' = V_n \setminus \bigcup_{i=0}^n \overline{U_i}$}}
-    \step{<2>6}{\pflet{$U = \bigcup_{n=0}^\infty U_n'$}}
-    \step{<2>7}{\pflet{$V = \bigcup_{n=0}^\infty V_n'$}}
-    \step{<2>8}{$U$ is open}
-    \begin{proof}
-      \step{<3>1}{For each $n$, $U_n'$ is open}
-      \begin{proof}
-        \step{<4>1}{\pflet{$n \in \mathbb{N}$}}
-        \step{<4>2}{$U_n$ is open}
-        \begin{proof}
-          \pf\ By \stepref{<2>2}.
-        \end{proof}
-        \step{<4>3}{$\bigcup_{i=0}^n \overline{V_i}$ is closed}
-        \begin{proof}
-          \pf\ By Proposition \ref{prop:topology:closed:union} and Proposition \ref{prop:topology:closure:closed}.
-        \end{proof}
-        \qedstep
-        \begin{proof}
-          \pf\ Since $U_n' = U_n \cap (X \setminus \bigcup_{i=0}^n \overline{V_i})$ %TODO Extract lemma
-        \end{proof}
-      \end{proof}
-      \qedstep
-      \begin{proof}
-        \pf\ By \stepref{<2>6}
-      \end{proof}
-    \end{proof}
-    \step{<2>9}{$V$ is open}
-    \begin{proof}
-      \pf\ Similar.
-    \end{proof}
-    \step{<2>10}{$U \cap V = \emptyset$}
-    \begin{proof}
-      \step{<3>1}{\assume{for a contradiction $x \in U \cap V$}}
-      \step{<3>2}{\pick\ $m$, $n$ such that $x \in U_m'$ and $x \in V_n'$}
-      \begin{proof}
-        \pf\ \text{\stepref{<2>6}, \stepref{<2>7}, \stepref{<3>1}}
-      \end{proof}
-      \step{<3>3}{\assume{w.l.o.g.~ $m \leq n$}}
-      \step{<3>4}{$x \in V_n'$ and $x \in U_m$}
-      \begin{proof}
-        \pf\ From \stepref{<2>4} and \stepref{<3>2}.
-      \end{proof}
-      \qedstep
-      \begin{proof}
-        \pf\ This contradicts \stepref{<2>5}.
-      \end{proof}
-    \end{proof}
-    \step{<2>11}{$C \subseteq U$}
-    \begin{proof}
-      \step{<3>1}{\pflet{$x \in C$}}
-      \step{<3>2}{$x \in X \setminus D$}
-      \begin{proof}
-        \pf\ By \stepref{<2>1} and \stepref{<3>1}.
-      \end{proof}
-      \step{<3>3}{\pick\ $n$ such that $x \in U_n$}
-      \begin{proof}
-        \pf\ By \stepref{<2>2} and \stepref{<3>2}.
-      \end{proof}
-      \step{<3>4}{$x \in U_n'$}
-      \begin{proof}
-        \step{<4>1}{For all $i$, $x \notin V_i$}
-        \begin{proof}
-          \pf\ From \stepref{<2>3} and \stepref{<3>4}.
-        \end{proof}
-        \qedstep
-        \begin{proof}
-          \pf\ From \stepref{<2>4} and \stepref{<3>3} and \stepref{<4>1}.
-        \end{proof}
-      \end{proof}
-      \qedstep
-      \begin{proof}
-        \pf\ By \stepref{<2>6}.
-      \end{proof}
-    \end{proof}
-    \step{<2>12}{$D \subseteq V$}
-    \begin{proof}
-      \pf\ Similar.
-    \end{proof}
-  \end{proof}
-  \qed
-\end{proof}
-
+\begin{thm}[Nagata-Smirnov Metrization Theorem]
+  A space is metrizable if and only if it is regular and has a countably locally finite basis.
+\end{thm}
 \end{document}
