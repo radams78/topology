@@ -8329,7 +8329,8 @@ namely $(a, -a)$.
   \qed
 \end{proof}
 
-\begin{lm}[AC]
+\begin{lm}[E. Michael (AC)]
+  \label{lm:topology:paracompact:michaels_lemma}
   Let $X$ be a regular space. Then the following are equivalent.
   \begin{enumerate}
     \item
@@ -12068,6 +12069,14 @@ point compact.
     \step{<2>4}{$x \in E_n(U) \in \mathcal{E}$}
   \end{proof}
   \qed
+\end{proof}
+
+\begin{thm}
+  Every metrizable space is paracompact.
+\end{thm}
+
+\begin{proof}
+  \pf\ From Michael's Lemma and Lemma \ref{lm:topology:metric:locally_discrete_open_refinement}.
 \end{proof}
 
 \begin{thm}[Bing-Nagata-Smirnov Metrization Theorem (AC)]
