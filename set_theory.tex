@@ -180,12 +180,22 @@ Every section is injective.
 \end{proof}
 
 \begin{prop}
+\label{prop:sets:retraction:id}
+Every identity function is a retraction of itself.
+\end{prop}
+
+\begin{proof}
+\pf\ Immediate from the Unit Laws. \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:sets:identity:injective}
  Every identity function is injective.
 \end{prop}
 
 \begin{proof}
-  \pf\ If $\id{B} \circ x = \id{B} \circ y$ then $x = y$ by the Left Unit
-Law. \qed
+  \pf\ From Proposition \ref{prop:sets:section:injective} and
+  \ref{prop:sets:retraction:id}. \qed
 \end{proof}
 
 \begin{prop}
@@ -193,16 +203,8 @@ Every identity function is surjective.
 \end{prop}
 
 \begin{proof}
-\pf\ Dual. \qed
-\end{proof}
-
-\begin{prop}
-\label{prop:sets:retraction:id}
-Every identity function is a retraction of itself.
-\end{prop}
-
-\begin{proof}
-\pf\ Immediate from the Unit Laws. \qed
+  \pf\ From Proposition \ref{prop:sets:retraction:surjective} and
+  \ref{prop:sets:retraction:id}. \qed
 \end{proof}
 
 \begin{prop}
@@ -354,6 +356,12 @@ S \cong T$ such that $i = j \circ \phi$.
   \step{<1>4}{$i = k \circ \psi \circ \phi$}
 \qed
 \end{proof}
+
+\begin{df}
+  Given a set $A$, we write $A$ for the part $\id{A} : A \hookrightarrow A$.
+\end{df}
+
+(This is a part by Proposition \ref{prop:sets:identity:injective}.)
 
 \begin{df}[Inclusion]
  Let $i : U \hookrightarrow A$ and $j : V \hookrightarrow A$ be parts of $A$.

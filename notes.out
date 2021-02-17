@@ -30,69 +30,72 @@
 \BOOKMARK [1][-]{section.3.7}{Closed Refinements}{chapter.3}% 30
 \BOOKMARK [1][-]{section.3.8}{Locally Finite Families}{chapter.3}% 31
 \BOOKMARK [1][-]{section.3.9}{Countably Locally Finite Sets}{chapter.3}% 32
-\BOOKMARK [1][-]{section.3.10}{Closure of a Set}{chapter.3}% 33
-\BOOKMARK [1][-]{section.3.11}{Interior of a Set}{chapter.3}% 34
-\BOOKMARK [1][-]{section.3.12}{Boundary}{chapter.3}% 35
-\BOOKMARK [1][-]{section.3.13}{Limit Points}{chapter.3}% 36
-\BOOKMARK [1][-]{section.3.14}{Subbases}{chapter.3}% 37
-\BOOKMARK [1][-]{section.3.15}{Convergence}{chapter.3}% 38
-\BOOKMARK [1][-]{section.3.16}{Accumulation Points}{chapter.3}% 39
-\BOOKMARK [1][-]{section.3.17}{Dense Sets}{chapter.3}% 40
-\BOOKMARK [1][-]{section.3.18}{G Sets}{chapter.3}% 41
-\BOOKMARK [1][-]{section.3.19}{Separated Sets}{chapter.3}% 42
-\BOOKMARK [1][-]{section.3.20}{Coherent Topology}{chapter.3}% 43
-\BOOKMARK [0][-]{chapter.4}{Constructions of Topological Spaces}{}% 44
-\BOOKMARK [1][-]{section.4.1}{The Order Topology}{chapter.4}% 45
-\BOOKMARK [1][-]{section.4.2}{The Product Topology}{chapter.4}% 46
-\BOOKMARK [1][-]{section.4.3}{The Subspace Topology}{chapter.4}% 47
-\BOOKMARK [1][-]{section.4.4}{The Box Topology}{chapter.4}% 48
-\BOOKMARK [1][-]{section.4.5}{The Quotient Topology}{chapter.4}% 49
-\BOOKMARK [0][-]{chapter.5}{Functions Between Topological Spaces}{}% 50
-\BOOKMARK [1][-]{section.5.1}{Open Maps}{chapter.5}% 51
-\BOOKMARK [1][-]{section.5.2}{Continuous Functions}{chapter.5}% 52
-\BOOKMARK [2][-]{subsection.5.2.1}{Homeomorphisms}{section.5.2}% 53
-\BOOKMARK [2][-]{subsection.5.2.2}{Strongly Continuous Functions}{section.5.2}% 54
-\BOOKMARK [1][-]{section.5.3}{Closed Maps}{chapter.5}% 55
-\BOOKMARK [1][-]{section.5.4}{Local Homeomorphism}{chapter.5}% 56
-\BOOKMARK [1][-]{section.5.5}{Retracts}{chapter.5}% 57
-\BOOKMARK [0][-]{chapter.6}{Separation Axioms}{}% 58
-\BOOKMARK [1][-]{section.6.1}{T1 Spaces}{chapter.6}% 59
-\BOOKMARK [1][-]{section.6.2}{Hausdorff Spaces}{chapter.6}% 60
-\BOOKMARK [1][-]{section.6.3}{Regular Spaces}{chapter.6}% 61
-\BOOKMARK [1][-]{section.6.4}{Completely Regular Spaces}{chapter.6}% 62
-\BOOKMARK [1][-]{section.6.5}{Normal Spaces}{chapter.6}% 63
-\BOOKMARK [1][-]{section.6.6}{Completely Normal Spaces}{chapter.6}% 64
-\BOOKMARK [1][-]{section.6.7}{Perfectly Normal Spaces}{chapter.6}% 65
-\BOOKMARK [0][-]{chapter.7}{Countability Axioms}{}% 66
-\BOOKMARK [1][-]{section.7.1}{The First Countability Axiom}{chapter.7}% 67
-\BOOKMARK [1][-]{section.7.2}{Separable Spaces}{chapter.7}% 68
-\BOOKMARK [1][-]{section.7.3}{The Second Countability Axiom}{chapter.7}% 69
-\BOOKMARK [0][-]{chapter.8}{Connectedness}{}% 70
-\BOOKMARK [1][-]{section.8.1}{Connected Spaces}{chapter.8}% 71
-\BOOKMARK [1][-]{section.8.2}{Components and Local Connectedness}{chapter.8}% 72
-\BOOKMARK [1][-]{section.8.3}{Path Connectedness}{chapter.8}% 73
-\BOOKMARK [1][-]{section.8.4}{Connected Subspaces of Euclidean Space}{chapter.8}% 74
-\BOOKMARK [1][-]{section.8.5}{Local Connectedness}{chapter.8}% 75
-\BOOKMARK [1][-]{section.8.6}{Local Path Connectedness}{chapter.8}% 76
-\BOOKMARK [1][-]{section.8.7}{Weak Local Connectedness}{chapter.8}% 77
-\BOOKMARK [0][-]{chapter.9}{Compact Spaces}{}% 78
-\BOOKMARK [1][-]{section.9.1}{Countable Compactness}{chapter.9}% 79
-\BOOKMARK [1][-]{section.9.2}{Limit Point Compactness}{chapter.9}% 80
-\BOOKMARK [1][-]{section.9.3}{Lindel\366f Spaces}{chapter.9}% 81
-\BOOKMARK [1][-]{section.9.4}{Compactness}{chapter.9}% 82
-\BOOKMARK [1][-]{section.9.5}{Perfect Maps}{chapter.9}% 83
-\BOOKMARK [1][-]{section.9.6}{Sequential Compactness}{chapter.9}% 84
-\BOOKMARK [1][-]{section.9.7}{Local Compactness}{chapter.9}% 85
-\BOOKMARK [1][-]{section.9.8}{Compactifications}{chapter.9}% 86
-\BOOKMARK [0][-]{chapter.10}{Metric Spaces}{}% 87
-\BOOKMARK [1][-]{section.10.1}{The Metric Topology}{chapter.10}% 88
-\BOOKMARK [1][-]{section.10.2}{Isometries}{chapter.10}% 89
-\BOOKMARK [1][-]{section.10.3}{Lebesgue Numbers}{chapter.10}% 90
-\BOOKMARK [1][-]{section.10.4}{Uniform Continuity}{chapter.10}% 91
-\BOOKMARK [1][-]{section.10.5}{Locally Metrizable Spaces}{chapter.10}% 92
-\BOOKMARK [0][-]{chapter.11}{Manifolds}{}% 93
-\BOOKMARK [1][-]{section.11.1}{Manifolds}{chapter.11}% 94
-\BOOKMARK [0][-]{chapter.12}{Normed Spaces}{}% 95
-\BOOKMARK [1][-]{section.12.1}{The Norm on Rn}{chapter.12}% 96
-\BOOKMARK [0][-]{chapter.13}{Topological Groups}{}% 97
-\BOOKMARK [1][-]{section.13.1}{Topological Groups}{chapter.13}% 98
+\BOOKMARK [1][-]{section.3.10}{Locally Discrete Sets}{chapter.3}% 33
+\BOOKMARK [1][-]{section.3.11}{Countably Locally Discrete}{chapter.3}% 34
+\BOOKMARK [1][-]{section.3.12}{Closure of a Set}{chapter.3}% 35
+\BOOKMARK [1][-]{section.3.13}{Interior of a Set}{chapter.3}% 36
+\BOOKMARK [1][-]{section.3.14}{Boundary}{chapter.3}% 37
+\BOOKMARK [1][-]{section.3.15}{Limit Points}{chapter.3}% 38
+\BOOKMARK [1][-]{section.3.16}{Subbases}{chapter.3}% 39
+\BOOKMARK [1][-]{section.3.17}{Convergence}{chapter.3}% 40
+\BOOKMARK [1][-]{section.3.18}{Accumulation Points}{chapter.3}% 41
+\BOOKMARK [1][-]{section.3.19}{Dense Sets}{chapter.3}% 42
+\BOOKMARK [1][-]{section.3.20}{G Sets}{chapter.3}% 43
+\BOOKMARK [1][-]{section.3.21}{Separated Sets}{chapter.3}% 44
+\BOOKMARK [1][-]{section.3.22}{Coherent Topology}{chapter.3}% 45
+\BOOKMARK [0][-]{chapter.4}{Constructions of Topological Spaces}{}% 46
+\BOOKMARK [1][-]{section.4.1}{The Order Topology}{chapter.4}% 47
+\BOOKMARK [1][-]{section.4.2}{The Product Topology}{chapter.4}% 48
+\BOOKMARK [1][-]{section.4.3}{The Subspace Topology}{chapter.4}% 49
+\BOOKMARK [1][-]{section.4.4}{The Box Topology}{chapter.4}% 50
+\BOOKMARK [1][-]{section.4.5}{The Quotient Topology}{chapter.4}% 51
+\BOOKMARK [0][-]{chapter.5}{Functions Between Topological Spaces}{}% 52
+\BOOKMARK [1][-]{section.5.1}{Open Maps}{chapter.5}% 53
+\BOOKMARK [1][-]{section.5.2}{Continuous Functions}{chapter.5}% 54
+\BOOKMARK [2][-]{subsection.5.2.1}{Homeomorphisms}{section.5.2}% 55
+\BOOKMARK [2][-]{subsection.5.2.2}{Strongly Continuous Functions}{section.5.2}% 56
+\BOOKMARK [1][-]{section.5.3}{Closed Maps}{chapter.5}% 57
+\BOOKMARK [1][-]{section.5.4}{Local Homeomorphism}{chapter.5}% 58
+\BOOKMARK [1][-]{section.5.5}{Retracts}{chapter.5}% 59
+\BOOKMARK [0][-]{chapter.6}{Separation Axioms}{}% 60
+\BOOKMARK [1][-]{section.6.1}{T1 Spaces}{chapter.6}% 61
+\BOOKMARK [1][-]{section.6.2}{Hausdorff Spaces}{chapter.6}% 62
+\BOOKMARK [1][-]{section.6.3}{Regular Spaces}{chapter.6}% 63
+\BOOKMARK [1][-]{section.6.4}{Completely Regular Spaces}{chapter.6}% 64
+\BOOKMARK [1][-]{section.6.5}{Normal Spaces}{chapter.6}% 65
+\BOOKMARK [1][-]{section.6.6}{Completely Normal Spaces}{chapter.6}% 66
+\BOOKMARK [1][-]{section.6.7}{Perfectly Normal Spaces}{chapter.6}% 67
+\BOOKMARK [0][-]{chapter.7}{Countability Axioms}{}% 68
+\BOOKMARK [1][-]{section.7.1}{The First Countability Axiom}{chapter.7}% 69
+\BOOKMARK [1][-]{section.7.2}{Separable Spaces}{chapter.7}% 70
+\BOOKMARK [1][-]{section.7.3}{The Second Countability Axiom}{chapter.7}% 71
+\BOOKMARK [0][-]{chapter.8}{Connectedness}{}% 72
+\BOOKMARK [1][-]{section.8.1}{Connected Spaces}{chapter.8}% 73
+\BOOKMARK [1][-]{section.8.2}{Components and Local Connectedness}{chapter.8}% 74
+\BOOKMARK [1][-]{section.8.3}{Path Connectedness}{chapter.8}% 75
+\BOOKMARK [1][-]{section.8.4}{Connected Subspaces of Euclidean Space}{chapter.8}% 76
+\BOOKMARK [1][-]{section.8.5}{Local Connectedness}{chapter.8}% 77
+\BOOKMARK [1][-]{section.8.6}{Local Path Connectedness}{chapter.8}% 78
+\BOOKMARK [1][-]{section.8.7}{Weak Local Connectedness}{chapter.8}% 79
+\BOOKMARK [0][-]{chapter.9}{Compact Spaces}{}% 80
+\BOOKMARK [1][-]{section.9.1}{Countable Compactness}{chapter.9}% 81
+\BOOKMARK [1][-]{section.9.2}{Limit Point Compactness}{chapter.9}% 82
+\BOOKMARK [1][-]{section.9.3}{Lindel\366f Spaces}{chapter.9}% 83
+\BOOKMARK [1][-]{section.9.4}{Paracompactness}{chapter.9}% 84
+\BOOKMARK [1][-]{section.9.5}{Compactness}{chapter.9}% 85
+\BOOKMARK [1][-]{section.9.6}{Perfect Maps}{chapter.9}% 86
+\BOOKMARK [1][-]{section.9.7}{Sequential Compactness}{chapter.9}% 87
+\BOOKMARK [1][-]{section.9.8}{Local Compactness}{chapter.9}% 88
+\BOOKMARK [1][-]{section.9.9}{Compactifications}{chapter.9}% 89
+\BOOKMARK [0][-]{chapter.10}{Metric Spaces}{}% 90
+\BOOKMARK [1][-]{section.10.1}{The Metric Topology}{chapter.10}% 91
+\BOOKMARK [1][-]{section.10.2}{Isometries}{chapter.10}% 92
+\BOOKMARK [1][-]{section.10.3}{Lebesgue Numbers}{chapter.10}% 93
+\BOOKMARK [1][-]{section.10.4}{Uniform Continuity}{chapter.10}% 94
+\BOOKMARK [1][-]{section.10.5}{Locally Metrizable Spaces}{chapter.10}% 95
+\BOOKMARK [0][-]{chapter.11}{Manifolds}{}% 96
+\BOOKMARK [1][-]{section.11.1}{Manifolds}{chapter.11}% 97
+\BOOKMARK [0][-]{chapter.12}{Normed Spaces}{}% 98
+\BOOKMARK [1][-]{section.12.1}{The Norm on Rn}{chapter.12}% 99
+\BOOKMARK [0][-]{chapter.13}{Topological Groups}{}% 100
+\BOOKMARK [1][-]{section.13.1}{Topological Groups}{chapter.13}% 101
