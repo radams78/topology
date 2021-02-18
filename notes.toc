@@ -41,8 +41,8 @@
 \contentsline {section}{\numberline {3.18}Accumulation Points}{40}{section.3.18}
 \contentsline {section}{\numberline {3.19}Dense Sets}{41}{section.3.19}
 \contentsline {section}{\numberline {3.20}$G_\delta $ Sets}{41}{section.3.20}
-\contentsline {section}{\numberline {3.21}Separated Sets}{41}{section.3.21}
-\contentsline {section}{\numberline {3.22}Coherent Topology}{41}{section.3.22}
+\contentsline {section}{\numberline {3.21}Separated Sets}{42}{section.3.21}
+\contentsline {section}{\numberline {3.22}Coherent Topology}{42}{section.3.22}
 \contentsline {chapter}{\numberline {4}Constructions of Topological Spaces}{43}{chapter.4}
 \contentsline {section}{\numberline {4.1}The Order Topology}{43}{section.4.1}
 \contentsline {section}{\numberline {4.2}The Product Topology}{47}{section.4.2}

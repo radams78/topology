@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.10.15)  18 FEB 2021 23:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.10.15)  18 FEB 2021 23:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -364,7 +364,7 @@ Xy-pic pdf driver: `rotate' extension support
 (./notes.aux (./set_theory.aux) (./analysis.aux) (./topological_spaces.aux)
 (./constructions.aux) (./topological_functions.aux) (./separation.aux)
 (./countability.aux) (./connectedness.aux) (./compact.aux) (./metric.aux)
-(./manifolds.aux) (./normed_spaces.aux))
+(./manifolds.aux) (./normed_spaces.aux) (./topological_groups.aux))
 \openout1 = `notes.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
@@ -471,19 +471,19 @@ Chapter 3.
 [38] [39] [40]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1652.
+(hyperref)                removing `math shift' on input line 1656.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 1652.
+(hyperref)                removing `subscript' on input line 1656.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\delta' on input line 1652.
+(hyperref)                removing `\delta' on input line 1656.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1652.
+(hyperref)                removing `math shift' on input line 1656.
 
 [41]) [42]
 \openout2 = `constructions.aux'.
@@ -747,13 +747,16 @@ Package rerunfilecheck Info: File `notes.out' has not changed.
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 56.
  ) 
 Here is how much of TeX's memory you used:
- 9778 strings out of 493029
- 130020 string characters out of 6136233
- 262265 words of memory out of 5000000
- 11975 multiletter control sequences out of 15000+600000
+ 9782 strings out of 493029
+ 130097 string characters out of 6136233
+ 262794 words of memory out of 5000000
+ 11976 multiletter control sequences out of 15000+600000
  16756 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  31i,16n,33p,3212b,812s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -775,10 +778,10 @@ mf/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf/fonts/type1
 s/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/symbols/msbm
 7.pfb></usr/share/texmf/fonts/type1/public/xypic/xyatip10.pfb></usr/share/texmf
 /fonts/type1/public/xypic/xybtip10.pfb>
-Output written on notes.pdf (202 pages, 825379 bytes).
+Output written on notes.pdf (202 pages, 825946 bytes).
 PDF statistics:
- 3008 PDF objects out of 3580 (max. 8388607)
- 2663 compressed objects within 27 object streams
- 1148 named destinations out of 1200 (max. 500000)
+ 3009 PDF objects out of 3580 (max. 8388607)
+ 2664 compressed objects within 27 object streams
+ 1149 named destinations out of 1200 (max. 500000)
  809 words of extra memory for PDF output out of 10000 (max. 10000000)
 
