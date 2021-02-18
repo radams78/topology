@@ -1,0 +1,270 @@
+\chapter{Normed Spaces}
+
+\section{The Norm on $\mathbb{R}^n$}
+
+\begin{df}[Norm]
+  Given $\vec{x} = (x_1, \ldots, x_n) \in \mathbb{R}^n$, the \emph{norm}
+  $\|\vec{x}\|$ is defined by
+  \[ \|\vec{x}\| = \sqrt{x_1^2 + \cdots + x_n^2} \enspace . \]
+\end{df}
+
+\begin{df}[Vector Sum]
+  Define the \emph{sum} of $\vec{x}, \vec{y} \in \mathbb{R}^n$ by
+  \[ \vec{x} + \vec{y} = (x_1 + y_1, \ldots, x_n + y_n) \enspace . \]
+\end{df}
+
+\begin{df}[Scalar Product]
+  Given $c \in \mathbb{R}$ and $\vec{x} \in \mathbb{R}^n$, define the
+  \emph{scalar product} $c \vec{x}$ to be
+  \[ c \vec{x} = (c x_1, \ldots, c x_n) \enspace . \]
+\end{df}
+
+\begin{df}[Inner Product]
+  The \emph{inner product} of $\vec{x}, \vec{y} \in \mathbb{R}^n$ is
+  \[ \vec{x} \cdot \vec{y} = x_1 y_1 + \cdots + x_n y_n \enspace . \]
+\end{df}
+
+\begin{lm}
+  \label{lm:norm:distribute}
+  \[ \vec{x} \cdot (\vec{y} + \vec{z}) = \vec{x} \cdot \vec{y} + \vec{x}
+  \cdot \vec{z} \]
+\end{lm}
+
+\begin{proof}
+  \pf\ Both are equal to $\sum_{i=1}^n (x_i y_i + x_i z_i)$. \qed
+\end{proof}
+
+\begin{lm}
+  \label{lm:norm:cauchy_schwarz}
+  \[ |\vec{x} \cdot \vec{y}| \leq \|\vec{x}\| \|\vec{y}\| \]
+\end{lm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\case{$\vec{x} = \vec{0}$ or $\vec{y} = \vec{0}$}}
+  \begin{proof}
+    \pf\ In this case, both sides are 0.
+  \end{proof}
+  \step{<1>2}{\case{$\vec{x} \neq \vec{0} \neq \vec{y}$}}
+  \begin{proof}
+    \step{<2>1}{\pflet{$a = 1 / \| \vec{x} \|$, $b = 1 / \| \vec{y} \|$}}
+    \step{<2>2}{$2 + 2 a b \vec{x} \cdot \vec{y} \geq 0$}
+    \begin{proof}
+      \step{<3>1}{$\| a \vec{x} + b \vec{y} \|^2 \geq 0$}
+      \step{<3>2}{$\sum_{i=1}^n (a x_i + b y_i)^2 \geq 0$}
+      \step{<3>3}{$a^2 \sum_{i=1}^n x_i^2 + b^2 \sum_{i=1}^n y_i^2 + 2 a b
+        \sum_{i=1}^n x_i y_i \geq 0$}
+      \step{<3>4}{$a^2 \| \vec{x} \|^2 + b^2 \| \vec{y} \|^2 + 2 a b \vec{x}
+        \cdot \vec{y} \geq 0$}
+    \end{proof}
+    \step{<2>3}{$2 - 2 a b \vec{x} \cdot \vec{y} \geq 0$}
+    \begin{proof}
+      \pf\ Similar.
+    \end{proof}
+    \step{<2>4}{$2 - 2 a b |\vec{x} \cdot \vec{y}| \geq 0$}
+    \begin{proof}
+      \pf\ From \stepref{<2>2} and \stepref{<2>3}.
+    \end{proof}
+    \step{<2>5}{$|\vec{x} \cdot \vec{y}| \leq 1 / a b$}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{lm}
+  \label{lm:norm:triangle}
+  \[ \| \vec{x} + \vec{y} \| \leq \| \vec{x} \| + \| \vec{y} \| \]
+\end{lm}
+
+\begin{proof}
+  \pf
+  \begin{align*}
+    \| \vec{x} + \vec{y} \|^2 & = (\vec{x} + \vec{y}) \cdot (\vec{x} +
+    \vec{y}) \\
+    & = \| \vec{x} \| ^2 + 2 \vec{x} \cdot \vec{y} + \| \vec{y} \|^2 &
+    (\text{Lemma \ref{lm:norm:distribute}}) \\
+    & \leq \| \vec{x} \|^2 + 2 \| \vec{x} \| \| \vec{y} \| + \| \vec{y} \|^2
+    &
+    (\text{Lemma \ref{lm:norm:cauchy_schwarz}}) \\
+    & = (\| \vec{x} \| + \| \vec{y} \|)^2 & \qed
+  \end{align*}
+\end{proof}
+
+\begin{df}[Euclidean Metric]
+  The \emph{euclidean metric} on $\mathbb{R}^n$ is given by
+  \[ d(\vec{x}, \vec{y}) = \| \vec{x} - \vec{y} \| \]
+
+  We prove this is a metric.
+\end{df}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{$d(\vec{x}, \vec{y}) \geq 0$}
+  \begin{proof}
+    \pf\ Immediate from definitions.
+  \end{proof}
+  \step{<1>2}{$d(\vec{x}, \vec{y}) = 0$ iff $\vec{x} = \vec{y}$}
+  \begin{proof}
+    \pf\ Immediate from definitions.
+  \end{proof}
+  \step{<1>3}{$d(\vec{x}, \vec{y}) = d(\vec{y}, \vec{x})$}
+  \begin{proof}
+    \pf\ Immediate from definitions.
+  \end{proof}
+  \step{<1>4}{$d(\vec{x}, \vec{z}) \leq d(\vec{x}, \vec{y}) + d(\vec{y},
+    \vec{z})$}
+  \begin{proof}
+    \pf\ From Lemma \ref{lm:norm:triangle}.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{lm}
+  \label{lm:topology:metric:euclidean_square}
+  Let $d$ be the euclidean topology on $\mathbb{R}^n$ and $\rho$ the square
+  topology. Then, for all $x, y \in \mathbb{R}^n$, we have
+  \[ \rho(x, y) \leq d(x, y) \leq \sqrt{n} \rho(x, y) \]
+\end{lm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{$\rho(x, y) \leq d(x, y)$}
+  \begin{proof}
+    \step{<2>1}{For $1 \leq i \leq n$ we have $|x_i - y_i| \leq d(x, y)$}
+    \begin{proof}
+      \pf\ By the definition of the euclidean metric.
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ By the definition of the square metric.
+    \end{proof}
+  \end{proof}
+  \step{<1>2}{$d(x, y) \leq \sqrt{n} \rho(x, y)$}
+  \begin{proof}
+    \pf
+    \begin{align*}
+      d(x, y) & = \sqrt{(x_1 - y_1)^2 + \cdots + (x_n - y_n)^2} \\
+      & \leq \sqrt{\rho(x,y)^2 + \cdots + \rho(x, y)^2} \\
+      & = \sqrt{n \rho(x,y)^2} \\
+      & = \sqrt{n} \rho(x, y)
+    \end{align*}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{cor}
+  The euclidean metric induces the standard topology on $\mathbb{R}^n$.
+\end{cor}
+
+\begin{df}
+  Let $l_2$ be the set of sequences $\vec{a} \in \mathbb{R}^\omega$ such that
+  $\sum_{n=1}^\infty a_n^2 < \infty$.
+\end{df}
+
+\begin{lm}
+  \label{lm:norm:l2}
+  If $\vec{a}, \vec{b} \in l_2$ then $\sum_{n=1}^\infty |a_n b_n| < \infty$.
+\end{lm}
+
+\begin{proof}
+  \pf
+  \begin{align*}
+    \sum_{n=1}^N |a_n b_n| & \leq \sqrt{(\sum_{n=1}^N a_n^2) (\sum_{n=1}^N
+      b_n^2)} & (\text{Lemma \ref{lm:norm:cauchy_schwarz}}) \\
+    & \rightarrow \sqrt{\sum_{n=1}^\infty a_n^2) (\sum_{n=1}^\infty b_n^2)}
+    \text{ as } n \rightarrow \infty
+  \end{align*}
+  \qed
+\end{proof}
+
+\begin{lm}
+  If $\vec{a}, \vec{b} \in l_2$ then $\vec{a} + \vec{b} \in l_2$.
+\end{lm}
+
+\begin{proof}
+  \pf
+  \begin{align*}
+    \sum_{n=1}^\infty (a_n + b_n)^2 & = \sum_{n=1}^\infty a_n^2 + 2
+    \sum_{n=1}^\infty a_n b_n + \sum_{n=1}^\infty b_n^2 \\
+    & \leq \sum_{n=1}^\infty a_n^2 + 2 \sum_{n=1}^\infty |a_n b_n| +
+    \sum_{n=1}^\infty b_n^2 \\
+    & < \infty & (\text{Lemma \ref{lm:norm:l2}})
+  \end{align*}
+  \qed
+\end{proof}
+
+\begin{lm}
+  If $c \in \mathbb{R}$ and $\vec{a} \in l_2$ then $c \vec{a} \in l_2$.
+\end{lm}
+
+\begin{proof}
+  \pf $\sum_{n=1}^\infty (c a_n)^2 = c^2 \sum_{n=1}^\infty a_n^2$. \qed
+\end{proof}
+
+\begin{df}[The $l^2$-metric]
+  The \emph{$l^2$-metric} is defined on $l_2$ by
+  \[ d(\vec{a}, \vec{b}) = \left[ \sum_{n=1}^\infty (a_n -
+  b_n)^2 \right]^{\frac{1}{2}} \enspace . \] The topology induced by this
+  metric
+  is the \emph{$l^2$-topology}. We write $l_2$ for this set under the
+  $l^2$-topology.
+
+  We prove this is a metric.
+\end{df}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{$d(\vec{a}, \vec{b}) \geq 0$}
+  \begin{proof}
+    \pf\ Immediate from definitions.
+  \end{proof}
+  \step{<1>2}{$d(\vec{a}, \vec{b}) = 0$ iff $\vec{a} = \vec{b}$}
+  \begin{proof}
+    \pf\ Immediate from definitions.
+  \end{proof}
+  \step{<1>3}{$d(\vec{a}, \vec{b}) = d(\vec{b}, \vec{a})$}
+  \begin{proof}
+    \pf\ Immediate from definitions.
+  \end{proof}
+  \step{<1>4}{$d(\vec{a}, \vec{c}) \leq d(\vec{a}, \vec{b}) + d(\vec{b},
+    \vec{c})$}
+  \begin{proof}
+    \pf\ $\sqrt{\sum_{i=1}^N (a_n - c_n)^2}  \leq \sqrt{\sum_{i=1}^N (a_n
+      - b_n)^2} + \sqrt{\sum_{i=1}^N (b_n - c_n)^2}$ since the euclidean
+    metric on $\mathbb{R}^N$ is a metric.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{df}[Hilbert Cube]
+  The \emph{Hilbert cube} is $\prod_{n=1}^\infty [0, 1/n]$ as a subspace of
+  the $l_2$.
+\end{df}
+
+\begin{df}[Isometric Imbedding]
+  Let $X$, $Y$ be metric spaces and $f : X \rightarrow Y$. Then $f$ is an
+  \emph{isometric imbedding} iff, for all $x, y \in X$, $d(f(x), f(y)) = d(x,
+  y)$.
+\end{df}
+
+\begin{lm}
+  Every isometric imbedding is an imbedding.
+\end{lm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$f : X \rightarrow Y$ be an isometric imbedding.}}
+  \step{<1>2}{$f$ is continuous.}
+  \begin{proof}
+    \pf\ If $d(x, y) < \epsilon$ then $d(f(x), f(y)) < \epsilon$.
+  \end{proof}
+  \step{<1>3}{$f$ is injective.}
+  \begin{proof}
+    \pf\ If $f(x) = f(y)$ then $d(f(x), f(y)) = 0$ so $d(x, y) = 0$ hence $x
+    =y $.
+  \end{proof}
+  \step{<1>4}{$f^{-1} : f(X) \rightarrow X$ is continuous.}
+  \begin{proof}
+    \pf\ If $d(f^{-1}(x), f^{-1}(y)) < \epsilon$ then $d(x, y) < \epsilon$.
+  \end{proof}
+  \qed
+\end{proof}

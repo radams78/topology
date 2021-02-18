@@ -1,0 +1,671 @@
+\chapter{Functions Between Topological Spaces}
+
+\section{Open Maps}
+
+\begin{df}
+  Let $X$ and $Y$ be topological spaces and $f : X \rightarrow Y$. Then $f$
+  is
+  an \emph{open map} iff, for all $U$ open in $X$, $f(U)$ is open in $Y$.
+\end{df}
+
+\begin{lm}
+  \label{lm:topology:open_map:basis}
+  Let $X$ and $Y$ be topological spaces and $f : X \rightarrow Y$. Let
+  $\mathcal{B}$ be a basis for the topology on $X$. Then $f$ is an open map
+  if
+  and only if, for all $B \in \mathcal{B}$, $f(B)$ is open in $Y$.
+\end{lm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{If $f$ is an open map then, for all $B \in \mathcal{B}$, $f(B)$
+    is
+    open in $Y$.}
+  \begin{proof}
+    \pf\ Immediate from definitions.
+  \end{proof}
+  \step{<1>2}{If, for all $B \in \mathcal{B}$, $f(B)$ is open in $Y$, then
+    $f$ is
+    an open map.}
+  \begin{proof}
+    \step{<2>1}{\assume{For all $B \in \mathcal{B}$, $f(B)$ is open in $Y$.}}
+    \step{<2>2}{\pflet{$U$ be open in $X$} \prove{$f(U)$ is open in $Y$}}
+    \step{<2>3}{\pflet{$\mathcal{B}_0 \subseteq \mathcal{B}$ be such that $U
+        =
+        \bigcup \mathcal{B}_0$}}
+    \step{<2>4}{$f(U) = \bigcup_{B \in \mathcal{B}_0} f(B)$}
+    \begin{proof}
+      \pf\ Set theory.
+    \end{proof}
+    \step{<2>5}{$f(U)$ is open in $Y$.}
+    \begin{proof}
+      \pf\ From \stepref{<2>1}, \stepref{<2>4} and the fact that the open
+      sets
+      are closed under union.
+    \end{proof}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{cor}
+  \label{cor:topology:open_map:subbasis}
+  Let $X$ and $Y$ be topological spaces and $f : X \rightarrow Y$. Let
+  $\mathcal{S}$ be a subbasis for the topology on $X$. Then $f$ is an open
+  map
+  if
+  and only if, for all $S \in \mathcal{S}$, $f(S)$ is open in $Y$.
+\end{cor}
+
+\begin{lm}[AC]
+  Let $\{X_\alpha\}_{\alpha \in J}$ be a family of topological spaces. Then
+  the projection $\pi_\alpha : \prod_{\alpha \in J} X_\alpha \rightarrow
+  X_\alpha$ is an open map.
+\end{lm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{For $U$ open in $X_\alpha$, we have
+    $\pi_\alpha(\pi_\alpha^{-1}(U))$ is open in $X_\alpha$}
+  \begin{proof}
+    \pf\ $\pi_\alpha(\pi_\alpha^{-1}(U)) = U$ if all the other $X_\alpha$ are
+    nonempty, $\emptyset$ otherwise.
+  \end{proof}
+  \step{<1>2}{For $\beta \neq \alpha$ and $U$ open in $X_\beta$, we have
+    $\pi_\alpha(\pi_\beta^{-1}(U))$ is open in $X_\alpha$}
+  \begin{proof}
+    \pf\ $\pi_\alpha(\pi_\beta^{-1}(U)) = X_\alpha$ if all the $X_\gamma$ are
+    nonempty for $\gamma \neq \alpha$, $\emptyset$ otherwise.
+  \end{proof}
+  \qedstep
+  \begin{proof}
+    \pf\ By Corollary \ref{cor:topology:open_map:subbasis}.
+  \end{proof}
+\end{proof}
+
+\section{Continuous Functions}
+
+\begin{df}[Continuous]
+  Let $X$ and $Y$ be topological spaces and $f : X \rightarrow Y$ a function.
+  Then $f$ is \emph{continuous} if and only if, for every open set $U$ in
+  $Y$,
+  the set $f^{-1}(U)$ is open in $X$.
+\end{df}
+
+\begin{thm}
+  \label{thm:topology:continuous:characterisation}
+  Let $X$ and $Y$ be topological spaces and $f : X \rightarrow Y$. Then the
+  following are equivalent.
+  \begin{enumerate}
+    \item $f$ is continuous.
+    \item For every closed set $C$ in $Y$, the set $f^{-1}(C)$ is closed in
+    $X$.
+    \item For every set $A \subseteq X$, we have $f(\overline{A}) \subseteq
+    \overline{f(A)}$.
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{$1 \Rightarrow 3$}
+  \begin{proof}
+    \step{<2>1}{\assume{$f$ is continuous.}}
+    \step{<2>2}{\pflet{$A \subseteq X$}}
+    \step{<2>3}{\pflet{$x \in \overline{A}$} \prove{$f(x) \in
+        \overline{f(A)}$}}
+    \step{<2>4}{\pflet{$V$ be a neighbourhood of $f(x)$}}
+    \step{<2>5}{$f^{-1}(V)$ is a neighbourhood of $x$}
+    \begin{proof}
+      \pf\ \stepref{<2>1}, \stepref{<2>3}, \stepref{<2>4}
+    \end{proof}
+    \step{<2>6}{$f^{-1}(V)$ intersects $A$ in $a$, say.}
+    \begin{proof}
+      \pf\ \stepref{<2>3}, \stepref{<2>5}, Theorem
+      \ref{thm:topology:closure:neighbourhoods}.
+    \end{proof}
+    \step{<2>7}{$V$ intersects $f(A)$ in $f(a)$.}
+    \qedstep
+    \begin{proof}
+      \pf\ Theorem \ref{thm:topology:closure:neighbourhoods}.
+    \end{proof}
+  \end{proof}
+  \step{<1>2}{$3 \Rightarrow 2$}
+  \begin{proof}
+    \step{<2>1}{\assume{3}}
+    \step{<2>2}{\pflet{$C$ be a closed set in $Y$}}
+    \step{<2>3}{$\overline{f^{-1}(C)} = f^{-1}(C)$}
+    \begin{proof}
+      \pf
+      \begin{align*}
+        f(\overline{f^{-1}(C)}) & \subseteq \overline{f(f^{-1}(C))} &
+        (\text{\stepref{<2>1}}) \\
+        & \subseteq \overline{C}
+      \end{align*}
+    \end{proof}
+  \end{proof}
+  \step{<1>3}{$2 \Rightarrow 1$}
+  \begin{proof}
+    \step{<2>1}{\assume{2}}
+    \step{<2>2}{\pflet{$V$ be open in $Y$}}
+    \step{<2>3}{$f^{-1}(Y \setminus V)$ is closed in $X$}
+    \begin{proof}
+      \pf\ By \stepref{<2>1}.
+    \end{proof}
+    \step{<2>4}{$f^{-1}(V)$ is open in $X$.}
+    \begin{proof}
+      \pf\ $f^{-1}(V) = X \setminus f^{-1}(Y \setminus V)$.
+    \end{proof}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{lm}
+  \label{lm:topology:continuous:constant}
+  If $f : X \rightarrow Y$ maps all of $X$ to the single point $y_0$ of $Y$,
+  then $f$ is continuous.
+\end{lm}
+
+\begin{proof}
+  \pf\ For $V$ open in $Y$, the set $f^{-1}(V)$ is either $X$ (if $y_0 \in
+  V$) or $\emptyset$ (if $y_0 \notin V$).
+\end{proof}
+
+\begin{df}[Continuity at a Point]
+  Let $X$ and $Y$ be topological spaces, $f : X \rightarrow Y$ a function,
+  and
+  $x \in X$. Then $f$ is \emph{continuous at $x$} if and only if, for every
+  neighbourhood $V$ of $f(x)$, there exists a neighbourhood $U$ of $x$ such
+  that
+  $f(U) \subseteq V$.
+\end{df}
+
+\begin{thm}
+  \label{thm:topology:continuous:at_every_point}
+  Let $X$ and $Y$ be topological spaces and $f : X \rightarrow Y$. Then $f$
+  is
+  continuous if and only if $f$ is continuous at every point of $X$.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{If $f$ is continuous then $f$ is continuous at every point of
+    $X$.}
+  \begin{proof}
+    \step{<2>1}{\assume{$f$ is continuous}}
+    \step{<2>2}{\pflet{$x \in X$}}
+    \step{<2>3}{\pflet{$V$ be a neighbourhood of $f(x)$}}
+    \step{<2>4}{$f^{-1}(V)$ is a neighbourhood of $x$}
+    \step{<2>5}{$f(f^{-1}(V)) \subseteq V$}
+  \end{proof}
+  \step{<1>2}{If $f$ is continuous at every point of $X$ then $f$ is
+    continuous.}
+  \begin{proof}
+    \step{<2>1}{\assume{$f$ is continuous at every point of $X$.}}
+    \step{<2>2}{\pflet{$V$ be open in $Y$} \prove{$f^{-1}(V)$ is open in
+        $X$.}}
+    \step{<2>3}{\pflet{$x \in f^{-1}(V)$}}
+    \step{<2>4}{$V$ is a neighbourhood of $f(x)$}
+    \step{<2>5}{\pick\ a neighbourhood $U$ of $x$ such that $f(U) \subseteq
+      V$}
+    \begin{proof}
+      \pf\ By \stepref{<2>1}.
+    \end{proof}
+    \step{<2>6}{$x \in U \subseteq f^{-1}(V)$}
+    \qedstep
+    \begin{proof}
+      \pf\ By Proposition \ref{prop:topology:neighbourhood:open}.
+    \end{proof}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{lm}
+  \label{lm:topology:continuous:basis}
+  Let $X$ and $Y$ be topological spaces and $f : X \rightarrow Y$. Let
+  $\mathcal{B}$ be a basis for the topology on $Y$. Then $f$ is continuous if
+  and only if, for all $B \in \mathcal{B}$, the set $f^{-1}(B)$ is open in
+  $X$.
+\end{lm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{If $f$ is continuous then, for all $B \in \mathcal{B}$, the set
+    $f^{-1}(B)$ is open in $X$.}
+  \begin{proof}
+    \pf\ Immediate from definitions.
+  \end{proof}
+  \step{<1>2}{If, for all $B \in \mathcal{B}$, the set $f^{-1}(B)$ is open in
+    $X$,
+    then $f$ is continuous.}
+  \begin{proof}
+    \step{<2>1}{\assume{For all $B \in \mathcal{B}$, the set $f^{-1}(B)$ is
+        open
+        in $X$.}}
+    \step{<2>2}{\pflet{$x \in X$}}
+    \step{<2>3}{\pflet{$V$ be a neighbourhood of $f(x)$}}
+    \step{<2>4}{\pick\ $B \in \mathcal{B}$ such that $f(x) \in B \subseteq V$}
+    \step{<2>5}{$f^{-1}(B)$ is a neighbourhood of $x$}
+    \begin{proof}
+      \pf\ By \stepref{<2>1}.
+    \end{proof}
+    \step{<2>6}{$f(f^{-1}(B)) \subseteq B$}
+    \begin{proof}
+      \pf\ Set theory.
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ Theorem \ref{thm:topology:continuous:at_every_point}.
+    \end{proof}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{lm}
+  \label{lm:topology:continuous:projections}
+  The projections $\pi_1 : X \times Y \rightarrow X$ and $\pi_2 : X \times Y
+  \rightarrow Y$ are continuous.
+\end{lm}
+
+\begin{proof}
+  \pf Immediate from definitions. \qed
+\end{proof}
+
+\begin{thm}
+  If $A$ is a subspace of $X$, the inclusion function $j : A \rightarrow
+  X$
+  is
+  continuous.
+\end{thm}
+
+\begin{proof}
+  \pf\ For $V$ open in $X$, the set $j^{-1}(V) = V \cap A$ is open in $A$.
+\end{proof}
+
+\begin{thm}
+  If $f : X \rightarrow Y$ and $g : Y \rightarrow Z$ are continuous,
+  then
+  the map
+  $g \circ f : X \rightarrow Z$ is continuous.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$V$ be open in $Z$}}
+  \step{<1>2}{$g^{-1}(V)$ is open in $Y$}
+  \step{<1>3}{$f^{-1}(g^{-1}(V))$ is open in $X$}
+  \qed
+\end{proof}
+
+\begin{thm}
+  If $f : X \rightarrow Y$ is continuous and if $A$ is a subspace of
+  $X$,
+  then
+  the restricted function $f \restriction A : A \rightarrow Y$ is
+  continuous.
+\end{thm}
+
+\begin{proof}
+  \pf\ For $V$ open in $Y$, the set $(f \restriction A)^{-1}(V) = f^{-1}(V)
+  \cap A$ is open in $A$. \qed
+\end{proof}
+
+\begin{thm}
+  Let $f : X \rightarrow Y$ be continuous. If $Z$ is a subspace of $Y$
+  that
+  includes the range of $f$, then the function $g : X \rightarrow Z$
+  obtained by
+  restricting the codomain of $f$ is continuous. If $Z$ is a space having
+  $Y$ as
+  a subspace, then the function $h : X \rightarrow Z$ obtained by expanding
+  the
+  codomain of $f$ is continuous.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{If $Z$ is a subspace of $Y$ that
+    includes the range of $f$, then the function $g : X \rightarrow Z$
+    obtained by
+    restricting the codomain of $f$ is continuous.}
+  \begin{proof}
+    \step{<2>1}{\pflet{$V$ be open in $Z$}}
+    \step{<2>2}{\pick\ $W$ open in $Y$ such that $V = W \cap Z$}
+    \step{<2>3}{$f^{-1}(W)$ is open in $X$.}
+    \step{<2>4}{$g^{-1}(V)$ is open in $X$.}
+    \begin{proof}
+      \pf\ $g^{-1}(V) = f^{-1}(W)$.
+    \end{proof}
+  \end{proof}
+  \step{<1>2}{If $Z$ is a space having $Y$ as
+    a subspace, then the function $h : X \rightarrow Z$ obtained by
+    expanding the
+    codomain of $f$ is continuous.}
+  \begin{proof}
+    \pf\ For $V$ open in $Z$, we have $h^{-1}(V) = f^{-1}(V \cap Y)$ is
+    open
+    in
+    $X$.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{thm}
+  Let $X$ and $Y$ be topological spaces and $f : X \rightarrow Y$.
+  If $x_n \rightarrow x$ as $n \rightarrow \infty$ in $X$ and $f$ is
+  continuous
+  at $x$, then $f(x_n)
+  \rightarrow f(x)$ as $n \rightarrow \infty$ in $Y$.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\assume{$x_n \rightarrow x$ as $n \rightarrow \infty$}}
+  \step{<1>2}{\assume{$f$ is continuous at $x$}}
+  \step{<1>3}{\pflet{$V$ be a neighbourhood of $f(x)$}}
+  \step{<1>4}{\pick\ a neighbourhood $U$ of $x$ such that $f(U) \subseteq V$}
+  \begin{proof}
+    \pf\ By \stepref{<1>2}.
+  \end{proof}
+  \step{<1>5}{\pick\ $N$ such that, for all $n \geq N$, $x_n \in U$}
+  \begin{proof}
+    \pf\ By \stepref{<1>1}
+  \end{proof}
+  \step{<1>6}{For $n \geq N$, $f(x_n) \in V$}
+  \begin{proof}
+    \pf\ By \stepref{<1>4}.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{thm}
+  \label{thm:topology:continuous:local}
+  Let $X$, $Y$ and $Z$ be topological spaces.
+  Let $f : X \rightarrow Y$. If there exists a set $\mathcal{A}$ of open
+  sets in
+  $X$ such that:
+  \begin{itemize}
+    \item $\bigcup \mathcal{A} = X$;
+    \item for all $U \in \mathcal{A}$, the function $f \restriction U : U
+    \rightarrow X$ is continuous;
+  \end{itemize}
+  then $f$ is continuous.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$V$ be open in $Y$}}
+  \step{<1>2}{For all $U \in \mathcal{A}$, the set $(f \restriction
+    U)^{-1}(V)$
+    is open in $X$.}
+  \begin{proof}
+    \step{<2>1}{\pflet{$U \in \mathcal{A}$}}
+    \step{<2>2}{$(f \restriction U)^{-1}(V)$ is open in $U$}
+    \begin{proof}
+      \pf\ Since $f \restriction U : U \rightarrow X$ is continuous.
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ By Lemma \ref{lm:topology:subspace:open}.
+    \end{proof}
+  \end{proof}
+  \qedstep
+  \begin{proof}
+    \pf\ Since $f^{-1}(V) = \bigcup_{U \in \mathcal{A}} (f \restriction
+    U)^{-1}(V)$.
+  \end{proof}
+\end{proof}
+
+\begin{thm}[The Pasting Lemma]
+  Let $X = A \cup B$ where $A$ and $B$ are closed in $X$. Let $f : A
+  \rightarrow
+  Y$ and $g : B \rightarrow Y$ be continuous. If $f(x) = g(x)$ for every $x
+  \in A
+  \cap B$, then the function $h : X \rightarrow Y$ defined by
+  \[ h(x) = \begin{cases}
+    f(x) & \text{if } x \in A \\
+    g(x) & \text{if } x \in B
+  \end{cases} \]
+  is continuous.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$C$ be closed in $Y$}}
+  \step{<1>2}{$f^{-1}(C)$ is closed in $A$}
+  \begin{proof}
+    \pf\ Theorem \ref{thm:topology:continuous:characterisation}.
+  \end{proof}
+  \step{<1>3}{$f^{-1}(C)$ is closed in $X$}
+  \begin{proof}
+    \pf\ Lemma \ref{cor:topology:subspace:closed}.
+  \end{proof}
+  \step{<1>4}{$g^{-1}(C)$ is closed in $B$}
+  \begin{proof}
+    \pf\ Theorem \ref{thm:topology:continuous:characterisation}.
+  \end{proof}
+  \step{<1>5}{$g^{-1}(C)$ is closed in $X$}
+  \begin{proof}
+    \pf\ Lemma \ref{cor:topology:subspace:closed}.
+  \end{proof}
+  \step{<1>6}{$h^{-1}(C)$ is closed in $X$}
+  \begin{proof}
+    \pf\ $h^{-1}(C) = f^{-1}(C) \cup g^{-1}(C)$
+  \end{proof}
+  \qedstep
+  \begin{proof}
+    \pf\ Theorem \ref{thm:topology:continuous:characterisation}.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{thm}
+  \label{thm:topology:continuous:product}
+  Let $f : A \rightarrow \prod_{\alpha \in J} X_\alpha$ be given by the
+  equation
+  \[ f(a) = \{ f_\alpha(a) \}_{\alpha \in J} \enspace , \]
+  where $f_\alpha : A \rightarrow X_\alpha$ for each $\alpha$. Let
+  $\prod_{\alpha
+    \in J} X_\alpha$ have the product topology. Then the function $f$ is
+  continuous if and only if each function $f_\alpha$ is continuous.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{If $f$ is continuous then each $f_\alpha$ is continuous.}
+  \begin{proof}
+    \pf\ This holds because $f_\alpha = \pi_\alpha \circ f$.
+  \end{proof}
+  \step{<1>2}{If every $f_\alpha$ is continuous then $f$ is continuous.}
+  \begin{proof}
+    \step{<2>1}{\assume{Every $f_\alpha$ is continuous.}}
+    \step{<2>2}{\pflet{$\alpha \in J$ and $U$ be open in $X_\alpha$}}
+    \step{<2>3}{$f^{-1}(\pi_\alpha^{-1}(U))$ is open in $A$}
+    \begin{proof}
+      \pf\ $f^{-1}(\pi_\alpha^{-1}(U)) = f_\alpha^{-1}(U)$.
+    \end{proof}
+  \end{proof}
+  \qed
+\end{proof}
+
+
+
+\subsection{Homeomorphisms}
+
+\begin{df}[Homeomorphism]
+  Let $X$ and $Y$ be topological spaces and $f : X \rightarrow Y$. Then $f$
+  is
+  a
+  \emph{homeomorphism} between $X$ and $Y$ iff $f$ is a bijection, and $f$
+  and
+  $f^{-1}$ are both continuous.
+\end{df}
+
+\begin{df}[Topological Property]
+  A property $P$ of topological spaces is a \emph{topological property} iff,
+  for any spaces $X$ and $Y$, if $X$ is homeomorphic to $Y$ then $P$ holds of
+  $X$
+  if and only if $P$ holds of $Y$.
+\end{df}
+
+\begin{df}[(Topological) Imbedding]
+  Let $X$ and $Y$ be topological spaces and $f : X \rightarrow Y$. Then $f$
+  is
+  a
+  \emph{(topological) imbedding} iff $f$ is a homeomorphism between $X$ and
+  $\im f$.
+\end{df}
+
+\begin{df}[Homogeneous]
+  A topological space $X$ is \emph{homogeneous} iff, for all $x, y \in X$,
+  there exists a homeomorphism $f : X \cong X$ such that $f(x) = y$.
+\end{df}
+
+
+\subsection{Strongly Continuous Functions}
+
+\begin{df}[Strongly Continuous]
+  Let $X$ and $Y$ be topological spaces and $f : X \rightarrow Y$. Then $f$
+  is
+  \emph{strongly continuous} iff, for all $V \subseteq Y$, we have $V$ is
+  open
+  in $Y$ if and only if $f^{-1}(V)$ is open in $X$.
+\end{df}
+
+\begin{prop}
+  \label{prop:topology:strongly_continuous:closed}
+  Let $X$ and $Y$ be topological spaces and $f : X \rightarrow Y$. Then $f$
+  is
+  strongly continuous if and only if, for all $C \subseteq Y$, $C$ is closed
+  in
+  $Y$ if and only if $f^{-1}(C)$ is closed in $X$.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{If $f$ is strongly continuous then, for all $C \subseteq Y$, we
+    have $C$ is closed in $Y$ if and only if $f^{-1}(C)$ is closed in $X$.}
+  \begin{proof}
+    \pf
+    \begin{align*}
+      C \text{ is closed in } Y & \Leftrightarrow Y \setminus C \text{ is
+        open in } Y \\
+      & \Leftrightarrow f^{-1}(Y \setminus C) \text{ is open in } X \\
+      & \Leftrightarrow X \setminus f^{-1}(C) \text{ is open in } X \\
+      & \Leftrightarrow f^{-1}(C) \text{ is closed in } X
+    \end{align*}
+  \end{proof}
+  \step{<1>2}{If, for all $C \subseteq Y$, we have $C$ is closed in $Y$ if
+    and
+    only if $f^{-1}(C)$ is closed in $X$, then $f$ is strongly continuous.}
+  \begin{proof}
+    \pf\ Similar.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:topology:strongly_continuous:composite}
+  The composite of two strongly continuous functions is strongly continuous.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$f : X \rightarrow Y$ and $g : Y \rightarrow Z$ be
+      strongly
+      continuous.}}
+  \step{<1>2}{\pflet{$V \subseteq Z$}}
+  \step{<1>3}{$V$ is open iff $f^{-1}(g^{-1}(V))$ is open}
+  \begin{proof}
+    \pf
+    \begin{align*}
+      V \text{ is open} & \Leftrightarrow g^{-1}(V) \text{ is open} &
+      (\text{\stepref{<1>1}}) \\
+      & \Leftrightarrow f^{-1}(g^{-1}(V)) \text{ is open} &
+      (\text{\stepref{<1>1}})
+    \end{align*}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{prop}
+  Let $X$, $Y$ and $Z$ be topological spaces.
+  Let $f : X \rightarrow Y$ and $g : Y \rightarrow Z$. If $f$ is strongly
+  continuous and $g \circ f$ is continuous, then $g$ is continuous.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$V \subseteq Z$ be open in $Z$.}}
+  \step{<1>2}{$f^{-1}(g^{-1}(V))$ is open in $X$.}
+  \begin{proof}
+    \pf\ $g \circ f$ is continuous.
+  \end{proof}
+  \step{<1>3}{$g^{-1}(V)$ is open in $Y$.}
+  \begin{proof}
+    \pf\ $f$ is strongly continuous.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{prop}
+  Let $X$, $Y$ and $Z$ be topological spaces. Let $f : X \rightarrow Y$ and
+  $g
+  : Y \rightarrow Z$. If $f$ and $g \circ f$ are strongly continuous, then
+  $g$
+  is
+  strongly continuous.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$U \subseteq Z$}}
+  \step{<1>2}{$U$ is open in $Z$ iff $g^{-1}(U)$ is open in $Y$}
+  \begin{proof}
+    \pf
+    \begin{align*}
+      U \text{ is open in } Z & \Leftrightarrow f^{-1}(g^{-1}(U)) \text{ is
+        open in } X & (g \circ f \text{ is strongly continuous}) \\
+      & \Leftrightarrow g^{-1}(U) \text{ is open in } Y & (f \text{ is
+        strongly continuous})
+    \end{align*}
+  \end{proof}
+  \qed
+\end{proof}
+
+\section{Closed Maps}
+
+\begin{df}[Closed Map]
+  Let $X$ and $Y$ be topological spaces and $f : X \rightarrow Y$. Then $f$
+  is
+  a \emph{closed map} iff, for every closed set $C \subseteq X$, the
+  set $f(C)$ is closed in $Y$.
+\end{df}
+
+\section{Local Homeomorphism}
+
+\begin{df}[Locally Homeomorphic]
+  Let $X$ and $Y$ be topological spaces. Then $X$ is \emph{locally
+    homeomorphic} to $Y$ iff every point in $X$ has an open neighborhood that
+  is homeomorphic with an open set in $Y$.
+\end{df}
+
+\begin{prop}
+  The long line is locally homeomorphic with $\mathbb{R}$.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$x \in L$}}
+  \step{<1>2}{\pick\ an ordinal $\alpha$ such that $x < (\alpha, 0)$.}
+  \step{<1>3}{$(- \infty, (\alpha, 0))$ is an open neighbourhood of $x$ that
+    is
+    homeomorphic to $(0, 1)$.}
+  \qed
+\end{proof}
+
+\section{Retracts}
+
+ \begin{df}[Retract]
+Let $Z$ be a topological space. If $Y$ is a subspace of $Z$, we say that $Y$
+is a \emph{retract} of $Z$ iff there exists a continuous function $r : Z
+\rightarrow Y$ such that $r(y) = y$ for all $y \in Y$.
+\end{df}

@@ -1,0 +1,2039 @@
+\chapter{Separation Axioms}
+
+\section{$T_1$ Spaces}
+
+\begin{df}[$T_1$ Space]
+  A topological space $X$ is a \emph{$T_1$ space} iff every finite set is
+  closed.
+\end{df}
+
+\begin{thm}
+  \label{thm:topology:T1:limit_point}
+  Let $X$ be a $T_1$ space and $A \subseteq X$. Then $x$ is a limit point of
+  $A$
+  if and only if every neighbourhood of $x$ contains infinitely many points
+  of
+  $A$.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{If some neighbourhood of $x$ contains only finitely many points
+    of
+    $A$ then $x$ is not a limit point of $A$.}
+  \begin{proof}
+    \step{<2>1}{\assume{Some neighbourhood $U$ of $x$ contains only finite
+        many
+        points $a_1$, \ldots, $a_n$ of $A$.}}
+    \step{<2>2}{$X \setminus \{ a_1, \ldots, a_n \}$ is open.}
+    \begin{proof}
+      \pf\ $X$ is $T_1$.
+    \end{proof}
+    \step{<2>3}{$U \setminus \{ a_1, \ldots, a_n \}$ is a neighbourhood of
+      $x$
+      that does not intersect $A$.}
+  \end{proof}
+  \step{<1>2}{If every neighbourhood of $x$ contains infinitely many points
+    of $A$
+    then $x$ is a limit point of $A$.}
+  \begin{proof}
+    \pf\ From the definition of limit point.
+  \end{proof}
+  \qed
+\end{proof}
+
+  \begin{prop}
+  \label{prop:topology:T1:subspace}
+ A subspace of a $T_1$ space is $T_1$.
+\end{prop}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\pflet{$X$ be a $T_1$ space and $Y \subseteq X$}}
+ \step{<1>2}{\pflet{$a \in Y$}}
+ \step{<1>3}{$\{a\}$ is closed in $X$}
+ \begin{proof}
+   \pf\ By \stepref{<1>1}.
+ \end{proof}
+ \step{<1>4}{$\{a\}$ is closed in $Y$}
+ \begin{proof}
+   \pf\ By Corollary \ref{cor:topology:subspace:closed}.
+ \end{proof}
+ \qed
+\end{proof}
+
+  \begin{df}[Separate Points from Closed Sets]
+  Let $X$ be a space and $\{ f_\alpha \}_{\alpha \in J}$ be a family of
+   continuous functions $f_\alpha : X \rightarrow \mathbb{R}$. Then $\{
+   f_\alpha \}$ \emph{separates points from closed sets} in $X$ iff, for
+every point $x_0 \in X$ and every neighbourhood $U$ of $x_0$, there exists
+$\alpha \in J$ such that $f_\alpha$ is positive at $x_0$ and vanishes outside
+$U$.
+\end{df}
+
+ \begin{thm}[Imbedding Theorem]
+ Let $X$ be a $T_1$ space and $\{ f_\alpha \}_{\alpha \in J}$ be a family of
+ functions $X \rightarrow \mathbb{R}$ that separates points from closed sets.
+ Then the function $F : X \rightarrow \mathbb{R}^J$ defined by
+ \[ F(x)_\alpha = f_\alpha(x) \]
+ is an imbedding. If each $f_\alpha$ maps $X$ into $[0,1]$ then $F$ is an
+ imbedding $X \rightarrow [0,1]^J$.
+\end{thm}
+
+\begin{proof}
+\pf
+\step{<1>1}{$F$ is continuous}
+\begin{proof}
+  \pf\ By Theorem \ref{thm:topology:continuous:product}.
+\end{proof}
+\step{<1>2}{$F$ is injective}
+\begin{proof}
+  \step{<2>1}{\pflet{$x, y \in X$ with $x \neq y$}}
+  \step{<2>2}{\pick\ a neighbourhood $U$ of $x$ such that $y \notin U$}
+  \begin{proof}
+    \pf\ $X$ is $T_1$
+  \end{proof}
+  \step{<2>3}{\pick\ $\alpha \in J$ such that $f_\alpha$ is positive at $x$
+and
+    vanishes outside $U$}
+  \step{<2>4}{$f_\alpha(x) \neq f_\alpha(y)$}
+  \step{<2>5}{$F(x) \neq F(y)$}
+\end{proof}
+\step{<1>3}{$F$ is open as a map $X \rightarrow F(U)$}
+\begin{proof}
+  \step{<2>1}{\pflet{$U$ be open}}
+  \step{<2>2}{\pflet{$z \in F(U)$}}
+  \step{<2>3}{\pick\ $x \in U$ such that $F(x) = z$}
+  \step{<2>4}{\pick\ $\alpha \in J$ such that $f_\alpha$ is positive at $x$
+and
+    vanishes outside $U$}
+  \step{<2>5}{$z \in \inv{\pi_\alpha}((0, +\infty)) \cap F(U) \subseteq F(U)$}
+\end{proof}
+\qed
+\end{proof}
+
+
+\section{Hausdorff Spaces}
+
+\begin{df}[Hausdorff Space]
+  A topological space $X$ is a \emph{Hausdorff space} iff, for any points $x,
+  y
+  \in X$ with $x \neq y$, there exist disjoint neighbourhoods $U$ of $x$ and
+  $V$
+  of $y$.
+\end{df}
+
+\begin{thm}
+  Every Hausdorff space is $T_1$.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$X$ be a Hausdorff space}}
+  \step{<1>2}{\pflet{$a \in X$} \prove{$\{a\}$ is closed.}}
+  \step{<1>3}{\pflet{$b \in X \setminus \{a\}$}}
+  \step{<1>4}{\pick\ disjoint neighbourhoods $U$ of $a$ and $V$ of $b$}
+  \step{<1>5}{$b \in V \subseteq X \setminus \{a\}$}
+  \qedstep
+  \begin{proof}
+    \pf\ By Proposition \ref{prop:topology:neighbourhood:open}.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{thm}
+  In a Hausdorff space, a sequence has at most one limit.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\assume{for a contradiction $x_n \rightarrow l$ and $x_n
+      \rightarrow
+      m$ as $n \rightarrow \infty$, and $l \neq m$}}
+  \step{<1>2}{\pick\ disjoint neighbourhoods $U$ of $l$ and $V$ of $m$}
+  \step{<1>3}{\pick\ $N$ such that, for all $n \geq N$, $x_n \in U$ and $x_n
+    \in V$}
+  \step{<1>4}{$x_N \in U \cap V$}
+  \qed
+\end{proof}
+
+\begin{thm}
+  Every linearly ordered set is Hausdorff under the order topology.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$X$ be a linearly ordered set under the order topology.}}
+  \step{<1>2}{\pflet{$x, y \in X$ with $x \neq y$}}
+  \step{<1>3}{\assume{w.l.o.g.~$x < y$} \prove{There exist disjoint
+      neighbourhoods
+      $U$ of $x$ and $V$ of $y$.}}
+  \step{<1>4}{\case{There exists $z$ such that $x < z < y$}}
+  \begin{proof}
+    \pf\ In this case, take $U = (-\infty, z)$ and $V = (z, +\infty)$.
+  \end{proof}
+  \step{<1>5}{\case{There does not exist $z$ such that $x < z < y$}}
+  \begin{proof}
+    \pf\ In this case, take $U = (-\infty, y)$ and $V = (x, +\infty)$.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{thm}
+  \label{thm:topology:Hausdorff:product}
+  Let $\{ X_\alpha \}_{\alpha \in J}$ be a family of Hausdorff spaces. Then
+  $\prod_{\alpha \in J} X_\alpha$ is Hausdorff under the product topology.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$\{x_\alpha\}_{\alpha \in J}, \{y_\alpha\}_{\alpha \in
+        J}
+      \in \prod_{\alpha \in J} X_\alpha$ with $\{x_\alpha\}_{\alpha \in J}
+      \neq \{y_\alpha\}_{\alpha \in J}$}}
+  \step{<1>2}{\pick\ $\alpha \in J$ such that $x_\alpha \neq y_\alpha$}
+  \step{<1>3}{\pick\ disjoint neighbourhoods $U$ of $x_\alpha$ and $V$ of
+    $y_\alpha$.}
+  \step{<1>4}{$\pi_\alpha^{-1}(U)$ and $\pi_\alpha^{-1}(V)$ are disjoint
+    neighbourhoods of $\{x_\alpha\}_{\alpha \in J}$ and $\{y_\alpha\}_{\alpha
+      \in
+      J}$}
+  \qed
+\end{proof}
+
+\begin{cor}
+ The Sorgenfrey plane is Hausdorff.
+\end{cor}
+
+\begin{cor}
+  For any set $I$,
+  the space $\mathbb{R}^I$ is Hausdorff.
+\end{cor}
+
+\begin{prop}
+  Let $X$ and $Y$ be topological spaces and $f : X \rightarrow Y$. If $f$ is
+  continuous and injective and $Y$ is Hausdorff then $X$ is Hausdorff.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$x, y \in X$ with $x \neq y$}}
+  \step{<1>2}{$f(x) \neq f(y)$}
+  \begin{proof}
+    \pf\ $f$ is injective.
+  \end{proof}
+  \step{<1>3}{\pick\ disjoint neighbourhoods $U$, $V$ of $f(x)$ and $f(y)$}
+  \begin{proof}
+    \pf\ $Y$ is Hausdorff.
+  \end{proof}
+  \step{<1>4}{$f^{-1}(U)$ and $f^{-1}(V)$ are disjoint neighbourhoods of $x$
+    and
+    $y$.}
+  \qed
+\end{proof}
+
+\begin{cor}
+  \label{cor:topology:Hausdorff:subspace}
+  A subspace of a Hausdorff space is Hausdorff.
+\end{cor}
+
+\begin{cor}
+  Let $\{ X_\alpha \}_{\alpha \in J}$ be a family of nonempty spaces. If
+  $\prod_{\alpha \in J} X_\alpha$ is Hausdorff then so is each $X_\alpha$.
+\end{cor}
+
+\begin{cor}
+  Let $\mathcal{T}$ and $\mathcal{T}'$ be topologies on the same set $X$. If
+  $\mathcal{T} \subseteq \mathcal{T}'$ and $X$ is Hausdorff under
+  $\mathcal{T}$ then $X$ is Hausdorff under $\mathcal{T}'$.
+\end{cor}
+
+\begin{cor}
+  The space $\mathbb{R}_K$ is Hausdorff.
+\end{cor}
+
+ \begin{prop}
+ $\mathbb{R}_l$ is Hausdorff.
+\end{prop}
+
+\begin{proof}
+ \pf\ Let $a, b \in \mathbb{R}_l$ with $a < b$. Then $(- \infty, b)$ and $[b,
++\infty)$ are disjoint open sets containing $a$ and $b$ respectively. \qed
+\end{proof}
+
+\begin{prop}
+ The continuous image of a Hausdorff space is not necessarily Hausdorff.
+\end{prop}
+
+\begin{proof}
+ \pf\ The identity map from the discrete two-point space to the indiscrete two-point space is continuous. \qed
+\end{proof}
+
+\begin{lm}
+ \label{lm:topology:Hausdorff:continuous_extension}
+ Let $A$ be a subspace of $X$ and $Z$ be Hausdorff. Let $f : A \rightarrow Z$ be contiuous. Then there is at most one extension of $f$ to a continuous function $\overline{A} \rightarrow Z$.
+\end{lm}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\assume{for a contradiction $g,h : \overline{A} \rightarrow Z$ are continuous extensions of $f$ with $g(x) \neq h(x)$}}
+ \step{<1>2}{\pick\ disjoint open neighbourhoods $U$ of $g(x)$ and $V$ of $h(x)$}
+ \step{<1>3}{\pick\ a point $a \in A \cap \inv{g}(U) \cap \inv{h}(V)$}
+ \begin{proof}
+   \pf\ One exists because $\inv{g}(U) \cap \inv{h}(V)$ is a neighbourhood of $x \in \overline{A}$.
+ \end{proof}
+ \step{<1>4}{$g(a) \in U \cap V$}
+ \qed
+\end{proof}
+
+\section{Regular Spaces}
+
+\begin{df}[Regular]
+  A topological space $X$ is \emph{regular} iff, for every closed set $A$ and
+  point $a \notin A$, there exist disjoint neighbourhoods $U$ of $A$ and $V$
+  of
+  $a$.
+\end{df}
+
+  \begin{prop}
+    \label{prop:topology:regular:closure}
+ Let $X$ be a $T_1$ space. Then $X$ is regular if and only if, for every
+point $x$ and neighbourhood $U$ of $x$, there exists a neighbourhood $V$ of $x$
+such that $\overline{V} \subseteq U$.
+\end{prop}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{If $X$ is regular then,  for every
+   point $x$ and neighbourhood $N$ of $x$, there exists a neighbourhood $V$
+   of $x$ such that $\overline{V} \subseteq N$.}
+ \begin{proof}
+   \step{<2>1}{\assume{$X$ is regular.}}
+   \step{<2>2}{\pflet{$x \in X$ and $N$ be a neighbourhood of $x$}}
+   \step{<2>3}{\pick\ an open set $U$ such that $x \in U \subseteq N$}
+   \step{<2>4}{\pick\ disjoint open sets $V$, $W$ such that $x \in V$ and $X
+     \setminus U \subseteq W$}
+   \step{<2>5}{$\overline{V} \subseteq N$}
+   \begin{proof}
+     \pf
+     \begin{align*}
+       \overline{V} & \subseteq X \setminus W \\
+       & \subseteq U \\
+       & \subseteq N
+     \end{align*}
+   \end{proof}
+ \end{proof}
+ \step{<1>2}{If, for every
+   point $x$ and neighbourhood $U$ of $x$, there exists a neighbourhood $V$
+   of $x$ such that $\overline{V} \subseteq U$, then $X$ is regular.}
+ \begin{proof}
+   \step{<2>1}{\assume{For every point $x$ and neighbourhood $U$ of $x$,
+there
+       exists a neighbourhood $V$ of $x$ such that $\overline{V} \subseteq
+       U$.}}
+   \step{<2>2}{\pflet{$x \in X$ and $A$ be a closed set with $x \notin A$}}
+   \step{<2>3}{\pick\ a neighbourhood $V$ of $x$ such that $\overline{V}
+     \subseteq X \setminus A$}
+   \step{<2>4}{$x \in V$ and $A \subseteq X \setminus \overline{V}$}
+ \end{proof}
+ \qed
+\end{proof}
+
+ \begin{prop}
+Every linearly ordered set under the order topology is regular.
+\end{prop}
+
+\begin{proof}
+\pf
+\step{<1>1}{\pflet{$X$ be a linearly ordered set under the order topology.}}
+\step{<1>2}{\pflet{$x \in X$ and $U$ be a neighbourhood of $x$} \prove{There
+    exists a neighbourhood $V$ of $x$ with $\overline{V} \subseteq U$}}
+\step{<1>3}{\case{$x$ is greatest and least in $X$}}
+\begin{proof}
+  \pf\ Take $V = U = X = \{x\}$
+\end{proof}
+\step{<1>4}{\case{$x$ is greatest in $X$ and there exists $a < x$ such that
+    $(a,x] \subseteq U$}}
+\begin{proof}
+  \step{<2>1}{\case{There exists $b$ such that $a < b < x$}}
+  \begin{proof}
+    \pf\ Take $V = (b, x]$.
+  \end{proof}
+  \step{<2>2}{\case{There is no $b$ such that $a < b < x$}}
+  \begin{proof}
+    \step{<3>1}{\pflet{$V = U = \{x\}$}}
+    \step{<3>2}{$\overline{V} = V$}
+    \begin{proof}
+      \pf\ For any $y \neq x$, we have $(- \infty, x)$ is a neighbourhood of
+$y$ that does not intersect $V$.
+    \end{proof}
+  \end{proof}
+\end{proof}
+\step{<1>5}{\case{$x$ is least in $X$ and there exists $b > x$ such that
+$[x,b)
+    \subseteq U$}}
+\begin{proof}
+  \pf\ Similar.
+\end{proof}
+\step{<1>6}{\case{There exist $a < x < b$ such that $(a,b) \subseteq U$}}
+\begin{proof}
+  \step{<2>1}{\pick\ a point $c$ such that $a < c < x$ if there is one,
+    otherwise \pflet{$c = a$}}
+  \step{<2>2}{\pick\ a point $d$ such that $x < d < b$ if there is one,
+    otherwise \pflet{$d = b$}}
+  \step{<2>3}{\pflet{$V = (c, d)$}}
+  \step{<2>4}{$\overline{V} \subseteq U$}
+  \begin{proof}
+    \pf
+    \begin{align*}
+      \overline{V} & \subseteq [c,d] \\
+      & \subseteq (a, b) \\
+      & \subseteq U
+    \end{align*}
+  \end{proof}
+\end{proof}
+\qedstep
+\begin{proof}
+  \pf\ These cases are exhaustive by Lemma \ref{lm:topology:order:open}. They
+prove $X$ is regular by Proposition \ref{prop:topology:regular:closure}.
+\end{proof}
+\qed
+\end{proof}
+
+  \begin{prop}
+    \label{prop:topology:regular:subspace}
+ A subspace of a regular space is regular.
+\end{prop}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\pflet{$X$ be a regular space and $Y \subseteq X$}}
+ \step{<1>2}{\pflet{$A \subseteq Y$ be closed in $Y$ and $a \in Y \setminus
+A$}}
+ \step{<1>3}{\pick\ $C$ closed in $X$ such that $A = C \cap Y$}
+ \begin{proof}
+   \pf\ By Corollary \ref{cor:topology:subspace:closed}.
+ \end{proof}
+ \step{<1>4}{\pick\ disjoint open sets $U$, $V$ in $X$ such that $C \subseteq
+U$
+   and $a \in V$}
+ \step{<1>5}{$U \cap Y$ and $V \cap Y$ are disjoint open sets in $Y$ such
+that
+   $A \subseteq U \cap Y$ and $a \in V \cap Y$}
+ \qed
+\end{proof}
+
+\begin{cor}
+  Let $\{ X_\alpha \}_{\alpha \in J}$ be a family of nonempty spaces. If
+  $\prod_{\alpha \in J} X_\alpha$ is regular then so is each $X_\alpha$.
+\end{cor}
+
+\begin{prop}[AC]
+ The product of a family of regular spaces is regular.
+\end{prop}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\pflet{$\{X_\alpha\}_{\alpha \in J}$ be a family of regular
+     spaces.}}
+ \step{<1>2}{$\prod_{\alpha \in J} X_\alpha$ is $T_1$}
+ \step{<1>3}{\pflet{$\vec{a} \in U$ where $U$ is open in $\prod_{\alpha \in
+       J} X_\alpha$}}
+ \step{<1>4}{\pick\ $\prod_{\alpha \in J} U_\alpha$ such that each $U_\alpha$
+   is open in $X_\alpha$, $U_\alpha = X_\alpha$ except at $\alpha_1$, \ldots,
+   $\alpha_n$, and $\vec{a} \in \prod_{\alpha \in J} U_\alpha \subseteq U$}
+ \step{<1>5}{For $1 \leq i \leq n$, \pick\ $V_{\alpha_i}$ open in
+   $X_{\alpha_i}$ such that $a_{\alpha_i} \in V_{\alpha_i}$ and
+   $\overline{V_{\alpha_i}} \subseteq U_{\alpha_i}$}
+ \step{<1>6}{For $\alpha \neq \alpha_1, \ldots, \alpha_n$, \pflet{$V_\alpha =
+     X_\alpha$}}
+ \step{<1>7}{$\vec{a} \in \prod_{\alpha \in J} V_\alpha$}
+ \step{<1>8}{$\overline{\prod_{\alpha \in J} V_\alpha} \subseteq \prod_{\alpha
+     \in J} U_\alpha$}
+ \begin{proof}
+   \pf\ By Theorem \ref{thm:topology:product:closure}.
+ \end{proof}
+ \qed
+\end{proof}
+
+\begin{cor}
+The Sorgenfrey plane is regular.
+\end{cor}
+
+\begin{cor}
+ For any set $I$, the space $\mathbb{R}^I$ is regular.
+\end{cor}
+
+\begin{prop}
+The space $\mathbb{R}_K$ is not regular.
+\end{prop}
+
+\begin{proof}
+\pf There do not exist disjoint neighbourhoods of 0 and $K$. \qed
+\end{proof}
+
+\begin{prop}
+The continuous image of a regular space is not necessarily regular.
+\end{prop}
+
+\begin{proof}
+\pf\ The identity map from the discrete two-point space to the indiscrete two-point space is continuous. \qed
+\end{proof}
+
+\section{Completely Regular Spaces}
+
+ \begin{df}[Separated by a Continuous Function]
+ Let $A$ and $B$ be subsets of a topological space $X$. Then $A$ and $B$ can
+ be \emph{separated by a continuous function} iff there exists a continuous
+ $f : X \rightarrow [0,1]$ such that $f(A) = \{ 0 \}$ and $f(B) = \{ 1 \}$.
+\end{df}
+
+  \begin{df}[Completely Regular]
+  A space $X$ is \emph{completely regular} iff $X$ is $T_1$ and, for every
+  point $a$ and closed set $A$ not containing $a$, we have that $\{a\}$ and
+  $A$ can be separated by a continuous function.
+\end{df}
+
+ \begin{thm}
+   \label{thm:topology:completely_regular:product}
+The product of a family of completely regular spaces is completely regular.
+\end{thm}
+
+\begin{proof}
+\pf
+\step{<1>1}{\pflet{$\{X_\alpha\}_{\alpha \in J}$ be a family of completely
+    regular spaces.}}
+\step{<1>2}{\pflet{$a \in \prod_{\alpha \in J} X_\alpha$ and $A$ be closed in
+    $\prod_{\alpha \in J} X_\alpha$ such that $a \notin A$}}
+\step{<1>3}{\pick\ a basic open neighbourhood $\prod_{\alpha \in J} U_\alpha
+  \subseteq \prod_{\alpha \in J} X_\alpha \setminus A$ of     $a$ such that
+$U_\alpha = X_\alpha$ except for $\alpha = \alpha_1, \ldots,     \alpha_n$}
+\step{<1>4}{For $1 \leq i \leq n$, \pick\ a continuous $f_i : X_{\alpha_i}
+\rightarrow [0,1]$ that is $0$ at $a_{\alpha_i}$ and 1 on
+$X_{\alpha_i} \setminus U_{\alpha_i}$}
+\step{<1>5}{\pflet{$f : \prod_{\alpha \in J} X_\alpha \rightarrow [0, 1]$ be
+given
+  by $f(x) = \prod_{i=1}^n f_i(x_{\alpha_i})$}}
+\step{<1>6}{$f(a) = 0$}
+\step{<1>7}{$f(x) = 1$ for $x \in A$}
+\step{<1>8}{$f$ is continuous}
+\qed
+\end{proof}
+
+\begin{cor}
+The Sorgenfrey plane is completely regular.
+\end{cor}
+
+\begin{cor}
+ For any set $I$, the space $\mathbb{R}^I$ is completely regular.
+\end{cor}
+
+\begin{prop}
+ For any set $J$, the space $\mathbb{R}^J$ in the box topology is completely
+regular.
+\end{prop}
+
+\begin{proof}
+\pf
+\step{<1>1}{\pflet{$a \in \mathbb{R}^J$ and $A \subseteq \mathbb{R}^J$ be
+closed
+    with $a \notin A$} \prove{There exists $f : \mathbb{R}^J_{\mathrm{box}}
+\rightarrow       [0,1]$ continuous such that $f(a) = 1$ and $f(A) = \{ 0 \}$}}
+\step{<1>2}{\assume{w.l.o.g.~$A \cap (-1, 1)^J = \emptyset$ and $a = \vec{0}$}}
+\begin{proof}
+\step{<2>1}{\pick\ a basic open set $\prod_{\alpha \in J} U_\alpha$ such that
+$a
+  \in \prod_{\alpha \in J} U_\alpha \subseteq \mathbb{R}^J \setminus A$}
+\step{<2>2}{For $\alpha \in J$, \pick\ $b_\alpha, c_\alpha$ such that
+$a_\alpha
+  \in (b_\alpha, c_\alpha) \subseteq U_\alpha$}
+\step{<2>3}{For $\alpha \in J$, \pick\ a homeomorphism $f_\alpha : \mathbb{R}
+  \rightarrow \mathbb{R}$ that maps $b_\alpha$ to $-1$, $a_\alpha$ to $0$ and
+  $c_\alpha$ to $1$}
+\step{<2>4}{$\prod_{\alpha \in J} f_\alpha$ is an automorphism
+  $\mathbb{R}^J_{\mathrm{box}}$ that maps $a$ to $\vec{0}$ and $A$ to a
+  closed set disjoint from $(-1, 1)^J$}
+\end{proof}
+\step{<1>3}{\pick\ a continuous function $f : \mathbb{R}^J_{\mathrm{uniform}}
+\rightarrow [0,1]$ such that $f(\vec{0}) = 1$ and $f(\mathbb{R}^J \setminus
+(-1, 1)^J) = \{ 0 \}$}
+\step{<1>4}{$f$ is continuous w.r.t.~the box topology}
+\qed
+\end{proof}
+
+\begin{prop}
+Not every regular space is completely regular.
+\end{prop}
+
+\begin{proof}
+\pf
+\step{<1>1}{For $m \in \mathbb{Z}$, \pflet{$L_m = \{ m \} \times [-1, 0]$}}
+\step{<1>2}{For each odd integer $n$ and each integer $k \geq 2$,
+  \pflet{$C_{nk} = (\{n + 1 - 1/k\} \/home/robin/fun/RogOMatic/src/actuatortimes [-1,0]) \cup (\{ n - 1 + 1/k \}
+    \times [-1, 0]) \cup \{ (x,y) : (x-n)^2 + y^2 = (1 - 1/k)^2, y \geq 0
+    \}$}}
+\step{<1>3}{For each odd integer $n$ and each integer $k \geq 2$,
+\pflet{$p_{nk}
+    = (n, 1 - 1/k)$}}
+\step{<1>4}{\pick\ two points $a$, $b$ not in any $L_m$ or $C_{nk}$}
+\step{<1>5}{\pflet{$X = \bigcup_{m \in \mathbb{Z}} L_m \cup \bigcup_{n, k}
+    C_{nk} \cup \{ a, b \}$}}
+\step{<1>6}{\pflet{$\mathcal{B}$ be the set consisting of all subsets of
+    $\mathbb{R}^2$ of the following forms:
+    \begin{enumerate}
+     \item The intersection of $X$ with a horizontal open line segment that
+     contains none of the points $p_{nk}$
+     \item A set formed from one of the sets $C_{nk}$ by deleting finitely
+     many points.
+     \item For each even integer $m$, the set $\{a\} \cup \{(x,y) \in X : x <
+     m \}$
+     \item For each even integer $m$, the set $\{b\} \cup \{(x,y) \in X : x >
+     m \}$
+   \end{enumerate}}}
+ \step{<1>7}{$\mathcal{B}$ is a basis for a topology on $X$}
+ \begin{proof}
+   \step{<2>1}{For all $x \in X$, there exists $B \in \mathcal{B}$ such that
+$x
+     \in B$}
+   \step{<2>2}{For all $B_1, B_2 \in \mathcal{B}$ and $x \in B_1 \cap B_2$,
+     there exists $B_3 \in \mathcal{B}$ such that $x \in B_3 \subseteq B_1
+     \cap B_2$}
+   \begin{proof}
+     \step{<3>1}{\case{$B_1$, $B_2$ are both of type 1}}
+     \begin{proof}
+       \pf\ Their intersection is of type 1.
+     \end{proof}
+     \step{<3>2}{\case{$B_1$ is of type 1 and $B_2$ is of type 2}}
+     \begin{proof}
+       \pf\ Their intersection is of type 2, since a horizontal line segment
+       intersects $C_{nk}$ in at most two points.
+     \end{proof}
+     \step{<3>3}{\case{$B_1$ is of type 1 and $B_2$ is of type 3}}
+     \begin{proof}
+       \pf\ Their intersection is of type 1
+     \end{proof}
+     \step{<3>4}{\case{$B_1$ is of type 1 and $B_2$ is of type 4}}
+     \begin{proof}
+       \pf\ Their intersection is of type 1
+     \end{proof}
+     \step{<3>5}{\case{$B_1$ is of type 2 and $B_2$ is of type 2}}
+     \begin{proof}
+       \pf\ Their intersection is of type 2
+     \end{proof}
+     \step{<3>6}{\case{$B_1$ is of type 2 and $B_2$ is of type 3}}
+     \begin{proof}
+       \pf\ Their intersection is $B_1$
+     \end{proof}
+     \step{<3>7}{\case{$B_1$ is of type 2 and $B_2$ is of type 4}}
+     \begin{proof}
+       \pf\ Their intersection is $B_1$
+     \end{proof}
+     \step{<3>8}{\case{$B_1$ is of type 3 and $B_2$ is of type 3}}
+     \begin{proof}
+       \pf\ Their intersection is of type 3
+     \end{proof}
+     \step{<3>9}{\case{$B_1$ is of type 3 and $B_2$ is of type 4}}
+     \begin{proof}
+       \step{<4>1}{\pflet{$B_1 = \{ a \} \cup \{ (x,y) \in X : x < m \}$ and
+           $B_2 = \{ b \} \cup \{ (x,y) \in X : x > n \}$}}
+       \step{<4>2}{\case{$x = (s, 1-1/k)$ for some $s$ and integer $x \geq
+2$}}
+\begin{proof}
+\pf\ In this case, $x \in C_{nk}$ for some $n$ and $C_{nk} \subseteq B_1 \cap
+B_2$.
+\end{proof}
+       \step{<4>3}{\case{$x = (s, t)$ and $t \neq 1 - 1/k$ for any integer $k
+           \geq 2$}}
+       \begin{proof}
+         \pf\ In this case, $x \in ((n, m) \times \{ t \}) \cap X \subseteq
+B_1 \cap B_2$
+       \end{proof}
+     \end{proof}
+     \step{<3>10}{\case{$B_1$ is of type 4 and $B_2$ is of type 4}}
+     \begin{proof}
+       \pf\ Their intersection is of type 4
+     \end{proof}
+   \end{proof}
+ \end{proof}
+ \step{<1>8}{For any continuous function $f : X \rightarrow \mathbb{R}$, we
+have
+   $f(a) = f(b)$}
+ \begin{proof}
+   \step{<2>1}{\pflet{$f : X \rightarrow \mathbb{R}$ be continuous}}
+   \step{<2>2}{For any $c \in \mathbb{R}$, we have $\inv{f}(c)$ is
+$G_\delta$}
+%TODO Extract lemma
+   \begin{proof}
+     \pf\ $\inv{f}(c) = \bigcap_{q \in \mathbb{Q}^+} \inv{f}(c - q, c + q)$
+   \end{proof}
+   \step{<2>3}{\pflet{$S_{nk} = \{ p \in C_{nk} : f(p) \neq f(p_{nk}) \}$}}
+   \step{<2>4}{For all $n$, $k$, we have $S_{nk}$ is countable.}
+   \begin{proof}
+     \step{<3>1}{\pflet{$\inv{f}(p_{nk}) = \bigcap_{m=1}^\infty U_m$ where
+$U_m$
+         is open in $X$}}
+     \step{<3>2}{For each $m$, \pick\ $B_m \in \mathcal{B}$ such that $p_{nk}
+       \in B_m \subseteq U_m$}
+     \step{<3>3}{$S_{nk} \subseteq \bigcup_{m=1}^\infty (C_{nk} \setminus
+B_m)$}
+     \step{<3>4}{Each $C_{nk} \setminus B_m$ is countable}
+     \begin{proof}
+       \step{<4>1}{\pflet{$m \in \mathbb{Z}$}}
+       \step{<4>2}{$B_m$ cannot be of type 1}
+       \step{<4>3}{If $B_m$ is of type 2 then $C_{nk} \setminus B_m$ is
+finite.}
+       \step{<4>4}{If $B_m$ is of type 3 or 4 then $C_{nk} \setminus B_m$ is
+         empty.}
+     \end{proof}
+   \end{proof}
+   \step{<2>5}{\pick\ $d \in [-1, 0]$ such that $\mathbb{R} \times \{ d \}$
+     intersects none of the sets $S_{nk}$}
+   \step{<2>6}{For $n$ odd, we have
+     \[ f(n-1, d) = \lim_{k \rightarrow \infty} f(p_{nk})
+     \enspace . \]}
+   \begin{proof}
+     \step{<3>1}{\pflet{$\epsilon > 0$}}
+     \step{<3>2}{\pick\ $B \in \mathcal{B}$ such that $(n-1, d) \in B
+\subseteq
+       \inv{f}(f(n-1,d) - \epsilon, f(n-1,d) + \epsilon)$}
+     \step{<3>3}{There exists $\delta > 0$ such that, for $x \in (n-1-\delta,
+       n-1+\delta)$, we have $(x, d) \in B$}
+     \step{<3>4}{\pick\ $K$ such that $1/K < \delta$}
+     \step{<3>5}{\pflet{$k \geq K$}}
+     \step{<3>6}{$f(n-1+1/k,d) = f(p_{nk})$}
+     \step{<3>7}{$|f(n-1,d) - f(n-1+1/k,d)| < \epsilon$}
+     \step{<3>8}{$|f(n-1,d) - f(p_{nk})| < \epsilon$}
+   \end{proof}
+   \step{<2>7}{For $n$ odd, we have
+     \[ f(n+1, d) = \lim_{k \rightarrow \infty} f(p_{nk})
+     \enspace . \]}
+   \begin{proof}
+    \pf\ Similar.
+   \end{proof}
+   \qedstep
+   \begin{proof}
+     \step{<3>1}{\assume{$f(a) \neq f(b)$}}
+     \step{<3>2}{\assume{w.l.o.g.~$f(a) < f(b)$}}
+     \step{<3>3}{\pick\ $B \in \mathcal{B}$ such that $a \in B \subseteq
+       \inv{f}(-          \infty, (f(a) + f(b)) / 2)$}
+     \step{<3>4}{\pflet{$m$ be even such that $B = \{a\} \cup \{(x,y) \in X :
+x
+<
+m \}$}}
+     \step{<3>5}{\pick\ $B \in \mathcal{B}$ such that $b \in B \subseteq
+       \inv{f}((f(a) + f(b)) / 2, + \infty)$}
+\step{<3>6}{\pflet{$m'$ be even such that $B = \{b\} \cup \{(x,y) \in X : x
+>
+m' \}$}}
+\step{<3>7}{$f(m,d) = f(m', d)$}
+\qedstep
+   \end{proof}
+ \end{proof}
+ \step{<1>9}{$X$ is regular.}
+ \step{<1>10}{$X$ is not completely regular.}
+ \begin{proof}
+   \pf\ $a$ and $b$ cannot be separated by a continuous function.
+ \end{proof}
+ \qed
+\end{proof}
+
+\begin{thm}[AC]
+  \label{thm:topology:completely_regular:imdbeddable}
+A space is completely regular iff it is homeomorphic to a subspace of
+$[0,1]^J$ for some $J$.
+\end{thm}
+
+\begin{proof}
+\pf
+\step{<1>1}{Every completely regular space is homeomorphic to a subspace of
+  $[0,1]^J$ for some $J$.}
+\begin{proof}
+  \step{<2>1}{\pflet{$X$ be completely regular}}
+  \step{<2>2}{For every point $a$ and open set $U$ that contains $a$, \pick\
+a
+    continuous function $f_{aU}$ that is positive on $a$ and vanishes outside
+    $U$}
+  \step{<2>3}{The family $\{f_{aU}\}$ separates points from closed sets}
+  \qedstep
+  \begin{proof}
+    \pf\ By the Imbedding Theorem.
+  \end{proof}
+\end{proof}
+\step{<1>2}{Every subspace of $[0,1]^J$ is completely regular.}
+\begin{proof}
+  \pf\ By Theorem \ref{thm:topology:completely_regular:product} and
+Proposition \ref{prop:topology:regular:subspace}.
+\end{proof}
+\qed
+\end{proof}
+
+\begin{prop}
+ The continuous image of a completely regular space is not necessarily completely regular.
+\end{prop}
+
+\begin{proof}
+ \pf\ The identity map from the discrete two-point space to the indiscrete two-point space is continuous. \qed
+\end{proof}
+
+\section{Normal Spaces}
+
+  \begin{df}[Normal Space]
+  A \emph{normal} space is a $T_1$ space such that, for any disjoint closed
+sets $A$, $B$, there exist disjoint open sets $U$, $V$ such that $A \subseteq
+U$ and $B \subseteq V$.
+\end{df}
+
+  \begin{thm}
+ Every linearly ordered set is normal under the order topology.
+\end{thm}
+
+\begin{proof}
+  \pf\ See Steen and Steerbach \emph{Counterexamples in Topology} Example 39.
+\qed
+\end{proof}
+
+  \begin{prop}
+    \label{prop:topology:normal:S_Omega_times_S_Omega}
+  The product space $S_\Omega \times \overline{S_\Omega}$ is not normal.
+\end{prop}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\pflet{$\Delta = \{ (x, x) : x \in \overline{S_\Omega} \}
+\subseteq
+     \overline{S_\Omega} \times \overline{S_\Omega} \}$}}
+ \step{<1>2}{$\Delta$ is closed in $\overline{S_\Omega} \times
+   \overline{S_\Omega}$} % TODO Extract lemma
+ \step{<1>3}{\pflet{$A = \Delta \cap (S_\Omega \times \overline{S_\Omega})$}}
+ \step{<1>4}{$A$ is closed in $S_\Omega \times \overline{S_\Omega}$}
+ \step{<1>5}{\pflet{$B = S_\Omega \times \{ \Omega \}$}}
+ \step{<1>6}{$B$ is closed}
+ \step{<1>7}{$A \cap B = \emptyset$}
+ \step{<1>8}{\assume{for a contradiction $U$ and $V$ are disjoint open sets
+     including $A$ and $B$ respectively}}
+ \step{<1>9}{For all $x \in S_\Omega$ there exists $\beta \in (x, \Omega)$
+such
+   that $(x, \beta) \notin U$}
+ \begin{proof}
+   \step{<2>1}{\pflet{$x \in S_\Omega$}}
+   \step{<2>2}{$(x, \Omega) \in V$}
+   \begin{proof}
+     \pf\ $(x, \Omega) \in B \subseteq V$
+   \end{proof}
+   \step{<2>3}{\pick\ $y < \Omega$ such that $\{ x \} \times (y, \Omega]
+     \subseteq V$}
+   \begin{proof}
+     \pf\ By Lemma \ref{lm:topology:order:open}.
+   \end{proof}
+   \step{<2>4}{\pick\ $\beta$ such that $x,y < \beta < \Omega$}
+   \begin{proof}
+     \pf\ Such a $\beta$ exists because $\Omega$ is a limit ordinal.
+   \end{proof}
+ \end{proof}
+ \step{<1>10}{For $x \in S_\Omega$, \pflet{$\beta(x)$ be the least element of
+$
+     (x, \Omega)$ such that $(x, \beta(x)) \notin U$}}
+ \step{<1>11}{\pflet{$b = \sup_{n=1}^\infty \beta^n(0)$}}
+ \step{<1>12}{$\beta^n(0) \rightarrow b$ as $n \rightarrow \infty$}
+ \step{<1>13}{$(\beta^n(0), \beta^{n+1}(0)) \rightarrow (b, b)$ as $n
+   \rightarrow \infty$}
+ \step{<1>14}{$(b, b) \in A$}
+ \step{<1>15}{$(b, b) \in U$}
+ \step{<1>16}{For all $n$ we have $(\beta^n(0), \beta^{n+1}(0)) \notin U$}
+ \begin{proof}
+   \pf\ By \stepref{<1>10}.
+ \end{proof}
+ \qedstep
+ \begin{proof}
+   \pf\ Steps \stepref{<1>12}, \stepref{<1>15} and \stepref{<1>16} form a
+   contradiction.
+ \end{proof}
+ \qed
+\end{proof}
+
+\begin{cor}
+ Not every completely regular space is normal.
+\end{cor}
+
+\begin{cor}
+ An open subspace of a normal space is not necessarily normal.
+\end{cor}
+
+\begin{cor}
+ The product of two normal spaces is not necessarily normal.
+\end{cor}
+
+\begin{prop}
+ A closed subspace of a normal space is normal.
+\end{prop}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\pflet{$X$ be normal and $C \subseteq X$ be closed.}}
+ \step{<1>2}{\pflet{$A$ and $B$ be closed in $C$}}
+ \step{<1>3}{$A$ and $B$ are closed in $X$}
+ \begin{proof}
+   \pf\ By Corollary \ref{cor:topology:subspace:closed2}.
+ \end{proof}
+ \step{<1>4}{\pick\ disjoint open neighbourhoods $U$ and $V$ of $A$ and $B$
+in
+   $X$}
+ \step{<1>5}{$U \cap C$ and $V \cap C$ are disjoint open neighourhoods of $A$
+   and $B$ in $C$}
+ \qed
+\end{proof}
+
+\begin{cor}
+  Let $\{X_\alpha\}_{\alpha \in J}$ be a family of nonempty spaces. If
+  $\prod_{\alpha \in J} X_\alpha$ is normal then each $X_\alpha$ is normal.
+\end{cor}
+
+  \begin{prop}
+  If the Continuum Hypothesis then $\mathbb{R}^\omega$ under the box topology
+  is normal.
+\end{prop}
+
+\begin{proof}
+  \pf\ See Rudin. The box product of countably many compact metric spaces.
+  \emph{General Topology and Its Applications}, 2:293--298, 1972. \qed
+\end{proof}
+
+  \begin{prop}[Stone (DC)]
+    \label{prop:topology:normal:uncountable}
+  If $J$ is uncountable then $\mathbb{R}^J$ is not normal.
+\end{prop}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\pflet{$X = (\mathbb{Z}^+)^J$} \prove{$X$ is not normal.}}
+ \step{<1>2}{For $x \in X$ and $B \subseteq^{\mathrm{fin}} J$, \pflet{
+     \[ U(x, B) = \{ y \in X : \forall \alpha \in B. y_\alpha = x_\alpha \}
+     \enspace . \]
+   }}
+ \step{<1>3}{$\{ U(x, B) : x \in X, B \subseteq^{\mathrm{fin}} J \}$ is a
+basis
+   for $X$}
+ \begin{proof}
+   \step{<2>1}{\pflet{$x \in X$ and $\prod_{\alpha \in J} U_\alpha$ be a
+basic
+       open set including $x$, where $U_\alpha = \mathbb{Z}^+$ for all
+       $\alpha$ except $\alpha_1, \ldots, \alpha_n$}}
+   \step{<2>2}{$x \in U(x, \{ \alpha_1, \ldots, \alpha_n \}) \subseteq
+     \prod_{\alpha \in J} U_\alpha$}
+ \end{proof}
+ \step{<1>4}{For $n \in \mathbb{Z}^+$, \pflet{$P_n = \{ x \in X : x \text{ is
+       injective on } J \setminus \inv{x}(n) \}$}}
+ \step{<1>5}{$P_1$ and $P_2$ are closed and disjoint.}
+ \begin{proof}
+   \step{<2>1}{$P_1$ is closed}
+   \begin{proof}
+     \step{<3>1}{\pflet{$x \in X \setminus P_1$}}
+     \step{<3>2}{\pick\ $\alpha, \beta \in J$ such that $x_\alpha = x_\beta
+\neq
+       1$}
+     \step{<3>3}{\pflet{$U_\gamma = \{ x_\alpha \}$ if $\gamma = \alpha$ or
+         $\gamma = \beta$, $\mathbb{Z}^+$ for all other $\gamma \in J$}}
+     \step{<3>4}{$x \in \prod_{\gamma \in J} U_\gamma \subseteq X \setminus
+P_1$}
+   \end{proof}
+   \step{<2>2}{$P_2$ is closed}
+   \begin{proof}
+     \pf\ Similar.
+   \end{proof}
+   \step{<2>3}{$P_1 \cap P_2 = \emptyset$}
+   \begin{proof}
+     \pf\ If $x \in P_1 \cap P_2$ then $x$ is injective on $J$, contradicting
+the fact that $J$ is uncountable.
+   \end{proof}
+ \end{proof}
+ \step{<1>6}{\assume{for a contradiction $U$ and $V$ are disjoint open sets
+     including $P_1$ and $P_2$}}
+ \step{<1>7}{Given a sequence $(\alpha_i)$ of distinct elements of $J$ and a
+   strictly increasing sequence $(n_i)$ of positive integers, \pflet{
+     \begin{align*}
+       B^{\alpha,n}_i & = \{ \alpha_1, \ldots, \alpha_{n_i} \} \\
+       x^{\alpha,n}_i & \in X \\
+       (x^{\alpha,n}_i)_\beta & = \begin{cases}
+         j & \text{if } \beta = \alpha_j, 1 \leq j \leq n_{i-1} \\
+           1 & \text{for all other values of } \beta
+         \end{cases}
+     \end{align*}
+     for $i \geq 1$}}
+ \step{<1>8}{\pick\ sequences $(\alpha_i)$, $(n_i)$ such that, for all $i
+   \geq 1$, we have $U(x^{\alpha,n}_i, B^{\alpha, n}_i) \subseteq U$}
+ \begin{proof}
+   \step{<2>1}{\pflet{$x_1 \in X$ be given by $(x_1)_\alpha = 1$ for all
+$\alpha
+       \in J$}}
+   \step{<2>2}{$x_1 \in U$}
+   \begin{proof}
+     \pf\ $x_1 \in P_1 \subseteq U$
+   \end{proof}
+   \step{<2>3}{\pick\ $B_1 \subseteq^{\mathrm{fin}} J$ such that $U(x_1, B_1)
+     \subseteq U$}
+   \begin{proof}
+     \pf\ By \stepref{<1>3}.
+   \end{proof}
+   \step{<2>4}{\pflet{$n_1 = |B_1|$ and $B_1 = \{ \alpha_1, \ldots,
+\alpha_{n_1}
+       \}$}}
+   \step{<2>5}{\assume{We have chosen $n_1$, \ldots, $n_k$ strictly
+increasing
+       and $\alpha_1$, \ldots, $\alpha_{n_k}$ such that, for $1 \leq i \leq
+       k$, we have $U(x^{\alpha, n}_i, B^{\alpha, n}_i) \subseteq U$}}
+   \step{<2>6}{$x^{\alpha, n}_{i+1} \in U$}
+   \begin{proof}
+     \pf\ $x^{\alpha, n}_{i+1} \in P_1 \subseteq U$
+   \end{proof}
+   \step{<2>7}{\pick\ $C \subseteq^{\mathrm{fin}} J$ such that $U(x^{\alpha,
+n}_{i+1},        C) \subseteq U$}
+   \step{<2>8}{\pflet{$n_{i+1}$ and $\alpha_{n_i + 1}, \ldots,
+\alpha_{n_{i+1}}$
+       be such that $B^{\alpha, n}_i \cup C = B^{\alpha, n}_{i+1}$}}
+   \step{<2>9}{$U(x^{\alpha, n}_{i+1}, B^{\alpha, n}_{i+1}) \subseteq U$}
+ \end{proof}
+ \step{<1>9}{\pflet{$A = \{ \alpha_i : i \geq 1 \}$}}
+ \step{<1>10}{\pflet{$y \in X$, $y_\beta = j$ if $\beta = \alpha_j$, $y_\beta
+=
+     2$ for $\beta \notin A$}}
+ \step{<1>11}{\pick\ $B$ such that $U(y, B) \subseteq V$}
+ \step{<1>12}{\pick\ $i$ such that $A \cap B \subseteq B^{\alpha, n}_i$}
+ \step{<1>13}{$U(x^{\alpha, n}_{i+1}, B^{\alpha, n}_{i+1}) \cap U(y, B) \neq
+   \emptyset$}
+ \begin{proof}
+   \pf\ $x^{\alpha, n}_{i+1} \in U(x^{\alpha, n}_{i+1}, B^{\alpha, n}_{i+1})
+   \cap U(y, B)$
+ \end{proof}
+ \qedstep
+ \begin{proof}
+   \pf\ This contradicts the fact that $U$ and $V$ are disjoint
+   (\stepref{<1>6}).
+ \end{proof}
+ \qed
+\end{proof}
+
+  \begin{thm}[Urysohn Lemma]
+ Let $X$ be a normal space. Let $A$ and $B$ be disjoint closed subsets of
+ $X$. Then there exists a continuous map $f : X \rightarrow [0, 1]$ such that
+ $f(x) = 0$ for all $x \in A$ and $f(x) = 1$ for all $x \in B$.
+\end{thm}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\pflet{$P$ be the set of all rational numbers in $[0, 1]$}}
+ \step{<1>2}{For all $q \in P$, \pick\ an open set $U_q$ in $X$ such that $A
+   \subseteq U_0$, $U_1 \subseteq X \setminus B$, and whenever $p < q$ then
+   $\overline{U_p} \subseteq U_q$}
+ \begin{proof}
+   \step{<2>1}{\pick\ an enumeration $(q_n)$ of $P$ such that $q_1 = 1$ and
+$q_2
+     = 0$}
+   \step{<2>2}{\pflet{$U_1 = X \setminus B$}}
+   \step{<2>3}{\pick\ an open set $U_0$ such that $A \subseteq U_0$ and
+     $\overline{U_0} \subseteq U_1$}
+   \step{<2>4}{\assume{we have open sets $U_1$, $U_0$, \ldots, $U_{q_n}$ such
+       that whenever $p < q$ then $\overline{U_p} \subseteq U_q$}}
+   \step{<2>5}{$q_2 < q_{n+1} < q_1$}
+   \step{<2>6}{\pflet{$q_k$ be greatest among $q_1$, \ldots, $q_n$ such that
+       $q_k < q_{n+1}$, and $q_l$ be least such that $q_{n+1} < q_l$}}
+   \step{<2>7}{\pick\ an open set $U_{q_{n+1}}$ such that $\overline{U_{q_k}}
+     \subseteq U_{q_{n+1}}$ and $\overline{U_{q_{n+1}}} \subseteq U_{q_l}$}
+   \step{<2>8}{For all $p, q \in \{ q_1, \ldots, q_{n+1} \}$, if $p < q$ then
+     $\overline{U_p} \subseteq U_q$}
+ \end{proof}
+ \step{<1>3}{Extend the family $(U_q)$ to $\mathbb{Q}$ by defining: $U_q =
+   \emptyset$ if $q < 0$ and $U_q = X$ if $q > 1$}
+ \step{<1>4}{For all rationals $p$, $q$ with $p < q$ we have $\overline{U_p}
+   \subseteq U_q$}
+ \step{<1>5}{Define $f : X \rightarrow [0, 1]$ by $f(x) = \inf \{ q \in
+   \mathbb{Q} : x \in U_q \}$}
+ \begin{proof}
+   \pf\ This set is nonempty since $x \in U_1$ and bounded below since if $x
+   \in U_q$ then $q \geq 0$.
+ \end{proof}
+ \step{<1>6}{For all $x \in A$ we have $f(x) = 0$}
+ \step{<1>7}{For all $x \in B$ we have $f(x) = 1$}
+ \step{<1>8}{If $x \in \overline{U_r}$ then $f(x) \leq r$}
+ \step{<1>9}{If $x \notin U_r$ then $f(x) \geq r$}
+ \step{<1>10}{$f$ is continuous}
+ \begin{proof}
+   \step{<2>1}{\pflet{$x_0 \in X$}}
+   \step{<2>2}{\pflet{$(c, d)$ be an open interval containing $f(x_0)$}
+     \prove{There exists a neighbourhood $U$ of $x_0$ such that $f(U)
+       \subseteq (c,   d)$}}
+   \step{<2>3}{\pick\ rationals $p$, $q$ such that $c < p < f(x_0) < q < d$}
+   \step{<2>4}{$x \notin \overline{U_p}$}
+   \begin{proof}
+     \pf\ By \stepref{<1>8}
+   \end{proof}
+   \step{<2>5}{$x \in U_q$}
+   \begin{proof}
+     \pf\ By \stepref{<1>9}
+   \end{proof}
+   \step{<2>6}{\pflet{$U = U_q \setminus \overline{U_p}$}}
+ \end{proof}
+ \qed
+\end{proof}
+
+ \begin{df}[Vanish Precisely]
+Let $X$ be a set and $A \subseteq X$. Let $f : X \rightarrow [0,1]$. Then $f$
+\emph{vanishes precisely} on $A$ iff $\inv{f}(0) = A$.
+\end{df}
+
+\begin{thm}[CC]
+  \label{thm:topology:normal:vanishes_precisely}
+Let $X$ be a normal space and $A \subseteq X$. Then there exists a continuous
+function $f : X \rightarrow [0,1]$ such that $f$ vanishes precisely on $A$ if
+and only if $A$ is a closed $G_\delta$ set.
+\end{thm}
+
+\begin{proof}
+\pf
+\step{<1>1}{If there exists $f$ such that $f$ vanishes precisely on $A$ then
+$A$
+  is closed.}
+\begin{proof}
+  \pf\ This holds because $A = \inv{f}(0)$.
+\end{proof}
+\step{<1>2}{If there exists $f$ such that $f$ vanishes precisely on $A$ then
+$A$
+  is $G_\delta$.}
+\begin{proof}
+  \pf\ This holds because $A = \bigcap_{q \in \mathbb{Q}^+} \inv{f}([0, q))$.
+\end{proof}
+\step{<1>3}{If $A$ is closed and $G_\delta$ then there exists $f$ that
+vanishes
+  precisely on $A$.}
+\begin{proof}
+  \step{<2>1}{\pflet{$A = \bigcap_{n=1}^\infty U_n$}}
+  \step{<2>2}{For $n \geq 1$, \pick\ $f_n : X \rightarrow [0,1 / 2^n]$ such
+that
+    $f(x) = 0$ for $x \in A$ and $f(x) = 1 / 2^n$ for $x \in X \setminus
+    U_n$}
+  \begin{proof}
+    \pf\ By the Urysohn Lemma.
+  \end{proof}
+  \step{<2>3}{\pflet{$f : X \rightarrow [0,1]$ be given by $f(x) =
+      \sum_{n=1}^\infty f_n(x)$}}
+  \begin{proof}
+    \pf\ The series converges for every $x$ by the Comparison Test.
+  \end{proof}
+  \step{<2>4}{$f$ is continuous}
+  \begin{proof}
+    \step{<3>1}{$f_n$ converges uniformly to $f$}
+    \begin{proof}
+      \pf\ By the Weierstrass M-test.
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ By the Uniform Limit Theorem.
+    \end{proof}
+  \end{proof}
+  \step{<2>5}{$f(x) = 0$ for $x \in A$}
+  \begin{proof}
+    \pf\ From \stepref{<2>2}.
+  \end{proof}
+  \step{<2>6}{$f(x) > 0$ for $x \notin A$}
+  \begin{proof}
+    \step{<3>1}{\pflet{$x \notin A$}}
+    \step{<3>2}{\pick\ $N$ such that $x \notin U_N$}
+    \qedstep
+    \begin{proof}
+      \pf
+      \begin{align*}
+        f(x) & = \sum_{n=1}^\infty f_n(x) & (\text{\stepref{<2>3}}) \\
+        & \geq f_N(x) \\
+        & > 0 & (\text{\stepref{<2>2}})
+      \end{align*}
+    \end{proof}
+  \end{proof}
+\end{proof}
+\qed
+\end{proof}
+
+\begin{thm}[Strong Form of Urysohn Lemma]
+Let $X$ be a normal space. Then there exists a continuous function $f : X
+\rightarrow [0,1]$ such that $\inv{f}(0) = A$ and $\inv{f}(1) = B$ if and
+only if $A$ and $B$ are disjoint, closed and $G_\delta$.
+\end{thm}
+
+\begin{proof}
+\pf
+\step{<1>1}{If there exists a continuous function $f : X
+  \rightarrow [0,1]$ such that $\inv{f}(0) = A$ and $\inv{f}(1) = B$ then $A$
+  and $B$ are disjoint, closed and $G_\delta$}
+\begin{proof}
+  \step{<2>1}{\assume{there exists a continuous function $f : X
+      \rightarrow [0,1]$ such that $\inv{f}(0) = A$ and $\inv{f}(1) = B$}}
+  \step{<2>2}{$A$ and $B$ are disjoint}
+  \step{<2>3}{$A$ is closed and $G_\delta$}
+  \begin{proof}
+    \pf\ By Theorem \ref{thm:topology:normal:vanishes_precisely}.
+  \end{proof}
+  \step{<2>4}{$B$ is closed and $G_\delta$}
+  \begin{proof}
+    \pf\ Apply Theorem \ref{thm:topology:normal:vanishes_precisely} to $1-f$.
+  \end{proof}
+\end{proof}
+\step{<1>2}{If $A$ and $B$ are disjoint, closed and $G_\delta$ then there
+exists
+  a continuous function $f : X
+  \rightarrow [0,1]$ such that $\inv{f}(0) = A$ and $\inv{f}(1) = B$}
+\begin{proof}
+  \step{<2>1}{\assume{$A$ and $B$ are disjoint, closed and $G_\delta$}}
+  \step{<2>2}{\pick\ $g : X \rightarrow [0,1]$ that vanishes precisely on $A$
+    and $h : X \rightarrow [0,1]$ that vanishes precisely on $B$}
+  \step{<2>3}{\pflet{$f = g / (g + h)$}}
+\end{proof}
+\qed
+\end{proof}
+
+\begin{df}[Universal Extension Property]
+ A topological space $Y$ has the \emph{universal extension property} iff, for
+every normal space $X$ and closed subspace $A$ of $X$, every continuous
+function $A
+\rightarrow Y$ can be extended to a continuous function $X \rightarrow Y$.
+\end{df}
+
+\begin{thm}[Tietze Extension Theorem (DC)]
+Let $X$ be a normal space. Let $A$ be closed subspace of $X$.
+\begin{enumerate}
+ \item Any continuous function $A \rightarrow [a,b]$ can be extended to a
+continuous function $X \rightarrow [a,b]$.
+\item Any continuous function $A \rightarrow \mathbb{R}$ can be extend to a
+continuous function $X \rightarrow \mathbb{R}$.
+\end{enumerate}
+\end{thm}
+
+\begin{proof}
+\pf
+\step{<1>1}{Any continuous function $A \rightarrow [-1,1]$ can be extended to
+a
+  continuous function $X \rightarrow [-1,1]$}
+\begin{proof}
+  \step{<2>1}{For every continuous function $f : A \rightarrow [-r, r]$,
+there
+    exists a continuous $g : X \rightarrow \mathbb{R}$ such that
+    \begin{align*}
+      |g(x)| & \leq \frac{1}{3} r & (x \in X) \\
+      |g(x) - f(x)| & \leq \frac{2}{3} r & (x \in A)
+    \end{align*}
+  }
+  \begin{proof}
+    \step{<3>1}{\pflet{$f : A \rightarrow [-r, r]$ be continuous}}
+    \step{<3>2}{\pflet{$I_1 = [-r, -\frac{1}{3}r]$}}
+    \step{<3>3}{\pflet{$I_2 = [-\frac{1}{3}r, \frac{1}{3}r ]$}}
+    \step{<3>4}{\pflet{$I_3 = [\frac{1}{3}r, r]$}}
+    \step{<3>5}{\pflet{$B = \inv{f}(I_1)$}}
+    \step{<3>6}{\pflet{$C = \inv{f}(I_3)$}}
+    \step{<3>7}{\pick\ a continuous $g : X \rightarrow [-\frac{1}{3}r,
+      \frac{1}{3} r]$ such that $g(x) = - \frac{1}{3} r$ for $x \in B$ and
+      $g(x) = \frac{1}{3}r$ for $x \in C$}
+    \begin{proof}
+      \pf\ By the Urysohn Lemma, since $B$ and $C$ are closed disjoint
+      subsets of $X$.
+    \end{proof}
+    \step{<3>8}{For all $x \in A$ we have $|g(x) - f(x)| \leq \frac{2}{3} r$}
+    \begin{proof}
+      \step{<4>1}{\pflet{$x \in A$}}
+      \step{<4>2}{\case{$f(x) \in I_1$}}
+      \begin{proof}
+        \pf
+        \begin{align*}
+          |g(x) - f(x)| & = \left| - \frac{1}{3} r - f(x) \right| & (x \in
+B) \\
+          & \leq \frac{2}{3} r & (f(x) \in I_1)
+        \end{align*}
+      \end{proof}
+      \step{<4>3}{\case{$f(x) \in I_2$}}
+      \begin{proof}
+        \pf\ In this case, $|g(x) - f(x)| \leq \frac{2}{3} r$ since $f(x),
+        g(x) \in I_2$.
+      \end{proof}
+      \step{<4>4}{\case{$f(x) \in I_3$}}
+      \begin{proof}
+        \pf
+        \begin{align*}
+          |g(x) - f(x)| & = \left| \frac{1}{3} r - f(x) \right| & (x \in
+C) \\
+          & \leq \frac{2}{3} r & (f(x) \in I_3)
+        \end{align*}
+      \end{proof}
+    \end{proof}
+  \end{proof}
+  \step{<2>2}{\pflet{$f : A \rightarrow [-1, 1]$ be continuous.}}
+  \step{<2>3}{\pick\ a sequence of functions $(g_n)$ such that
+    \begin{align*}
+      |g_n(x)| & \leq \frac{1}{3} \left( \frac{2}{3} \right)^{n-1} & (x \in
+X) \\
+      |f(x) - g_1(x) - \cdots - g_n(x)| & \leq ( 2/3 )^n & (x \in A)
+    \end{align*}
+  }
+  \begin{proof}
+    \pf Given $g_1$, \ldots, $g_n$, we apply \stepref{<2>1} with $f = f - g_1
+- \cdots - g_n$ and $r = (2/3)^n$.
+  \end{proof}
+  \step{<2>4}{\pflet{$g(x) = \sum_{n=1}^\infty g_n(x)$ for $x \in X$}}
+  \begin{proof}
+    \pf\ This series converges by the Comparison Test since
+$\sum_{n=1}^\infty (2/3)^n$ converges.
+  \end{proof}
+  \step{<2>5}{$g$ is continuous.}
+  \begin{proof}
+    \step{<3>1}{$\sum_{n=1}^N g_n$ converges to $g$ uniformly}
+    \begin{proof}
+      \pf\ By the Weierstrass $M$-test.
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ By the Uniform Limit Theory.
+    \end{proof}
+  \end{proof}
+  \step{<2>6}{For all $x \in A$ we have $g(x) = f(x)$}
+  \begin{proof}
+    \pf\ $|\sum_{n=1}^N g_n(x) - f(x)| \leq (2/3)^N \rightarrow 0$ as $N
+\rightarrow \infty$.
+  \end{proof}
+  \step{<2>7}{For all $x \in X$ we have $-1 \leq g(x) \leq 1$}
+  \begin{proof}
+    \pf
+    \begin{align*}
+      |\sum_{n=1}^N g_n(x)| & \leq \sum_{n=1}^N |g_n(x) | \\
+      & \leq 1/3 \sum_{n=1}^N (2/3)^{n-1} \\
+      & \rightarrow 2/3 & \text{as } n \rightarrow \infty
+    \end{align*}
+  \end{proof}
+\end{proof}
+\step{<1>2}{Any continuous function $A \rightarrow (-1,1)$ can be extend to
+  a continuous function $X \rightarrow (-1,1)$}
+\begin{proof}
+  \step{<2>1}{\pflet{$f : A \rightarrow (-1, 1)$ be continuous}}
+  \step{<2>2}{\pick\ a continuous $g : X \rightarrow [-1, 1]$ that extends
+    $f$}
+  \begin{proof}
+    \pf\ By \stepref{<1>1}.
+  \end{proof}
+  \step{<2>3}{\pflet{$D = \inv{g}(-1) \cup \inv{g}(1)$}}
+  \step{<2>4}{$D$ is closed in $X$}
+  \begin{proof}
+    \pf\ Since $g$ is continuous and $\{-1\}$, $\{1\}$ are closed in $[-1,1]$.
+  \end{proof}
+  \step{<2>5}{$D \cap A = \emptyset$}
+  \begin{proof}
+    \pf\ Since $g(A) = f(A) \subseteq (-1, 1)$.
+  \end{proof}
+  \step{<2>6}{\pick\ a continuous $\phi : X \rightarrow [0,1]$ such that
+    $\phi(D) = \{ 0 \}$ and $\phi(A) = \{ 1 \}$}
+  \begin{proof}
+    \pf\ By the Urysohn Lemma.
+  \end{proof}
+  \step{<2>7}{\pflet{$h = g \phi$}}
+  \step{<2>8}{$h$ is continuous}
+  \step{<2>9}{$h$ extends $f$}
+  \step{<2>10}{$\im h \subseteq (-1, 1)$}
+\end{proof}
+\qedstep
+\begin{proof}
+  \pf\ The result follows because any closed interval in $\mathbb{R}$ is
+  homeomorphic to $[-1,1]$ and $\mathbb{R} \cong (-1,1)$.
+\end{proof}
+\qed
+\end{proof}
+
+\begin{lm}[Shrinking Lemma (AC)]
+ Let $X$ be a normal space. Let $\{ U_\alpha \}_{\alpha \in J}$ be a
+point-finite indexed open covering of $X$. Then there exists an indexed open
+covering $\{ V_\alpha \}_{\alpha \in J}$ such that $\overline{V_\alpha}
+\subseteq U_\alpha$ for all $\alpha \in J$.
+\end{lm}
+
+\begin{proof}
+\pf
+\step{<1>1}{\pick\ a well-ordering $\prec$ on $J$}
+\step{<1>2}{\pick\ open sets $V_\alpha$ for $\alpha \in J$ such that
+$A_\alpha
+  \subseteq V_\alpha$ and $\overline{V_\alpha} \subseteq U_\alpha$, where
+  \[ A_\alpha = X \setminus \bigcup_{\beta \prec \alpha} V_\beta \cup
+  \bigcup_{\alpha \prec \beta} U_\beta \]}
+\begin{proof}
+  \pf\ Apply transfinite induction to Proposition
+  \ref{prop:topology:normal:shrinking}.
+\end{proof}
+\step{<1>3}{$\{ V_\alpha \}_{\alpha \in J}$ covers $X$}
+\begin{proof}
+  \step{<2>1}{\pflet{$x \in X$}}
+  \step{<2>2}{\pflet{$\alpha_1, \ldots, \alpha_n$ be the elements of $J$ such
+      that $x \in U_{\alpha_i}$, where $\alpha_1 \prec \cdots \prec
+\alpha_n$} \prove{$x \in V_{\alpha_i}$ for some $i$}}
+  \step{<2>3}{\assume{$x \notin V_{\alpha_1}, \ldots, V_{\alpha_{n-1}}$}}
+  \step{<2>4}{$x \in A_{\alpha_n}$}
+  \step{<2>5}{$x \in V_{\alpha_n}$}
+\end{proof}
+\qed
+\end{proof}
+
+\begin{prop}[DC]
+ $S_\Omega \times \overline{S_\Omega}$ is not normal.
+\end{prop}
+
+\begin{proof}
+\pf
+\step{<1>1}{\pflet{$\Delta = \{ (x, x) : x \in \overline{S_\Omega} \}$}}
+\step{<1>2}{$\Delta$ is closed in $\overline{S_\Omega}^2$}
+\begin{proof}
+  \step{<2>1}{\pflet{$(x, y) \in \overline{S_\Omega}^2 \setminus \Delta$}}
+  \step{<2>2}{\pick\ disjoint open sets $U$, $V$ such that $x \in U$ and $y
+\in
+    V$}
+  \step{<2>3}{$(x, y) \in U \times V \subseteq \overline{S_\Omega}^2
+\setminus
+    \Delta$}
+\end{proof}
+\step{<1>3}{\pflet{$A = \Delta \cap (S_\Omega \times \overline{S_\Omega})$}}
+\step{<1>4}{$A$ is closed in $S_\Omega \times \overline{S_\Omega}$}
+\step{<1>5}{\pflet{$B = S_\Omega \times \{ \Omega \}$}}
+\step{<1>6}{$B$ is closed in $S_\Omega \times \overline{S_\Omega}$}
+\step{<1>7}{$A \cap B = \emptyset$}
+\step{<1>8}{\assume{for a contradiction $U$ and $V$ are disjoint open sets
+    including $A$ and $B$ respectively}}
+\step{<1>9}{\pick\ a sequence $x_n$ in $S_\Omega$ such that $x_n < x_{n+1} <
+  \Omega$ and $(x_n, x_{n+1}) \notin U$ for all $n$}
+\begin{proof}
+  \step{<2>1}{\pflet{$x_n \in S_\Omega$}}
+  \step{<2>2}{$(x_n, \Omega) \in V$}
+  \step{<2>3}{\pick\ open sets $W \subseteq S_\Omega$, $X \subseteq
+    \overline{S_\Omega}$ such that $x_n \in W$, $\Omega \in X$       and $W
+    \times X \subseteq V$}
+  \step{<2>4}{\pick\ $y < \Omega$ such that $(x_{n+1}, \Omega] \subseteq
+    X$}
+  \step{<2>5}{\pflet{$x_{n+1} = y + 1$}}
+\end{proof}
+\step{<1>10}{\pflet{$b$ be the supremum of $\{ x_n : n \geq 1 \}$}}
+\step{<1>11}{$(x_n, x_{n+1}) \rightarrow (b, b)$ as $n \rightarrow \infty$}
+\step{<1>12}{$(b, b) \in A$}
+\step{<1>13}{$(b, b) \in U$}
+\step{<1>14}{For all $n$ we have $(x_n, x_{n+1}) \notin U$}
+\qed
+\end{proof}
+
+\begin{prop}[AC]
+ $\mathbb{R}_l$ is normal.
+\end{prop}
+
+\begin{proof}
+\pf
+\step{<1>1}{\pflet{$A$ and $B$ be disjoint closed sets in $\mathbb{R}_l$}}
+\step{<1>2}{For $a \in A$, \pick\ $x_a > a$ such that $[a, x_a)$ not
+intersecting $B$}
+\step{<1>3}{For $b \in B$, \pick\ $x_b > b$ such that $[b, x_b)$ does not
+  intersect $A$}
+\step{<1>4}{\pflet{$U = \bigcup_{a \in A} [a, x_a)$ and $V = \bigcup_{b \in B}
+    [b, x_b)$}}
+\step{<1>5}{$U$ and $V$ are disjoint open sets including $A$ and $B$
+  respectively.}
+\qed
+\end{proof}
+
+\begin{lm}
+ \label{lm:closed_sorgenfrey}
+The set $L = \{ (x,-x) ; x \in \mathbb{R} \}$ as a subspace of
+    $\mathbb{R}_l^2$ is closed
+\end{lm}
+
+ \begin{proof}
+  \step{<1>1}{\pflet{$(x, y) \notin L$, so $y \neq -x$} \prove{There exists a
+      neighbourhood $U$ of $(x,y)$ that does not intersect $L$}}
+  \step{<1>2}{\case{$y > -x$}}
+  \begin{proof}
+    \pf\ In this case, take $U = [x,+\infty) \times [y, + \infty)$
+  \end{proof}
+  \step{<1>3}{\case{$y < -x$}}
+  \begin{proof}
+    \pf\ In this case, take $U = [x,(x-y)/2) \times [y,(y-x)/2)$.
+  \end{proof}
+\end{proof}
+
+\begin{prop}[AC]
+The Sorgenfrey plane is not normal.
+\end{prop}
+
+\begin{proof}
+\pf
+\step{<1>1}{\assume{for a contradiction the Sorgenfrey plane is normal.}}
+\step{<1>2}{\pflet{$L = \{ (x,-x) ; x \in \mathbb{R} \}$ as a subspace of
+    $\mathbb{R}_l^2$}}
+\step{<1>3}{$L$ has the discrete topology.}
+\begin{proof}
+  \step{<2>1}{\pflet{$(x, -x) \in L$} \prove{$\{ (x,-x) \}$ is open in $L$}}
+  \step{<2>2}{$\{(x,-x)\} = ([x,+\infty) \times [-x,+\infty)) \cap L$}
+\end{proof}
+\step{<1>4}{Every subset of $L$ is closed in $\mathbb{R}_l^2$}
+\begin{proof}
+  \pf\ By Corollary \ref{cor:topology:subspace:closed2}.
+\end{proof}
+\step{<1>5}{For every nonempty proper subset $A$ of $L$, \pick\ disjoint
+  open sets $U_A$, $V_A$ containing $A$ and $L \setminus A$}
+\begin{proof}
+  \pf\ By \stepref{<1>1} and \stepref{<1>4}.
+\end{proof}
+\step{<1>6}{\pflet{$D = \mathbb{Q}^2$}}
+\step{<1>7}{$D$ is dense in $\mathbb{R}_l^2$}
+\begin{proof}
+  \pf\ Given any basic open set $[a,b) \times [c,d)$, pick rationals $q$, $r$
+such that $a \leq q < b$ and $c \leq r < d$. Then $(q,r) \in ([a,b) \times
+[c,d)) \cap D$
+\end{proof}
+\step{<1>8}{\pflet{$\theta : \mathcal{P} L \rightarrow \mathcal{P} D$ be the
+function
+\begin{align*}
+\theta(A) & = U_A \cap D & (\emptyset \neq A \neq L) \\
+\theta(\emptyset) & = \emptyset \\
+\theta(L) & = D
+\end{align*}}}
+\step{<1>9}{$\theta$ is injective}
+\begin{proof}
+\step{<2>1}{\pflet{$A, B \subseteq L$ with $\theta(A) = \theta(B)$} \prove{$A
+=
+    B$}}
+\step{<2>2}{\case{$\emptyset \neq A \neq L$ and $\emptyset \neq B \neq L$}}
+\begin{proof}
+  \step{<3>1}{$A \subseteq B$}
+  \begin{proof}
+    \step{<4>1}{\pflet{$x \in A$}}
+    \step{<4>2}{$x \in U_A$}
+    \begin{proof}
+      \pf\ By \stepref{<1>5}
+    \end{proof}
+    \step{<4>3}{$x \in U_B$}
+    \begin{proof}
+      \pf\ By \stepref{<2>1}
+    \end{proof}
+    \step{<4>4}{$x \notin L \setminus B$}
+    \begin{proof}
+      \pf\ By \stepref{<1>5}
+    \end{proof}
+    \step{<4>5}{$x \in B$}
+    \begin{proof}
+      \pf\ Since $x \in L$ by \stepref{<4>1}
+    \end{proof}
+  \end{proof}
+  \step{<3>2}{$B \subseteq A$}
+  \begin{proof}
+    \pf\ Similar.
+  \end{proof}
+\end{proof}
+\step{<2>3}{\case{$\emptyset \neq A \neq L$ and $B = \emptyset$}}
+\begin{proof}
+  \pf\ This implies $U_A \cap D = \emptyset$ which contradicts the fact that
+  $D$ is dense.
+\end{proof}
+\step{<2>4}{\case{$\emptyset \neq A \neq L$ and $B = L$}}
+\begin{proof}
+  \pf\ This implies $V_A \cap D = \emptyset$ which contradicts the fact that
+  $D$ is dense.
+\end{proof}
+\step{<2>5}{\case{$A = B = \emptyset$}}
+\begin{proof}
+  \pf\ Trivial
+\end{proof}
+\step{<2>6}{\case{$A = \emptyset$ and $B = L$}}
+\begin{proof}
+  \pf\ This implies $D = \emptyset$ which is a contradiction.
+\end{proof}
+\step{<2>7}{\case{$A = B = L$}}
+\begin{proof}
+  \pf\ Trivial
+\end{proof}
+\end{proof}
+\qedstep
+\begin{proof}
+\pf\ This is a contradiction since $D$ is countable and $L$ is uncountable.
+\end{proof}
+\qed
+\end{proof}
+
+\begin{prop}
+ The continuous image of a normal space is not necessarily normal.
+\end{prop}
+
+\begin{proof}
+ \pf\ The identity map from the discrete two-point space to the indiscrete two-point space is continuous. \qed
+\end{proof}
+
+\begin{lm}
+ \label{lm:topology:normal:regular_countably_locally_finite}
+ Let $X$ be a regular space with a countably locally finite basis. Then $X$ is normal and every closed set is $G_\delta$.
+\end{lm}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\pflet{$X$ be regular with a countably locally finite basis.}}
+ \step{<1>2}{For every open set $W$, there exists a countable set $\mathcal{U}$ of open sets such that $W = \bigcup \mathcal{U} = \bigcup_{U \in \mathcal{U}} \overline{U}$}
+ \begin{proof}
+   \step{<2>1}{\pick\ a locally finite set $\mathcal{B}_n$ for $n \in \mathbb{N}$ such that $\bigcup_{n=0}^\infty \mathcal{B}_n$ is a basis.}
+   \begin{proof}
+     \pf\ By \stepref{<1>1}.
+   \end{proof}
+   \step{<2>2}{For $n \in \mathbb{N}$, \pflet{$\mathcal{C}_n = \{ B \in \mathcal{B}_n : \overline{B} \subseteq W \}$}}
+   \step{<2>3}{For $n \in \mathbb{N}$, $\mathcal{C}_n$ is locally finite.}
+   \begin{proof}
+     \pf\ This holds because $\mathcal{C}_n \subseteq \mathcal{B}_n$ (\stepref{<2>1}, \stepref{<2>2}).
+   \end{proof}
+   \step{<2>4}{For $n \in \mathbb{N}$, \pflet{$U_n = \bigcup \mathcal{C}_n$}}
+   \step{<2>5}{For $n \in \mathbb{N}$, $U_n$ is open.}
+   \begin{proof}
+     \pf\ This holds because every element of $\mathcal{C}_n$ is open (\stepref{<2>1}, \stepref{<2>2}, \stepref{<2>4}).
+   \end{proof}
+   \step{<2>6}{For $n \in \mathbb{N}$, $\overline{U_n} = \bigcup_{B \in \mathcal{C}_n} \overline{B}$}
+   \begin{proof}
+     \pf\ By Lemma \ref{lm:topology:closure:locally_finite_union}.
+   \end{proof}
+   \step{<2>7}{For $n \in \mathbb{N}$, $\overline{U_n} \subseteq W$}
+   \begin{proof}
+     \pf\ From \stepref{<2>2} and \stepref{<2>6}.
+   \end{proof}
+   \step{<2>8}{$W \subseteq \bigcup_{n=0}^\infty U_n$}
+   \begin{proof}
+     \step{<3>1}{\pflet{$x \in W$}}
+     \step{<3>2}{\pick\ a neighbourhood $U$ of $x$ such that $\overline{U} \subseteq W$}
+     \begin{proof}
+       \pf\ By Proposition \ref{prop:topology:regular:closure} and \stepref{<3>1} since $X$ is regular (\stepref{<1>1}).
+     \end{proof}
+     \step{<3>3}{\pick\ $n \in \mathbb{N}$ and $B \in \mathcal{B}_n$ such that $x \in B \subseteq U$}
+     \begin{proof}
+       \pf\ By \stepref{<2>1} and \stepref{<3>2}.
+     \end{proof}
+     \step{<3>4}{$B \in \mathcal{C}_n$}
+     \begin{proof}
+       \step{<4>1}{$\overline{B} \subseteq W$}
+       \begin{proof}
+         \pf
+         \begin{align*}
+           \overline{B} & \subseteq \overline{U} & (\text{Proposition \ref{prop:topology:closure:monotone}, \stepref{<3>3}}) \\
+           & \subseteq W & (\text{\stepref{<3>2}})
+         \end{align*}
+       \end{proof}
+       \qedstep
+       \begin{proof}
+         \pf\ \stepref{<2>2}, \stepref{<3>3}, \stepref{<4>1}
+       \end{proof}
+     \end{proof}
+     \step{<3>5}{$x \in U_n$}
+     \begin{proof}
+       \pf\ \stepref{<2>4}, \stepref{<3>3}, \stepref{<3>4}.
+     \end{proof}
+   \end{proof}
+ \end{proof}
+ \step{<1>3}{Every closed set is $G_\delta$}
+ \begin{proof}
+   \pf
+   \step{<2>1}{\pflet{$C$ be closed}}
+   \step{<2>2}{\pick\ a countable set $\mathcal{U}$ of open sets such that $X \setminus C = \bigcup \mathcal{U} = \bigcup_{U \in \mathcal{U}} \overline{U}$}
+   \begin{proof}
+     \pf\ By \stepref{<1>2}
+   \end{proof}
+   \step{<2>3}{$C = \bigcap_{U \in \mathcal{U}} X \setminus \overline{U}$}
+   \begin{proof}
+     \pf\ From \stepref{<2>2} and De Morgan's laws.
+   \end{proof}
+ \end{proof}
+ \step{<1>4}{$X$ is normal} % TODO Duplication?
+ \begin{proof}
+   \step{<2>1}{\pflet{$C$ and $D$ be disjoint closed sets.}}
+   \step{<2>2}{\pick\ a countable sequence of open sets $U_n$ such that $X \setminus D = \bigcup_{n=0}^\infty U_n = \bigcup_{n=0}^\infty \overline{U_n}$}
+   \begin{proof}
+     \pf\ By \stepref{<1>2} and \stepref{<2>1}.
+   \end{proof}
+   \step{<2>3}{\pick\ a countable sequence of open sets $V_n$ such that $X \setminus C = \bigcup_{n=0}^\infty V_n = \bigcup_{n=0}^\infty \overline{V_n}$}
+   \begin{proof}
+     \pf\ By \stepref{<1>2} and \stepref{<2>1}.
+   \end{proof}
+   \step{<2>4}{For $n \in \mathbb{N}$, \pflet{$U_n' = U_n \setminus \bigcup_{i=0}^n \overline{V_i}$}}
+   \step{<2>5}{For $n \in \mathbb{N}$, \pflet{$V_n' = V_n \setminus \bigcup_{i=0}^n \overline{U_i}$}}
+   \step{<2>6}{\pflet{$U = \bigcup_{n=0}^\infty U_n'$}}
+   \step{<2>7}{\pflet{$V = \bigcup_{n=0}^\infty V_n'$}}
+   \step{<2>8}{$U$ is open}
+   \begin{proof}
+     \step{<3>1}{For each $n$, $U_n'$ is open}
+     \begin{proof}
+       \step{<4>1}{\pflet{$n \in \mathbb{N}$}}
+       \step{<4>2}{$U_n$ is open}
+       \begin{proof}
+         \pf\ By \stepref{<2>2}.
+       \end{proof}
+       \step{<4>3}{$\bigcup_{i=0}^n \overline{V_i}$ is closed}
+       \begin{proof}
+         \pf\ By Proposition \ref{prop:topology:closed:union} and Proposition \ref{prop:topology:closure:closed}.
+       \end{proof}
+       \qedstep
+       \begin{proof}
+         \pf\ Since $U_n' = U_n \cap (X \setminus \bigcup_{i=0}^n \overline{V_i})$ %TODO Extract lemma
+       \end{proof}
+     \end{proof}
+     \qedstep
+     \begin{proof}
+       \pf\ By \stepref{<2>6}
+     \end{proof}
+   \end{proof}
+   \step{<2>9}{$V$ is open}
+   \begin{proof}
+     \pf\ Similar.
+   \end{proof}
+   \step{<2>10}{$U \cap V = \emptyset$}
+   \begin{proof}
+     \step{<3>1}{\assume{for a contradiction $x \in U \cap V$}}
+     \step{<3>2}{\pick\ $m$, $n$ such that $x \in U_m'$ and $x \in V_n'$}
+     \begin{proof}
+       \pf\ \text{\stepref{<2>6}, \stepref{<2>7}, \stepref{<3>1}}
+     \end{proof}
+     \step{<3>3}{\assume{w.l.o.g.~ $m \leq n$}}
+     \step{<3>4}{$x \in V_n'$ and $x \in U_m$}
+     \begin{proof}
+       \pf\ From \stepref{<2>4} and \stepref{<3>2}.
+     \end{proof}
+     \qedstep
+     \begin{proof}
+       \pf\ This contradicts \stepref{<2>5}.
+     \end{proof}
+   \end{proof}
+   \step{<2>11}{$C \subseteq U$}
+   \begin{proof}
+     \step{<3>1}{\pflet{$x \in C$}}
+     \step{<3>2}{$x \in X \setminus D$}
+     \begin{proof}
+       \pf\ By \stepref{<2>1} and \stepref{<3>1}.
+     \end{proof}
+     \step{<3>3}{\pick\ $n$ such that $x \in U_n$}
+     \begin{proof}
+       \pf\ By \stepref{<2>2} and \stepref{<3>2}.
+     \end{proof}
+     \step{<3>4}{$x \in U_n'$}
+     \begin{proof}
+       \step{<4>1}{For all $i$, $x \notin V_i$}
+       \begin{proof}
+         \pf\ From \stepref{<2>3} and \stepref{<3>4}.
+       \end{proof}
+       \qedstep
+       \begin{proof}
+         \pf\ From \stepref{<2>4} and \stepref{<3>3} and \stepref{<4>1}.
+       \end{proof}
+     \end{proof}
+     \qedstep
+     \begin{proof}
+       \pf\ By \stepref{<2>6}.
+     \end{proof}
+   \end{proof}
+   \step{<2>12}{$D \subseteq V$}
+   \begin{proof}
+     \pf\ Similar.
+   \end{proof}
+ \end{proof}
+ \qed
+\end{proof}
+
+\begin{lm}
+Let $X$ be a normal space. Let $A$ be a closed $G_\delta$ set in $X$. Then there exists a continuous $f : X \rightarrow [0,1]$ such that $f(x) = 0$ for $x \in A$ and $f(x) > 0$ for $x \notin A$.
+\end{lm}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\pflet{$X$ be a normal space.}}
+ \step{<1>2}{\pflet{$A$ be a closed $G_\delta$ set in $X$.}}
+ \step{<1>3}{\pick\ open sets $U_n$ such that $A = \bigcup_{n=0}^\infty U_n$}
+ \begin{proof}
+   \pf\ From \stepref{<1>2}
+ \end{proof}
+ \step{<1>4}{For $n \in \mathbb{N}$, \pick\ $f_n : X \rightarrow [0,1]$ continuous such that $f(x) = 0$ for $x \in A$ and $f(x) = 1$ for $x \notin U_n$}
+ \begin{proof}
+   \pf\ By the Urysohn lemma,
+   \stepref{<1>1}, \stepref{<1>2} and \stepref{<1>3}.
+ \end{proof}
+ \step{<1>5}{\pflet{$f: X \rightarrow [0,1]$ with $f(x) = \sum_{n=0}^\infty f_n(x) / 2^{n+1}$}}
+ \begin{proof}
+   \pf\ The sequence converges by the Comparison Test with $\sum_{n=0}^\infty 1/2^{n+1}$.
+ \end{proof}
+ \step{<1>6}{$f$ is continuous}
+ \begin{proof}
+   \pf\ By the Weierstrass M-test and the Uniform Limit Theorem.
+ \end{proof}
+ \step{<1>7}{$f$ vanishes on $A$}
+ \step{<1>8}{$f$ is positive on $X \setminus A$}
+ \qed
+\end{proof}
+
+\section{Completely Normal Spaces}
+
+  \begin{df}[Completely Normal]
+  A space $X$ is \emph{completely normal} iff every subspace is normal.
+\end{df}
+
+    \begin{prop}
+ A subspace of a completely normal space is completely normal.
+\end{prop}
+
+\begin{proof}
+ \pf\ Immediate from definitions. \qed
+\end{proof}
+
+  \begin{prop}
+  \label{prop:topology:completely_normal:characterisation}
+ Let $X$ be a topological space. Then $X$ is completely normal iff $X$ is
+$T_1$ and, for any pair of separated sets $A$, $B$ in $X$, there exist disjoint
+open sets including them.
+\end{prop}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{If $X$ is completely normal then $X$ is
+   $T_1$ and, for any pair of separated sets $A$, $B$ in $X$, there exist
+   disjoint open sets including them.}
+ \begin{proof}
+   \step{<2>1}{\assume{$X$ is completely normal.}}
+   \step{<2>2}{$X$ is $T_1$}
+   \begin{proof}
+     \pf\ Holds because $X$ is normal.
+   \end{proof}
+   \step{<2>3}{For any pair of separated sets $A$, $B$ in $X$, there exist
+     disjoint open sets including them.}
+   \begin{proof}
+     \step{<3>1}{\pflet{$A$ and $B$ be separated in $X$}}
+     \step{<3>2}{\pflet{$Y = X \setminus (\overline{A} \cap \overline{B})$}}
+     \step{<3>3}{\pick\ disjoint open sets $U$, $V$ in $Y$ such that
+       $\overline{A} \cap Y \subseteq U$ and $\overline{B} \cap Y \subseteq
+       V$}
+     \begin{proof}
+       \pf\ $Y$ is normal by \stepref{<2>1}.
+     \end{proof}
+     \step{<3>4}{\pick\ open sets $U_0$, $V_0$ in $X$ such that $U = U_0 \cap
+       Y$, $V = V_0 \cap Y$}
+     \step{<3>5}{$A \subseteq U_0 \setminus \overline{B}$ and $B \subseteq
+V_0
+       \setminus \overline{A}$}
+     \begin{proof}
+       \pf\ Using \stepref{<3>1}.
+     \end{proof}
+   \end{proof}
+ \end{proof}
+ \step{<1>2}{If $X$ is $T_1$ and, for any pair of separated sets $A$, $B$ in
+   $X$, there exist disjoint open sets including them, then $X$ is completely
+   normal.}
+ \begin{proof}
+   \step{<2>1}{\assume{$X$ is $T_1$ and, for any pair of separated sets $A$,
+$B$
+       in $X$, there exist disjoint open sets including them}}
+   \step{<2>2}{\pflet{$Y \subseteq X$}}
+   \step{<2>3}{$Y$ is $T_1$}
+   \begin{proof}
+     \pf\ By Proposition \ref{prop:topology:T1:subspace}.
+   \end{proof}
+   \step{<2>4}{\pflet{$A$ and $B$ be disjoint closed sets in $Y$}}
+   \step{<2>5}{$A$ and $B$ are separated in $X$}
+   \begin{proof}
+     \step{<3>1}{$\overline{A} \cap Y = A$ and $\overline{B} \cap Y = B$}
+     \begin{proof}
+       \pf\ By Proposition \ref{prop:topology:closure:closed2} and Theorem
+       \ref{thm:topology:subspace:closure}.
+     \end{proof}
+     \step{<3>2}{$\overline{A} \cap B = \emptyset$}
+     \begin{proof}
+       \begin{align*}
+         \overline{A} \cap B & = \overline{A} \cap \overline{B} \cap Y &
+         (\text{\stepref{<3>1}}) \\
+         & = A \cap B & (\text{\stepref{<3>1}}) \\
+         & = \emptyset & (\text{\stepref{<2>4}})
+       \end{align*}
+     \end{proof}
+     \step{<3>3}{$A \cap \overline{B} = \emptyset$}
+     \begin{proof}
+       \pf\ Similar.
+     \end{proof}
+   \end{proof}
+   \step{<2>6}{\pick\ disjoint open sets $U$ and $V$ that include $A$ and $B$
+     respectively.}
+   \begin{proof}
+     \pf\ By \stepref{<2>1}.
+   \end{proof}
+   \step{<2>7}{$U \cap Y$ and $V \cap Y$ are disjoint open sets in $Y$ that
+     include $A$ and $B$ respectively.}
+ \end{proof}
+ \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:topology:completely_normal:well_ordered}
+ A well-ordered set in the order topology is completely normal.
+\end{prop}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\pflet{$X$ be a well-ordered set.}}
+ \step{<1>2}{For all $a, b \in X$ with $a < b$, we have $(a, b]$ is open.}
+ \begin{proof}
+   \step{<2>1}{\case{$b$ is greatest in $X$}}
+   \begin{proof}
+     \pf\ This case holds by the definition of the order topology.
+   \end{proof}
+   \step{<2>2}{\case{$b$ is not greatest in $X$}}
+   \begin{proof}
+     \pf\ In this case, $(a, b] = (a, c)$ where $c$ is the successor of $b$.
+   \end{proof}
+ \end{proof}
+ \step{<1>3}{\pflet{$A$ and $B$ be separated sets in $X$} \prove{There exist
+     disjoint open sets $U$, $V$ including $A$ and $B$}}
+ \step{<1>4}{\case{The least element of $X$ is not in $A$ or $B$}}
+ \begin{proof}
+   \step{<2>1}{\pflet{$U = \bigcup \{ (x, a] : a \in A, x < a, (x, a] \cap B
+=
+       \emptyset \}$}}
+   \step{<2>2}{\pflet{$V = \bigcup \{ (y, b] : b \in B, y < b, (y, b] \cap A
+=
+       \emptyset \}$}}
+   \step{<2>3}{$U$ is open}
+   \begin{proof}
+     \pf\ From \stepref{<1>2}.
+   \end{proof}
+   \step{<2>4}{$V$ is open}
+   \begin{proof}
+     \pf\ From \stepref{<1>2}.
+   \end{proof}
+   \step{<2>5}{$A \subseteq U$}
+   \begin{proof}
+     \step{<3>1}{\pflet{$a \in A$}}
+     \step{<3>2}{\pick\ $W$ a neighbourhood of $a$ such that $W \cap B =
+       \emptyset$}
+     \begin{proof}
+       \pf\ By \stepref{<1>3}.
+     \end{proof}
+     \step{<3>3}{\pick\ $x < a$ such that $(x, a] \subseteq W$}
+     \begin{proof}
+       \pf\ By Lemma \ref{lm:topology:order:open}
+     \end{proof}
+     \step{<3>4}{$a \in (x, a] \subseteq U$}
+   \end{proof}
+   \step{<2>6}{$B \subseteq V$}
+   \begin{proof}
+     \pf\ Similar.
+   \end{proof}
+   \step{<2>7}{$U \cap V = \emptyset$}
+ \end{proof}
+ \step{<1>5}{\case{$\bot \in A$}}
+ \begin{proof}
+   \step{<2>1}{\pick\ disjoint open sets $U$ and $V$ that include $A \setminus
+     \{ \bot \}$ and $B$}
+   \begin{proof}
+     \pf\ From \stepref{<1>4}.
+   \end{proof}
+   \step{<2>2}{$U \cup \{ \bot \}$ and $V$ are disjoint open sets that include
+     $A$ and $B$}
+   \begin{proof}
+     \pf\ $\{ \bot \}$ is open because it is $(- \infty, a)$ where $a$ is the
+     successor of $\bot$.
+   \end{proof}
+ \end{proof}
+ \qedstep
+ \begin{proof}
+   \pf\ By Proposition \ref{prop:topology:completely_normal:characterisation}.
+ \end{proof}
+ \qed
+\end{proof}
+
+  \begin{prop}
+ The product of two completely normal spaces is not necessarily completely
+ normal.
+\end{prop}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{$S_\Omega$ is completely normal.}
+ \begin{proof}
+   \pf\ By Proposition \ref{prop:topology:completely_normal:well_ordered}
+ \end{proof}
+ \step{<1>2}{$\overline{S_\Omega}$ is completely normal.}
+ \begin{proof}
+   \pf\ By Proposition \ref{prop:topology:completely_normal:well_ordered}
+ \end{proof}
+ \step{<1>3}{$S_\Omega \times \overline{S_\Omega}$ is not completely normal.}
+ \begin{proof}
+   \pf\ By Proposition \ref{prop:topology:normal:S_Omega_times_S_Omega}.
+ \end{proof}
+ \qed
+\end{proof}
+
+  \begin{prop}
+ A compact Hausdorff space is not necessarily completely normal.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pick\ an uncountable set $J$}
+  \step{<1>2}{$[0,1]^J$ is compact Hausdorff}
+  \begin{proof}
+    \pf\ By Tychonoff's Theorem and Theorem
+    \ref{thm:topology:Hausdorff:product}.
+  \end{proof}
+  \step{<1>3}{$(0, 1)^J$ is not normal.}
+  \begin{proof}
+    \pf\ By Proposition \ref{prop:topology:normal:uncountable}, since $(0, 1)
+\cong \mathbb{R}$.
+  \end{proof}
+  \qed
+\end{proof}
+
+  \begin{prop}
+  The space $\mathbb{R}_l$ is completely normal.
+\end{prop}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\pflet{$X \subseteq \mathbb{R}_l$}}
+ \step{<1>2}{\pflet{$A$ and $B$ be disjoint closed sets in $X$.}}
+ \step{<1>3}{\pick\ closed sets $C$ and $D$ such that $A = C \cap X$ and $B =
+D
+   \cap X$}
+ \step{<1>4}{For $a \in A$, \pick\ $x_a > a$ such that $[a, x_a) \cap D =
+   \emptyset$}
+ \step{<1>5}{For $b \in B$, \pick\ $x_b > b$ such that $[b, x_b) \cap C =
+   \emptyset$}
+ \step{<1>6}{$\bigcup_{a \in A} [a, x_a) \cap X$ and $\bigcup_{b \in B} [b,
+x_b)
+   \cap X$ are disjoint open sets in $X$ that include $A$ and $B$}
+ \qed
+\end{proof}
+
+\section{Perfectly Normal Spaces}
+
+ \begin{df}[Perfectly Normal]
+ A space is \emph{perfectly normal} iff it is normal and every closed set is
+ $G_\delta$.
+\end{df}
+
+\begin{prop}
+Every perfectly normal space is completely normal.
+\end{prop}
+
+\begin{proof}
+\pf
+\step{<1>1}{\pflet{$X$ be perfectly normal.}}
+\step{<1>2}{\pflet{$A$ and $B$ be separated sets in $X$}}
+\step{<1>3}{\pick\ continuous functions $f, g : X \rightarrow [0, 1]$ that
+  vanish precisely on $\overline{A}$ and $\overline{B}$, respectively.}
+\begin{proof}
+  \pf\ By Theorem \ref{thm:topology:normal:vanishes_precisely}.
+\end{proof}
+\step{<1>4}{\pflet{$h = f - g$}}
+\step{<1>5}{$B \subseteq \inv{h}((0, + \infty))$ and $A
+  \subseteq \inv{h}((-\infty, 0))$ }
+\qedstep
+\begin{proof}
+  \pf\ By Proposition \ref{prop:topology:completely_normal:characterisation}.
+\end{proof}
+\qed
+\end{proof}
+
+\begin{prop}
+ The space $\overline{S_\Omega}$ is not perfectly normal.
+\end{prop}
+
+\begin{proof}
+ \pf\ The set $\{ \Omega \}$ is not $G_\delta$. \qed
+\end{proof}

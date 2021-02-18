@@ -1,0 +1,217 @@
+\chapter{Manifolds}
+
+\section{Manifolds}
+
+ \begin{df}[Manifold]
+  Let $m \geq 1$. An \emph{$m$-manifold} is a second countable Hausdorff space
+such that each point has a neighbourhood that is homeomorphic to an open subset
+of $\mathbb{R}^m$.
+
+A \emph{curve} is a 1-manifold and a \emph{surface} is a 2-manifold.
+\end{df}
+
+ \begin{df}[Support]
+  Let $X$ be a topological space and $\phi : X \rightarrow \mathbb{R}$ be a
+  function. Then the \emph{support} of $\phi$ is the closure of
+  $\inv{\phi}(\mathbb{R} \setminus \{ 0 \})$.
+\end{df}
+
+ \begin{df}[Partition of Unity]
+  Let $X$ be a topological space. Let $\{ U_1, \ldots, U_n \}$ be a finite
+indexed open covering of $X$. An indexed family of continuous functions
+$\phi_1, \ldots, \phi_n : X \rightarrow [0,1]$ is a \emph{partition of unity}
+dominated by $\{ U_1, \ldots, U_n \}$ iff:
+\begin{enumerate}
+\item $\supp \phi_i \subseteq U_i$ for all $i$;
+\item $\sum_{i=1}^n \phi_i(x) = 1$ for all $x \in X$.
+\end{enumerate}
+\end{df}
+
+ \begin{thm}[Existence of Finite Partitions of Unity]
+   \label{thm:topology:manifolds:partition}
+  Let $X$ be a normal space.
+  Let $\{ U_1, \ldots, U_n \}$ be a finite indexed open covering of $X$. Then
+  there exists a partition of unity dominated by $\{ U_1, \ldots, U_n \}$.
+\end{thm}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{For every finite indexed open covering $\{ U_1, \ldots, U_n \}$
+of
+   $X$, there exists a finite indexed open covering $\{ V_1, \ldots, V_n \}$
+   such that $\overline{V_i} \subseteq U_i$}
+ \begin{proof}
+   \step{<2>1}{For $1 \leq k \leq n$, there exist open sets $V_1$, \ldots,
+$V_k$
+     such that $\overline{V_i} \subseteq U_i$ for all $i$ and $\{ V_1, \ldots,
+     V_k, U_{k+1}, \ldots, U_n \}$ covers $X$}
+   \begin{proof}
+     \step{<3>1}{\assume{as an induction hypothesis that $0 leq k < k$ and
+there
+         exist open sets $V_1$, \ldots, $V_k$ such that $\overline{V_i}
+         \subseteq U_i$ for all $i$  and $\{ V_1, \ldots, V_k, U_{k+1},
+         \ldots, U_n \}$ covers $X$}}
+     \step{<3>2}{\pflet{$A = X \setminus (V_1 \cup \cdots \cup V_k) \setminus
+         (U_{k+2} \cup \cdots \cup U_n)$}}
+     \step{<3>3}{$A$ is closed}
+     \step{<3>4}{$A \subseteq U_{k+1}$}
+     \begin{proof}
+       \pf\ Since $\{ V_1, \ldots, V_k, U_{k+1}, \ldots, U_n \}$ covers $X$
+     \end{proof}
+     \step{<3>5}{\pick\ an open set $V_{k+1}$ such that $A \subseteq V_{k+1}$
+and
+       $\overline{V_{k+1}} \subseteq U_{k+1}$}
+     \begin{proof}
+       \pf\ By Proposition \ref{prop:topology:regular:closure}
+     \end{proof}
+     \step{<3>6}{$\{ V_1, \ldots, V_k, V_{k+1}, U_{k+2}, \ldots, U_n \}$
+covers
+       $X$}
+   \end{proof}
+ \end{proof}
+ \step{<1>2}{\pick\ an open covering $\{ V_1, \ldots, V_n \}$ with
+   $\overline{V_i} \subseteq U_i$ for all $i$}
+ \begin{proof}
+   \pf\ By \stepref{<1>1}.
+ \end{proof}
+ \step{<1>3}{\pick\ an open covering $\{ W_1, \ldots, W_n \}$ with
+   $\overline{W_i} \subseteq V_i$ for all $i$}
+ \begin{proof}
+   \pf\ By \stepref{<1>1}.
+ \end{proof}
+ \step{<1>4}{For $1 \leq i \leq n$, \pick\ a continuous function $\psi_i : X
+   \rightarrow [0,1]$ such that $\psi_i(\overline{W_i}) = \{ 1 \}$ and
+   $\psi_i(X \setminus V_i) = \{ 0 \}$}
+ \begin{proof}
+   \pf\ By the Urysohn Lemma.
+ \end{proof}
+ \step{<1>5}{\pflet{$\Psi : X \rightarrow \mathbb{R}$ where $\Psi(x) =
+     \sum_{i=1}^n \psi_i(x)$}}
+ \step{<1>6}{$\Psi(x) > 0$ for all $x \in X$}
+ \begin{proof}
+   \step{<2>1}{\pflet{$x \in X$}}
+   \step{<2>2}{\pick\ $i$ such that $x \in W_i$}
+   \step{<2>3}{$\psi_i(x) = 1$}
+ \end{proof}
+ \step{<1>7}{For $1 \leq j \leq n$, \pflet{$\phi_j(x) =
+     \frac{\psi_j(x)}{\Psi(x)}$}}
+ \step{<1>8}{$\psi_1$, \ldots, $\psi_n$ are a partition of unity dominated by
+   $\{ U_1, \ldots, U_n \}$}
+ \begin{proof}
+   \step{<2>1}{$\supp \psi_i \subseteq U_i$}
+   \begin{proof}
+     \step{<3>1}{$\inv{\psi_i}(\mathbb{R} \setminus \{ 0 \}) \subseteq V_i$}
+     \begin{proof}
+       \pf\ By \stepref{<1>4}
+     \end{proof}
+     \step{<3>2}{$\supp \psi_i \subseteq \overline{V_i}$}
+     \begin{proof}
+       \pf\ Proposition \ref{prop:topology:closure:monotone}
+     \end{proof}
+   \end{proof}
+   \step{<2>2}{$\sum_{i=1}^n \psi_i(x) = 1$ for all $x \in X$}
+ \end{proof}
+ \qed
+\end{proof}
+
+\begin{thm}
+  \label{thm:topology:manifolds:compact_Hausdorff}
+ Let $X$ be a compact Hausdorff space. Suppose that, for every $x \in X$,
+there exists a neighbourhood $U$ of $x$ and a positive integer $k$ such that
+$U$ can be imbedded in $\mathbb{R}^k$. Then there exists a positive integer $N$
+such that $X$ can be imbedded in $\mathbb{R}^N$.
+\end{thm}
+
+ \begin{proof}
+ \pf
+ \step{<1>1}{\pick\ a finite open covering $\{ U_1, \ldots, U_n \}$ of $X$
+such
+   that each $U_i$ can be imbedded in $\mathbb{R}^k$ for some $k$}
+ \begin{proof}
+   \pf\ Since $\{ U \text{ open in } X : U \text{ can be imbedded in }
+   \mathbb{R}^k \text{ for some } k \}$ covers $X$.
+ \end{proof}
+ \step{<1>2}{For $1 \leq i \leq n$, \pick\ a positive integer $k_i$ and an
+imbedding $g_i : U_i \rightarrow
+\mathbb{R}^{k_i}$}
+ \step{<1>3}{\pick\ a partition of unity $\phi_1$, \ldots, $\phi_n$ dominated
+by
+   $\{ U_1, \ldots, U_n \}$}
+ \begin{proof}
+   \step{<2>1}{$X$ is normal}
+   \begin{proof}
+     \pf\ By Lemma \ref{lm:topology:compact:normal}.
+   \end{proof}
+   \qedstep
+   \begin{proof}
+     \pf\ Theorem \ref{thm:topology:manifolds:partition}
+   \end{proof}
+ \end{proof}
+ \step{<1>4}{For $1 \leq i \leq n$, \pflet{$A_i = \supp \phi_i$}}
+ \step{<1>5}{For $1 \leq i \leq n$, \pflet{$h_i : X \rightarrow
+     \mathbb{R}^{k_i}$
+be
+defined by
+\[ h_i(x) = \begin{cases}
+ \phi_i(x) g_i(x) & \text{for } x \in U_i \\
+ \vec{0} & \text{for } x \in X \setminus A_i
+\end{cases} \]}}
+\begin{proof}
+ \pf\ If $x \in U_i$ and $x \in X \setminus A_i$ then $x \notin \supp \phi_i$
+so $\phi_i(x) = 0$
+\end{proof}
+\step{<1>6}{\pflet{$N = n + k_1 + \cdots + k_n$}}
+\step{<1>7}{\pflet{$F : X \rightarrow \mathbb{R}^N$ be the function
+   \[ F(x) = (\phi_1(x), \ldots, \phi_n(x), h_1(x), \ldots, h_n(x)) \]}}
+\step{<1>8}{$F$ is an imbedding}
+\begin{proof}
+ \step{<2>1}{$F$ is continuous}
+ \begin{proof}
+   \pf\ Each $h_i$ is continuous by Theorem
+   \ref{thm:topology:continuous:local}.
+ \end{proof}
+ \step{<2>2}{$F$ is injective}
+ \begin{proof}
+   \step{<3>1}{\assume{$F(x) = F(y)$}}
+   \step{<3>2}{\pick\ $i$ such that $\phi_i(x) > 0$}
+   \begin{proof}
+     \pf\ Since $\sum_i \phi_i(x) = 1$ (\stepref{<1>3})
+   \end{proof}
+   \step{<3>3}{$\phi_i(y) = 0$}
+   \begin{proof}
+     \pf\ By \stepref{<3>1}
+   \end{proof}
+   \step{<3>4}{$x, y \in U_i$}
+   \begin{proof}
+     \pf\ Since $\supp \phi_i \subseteq U_i$
+   \end{proof}
+   \step{<3>5}{$h_i(x) = h_i(y)$}
+   \begin{proof}
+     \pf\ By \stepref{<3>1}
+   \end{proof}
+   \step{<3>6}{$g_i(x) = g_i(y)$}
+   \begin{proof}
+     \pf\ By \stepref{<1>5}
+   \end{proof}
+   \step{<3>7}{$x = y$}
+   \begin{proof}
+     \pf\ By \stepref{<1>2}
+   \end{proof}
+ \end{proof}
+ \qedstep
+ \begin{proof}
+   \pf\ By Theorem \ref{thm:topology:compact:homeomorphism}
+ \end{proof}
+\end{proof}
+\qed
+\end{proof}
+
+  \begin{cor}
+  Every compact manifold can be imbedded in $\mathbb{R}^N$ for some $N$.
+\end{cor}
+
+\begin{prop}
+ The line with two origins is a second countable $T_1$ space where every point
+ has a neighbourhood that is homeomorphic to an open subset of $\mathbb{R}$,
+but it is not a 1-manifold.
+\end{prop}

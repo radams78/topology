@@ -1,0 +1,1512 @@
+\chapter{Connectedness}
+
+\section{Connected Spaces}
+
+\begin{df}[Separation]
+  Let $X$ be a topological space. A \emph{separation} of $X$ is a pair of
+  disjoint nonempty subsets whose union in $X$.
+\end{df}
+
+\begin{df}[Connected]
+  A topological space is \emph{connected} iff it has no separation.
+\end{df}
+
+\begin{prop}
+ $S_\Omega$ is not connected.
+\end{prop}
+
+\begin{proof}
+  \pf\ $\{ 0 \}$ and $S_\Omega \setminus \{ 0 \}$ form a separation. \qed
+\end{proof}
+
+\begin{prop}
+  A space $X$ is connected if and only if the only sets that are both closed
+  and open are $\emptyset$ and $X$.
+\end{prop}
+
+\begin{proof}
+  \pf\ Immediate from definitions. \qed
+\end{proof}
+
+\begin{prop}
+  Let $Y$ be a subspace of $X$. Then a separation of $Y$ is a pair of
+  disjoint
+  nonempty sets $A$, $B$ such that $A \cup B = Y$ and neither of $A$, $B$
+  contains a limit point of the other.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{If $A$ and $B$ form a separation of $Y$ then $A$ and $B$ are
+    disjoint and nonempty, $A \cup B = Y$, and neither of $A$, $B$ contains a
+    limit point of the other.}
+  \begin{proof}
+    \step{<2>1}{\pflet{$A$ and $B$ be a separation of $Y$}}
+    \step{<2>2}{$A$ and $B$ are disjoint and nonempty and $A \cup B = Y$}
+    \begin{proof}
+      \pf\ Immediate from the definition of separation.
+    \end{proof}
+    \step{<2>3}{$A$ does not contain a limit point of $B$}
+    \begin{proof}
+      \pf\ $B$ is closed in $Y$, hence contains all its limit points
+      (Corollary \ref{cor:topology:limit_point:closed}), and so the result
+      follows because $A$ and $B$ are disjoint.
+    \end{proof}
+    \step{<2>4}{$B$ does not contain a limit point of $A$}
+    \begin{proof}
+      \pf\ Similar.
+    \end{proof}
+  \end{proof}
+  \step{<1>2}{If $A$ and $B$ are disjoint and nonempty, $A \cup B = Y$, and
+    neither of $A$, $B$ contains a limit point of the other, then $A$ and
+    $B$ are a separation of $Y$.}
+  \begin{proof}
+    \step{<2>1}{\assume{$A$ and $B$ are disjoint and nonempty, $A \cup B =
+        Y$,
+        and neither of $A$, $B$ contains a limit point of the other}}
+    \step{<2>2}{$A$ is closed in $Y$}
+    \begin{proof}
+      \pf\ Every limit point of $A$ is not in $B$, so is in $A$. Apply
+      Corollary \ref{cor:topology:limit_point:closed}.
+    \end{proof}
+    \step{<2>3}{$B$ is open in $Y$}
+    \begin{proof}
+      \pf $B = Y \setminus A$
+    \end{proof}
+    \step{<2>4}{$A$ is open in $Y$}
+    \begin{proof}
+      \pf\ Similar.
+    \end{proof}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:topology:connected:separation_subspace}
+  If the sets $C$ and $D$ form a separation of $X$, and $Y$ is a connected
+  subspace of $X$, then $Y \subseteq C$ or $Y \subseteq D$.
+\end{prop}
+
+\begin{proof}
+  \pf\ Otherwise, $Y \cap C$ and $Y \cap D$ would be a separation of $Y$. \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:topology:connected:union}
+  The union of a set of connected subspaces of $X$ that have a point in
+  common
+  is connected.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$\mathcal{S}$ be a set of connected subspaces that have
+      the
+      point $a$ in common.}}
+  \step{<1>2}{\assume{for a contradiction $U$ and $V$ form a separation of
+      $\bigcup \mathcal{S}$}}
+  \step{<1>3}{\assume{w.l.o.g. $a \in U$}}
+  \step{<1>4}{For all $Y \in \mathcal{S}$ we have $Y \subseteq U$}
+  \begin{proof}
+    \pf\ By Proposition \ref{prop:topology:connected:separation_subspace}.
+  \end{proof}
+  \step{<1>5}{$V = \emptyset$}
+  \qedstep
+  \begin{proof}
+    \pf\ This contradicts \stepref{<1>2}.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{thm}
+  \label{thm:topology:connected:closure}
+  Let $A$ be a connected subspace of $X$. If $A \subseteq B \subseteq
+  \overline{A}$ then $B$ is connected.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\assume{for a contradiction $U$ and $V$ are a separation of
+      $B$}}
+  \step{<1>2}{$A \subseteq U$ or $A \subseteq V$}
+  \begin{proof}
+    \pf\ By Proposition \ref{prop:topology:connected:separation_subspace}.
+  \end{proof}
+  \step{<1>3}{\assume{w.l.o.g. $A \subseteq U$}}
+  \step{<1>4}{$\overline{A} \subseteq \overline{U}$}
+  \begin{proof}
+    \pf\ By Proposition \ref{prop:topology:closure:monotone}.
+  \end{proof}
+  \step{<1>5}{$B \subseteq \overline{U}$}
+  \begin{proof}
+    \pf\ Since $B \subseteq \overline{A}$.
+  \end{proof}
+  \step{<1>6}{The closure of $U$ in $B$ is $B$}
+  \begin{proof}
+    \pf\ By Theorem \ref{thm:topology:subspace:closure}.
+  \end{proof}
+  \step{<1>7}{$U = B$}
+  \begin{proof}
+    \pf\ Since $U$ is closed in $B$.
+  \end{proof}
+  \qedstep
+  \begin{proof}
+    \pf\ This contradicts \stepref{<1>1}.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{thm}
+  \label{thm:topology:connected:image}
+  The image of a connected space under a continuous map is connected.
+\end{thm}
+
+\begin{proof}
+  \pf\ Let $X$ be a connected space, $Y$ a topological space, and $f :
+  X \twoheadrightarrow Y$ be surjective. If $U$ and $V$ form a separation
+  of $Y$, then $f^{-1}(U)$ and $f^{-1}(V)$ form a separation of $X$. \qed
+\end{proof}
+
+\begin{cor}
+  \label{cor:topology:connected:finer}
+  Let $\mathcal{T}$ and $\mathcal{T}'$ be topologies on the same set $X$. If
+  $\mathcal{T} \subseteq \mathcal{T}'$ and $X$ is connected under
+  $\mathcal{T}'$ then $X$ is connected under $\mathcal{T}$.
+\end{cor}
+
+\begin{cor}
+  Let $\{ X_\alpha \}_{\alpha \in J}$ be a family of topological spaces. If
+  $\prod_{\alpha \in J} X_\alpha$ is connected then each $X_\alpha$ is
+connected.
+\end{cor}
+
+\begin{cor}
+ The Sorgenfrey plane is disconnected.
+\end{cor}
+
+\begin{prop}
+  \label{prop:topology:connected:product}
+  The product of a family of connected spaces is connected.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{The product of two connected spaces is connected.}
+  \begin{proof}
+    \pf
+    \step{<2>1}{\pflet{$X$ and $Y$ be connected spaces.}}
+    \step{<2>2}{\assume{w.l.o.g.~$X$ and $Y$ are nonempty.}}
+    \begin{proof}
+      \pf\ If either is empty then $X \times Y = \emptyset$ is connected.
+    \end{proof}
+    \step{<2>3}{\assume{for a contradiction $U$ and $V$ are a separation of
+        $X
+        \times Y$.}}
+    \step{<2>4}{\pick\ $b \in Y$}
+    \begin{proof}
+      \pf\ By \stepref{<2>2}.
+    \end{proof}
+    \step{<2>5}{For all $x \in X$, \pflet{$T_x = (X \times \{ b \}) \cup
+        (\{x\}
+        \times Y)$}}
+    \step{<2>6}{For all $x \in X$, $T_x$ is connected}
+    \begin{proof}
+      \step{<3>1}{$X \times \{b\}$ is connected}
+      \begin{proof}
+        \pf\ It is homeomorphic to $X$.
+      \end{proof}
+      \step{<3>2}{$\{x\} \times Y$ is connected}
+      \begin{proof}
+        \pf\ It is homeomorphic to $Y$.
+      \end{proof}
+      \qedstep
+      \begin{proof}
+        \pf\ By Proposition \ref{prop:topology:connected:union}.
+      \end{proof}
+    \end{proof}
+    \step{<2>7}{$X \times Y = \bigcup_{x \in X} T_x$}
+    \qedstep
+    \begin{proof}
+      \step{<3>1}{\pick\ $a \in X$}
+      \begin{proof}
+        \pf\ By \stepref{<2>2}.
+      \end{proof}
+      \step{<3>2}{$(a, b) \in T_x$ for all $x \in X$}
+      \qedstep
+      \begin{proof}
+        \pf\ By Proposition \ref{prop:topology:connected:union}.
+      \end{proof}
+    \end{proof}
+  \end{proof}
+  \step{<1>2}{\pflet{$\{ X_\alpha \}_{\alpha \in J}$ be a family of connected
+      spaces.}}
+  \step{<1>3}{\assume{w.l.o.g.~$\prod_{\alpha \in J} X_\alpha$ is nonempty}}
+  \step{<1>4}{\pick\ $\vec{a} \in \prod_{\alpha \in J} X_\alpha$}
+  \step{<1>5}{For $K$ a finite subset of $J$, \pflet{$X_K = \{ \vec{x} \in
+      \prod_{\alpha \in J} X_\alpha : x_\alpha = a_\alpha \text{ for all }
+      \alpha \in J \setminus K \}$}}
+  \step{<1>6}{For all $K$, $X_K$ is connected.}
+  \begin{proof}
+    \pf\ It is homeomorphic to $\prod_{\alpha \in K} X_\alpha$, so it is
+    connected by \stepref{<1>1}.
+  \end{proof}
+  \step{<1>7}{$\bigcup_{K \subseteq^{\mathrm{fin}} J} X_K$ is connected.}
+  \begin{proof}
+    \pf\ By Proposition \ref{prop:topology:connected:union} since $\vec{a}
+    \in X_K$ for all $K$.
+  \end{proof}
+  \step{<1>8}{$\prod_{\alpha \in J} X_\alpha = \overline{\bigcup_{K
+        \subseteq^{\mathrm{fin}} J} X_K}$}
+  \begin{proof}
+    \step{<2>1}{\pflet{$\vec{x} \in \prod_{\alpha \in J} X_\alpha$}}
+    \step{<2>2}{\pflet{$U$ be an open neighbourhood of $\vec{x}$}}
+    \step{<2>3}{\pick\ a basic open set $\prod_{\alpha \in J} V_\alpha$ such
+      that $\vec{x} \in \prod_{\alpha \in J} V_\alpha \subseteq U$, where
+      each $V_\alpha$ is open in $X_\alpha$, and $V_\alpha = X_\alpha$ except
+      for  $\alpha \in K$ for some finite $K \subseteq J$
+      \prove{$U$ intersects $X_K$}}
+    \step{<2>4}{\pflet{$\vec{y} \in \prod_{\alpha \in J} X_\alpha$ with
+        $y_\alpha = x_\alpha$ for $\alpha \in K$, $y_\alpha = a_\alpha$ for
+        $\alpha \notin K$}}
+    \step{<2>5}{$\vec{y} \in U \cap X_K$}
+  \end{proof}
+  \qedstep
+\end{proof}
+
+\begin{cor}
+  For any set $I$, the space $\mathbb{R}^I$ under the product topology is connected.
+\end{cor}
+
+\begin{prop}
+  $\mathbb{R}^\omega$ under the box topology is disconnected.
+\end{prop}
+
+\begin{proof}
+  \pf\ The set of all bounded sequences and the set of all unbounded
+  sequences
+  form a separation. \qed
+\end{proof}
+
+\begin{df}[Totally Disconnected]
+  A space is \emph{totally disconnected} iff the only connected subspaces are
+  the singletons.
+\end{df}
+
+\begin{thm}
+  Let $L$ be a linearly ordered set under the order topology. Then $L$ is
+connected if and only if $L$ is a linear continuum.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{If $L$ is a linear continuum then $L$ is connected.}
+  \begin{proof}
+  \step{<2>1}{\pflet{$L$ be a linear continuum.}}
+  \step{<2>2}{\assume{for a contradiction $U$ and $V$ are a separation of
+      $L$.}}
+  \step{<2>3}{\pick\ $a \in U$ and $b \in V$}
+  \step{<2>4}{\assume{w.l.o.g.~$a < b$}}
+  \step{<2>5}{\pflet{$l = \sup \{ x \in A : x < b \}$}}
+  \step{<2>6}{\case{$l \in A$}}
+  \begin{proof}
+    \step{<3>1}{\pick\ $a' > l$ such that $[l, a') \subseteq A$}
+    \begin{proof}
+      \pf\ By Lemma \ref{lm:topology:order:open}. We know $l$ is not greatest
+      in $X$ because $l < b$.
+    \end{proof}
+    \step{<3>2}{\pick\ $a^*$ such that $l < a^* < a'$}
+    \begin{proof}
+      \pf\ $L$ is dense.
+    \end{proof}
+    \step{<3>3}{$l < a^*$, $a^* \in A$, $a^* < b$}
+    \begin{proof}
+      \pf\ If $b < a^*$ then $b \in A$ by \stepref{<3>1}.
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ This contradicts \stepref{<2>5}.
+    \end{proof}
+  \end{proof}
+  \step{<2>7}{\case{$l \in B$}}
+  \begin{proof}
+    \step{<3>1}{\pick\ $b' < l$ such that $(b', l] \subseteq B$}
+    \begin{proof}
+      \pf\ By Lemma \ref{lm:topology:order:open}. We know $l$ is not least in
+      $X$ because $a < l$.
+    \end{proof}
+    \step{<3>2}{\pick\ $b^*$ such that $b' < b^* < l$ \prove{$b^*$ is an
+        upper
+        bound for $\{ x \in A : x < b \}$}}
+    \step{<3>3}{\pflet{$x \in A$ and $x < b$}}
+    \step{<3>4}{$x \leq b^*$}
+    \begin{proof}
+      \pf\ If $b^* < x$ then $b^* < x \leq l$ and so $x \in B$ by
+      \stepref{<3>1}.
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ This contradicts \stepref{<2>5}.
+    \end{proof}
+  \end{proof}
+\end{proof}
+\step{<1>2}{If $L$ is connected then $L$ is a linear continuum.}
+\begin{proof}
+  \step{<2>1}{\assume{$L$ is connected}}
+  \step{<2>2}{$L$ has the least upper bound property}
+  \begin{proof}
+    \step{<3>1}{\assume{for a contradiction $A \subseteq L$ is bounded above
+with no least upper bound}}
+    \step{<3>2}{\pflet{$U$ be the set of upper bounds of $A$}}
+    \step{<3>3}{$U$ is open}
+    \begin{proof}
+      \step{<4>1}{\pflet{$u \in U$}}
+      \step{<4>2}{\pick\ an upper bound $v$ for $A$ with $v < u$}
+      \begin{proof}
+        \pf\ $u$ is not the least upper bound for $A$ (\stepref{<3>1})
+      \end{proof}
+      \step{<4>3}{$u \in (v, +\infty) \subseteq U$}
+    \end{proof}
+    \step{<3>4}{\pflet{$V$ be the set of lower bounds of $U$}}
+    \step{<3>5}{$U$ and $V$ form a separation of $L$}
+    \begin{proof}
+      \step{<4>1}{$V$ is open}
+      \begin{proof}
+        \pf\ Similar to \stepref{<3>3}.
+      \end{proof}
+      \step{<4>2}{$U$ and $V$ are disjoint}
+      \begin{proof}
+        \step{<5>1}{\assume{for a contradiction $x \in U \cap V$}}
+        \step{<5>2}{\pick\ $u \in U$ such that $u < x$}
+        \begin{proof}
+          \pf\ $x$ is not the lowest upper bound of $A$
+        \end{proof}
+        \step{<5>3}{$x \leq u < x$}
+      \end{proof}
+      \step{<4>3}{$U \cup V = L$}
+      \begin{proof}
+        \step{<5>1}{\pflet{$x \in L \setminus U$}}
+        \step{<5>2}{\pick\ $a \in A$ such that $x < a$}
+        \step{<5>3}{$a \in V$}
+        \step{<5>4}{$x \in V$}
+      \end{proof}
+    \end{proof}
+  \end{proof}
+  \step{<2>3}{For all $x,y \in L$, there exists $z \in L$ such that $x < z <
+    y$}
+  \begin{proof}
+    \pf\ Otherwise $(-\infty, y)$ and $(x, +\infty)$ would form a separation
+    of $L$.
+  \end{proof}
+\end{proof}
+  \qed
+\end{proof}
+
+\begin{cor}
+  \label{cor:connected:real}
+  The real line $\mathbb{R}$ is connected, and so is every ray and interval
+  in $\mathbb{R}$.
+\end{cor}
+
+\begin{cor}
+  The ordered square is connected.
+\end{cor}
+
+\begin{cor}
+Not every closed subspace of a connected space is connected.
+\end{cor}
+
+\begin{proof}
+\pf\ The set $\{0,1\}$ is disconnected as a subspace of $\mathbb{R}$.
+\end{proof}
+
+\begin{cor}
+Not every open subspace of a connected space is connected.
+\end{cor}
+
+\begin{proof}
+\pf\ The space $\mathbb{R} \setminus \{ 0 \}$ is a disconnected open subspace of $\mathbb{R}$.
+\qed
+\end{proof}
+
+\begin{thm}[Intermediate Value Theorem]
+  Let $X$ be a connected space and $Y$ a linearly ordered set under the order
+  topology. Let $f : X \rightarrow Y$ be continuous. Let $a, b \in X$ and $r
+  \in Y$. If $f(a) < r < f(b)$, then there exists $c \in X$ such that $f(c) =
+  r$.
+\end{thm}
+
+\begin{proof}
+  \pf\ If not, then $f^{-1}((- \infty, r))$ and $f^{-1}((r, + \infty))$ would
+  be a separation of $X$. \qed
+\end{proof}
+
+ \begin{prop}
+ Every connected regular space with more than one point is uncountable.
+\end{prop}
+
+\begin{proof}
+\pf
+\step{<1>1}{Every connected completely regular space with more than one point
+is
+  uncountable.}
+\begin{proof}
+  \step{<2>1}{\pflet{$X$ be connected and completely regular and $a, b \in X$
+      with $a \neq b$}}
+  \step{<2>2}{\pick\ a continuous $f : X \rightarrow [0,1]$ such that $f(a) =
+0$
+    and $f(b) = 1$}
+  \step{<2>3}{$f$ is surjective.}
+  \begin{proof}
+    \pf\ By the Intermediate Value Theorem.
+  \end{proof}
+\end{proof}
+\step{<1>2}{Every connected regular space with more than one point is
+  uncountable.}
+\begin{proof}
+  \step{<2>1}{\assume{for a contradiction $X$ is connected, regular and
+      countable with more than one point.}}
+  \step{<2>2}{$X$ is Lindel\"{o}f}
+  \step{<2>3}{$X$ is normal}
+  \begin{proof}
+    \pf\ By Theorem \ref{thm:topology:normal:regular_lindelof}
+  \end{proof}
+  \qedstep
+  \begin{proof}
+    \pf\ Contraditcting \stepref{<1>1}.
+  \end{proof}
+\end{proof}
+\qed
+\end{proof}
+
+\begin{prop}
+ $\overline{S_\Omega}$ is not conneced.
+\end{prop}
+
+\begin{proof}
+ \pf\ $\{0\}$ is clopen. \qed
+\end{proof}
+
+\begin{prop}
+ $\mathbb{R}_l$ is not connected.
+\end{prop}
+
+\begin{proof}
+\pf\ The set $[0, + \infty)$ is clopen. \qed
+\end{proof}
+
+\begin{prop}
+ The space $\mathbb{R}^\omega$ under the uniform topology is not connected.
+\end{prop}
+
+\begin{proof}
+\pf\ The set of all bounded sequences and the set of all unbounded sequences
+form a separation. \qed
+\end{proof}
+
+\begin{prop}
+The space $\mathbb{R}_K$ is connected.
+\end{prop}
+
+\begin{proof}
+\pf\ Easy. \qed
+\end{proof}
+
+\section{Components and Local Connectedness}
+
+\begin{df}[(Connected) Component]
+  Let $X$ be a topological space. Define an equivalence relation $\sim$ on
+  $X$
+  by: $x \sim y$ iff there exists a connected subspace $U \subseteq X$ such
+  that $x \in U$ and $y \in U$. The \emph{(connected) components} of $X$ are
+  the equivalence classes under $\sim$.
+
+  We prove this is an equivalence relation.
+\end{df}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{For all $x \in X$ we have $x \sim x$.}
+  \begin{proof}
+    \pf\ The subspace $\{x\} \subseteq X$ is connected.
+  \end{proof}
+  \step{<1>2}{For all $x, y \in X$, if $x \sim y$ then $y \sim x$.}
+  \begin{proof}
+    \pf\ Immediate from definitions.
+  \end{proof}
+  \step{<1>3}{For all $x, y, z \in X$, if $x \sim y$ and $y \sim z$ then $x
+    \sim
+    z$.}
+  \begin{proof}
+    \pf\ By Proposition \ref{prop:topology:connected:union}.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:topology:connected:subset}
+  Let $X$ be a topological space. If $C \subseteq X$ is connected and
+  nonempty, then there    exists a unique component $D$ of $X$ such that $C
+  \subseteq D$.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pick\ $a \in C$}
+  \step{<1>2}{\pflet{$D$ be the $\sim$-equivalence class of $A$}}
+  \step{<1>3}{$C \subseteq D$}
+  \begin{proof}
+    \pf\ For all $x \in C$ we have $a \sim x$ by definition.
+  \end{proof}
+  \step{<1>4}{$D$ is unique}
+  \begin{proof}
+    \pf\ This holds because the components are disjoint.
+  \end{proof}
+  \qed
+\end{proof}
+
+
+\begin{prop}[AC]
+  \label{prop:topology:component:connected}
+  Every component is connected.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$C$ be a component of the topological space $X$}}
+  \step{<1>2}{\pick\ $a \in C$}
+  \step{<1>3}{For all $x \in C$, \pick\ a connected subspace $C_x$ of $X$
+    containing both $a$ and $x$.}
+  \begin{proof}
+    \pf\ Such a $C_x$ exists since $a \sim x$.
+  \end{proof}
+  \step{<1>4}{$C = \bigcup_{x \in C} C_x$}
+  \begin{proof}
+    \pf\ This holds because $C_x \subseteq C$ by Proposition
+    \ref{prop:topology:connected:subset}.
+  \end{proof}
+  \qedstep
+  \begin{proof}
+    \pf\ It follows that $C$ is connected by Proposition
+    \ref{prop:topology:connected:union}.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{prop}
+  Every component is closed.
+\end{prop}
+
+\begin{proof}
+  \pf\ From Theorem \ref{thm:topology:connected:closure}. \qed
+\end{proof}
+
+ \begin{prop}
+ The component of $\vec{a}$ in $\mathbb{R}^\omega$ under the uniform topology
+ is $\{ \vec{b} : \vec{b} - \vec{a} \text{ is bounded} \}$.
+\end{prop}
+
+\begin{proof}
+\pf
+\step{<1>1}{$C = \{ \vec{b} : \vec{b} - \vec{a} \text{ is bounded} \}$ is
+connected.}
+\begin{proof}
+\step{<2>1}{\assume{$C = U \cup V$ is a separation of $C$ with $\vec{a} \in
+U$}}
+\step{<2>2}{\pick\ $\vec{b} \in V$}
+\step{<2>3}{$\{ \epsilon : \epsilon \vec{b} + (1 - \epsilon) \vec{a} \in U
+  \}$ and $\{ \epsilon : \epsilon \vec{b} + (1 - \epsilon) \vec{a} \in V \}$
+  form a separation of $[0, 1]$}
+\end{proof}
+\step{<1>2}{If $\vec{a}, \vec{b} \in C$ and $\vec{b} - \vec{a}$ is unbounded
+  then $C$ is disconnected.}
+\begin{proof}
+  \pf\ $\{ \vec{c} : \vec{c} - \vec{a} \text{ is bounded} \}$ and $\{ \vec{c}
+  : \vec{c} - \vec{a} \text{ is unbounded} \}$
+\end{proof}
+\qed
+\end{proof}
+
+\begin{prop}
+ Let $x, y \in \mathbb{R}^\omega$ under the box topology. Then $x$ and $y$
+are in the same component iff $x-y$ is eventually zero.
+\end{prop}
+
+\begin{proof}
+\pf
+\step{<1>1}{For all $x \in \mathbb{R}^\omega$ the set $\{ y : x - y \text{ is
+    eventulally zero} \}$ is connected}
+\begin{proof}
+  \pf\ It is the union of the sets $C_N = \{ y : \forall n \geq N. y_n = 0
+  \}$, each of which is connected because it is homeomorphic to
+  $\mathbb{R}^{N-1}$.
+\end{proof}
+\step{<1>2}{If $x-y$ is not eventually zero then $x$ and $y$ are in different
+components}
+\begin{proof}
+  \step{<2>1}{\assume{$x-y$ is not eventually zero}}
+  \step{<2>2}{Define $h : \mathbb{R}^\omega \rightarrow \mathbb{R}^\omega$
+by:
+    $h(z)_n = \begin{cases}
+      z_n - x_n & \text{if } x_n = y_n \\
+      n(z_n - x_n) / (y_n - x_n) & \text{if } x_n \neq y_n
+    \end{cases}$}
+  \step{<2>3}{$h$ is an automorphism of $\mathbb{R}^\omega$ under the box
+    topology}
+  \step{<2>4}{$h(x) = 0$}
+  \step{<2>5}{$h(y)$ is unbounded}
+  \qedstep
+  \begin{proof}
+    \pf\ The inverse image under $h$ of the set of bounded sequences and the
+    set of unbounded sequences form a separation of $\mathbb{R}^\omega$ with
+$x$ and $y$ in different sets.
+  \end{proof}
+  \qed
+\end{proof}
+\qed
+\end{proof}
+
+\section{Path Connectedness}
+
+\begin{df}[Path]
+  Let $X$ be a topological space and $a, b \in X$. A \emph{path} from $a$ to
+  $b$ is a continuous function $p : [0, 1] \rightarrow X$ such that $p(0) =
+  a$ and $p(1) = b$.
+\end{df}
+
+\begin{df}[Path Connected]
+  A topological space is \emph{path connected} iff there exists a path
+  between any two points.
+\end{df}
+
+\begin{prop}
+  \label{prop:topology:path_connected:connected}
+  Every path connected space is connected.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$X$ be a path connected space}}
+  \step{<1>2}{\assume{for a contradiction $U$ and $V$ are a separation of
+      $X$.}}
+  \step{<1>3}{\pick\ $a \in U$ and $b \in V$}
+  \step{<1>4}{\pick\ a path $p : [0,1] \rightarrow X$ from $a$ to $b$}
+  \step{<1>5}{$p^{-1}(U)$ and $p^{-1}(V)$ form a separation of $[0,1]$.}
+  \qedstep
+  \begin{proof}
+    \pf\ This contradicts Corollary \ref{cor:connected:real}.
+  \end{proof}
+\end{proof}
+
+\begin{cor}
+ $S_\Omega$ is not path connected.
+\end{cor}
+
+\begin{cor}
+  $\overline{S_\Omega}$ is not path connected.
+\end{cor}
+
+\begin{cor}
+  $\mathbb{R}_l$ is not path connected.
+\end{cor}
+
+\begin{cor}
+ The Sorgenfrey plane is not path connected.
+\end{cor}
+
+\begin{cor}
+ The space $\mathbb{R}^\omega$ under the uniform topology is not path connected.
+connected.
+\end{cor}
+
+\begin{cor}
+ The space $\mathbb{R}^\omega$ under the box topology is not path connected.
+\end{cor}
+
+\begin{prop}
+  The long line is path connected.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$a, b \in L$}}
+  \step{<1>2}{\pick\ an ordinal $\alpha$ such that $a, b < (\alpha, 0)$}
+  \step{<1>3}{There exists a path from $a$ to $b$}
+  \begin{proof}
+    \pf\ This holds because $[(0, 0), (\alpha, 0))$ is homeomorphic to $[0,
+    1)$ by Proposition \ref{prop:order:long_line_zero_one}.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{cor}
+Not every closed subspace of a path connected space is path connected.
+\end{cor}
+
+\begin{proof}
+\pf\ Take any two-element subspace of the long line.
+\end{proof}
+
+\begin{cor}
+Not every open subspace of a path connected space is path connected.
+\end{cor}
+
+\begin{proof}
+\pf\ The space $\mathbb{R} \setminus \{ 0 \}$ is not path connected as a subspace of $\mathbb{R}$. \qed
+\end{proof}
+
+\begin{df}[Path Component]
+  Let $X$ be a topological space. Define an equivalence relation $\sim$ on
+  $X$
+  by: $x \sim y$ iff there exists a path from $x$ to $y$. The equivalence
+  classes  are called the \emph{path components} of $X$.
+
+  We prove this is an equivalence relation.
+\end{df}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{For all $x \in X$ we have $x \sim x$}
+  \begin{proof}
+    \pf\ The constant path $p : [0,1] \rightarrow X$ where $p(t) = x$ is a
+    path from $x$ to $x$.
+  \end{proof}
+  \step{<1>2}{If $x \sim y$ then $y \sim x$}
+  \begin{proof}
+    \pf\ If $p : [0,1] \rightarrow X$ is a path from $x$ to $y$ then $\lambda
+    t. p(1-t)$ is a path from $y$ to $x$.
+  \end{proof}
+  \step{<1>3}{If $x \sim y$ and $y \sim z$ then $x \sim z$}
+  \begin{proof}
+    \step{<2>1}{\pflet{$p$ be a path from $x$ to $y$ and $q$ be a path from
+        $y$
+        to $z$.}}
+    \step{<2>2}{\pflet{$r : [0,1] \rightarrow X$ where
+        \[ r(t) = \begin{cases}
+          p(2t) & \text{if } 0 \leq t \leq 1/2 \\
+          q(2t-1) & \text{if } 1/2 \leq t \leq 1
+        \end{cases} \]}}
+    \step{<2>3}{$r$ is a path from $x$ to $z$.}
+    \begin{proof}
+      \pf\ $r$ is continuous by the Pasting Lemma.
+    \end{proof}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{prop}
+  Every path component is path connected.
+\end{prop}
+
+\begin{proof}
+  \pf\ By definition, if $x$ and $y$ are in the same path component then
+  there
+  is a path from $x$ to $y$. \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:topology:path_connected:subset}
+  If $A$ is a nonempty path connected subspace of the space $X$, then $A$ is
+  included in a unique path component.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pick\ $a \in A$}
+  \step{<1>2}{\pflet{$C$ be the equivalence class of $a$ under $\sim$}}
+  \step{<1>3}{$A \subseteq C$}
+  \begin{proof}
+    \pf\ For all $x \in A$, there exists a path from $a$ to $x$.
+  \end{proof}
+  \step{<1>4}{$C$ is unique}
+  \begin{proof}
+    \pf\ $C$ is the unique path component such that $a \in C$.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{prop}
+  Every path component is included in a component.
+\end{prop}
+
+\begin{proof}
+  \pf\ From Propositions \ref{prop:topology:path_connected:connected} and
+  \ref{prop:topology:connected:subset}. \qed
+\end{proof}
+
+ \begin{prop}
+The ordered square is not path connected.
+\end{prop}
+
+\begin{proof}
+\pf
+\step{<1>1}{\assume{for a contradiction $p : [0,1] \rightarrow I_o^2$ is a
+path
+    from $(0, 0)$ to $(1, 1)$.}}
+\step{<1>2}{For all $x \in [0,1]$, $\inv{p}(\{ x \} \times (0, 1))$ is open
+in
+  $[0,1]$}
+\step{<1>3}{For all $x \in [0,1]$, \pick\ a rational $q_x \in \inv{p}(\{x\}
+  \times (0,1))$}
+\step{<1>4}{$\{ q_x : x \in [0,1] \}$ is an uncountable set of rationals.}
+\qed
+\end{proof}
+
+ \begin{prop}[AC]
+   \label{prop:topology:path_conected:product}
+The product of a family of path connected spaces is path connected.
+\end{prop}
+
+\begin{proof}
+\pf
+\step{<1>1}{\pflet{$\{X_\alpha\}_{\alpha \in J}$ be a family of path
+connected
+    spaces and $a, b \in \prod_{\alpha \in J} X_\alpha$}}
+\step{<1>2}{For $\alpha \in J$, \pick\ a path $p_\alpha : [0,1] \rightarrow
+  X_\alpha$ from $a_\alpha$ to $b_\alpha$}
+\step{<1>3}{Define $p : [0,1] \rightarrow \prod_{\alpha \in J} X_\alpha$ by
+  $p(t)_\alpha = p_\alpha(t)$}
+\step{<1>4}{$p$ is a path from $a$ to $b$}
+\begin{proof}
+  \pf\ By Theorem \ref{thm:topology:continuous:product}.
+\end{proof}
+\qed
+\end{proof}
+
+\begin{cor}
+ For any set $I$, the space $\mathbb{R}^I$ in the product topology is path connected.
+\end{cor}
+
+\begin{prop}
+The space $\mathbb{R}_K$ is not path connected.
+\end{prop}
+
+\begin{proof}
+\pf
+\step{<1>1}{\assume{for a contradiction $p : [0,1] \rightarrow \mathbb{R}_K$
+is
+a
+     path from 0 to 1}}
+ \step{<1>2}{\pflet{$p : [0,1] \rightarrow \mathbb{R}_K$ be a path from 0 to
+1}}
+ \step{<1>3}{$p([0,1])$ is compact and connected in $\mathbb{R}_K$.}
+ \begin{proof}
+   \pf\ Theorem \ref{thm:topology:connected:image} and Proposition
+\ref{prop:topology:compact:image}.
+\end{proof}
+ \step{<1>4}{$p([0,1])$ is connected in $\mathbb{R}$.}
+ \begin{proof}
+   \pf\ Corollary \ref{cor:topology:connected:finer}
+ \end{proof}
+
+ \step{<1>5}{$[0,1] \subseteq p([0,1])$}
+ \begin{proof}
+   \pf\ For any $x \in [0,1]$, if $x \notin p([0,1])$ then $p([0,1]) \cap
+(-\infty, x)$ and $p([0,1]) \cap (x, + \infty)$ form a separation of $p([0,1])$.
+\end{proof}
+ \step{<1>6}{$[0,1]$ is compact in $\mathbb{R}_K$}
+ \begin{proof}
+   \pf\ Proposition \ref{prop:topology:compact:closed_is_compact}.
+ \end{proof}
+ \qedstep
+ \begin{proof}
+   \pf\ This contradicts Corollary \ref{cor:topology:compact_hausdorff:01K}.
+ \end{proof}
+ \qed
+\end{proof}
+
+\begin{prop}
+Let $f : X \rightarrow Y$ be continuous and surjective. If $X$ is path
+connected then $Y$ is path connected.
+\end{prop}
+
+\begin{proof}
+\pf
+\step{<1>1}{\pflet{$a, b \in Y$}}
+\step{<1>2}{\pick\ $x, y \in X$ such that $f(x) = a$ and $f(y) = b$}
+\step{<1>3}{\pick\ a path $p : [0,1] \rightarrow X$ such that $p(0) = x$ and
+ $p(1) = y$}
+\step{<1>4}{$f \circ p$ is a path from $a$ to $b$}
+\qed
+\end{proof}
+
+\begin{cor}
+Let $\{ X_\alpha \}_{\alpha \in J}$ be a family of non-empty topological
+spaces. If $\prod_{\alpha \in J} X_\alpha$ is path connected then each
+$X_\alpha$ is path connected.
+\end{cor}
+
+\section{Connected Subspaces of Euclidean Space}
+
+\begin{df}[Unit 2-Sphere]
+  The \emph{unit 2-sphere} is $S^2 = \{ (x, y, z) \in \mathbb{R}^3 : x^2 +
+  y^2 + z^2 = 1 \}$ as a subspace of $\mathbb{R}^3$.
+\end{df}
+
+\begin{df}[Unit Ball]
+  For any $n \geq 1$, the \emph{closed unit ball} in $\mathbb{R}^n$ is
+  \[ B^n = \{ \vec{x} \in \mathbb{R}^n : \| \vec{x} \| \leq 1 \} \enspace . \]
+\end{df}
+
+\begin{prop}
+  Every open unit ball and closed unit ball in $\mathbb{R}^n$ is path
+  connected.
+\end{prop}
+
+\begin{proof}
+  \pf\ The straight line between any two points is a path in the ball. \qed
+\end{proof}
+
+\begin{df}[Punctured Euclidean Space]
+  For $n \geq 1$, \emph{punctured Euclidean space} is $\mathbb{R}^n \setminus
+  \{ \vec{0} \}$.
+\end{df}
+
+\begin{prop}
+  Punctured Euclidean space in $\mathbb{R}^n$ is path connected iff $n > 1$.
+\end{prop}
+
+\begin{proof}
+  \pf\ Easy. \qed
+\end{proof}
+
+\begin{df}[Unit Sphere]
+  For $n \geq 1$, the \emph{unit sphere} $S^n$ is $\{ \vec{x} \in
+  \mathbb{R}^{n+1} : \| \vec{x} \| = 1 \}$.
+\end{df}
+
+\begin{prop}
+  In any number of dimensions, the unit sphere is path connected.
+\end{prop}
+
+\begin{proof}
+  \pf\ Easy. \qed
+\end{proof}
+
+\begin{df}[Topologist's Sine Curve]
+  The \emph{topologist's sine curve} is the closure of
+  \[ S = \{ (x, \sin 1/x) : x \in \mathbb{R} \} \]
+  in $\mathbb{R}^2$.
+\end{df}
+
+\begin{prop}
+  The topologist's sine curve is connected.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{$S = \{ (x, \sin 1/x) : x \in \mathbb{R} \}$ is connected.}
+  \begin{proof}
+    \step{<2>1}{The function $f : \mathbb{R} \rightarrow \mathbb{R}^2$ given
+      by
+      $f(x) = (x, \sin 1/x)$ is continuous.}
+    \begin{proof}
+      \pf\ By Theorem \ref{thm:topology:continuous:product}.
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ By Theorem \ref{thm:topology:connected:image}.
+    \end{proof}
+  \end{proof}
+  \qedstep
+  \begin{proof}
+    \pf\ By Theorem \ref{thm:topology:connected:closure}.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{prop}[CC]
+  The topologist's sine curve is not path connected.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$S = \{ (x, \sin 1/x) : x \in \mathbb{R} \}$}}
+  \step{<1>2}{\assume{for a contradiction $p : [0, 1] \rightarrow
+      \overline{S}$
+      is a path from $(0, 0)$ to $(1, \sin 1)$.}}
+  \step{<1>3}{$p^{-1}(\{0\} \times [-1, 1])$ is closed.}
+  \step{<1>4}{$p^{-1}(\{0\} \times [-1 ,1])$ has a greatest element.}
+  \begin{proof}
+    \pf\ By Lemma \ref{lm:topology:continuum:closed}.
+  \end{proof}
+  \step{<1>5}{\pflet{$q : [0, 1] \rightarrow \overline{S}$ be a path such
+      that:
+      \begin{itemize}
+        \item $q(0) \in \{ 0 \} \times [-1, 1]$
+        \item $q(x) \in S$ for $x > 0$
+      \end{itemize}}}
+  \begin{proof}
+    \pf\ Let $b$ be greatest in $p^{-1}(\{0\} \times [-1 ,1])$. Then $q$ is
+    obtained by rescaling $p$ restricted to $[b, 1]$.
+  \end{proof}
+  \step{<1>6}{\pflet{$q(t) = (x(t), y(t))$ for $0 \leq t \leq 1$}}
+  \step{<1>7}{$x(0) = 0$}
+  \step{<1>8}{$x(t) > 0$ for $t > 0$}
+  \step{<1>9}{$y(t) = \sin 1/x(t)$ for $t > 0$}
+  \step{<1>10}{There exists a sequence $t_n \in [0, 1]$ such that $t_n
+    \rightarrow 0$ as $n \rightarrow \infty$ and $y(t_n) = (-1)^n$ for all
+    $n$.}
+  \begin{proof}
+    \step{<2>1}{For each $n$, \pick\ $u_n$ such that $0 < u_n < x(1/n)$ and
+      $\sin 1/u_n = (-1)^n$.}
+    \begin{proof}
+      \pf\ Such a $u_n$ exists because $\sin 1/x$ takes values 1 and -1
+      infinitely often in $(0, x(1/n))$.
+    \end{proof}
+    \step{<2>2}{For each $n$, \pick\ $t_n$ such that $0 < t_n < 1/n$ and
+      $x(t_n)
+      = u$}
+    \begin{proof}
+      \pf\ By the Intermediate Value Theorem.
+    \end{proof}
+  \end{proof}
+  \qedstep
+  \begin{proof}
+    \pf\ This is a contradiction as $y(t_n) \rightarrow y(0)$ as $n
+    \rightarrow \infty$ because $y$ is continuous.
+  \end{proof}
+  \qed
+\end{proof}
+
+\section{Local Connectedness}
+
+\begin{df}[Locally Connected]
+  Let $X$ be a topological space and $x \in X$. Then $X$ is \emph{locally
+    connected} at $x$ iff every neighbourhood of $x$ includes a connected
+  neighbourhood of $x$.
+
+  The space $X$ is \emph{locally connected} iff it is locally connected at
+  every point.
+\end{df}
+
+ \begin{prop}
+$S_\Omega$ is not locally connected.
+\end{prop}
+
+\begin{proof}
+\pf\ There is no connected neighbourhood of $\omega$. \qed
+\end{proof}
+
+   \begin{prop}
+   $\overline{S_\Omega}$ is not locally connected.
+\end{prop}
+
+\begin{proof}
+\pf\ There is no connected neighbourhood of $\omega$. \qed
+\end{proof}
+
+\begin{prop}
+  For any set $I$,
+  the space $\mathbb{R}^I$ is locally connected.
+\end{prop}
+
+\begin{proof}
+  \pf\ Every basic open set is the product of connected spaces, hence
+  connected. \qed
+\end{proof}
+
+\begin{prop}
+  Let $X$ be a topological space. Then $X$ is locally connected if and only
+  if, for every open set $U$ in $X$, every component of $U$ is open in $X$.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{If $X$ is locally connected then, for every open set $U$ in
+    $X$,
+    every component of $U$ is open in $X$.}
+  \begin{proof}
+    \step{<2>1}{\assume{$X$ is locally connected.}}
+    \step{<2>2}{\pflet{$U$ be open in $X$.}}
+    \step{<2>3}{\pflet{$C$ be a component of $U$.}}
+    \step{<2>4}{\pflet{$x \in C$} \prove{$C$ is a neighbourhood of $x$}}
+    \step{<2>5}{$U$ is a neighbourhood of $x$ in $X$.}
+    \begin{proof}
+      \pf\ From \stepref{<2>2}, \stepref{<2>3} and \stepref{<2>4}.
+    \end{proof}
+    \step{<2>6}{\pick\ a connected neighbourhood $V$ of $x$ such that $V
+      \subseteq U$.}
+    \begin{proof}
+      \pf\ Using \stepref{<2>1}.
+    \end{proof}
+    \step{<2>7}{$V \subseteq C$}
+    \begin{proof}
+      \pf\ By Proposition \ref{prop:topology:connected:subset}.
+    \end{proof}
+    \step{<2>8}{$C$ is a neighbourhood of $x$}
+    \begin{proof}
+      \pf\ By Proposition \ref{prop:topology:neighbourhood:monotone}.
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ By Proposition \ref{prop:topology:neighbourhood:open}.
+    \end{proof}
+  \end{proof}
+  \step{<1>2}{If, for every open set $U$ in $X$, every component of $U$ is
+    open
+    in $X$, then $X$ is locally connected.}
+  \begin{proof}
+    \step{<2>1}{\assume{For every open set $U$ in $X$, every component of $U$
+        is
+        open in $X$.}}
+    \step{<2>2}{\pflet{$x \in X$ and $N$ be a neighbourhood of $x$}}
+    \step{<2>3}{\pick\ $U$ open such that $x \in U \subseteq N$}
+    \step{<2>4}{\pflet{$C$ be the component of $U$ that contains $x$}}
+    \step{<2>5}{$C$ is open in $X$}
+    \begin{proof}
+      \pf\ By \stepref{<2>1}.
+    \end{proof}
+    \step{<2>6}{$C$ is a connected neighbourhood of $x$ that is included in
+      $N$}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{cor}
+ In a locally connected space, every component is open.
+\end{cor}
+
+\begin{cor}
+  The space $\mathbb{R}^\omega$ under the box topology is not locally
+connected.
+\end{cor}
+
+\begin{cor}
+Not every closed subspace of a locally connected space is locally connected.
+\end{cor}
+
+\begin{proof}
+\pf\ The topologist's sine curve is not locally connected. \qed
+\end{proof}
+
+ \begin{prop}
+ $S_\Omega \times \overline{S_\Omega}$ is not locally connected.
+\end{prop}
+
+\begin{proof}
+$(\omega, \omega)$ has no connected neighbourhood. \qed
+\end{proof}
+
+\begin{prop}
+ $\mathbb{R}_l$ is not locally connected.
+\end{prop}
+
+\begin{proof}
+\pf\ 0 has no connected neighbourhood. \qed
+\end{proof}
+
+\begin{prop}
+The Sorgenfrey plane is not locally connected.
+\end{prop}
+
+\begin{proof}
+\pf\ Any basic open set $[a,b) \times [c,d)$ can be separated into $[a,b)
+\times [c,e)$ and $[a,b) \times [e,d)$ for some $c < e < d$. \qed
+\end{proof}
+
+\begin{prop}
+ The space $\mathbb{R}^\omega$ under the uniform topology is locally
+connected.
+\end{prop}
+
+\begin{proof}
+ \pf\ For any neighbourhood $U$ of a point $x$, the neighbourhood $U \cap \{
+ y : y - x \text{ is bounded} \}$ is connected. \qed
+\end{proof}
+
+\begin{prop}
+The space $\mathbb{R}_K$ is not locally connected.
+\end{prop}
+
+\begin{proof}
+\pf\ The open set $(-1,1) - K$ does not include a connected neighbourhood of
+0. \qed
+\end{proof}
+
+\begin{prop}
+Every open subspace of a locally connected space is locally connected.
+\end{prop}
+
+\begin{proof}
+\pf\ Follows easily from definition. \qed
+\end{proof}
+
+\begin{prop}[AC]
+The product of a family of locally connected spaces is locally connected.
+\end{prop}
+
+\begin{proof}
+\pf
+\step{<1>1}{\pflet{$\{X_\alpha\}_{\alpha \in J}$ be a family of locally connected spaces and $\vec{x} \in \prod_{\alpha \in J} X_\alpha$}}
+\step{<1>2}{\pflet{$\prod_{\alpha \in J} U_\alpha$ be any basic neighbourhood of $\vec{x}$, where each $U_\alpha$ is open in $X_\alpha$, and $U_\alpha = X_\alpha$ except for $\alpha = \alpha_1, \ldots, \alpha_n$}}
+\step{<1>3}{For $\alpha \in J$, \pick\ a connected neighbourhood $C_\alpha$ of $x_\alpha$ with $C_\alpha \subseteq U_\alpha$}
+\step{<1>4}{$\prod_{\alpha \in J} C_\alpha$ is connected}
+\begin{proof}
+  \pf\ Proposition \ref{prop:topology:connected:product}
+\end{proof}
+\qed
+\end{proof}
+
+\begin{prop}
+Every discrete space is locally connected.
+\end{prop}
+
+\begin{proof}
+\pf\ For any point $x$, the set $\{x\}$ is a connected neighbourhood of $x$. \qed
+\end{proof}
+
+\begin{cor}
+The continuous image of a locally connected space is not necessarily locally connected.
+\end{cor}
+
+\section{Local Path Connectedness}
+
+\begin{df}[Locally Path Connected]
+  Let $X$ be a topological space and $x \in X$. Then $X$ is \emph{locally
+    path connected at $x$} iff every neighbourhood of $x$ includes a path
+  connected neighbourhood of $x$.
+
+  The space $X$ is \emph{locally path connected} iff it is locally path
+  connected
+  at every point.
+\end{df}
+
+ \begin{prop}
+$S_\Omega$ is not locally path connected.
+\end{prop}
+
+\begin{proof}
+\pf\ There is no path connected neighbourhood of $\omega$. \qed
+\end{proof}
+
+\begin{prop}
+ $\overline{S_\Omega}$ is not locally path connected.
+\end{prop}
+
+\begin{proof}
+\pf\ There is no path connected neighbourhood of $\omega$. \qed
+\end{proof}
+
+\begin{prop}
+ Not every closed subspace of a locally path connected space is locally path connected.
+\end{prop}
+
+\begin{proof}
+ \pf\ The topologist's sine curve is not loally path connected. \qed
+\end{proof}
+
+\begin{prop}
+ Every open subspace of a locally path connected space is locally path connected.
+\end{prop}
+
+\begin{proof}
+ \pf\ Follows easily from definition. \qed
+\end{proof}
+
+\begin{prop}
+Every locally path connected space is locally connected.
+\end{prop}
+
+\begin{proof}
+\pf\ From Proposition \ref{prop:topology:path_connected:connected}. \qed
+\end{proof}
+
+\begin{cor}
+ $\mathbb{R}_l$ is not locally path connected.
+\end{cor}
+
+\begin{cor}
+The Sorgenfrey plane is not locally path connected.
+\end{cor}
+
+\begin{cor}
+ The space $\mathbb{R}^\omega$ under the box topology is not locally path
+connected.
+\end{cor}
+
+\begin{cor}
+ The space $\mathbb{R}_K$ is not locally path connected.
+\end{cor}
+
+\begin{cor}
+The topologist's sine curve is not locally path connected.
+\end{cor}
+
+\begin{prop}[AC]
+The product of a family of locally path connected spaces is locally path connected.
+\end{prop}
+
+\begin{proof}
+\pf
+\step{<1>1}{\pflet{$\{X_\alpha\}_{\alpha \in J}$ be a family of locally connected spaces and $\vec{x} \in \prod_{\alpha \in J} X_\alpha$}}
+% TODO Lemma about bases
+\step{<1>2}{\pflet{$\prod_{\alpha \in J} U_\alpha$ be any basic neighbourhood of $\vec{x}$, where each $U_\alpha$ is open in $X_\alpha$, and $U_\alpha = X_\alpha$ except for $\alpha = \alpha_1, \ldots, \alpha_n$}}
+\step{<1>3}{For $\alpha \in J$, \pick\ a path connected neighbourhood $C_\alpha$ of $x_\alpha$ with $C_\alpha \subseteq U_\alpha$}
+\step{<1>4}{$\prod_{\alpha \in J} C_\alpha$ is path connected}
+\begin{proof}
+  \pf\ Proposition \ref{prop:topology:path_connected:product}
+\end{proof}
+\qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:topology:locally_path_connected:open}
+  Let $X$ be a topological space. Then $X$ is locally path connected if and
+  only
+  if, for every open set $U$ in $X$, every path component of $U$ is open in
+  $X$.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{If $X$ is locally path connected then, for every open set $U$
+    in
+    $X$,
+    every path component of $U$ is open in $X$.}
+  \begin{proof}
+    \step{<2>1}{\assume{$X$ is locally path connected.}}
+    \step{<2>2}{\pflet{$U$ be open in $X$.}}
+    \step{<2>3}{\pflet{$C$ be a path component of $U$.}}
+    \step{<2>4}{\pflet{$x \in C$} \prove{$C$ is a neighbourhood of $x$}}
+    \step{<2>5}{$U$ is a neighbourhood of $x$ in $X$.}
+    \begin{proof}
+      \pf\ From \stepref{<2>2}, \stepref{<2>3} and \stepref{<2>4}.
+    \end{proof}
+    \step{<2>6}{\pick\ a path connected neighbourhood $V$ of $x$ such that $V
+      \subseteq U$.}
+    \begin{proof}
+      \pf\ Using \stepref{<2>1}.
+    \end{proof}
+    \step{<2>7}{$V \subseteq C$}
+    \begin{proof}
+      \pf\ By Proposition \ref{prop:topology:path_connected:subset}.
+    \end{proof}
+    \step{<2>8}{$C$ is a neighbourhood of $x$}
+    \begin{proof}
+      \pf\ By Proposition \ref{prop:topology:neighbourhood:monotone}.
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ By Proposition \ref{prop:topology:neighbourhood:open}.
+    \end{proof}
+  \end{proof}
+  \step{<1>2}{If, for every open set $U$ in $X$, every path component of $U$
+    is
+    open
+    in $X$, then $X$ is locally path connected.}
+  \begin{proof}
+    \step{<2>1}{\assume{For every open set $U$ in $X$, every path component
+        of
+        $U$
+        is
+        open in $X$.}}
+    \step{<2>2}{\pflet{$x \in X$ and $N$ be a neighbourhood of $x$}}
+    \step{<2>3}{\pick\ $U$ open such that $x \in U \subseteq N$}
+    \step{<2>4}{\pflet{$C$ be the path component of $U$ that contains $x$}}
+    \step{<2>5}{$C$ is open in $X$}
+    \begin{proof}
+      \pf\ By \stepref{<2>1}.
+    \end{proof}
+    \step{<2>6}{$C$ is a path connected neighbourhood of $x$ that is included
+      in
+      $N$}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{thm}[AC]
+  Let $X$ be a topological space. If $X$ is locally path connected, then its
+  components and its path components are the same.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$P$ be a path component of $X$}}
+  \step{<1>2}{\pflet{$C$ be the component such that $P \subseteq C$}
+    \prove{$P
+      =
+      C$}}
+  \step{<1>3}{\pflet{$Q = C \setminus P$}}
+  \step{<1>4}{$P$ is open in $X$}
+  \begin{proof}
+    \pf\ By Proposition \ref{prop:topology:locally_path_connected:open}.
+  \end{proof}
+  \step{<1>5}{$Q$ is open in $X$}
+  \begin{proof}
+    \pf\ By Proposition \ref{prop:topology:locally_path_connected:open} since
+    $Q$ is the union of the path components included in $C$ other than $P$.
+  \end{proof}
+  \step{<1>6}{$Q = \emptyset$}
+  \begin{proof}
+    \pf\ Otherwise $P$ and $Q$ would form a separation of $C$, contradicting
+    \ref{prop:topology:component:connected}.
+  \end{proof}
+  \qed
+\end{proof}
+
+ \begin{prop}
+ $S_\Omega \times \overline{S_\Omega}$ is not locally path connected.
+\end{prop}
+
+\begin{proof}
+\pf\ $(\omega, \omega)$ has no path connected neighbourhood. \qed
+\end{proof}
+
+\begin{prop}
+The ordered square is not locally path connected.
+\end{prop}
+
+\begin{proof}
+\pf
+\step{<1>1}{\assume{for a contradiction $(1/2, 0)$ has a path connected
+    neighbourhod $U$}}
+\step{<1>2}{\pick\ $a < 1/2$ such that $((a, 1), (1/2, 0)) \subseteq U$}
+\step{<1>3}{\pflet{$p : [0,1] \rightarrow I_o^2$ be a path from $(a, 1)$ to
+    $(1/2, 0)$}}
+\step{<1>4}{For every $x$ such that $a < x < 1/2$, \pick\ a rational $q_x$
+such
+  that $p(q_x) \in ((x,0), (x,1))$}
+\step{<1>5}{$\{ q_x : a < x < 1/2 \}$ is an uncountable set of rationals.}
+\qed
+\end{proof}
+
+\begin{prop}
+For any set $I$,
+ the space $\mathbb{R}^I$ is locally path connected.
+\end{prop}
+
+\begin{proof}
+\pf\ Every basic open set is the product of path connected spaces, hence path
+connected. \qed
+\end{proof}
+
+\begin{prop}
+ The space $\mathbb{R}^\omega$ under the uniform topology is locally path
+connected.
+\end{prop}
+
+\begin{proof}
+\pf\ Its components and path components are the same. \qed
+\end{proof}
+
+\begin{prop}
+ Every discrete space is locally path connected.
+\end{prop}
+
+\begin{proof}
+ \pf\ For any point $x$, the set $\{x\}$ is a path connected neighbourhood of $x$. \qed
+\end{proof}
+
+\begin{cor}
+ The continuous image of a locally path connected space is not necessarily locally path connected.
+\end{cor}
+
+
+\section{Weak Local Connectedness}
+
+
+\begin{df}[Weakly Locally Connected]
+  Let $X$ be a topological space and $x \in X$. Then $X$ is \emph{weakly
+    locally connected at $x$} iff every neighbourhood of $x$ contains a
+  connected subspace that contains a neighbourhood of $x$.
+\end{df}

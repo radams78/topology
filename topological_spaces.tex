@@ -1,0 +1,1679 @@
+\chapter{Topological Spaces}
+
+\section{Topologies}
+
+\begin{df}[Topology]
+  A \emph{topology} on a set $X$ is a set $\mathcal{T} \subseteq \mathcal{P}
+  X$ such that:
+  \begin{enumerate}
+    \item $X \in \mathcal{T}$;
+    \item for all $U, V \in \mathcal{T}$, we have $U \cap V \in \mathcal{T}$;
+    \item For all $\mathcal{A} \subseteq \mathcal{T}$, we have $\bigcup
+    \mathcal{A} \in \mathcal{T}$.
+  \end{enumerate}
+  A \emph{topological space} $X$ consists of a set $X$ and a topology on $X$.
+  The elements of $X$ are called \emph{points} and the elements of
+  $\mathcal{T}$ are called \emph{open sets}.
+\end{df}
+
+\begin{prop}
+  \label{prop:topology:topological_space:emptyset}
+  In any topological space, the empty set is open.
+\end{prop}
+
+\begin{proof}
+  \pf\ Immediate from axiom 3. \qed
+\end{proof}
+
+\begin{df}[Discrete Topology]
+  The \emph{discrete} topology on a set $X$ is $\mathcal{P} X$.
+\end{df}
+
+\begin{df}[Indiscrete Topology]
+  The \emph{indiscrete} topology on a set $X$ is $\{ \emptyset, X \}$.
+\end{df}
+
+\begin{df}[Open Cover] % TODO Move?
+  Let $X$ be a topological space. A cover $\mathcal{C} \subseteq \mathcal{P}
+  X$ of $X$ is an \emph{open cover} iff every member of $\mathcal{C}$ is open.
+\end{df}
+
+\begin{df}[Finer, Coarser]
+  Let $\mathcal{T}$, $\mathcal{T}'$ be topologies on a set $X$. Then
+  $\mathcal{T}$ is \emph{finer} than $\mathcal{T}'$, and $\mathcal{T}'$ is
+  \emph{coarser} than $\mathcal{T}$, iff $\mathcal{T}' \subseteq \mathcal{T}$.
+
+  The topology $\mathcal{T}$ is \emph{strictly} finer than $\mathcal{T}'$,
+  and
+  $\mathcal{T}'$ is \emph{strictly} coarser than $\mathcal{T}$, iff
+  $\mathcal{T} \subset \mathcal{T}'$.
+
+  The topologies $\mathcal{T}$ and $\mathcal{T}'$ are \emph{comparable} iff
+  $\mathcal{T} \subseteq \mathcal{T}'$ or $\mathcal{T}' \subseteq
+  \mathcal{T}$.
+\end{df}
+
+\begin{df}[Finite Complement Topology]
+  The \emph{finite complement topology} on a set $X$ is $\{ U : X \setminus U
+  \text{ is finite} \} \cup \{ X \}$.
+\end{df}
+
+\begin{df}[Isolated Point]
+  Let $X$ be a topological space and $a \in X$. Then $a$ is an \emph{isolated
+    point} iff $\{a\}$ is open.
+\end{df}
+
+\section{Neighbourhoods}
+
+\begin{df}[Neighbourhood]
+  Let $X$ be a topological space and $A \subseteq X$. A \emph{neighbourhood}
+  of $A$ is an set that includes an open set that includes $A$.
+
+  A \emph{neighbourhood} of a point $a$ is a neighbourhood of $\{a\}$.
+\end{df}
+
+\begin{prop}
+  If $N$ is a neighbourhood of $A$ and $B \subseteq A$ then $N$ is a
+  neighbourhood of $B$.
+\end{prop}
+
+\begin{proof}
+  \pf\ Immediate from definitions. \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:topology:neighbourhood:open}
+  A set $U$ is open if and only if it is a neighbourhood of each of its
+  points.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$X$ be a topological space and $A \subseteq X$}}
+  \step{<1>2}{If $U$ is a neighbourhood of each of its points then $A$
+    is
+    open.}
+  \begin{proof}
+    \step{<2>1}{\assume{$U$ includes a neighbourhood of each of its points}
+      \prove{$U = \bigcup \{ V \subseteq U : V \text{ is open} \}$}}
+    \step{<2>2}{$\bigcup \{ V \subseteq U : V \text{ is open} \} \subseteq U$}
+    \begin{proof}
+      \pf\ Set theory.
+    \end{proof}
+    \step{<2>3}{$U \subseteq \bigcup \{ V \subseteq U : V \text{ is open} \}$}
+    \begin{proof}
+      \pf\ Immediate from \stepref{<2>1}.
+    \end{proof}
+  \end{proof}
+  \step{<1>3}{If $U$ is open then $U$ is a neighbourhood of each of
+    its points.}
+  \begin{proof}
+    \pf\ Immediate from definitions.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:topology:neighbourhood:monotone}
+  If $M$ is a neighbourhood of $A$ and $M \subseteq N$ then $N$ is a
+  neighbourhood of $A$.
+\end{prop}
+
+\begin{proof}
+  \pf\ Immediate from definitions. \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:topology:neighbourhood:intersection}
+  If $M$ and $N$ are neighbourhoods of $A$ then $M \cap N$ is a neighbourhood
+  of $A$.
+\end{prop}
+
+\begin{proof}
+  \pf\ Pick open sets $U$ and $V$ such that $A \subseteq U \subseteq M$
+  and $A \subseteq N \subseteq V$. Then $A \subseteq U \cap V \subseteq M
+  \cap N$.
+\end{proof}
+
+\begin{prop}
+  If $N$ is a neighbourhood of $x$ then $x \in N$.
+\end{prop}
+
+\begin{proof}
+  \pf\ Immediate from definitions. \qed
+\end{proof}
+
+\begin{prop}
+  If $N$ is a neighbourhood of $x$ then there exists a neighbourhood $U$ of
+  $x$ such that, for all $y \in U$, $M$ is a neighbourhood of $y$.
+\end{prop}
+
+\begin{proof}
+  \pf\ Pick an open set $U$ such that $x \in U \subseteq N$. \qed
+\end{proof}
+
+\begin{thm}
+  Let $X$ be a set and $\rhd \subseteq \mathcal{P} X \times X$ a relation
+  such that:
+  \begin{enumerate}
+    \item If $M \rhd x$ and $M \subseteq N$ then $N \rhd x$
+    \item $X \rhd x$ for all $x \in X$
+    \item If $M \rhd x$ and $N \rhd x$ then $M \cap N \rhd x$
+    \item If $N \rhd x$ then $x \in N$
+    \item If $M \rhd x$ then there exists $N \rhd x$ such that, for all $y
+    \in N$, $M \rhd y$.
+  \end{enumerate}
+  Then there exists a unique topology $\mathcal{T}$ such that $N \rhd x$ iff
+  $N$ is a neighbourhood of $x$.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$\rhd$ be a relation satisfying 1--3}}
+  \step{<1>2}{\pflet{$\mathcal{T} = \{ U \in \mathcal{P} X : \forall x \in U.
+      U
+      \rhd x \}$}}
+  \step{<1>3}{$\mathcal{T}$ is a topology.}
+  \begin{proof}
+    \step{<2>1}{$X \in \mathcal{T}$}
+    \begin{proof}
+      \pf\ By axiom 2
+    \end{proof}
+    \step{<2>2}{For all $U, V \in \mathcal{T}$ we have $U \cap V \in
+      \mathcal{T}$}
+    \begin{proof}
+      \pf\ By axiom 3
+    \end{proof}
+    \step{<2>3}{For all $\mathcal{A} \subseteq \mathcal{T}$ we have $\bigcup
+      \mathcal{A} \in \mathcal{T}$}
+    \begin{proof}
+      \step{<3>1}{\pflet{$x \in \bigcup \mathcal{A}$}}
+      \step{<3>2}{\pick\ $U \in \mathcal{A}$ such that $x \in U$}
+      \step{<3>3}{$U \rhd x$}
+      \step{<3>4}{$\bigcup \mathcal{A} \rhd x$}
+      \begin{proof}
+        \pf\ By axiom 1
+      \end{proof}
+    \end{proof}
+  \end{proof}
+  \step{<1>4}{In $\mathcal{T}$, $N \rhd x$ iff $N$ is a neighbourhood of $x$.}
+  \begin{proof}
+    \step{<2>1}{If $N \rhd x$ then $N$ is a neighbourhood of $x$}
+    \begin{proof}
+      \step{<3>1}{\assume{$N \rhd x$}}
+      \step{<3>2}{$x \in N$}
+      \begin{proof}
+        \pf\ By axiom 4
+      \end{proof}
+      \step{<3>3}{\pflet{$U = \{ y \in N : N \rhd y \}$}}
+      \step{<3>4}{$U$ is open}
+      \begin{proof}
+        \step{<4>1}{\pflet{$y \in U$} \prove{$U \rhd y$}}
+        \step{<4>2}{$N \rhd y$}
+        \step{<4>3}{\pick\ $W \rhd y$ such that, for all $z \in W$, $N \rhd
+          z$}
+        \begin{proof}
+          \pf\ By axiom 5
+        \end{proof}
+        \step{<4>4}{$W \subseteq U$}
+        \step{<4>5}{$U \rhd y$}
+        \begin{proof}
+          \pf\ By axiom 1
+        \end{proof}
+      \end{proof}
+      \step{<3>5}{$x \in U \subseteq N$}
+    \end{proof}
+    \step{<2>2}{If $N$ is a neighbourhood of $x$ then $N \rhd x$}
+    \begin{proof}
+      \step{<3>1}{\pflet{$N$ be a neighbourhood of $x$}}
+      \step{<3>2}{\pick\ $U$ open such that $x \in U \subseteq N$}
+      \step{<3>3}{$U \rhd x$}
+      \begin{proof}
+        \pf\ By \stepref{<1>2}
+      \end{proof}
+      \step{<3>4}{$N \rhd x$}
+      \begin{proof}
+        \pf\ By axiom 1
+      \end{proof}
+    \end{proof}
+  \end{proof}
+  \step{<1>5}{$\mathcal{T}$ is unique.}
+  \begin{proof}
+    \pf\ By Proposition \ref{prop:topology:neighbourhood:open}.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{df}[Sufficiently Close]
+  Let $X$ be a topological space, $a \in X$, and $P$ be a property of points
+  of $X$. We write ``For all $x$ sufficiently close to $a$, $P(x)$'' to mean
+  ``There exists a neighbourhood $N$ of $a$ such that, for all $x \in N$,
+  $P(x)$.''
+\end{df}
+
+\section{Open Refinements}
+
+\begin{df}[Open Refinement]
+  Let $X$ be a space and $\mathcal{A}, \mathcal{B} \subseteq \mathcal{P} X$. Then $\mathcal{B}$ is an \emph{open refinement} of $\mathcal{A}$ iff $\mathcal{B}$ is a refinement of $\mathcal{A}$ and every member of $\mathcal{B}$ is open.
+\end{df}
+
+\section{Local Bases}
+
+\begin{df}[Local Basis]
+  Let $X$ be a topological space and $x \in X$. A \emph{local basis} at $x$
+  is a set $\mathcal{B}$ of open neighbourhoods of $x$ such that every
+  neighbourhood of $x$ includes a member of $\mathcal{B}$. We call the
+  elements of $\mathcal{B}$ \emph{basic open neighbourhoods}.
+\end{df}
+
+\begin{prop}
+  Let $\mathcal{B}$ be a local basis at $x$ and $M, N \in \mathcal{B}$. Then
+  there exists $P \in \mathcal{B}$ such that $P \subseteq M \cap N$.
+\end{prop}
+
+\begin{proof}
+  \pf\ This holds because $M \cap N$ is a neighbourhood of $x$ (Proposition
+  \ref{prop:topology:neighbourhood:intersection}). \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:topology:local_basis:characterisation}
+  Let $X$ be a topological space, $x \in X$ and $\mathcal{B} \subseteq
+  \mathcal{P} X$. Then $\mathcal{B}$ is a local basis at $x$ iff
+  $\mathcal{B}$ is a set of open neighbourhoods of $x$ such that every open
+  neighbourhood of $x$ includes a member of $\mathcal{B}$.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{If $\mathcal{B}$ is a local basis at $x$ then
+    $\mathcal{B}$ is a set of open neighbourhoods of $x$ such that every open
+    neighbourhood of $x$ includes a member of $\mathcal{B}$}
+  \begin{proof}
+    \pf\ Trivial.
+  \end{proof}
+  \step{<1>2}{If $\mathcal{B}$ is a set of open neighbourhoods of $x$ such
+    that
+    every open neighbourhood of $x$ includes a member of $\mathcal{B}$ then
+    $\mathcal{B}$ is a local basis at $x$.}
+  \begin{proof}
+    \pf\ Every neighbourhood of $x$ includes an open neighbourhood of $x$,
+    which therefore includes an element of $\mathcal{B}$.
+  \end{proof}
+  \qed
+\end{proof}
+
+\section{Bases}
+
+\begin{df}[Basis for a Topology]
+  Let $(X, \mathcal{T})$ be a topological space. A \emph{basis} for the
+  topology on $X$ is a
+  set of open sets $\mathcal{B}$ such that every open set is a union of
+  members of $\mathcal{B}$. The members of $\mathcal{B}$ are called
+  \emph{basic open sets}, and $\mathcal{T}$ is called the topology
+  \emph{generated} by $\mathcal{B}$.
+\end{df}
+
+\begin{prop}
+  \label{prop:topology:basis:open}
+  Let $(X, \mathcal{T})$ be a topological space and $\mathcal{B} \subseteq
+  \mathcal{P} X$. Then the following are equivalent:
+  \begin{enumerate}
+    \item $\mathcal{B}$ is a basis for $\mathcal{T}$.
+    \item A set $U$ is open if and only if, for all $x \in U$, there exists
+    $B \in \mathcal{B}$ such that $x \in B \subseteq U$.
+    \item $\mathcal{T}$ is the set of all unions of subsets of $\mathcal{B}$.
+    \item Every member of $\mathcal{B}$ is open and, for all $x \in X$
+    and every open neighbourhood $U$ of $x$, there exists $B \in \mathcal{B}$
+    such that $x \in B \subseteq U$.
+    \item For all $x \in X$, the set $\{ B \in \mathcal{B} : x \in B \}$ is a
+    local basis at $x$.
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{$1 \Rightarrow 2$}
+  \begin{proof}
+    \step{<2>1}{\assume{$\mathcal{B}$ is a basis for the topology
+        $\mathcal{T}$.}}
+    \step{<2>2}{For all $U \in \mathcal{T}$ and $x \in U$, there exists $B
+      \in
+      \mathcal{B}$ such that $x \in B$}
+    \begin{proof}
+      \pf\ Immediate from the definition of basis (\stepref{<2>1}).
+    \end{proof}
+    \step{<2>3}{For all $U \subseteq X$, if $\forall x \in U. \exists B \in
+      \mathcal{B}. x \in B \subseteq U$ then $U \in \mathcal{T}$}
+    \begin{proof}
+      \pf\ By Proposition \ref{prop:topology:neighbourhood:open}.
+    \end{proof}
+  \end{proof}
+  \step{<1>2}{$2 \Leftrightarrow 3$}
+  \begin{proof}
+    \pf\ From Lemma \ref{lm:set_theory:union_of_subsets}.
+  \end{proof}
+  \step{<1>3}{$3 \Rightarrow 1$}
+  \begin{proof}
+    \pf\ Trivial.
+  \end{proof}
+  \step{<1>4}{$2 \Rightarrow 4$}
+  \begin{proof}
+    \pf\ Trivial.
+  \end{proof}
+  \step{<1>5}{$4 \Rightarrow 2$}
+  \begin{proof}
+    \pf
+    \step{<2>1}{\assume{4}}
+    \step{<2>2}{If $U$ is open then, for all $x \in U$, there exists $B \in
+      \mathcal{B}$ such that $x \in B \subseteq U$}
+    \begin{proof}
+      \pf\ Immediate from \stepref{<2>1}.
+    \end{proof}
+    \step{<2>3}{If, for all $x \in U$, there exists $B \in \mathcal{B}$ such
+      that $x \in B \subseteq U$, then $U$ is open.}
+    \begin{proof}
+      \pf\ By Proposition \ref{prop:topology:neighbourhood:open} using the
+      fact that every member of $\mathcal{B}$ is open (\stepref{<2>1}).
+    \end{proof}
+  \end{proof}
+  \step{<1>6}{$4 \Leftrightarrow 5$}
+  \begin{proof}
+    \pf\ From Proposition \ref{prop:topology:local_basis:characterisation}.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{cor}
+  \label{cor:topology:basis:coarsest}
+  If $\mathcal{B}$ is a basis for the topology $\mathcal{T}$, then
+  $\mathcal{T}$ is the coarsest topology in which every element of
+  $\mathcal{B}$ is open.
+\end{cor}
+
+\begin{lm}
+  \label{lm:topology:basis:generate}
+  Let $X$ be a set and $\mathcal{B} \subseteq \mathcal{P} X$. Then
+  $\mathcal{B}$ is a basis for a topology $\mathcal{T}$ on $X$ if and only if:
+  \begin{enumerate}
+    \item
+    $\bigcup \mathcal{B} = X$
+    \item
+    for all $B_1, B_2 \in \mathcal{B}$ and $x \in B_1 \cap B_2$, there exists
+    $B_3
+    \in \mathcal{B}$ such that $x \in B_3 \subseteq B_1 \cap B_2$.
+  \end{enumerate}
+  In this case, $\mathcal{T}$ is unique.
+\end{lm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{If $\mathcal{B}$ is a basis for a topology then $\bigcup
+    \mathcal{B}
+    = X$}
+  \begin{proof}
+    \step{<2>1}{\assume{$\mathcal{B}$ is a basis for the topology
+        $\mathcal{T}$}}
+    \step{<2>2}{\pflet{$x \in X$}}
+    \step{<2>3}{There exists $B \in \mathcal{B}$ such that $x \in B$}
+    \begin{proof}
+      \pf\ From the definition of basis, since $X \in \mathcal{T}$.
+      (\stepref{<2>1}, \stepref{<2>2}).
+    \end{proof}
+  \end{proof}
+  \step{<1>2}{If $\mathcal{B}$ is a basis for a topology then it satisfies
+    condition 2}
+  \begin{proof}
+    \step{<2>1}{\assume{$\mathcal{B}$ is a basis for the topology
+        $\mathcal{T}$}}
+    \step{<2>2}{\pflet{$B_1, B_2 \in \mathcal{B}$}}
+    \step{<2>3}{$B_1, B_2 \in \mathcal{T}$}
+    \begin{proof}
+      \pf\ From the definition of basis (\stepref{<2>1}, \stepref{<2>2}).
+    \end{proof}
+    \step{<2>4}{$B_1 \cap B_2 \in \mathcal{T}$}
+    \begin{proof}
+      \pf\ By the definition of topology, the open sets in $\mathcal{T}$ are
+      closed under binary intersection (\stepref{<2>1}, \stepref{<2>3})
+    \end{proof}
+    \step{<2>5}{For all $x \in B_1 \cap B_2$, there exists $B_3 \in
+      \mathcal{B}$
+      such that $x \in B_3 \subseteq B_1 \cap B_2$}
+    \begin{proof}
+      \pf\ From the definition of basis (\stepref{<2>1}, \stepref{<2>4})
+    \end{proof}
+  \end{proof}
+  \step{<1>3}{If $\mathcal{B}$ satisfies conditions 1 and 2 then $\mathcal{T}
+    =
+    \{
+    U \subseteq X : \forall x \in U. \exists B \in \mathcal{B}. x \in B
+    \subseteq U \}$ is a topology and $\mathcal{B}$ is a basis for
+    $\mathcal{T}$.}
+  \begin{proof}
+    \step{<2>1}{\assume{$\mathcal{B}$ satisfies conditions 1 and 2}}
+    \step{<2>2}{$X \in \mathcal{T}$}
+    \begin{proof}
+      \pf\ For all $x \in X$, there exists $B \in \mathcal{B}$ such that $x
+      \in
+      B \subseteq X$ by condition 1 (\stepref{<2>1}).
+    \end{proof}
+    \step{<2>3}{For all $\mathcal{A} \subseteq \mathcal{T}$, we have $\bigcup
+      \mathcal{A} \in \mathcal{T}$}
+    \begin{proof}
+      \step{<3>1}{\pflet{$\mathcal{A} \subseteq \mathcal{T}$}}
+      \step{<3>2}{\pflet{$x \in \bigcup \mathcal{A}$}}
+      \step{<3>3}{\pick\ $U \in \mathcal{A}$ such that $x \in U$}
+      \begin{proof}
+        \pf\ From \stepref{<3>2}.
+      \end{proof}
+      \step{<3>4}{\pick\ $B \in \mathcal{B}$ such that $x \in B \subseteq U$}
+      \begin{proof}
+        \pf\ Since $U \in \mathcal{T}$, using the definition of $\mathcal{T}$
+        (\stepref{<3>1}, \stepref{<3>3})
+      \end{proof}
+      \step{<3>5}{$x \in B \subseteq \bigcup \mathcal{A}$}
+      \begin{proof}
+        \pf\ From \stepref{<3>3} and \stepref{<3>4}.
+      \end{proof}
+    \end{proof}
+    \step{<2>4}{For all $U, V \in \mathcal{T}$, we have $U \cap V \in
+      \mathcal{T}$}
+    \begin{proof}
+      \step{<3>1}{\pflet{$U, V \in \mathcal{T}$}}
+      \step{<3>2}{\pflet{$x \in U \cap V$}}
+      \step{<3>3}{\pick\ $B_1, B_2 \in \mathcal{B}$ such that $x \in B_1
+        \subseteq U$ and $x \in B_2 \subseteq V$}
+      \begin{proof}
+        \pf\ From \stepref{<3>1}, \stepref{<3>2} and the definition of
+        $\mathcal{T}$.
+      \end{proof}
+      \step{<3>4}{\pick\ $B_3 \in \mathcal{B}$ such that $x \in B_3 \subseteq
+        B_1
+        \cap B_2$}
+      \begin{proof}
+        \pf\ Using condition 2 (\stepref{<2>1}, \stepref{<3>3}).
+      \end{proof}
+      \step{<3>5}{$x \in B_3 \subseteq U \cap V$}
+      \begin{proof}
+        \pf\ From \stepref{<3>3} and \stepref{<3>4}.
+      \end{proof}
+    \end{proof}
+    \step{<2>5}{$\bigcup \mathcal{B} = X$}
+    \begin{proof}
+      \pf\ This is condition 1 (\stepref{<2>1}).
+    \end{proof}
+    \step{<2>6}{For all $U \in \mathcal{T}$ and $x \in U$, there exists $B
+      \in
+      \mathcal{B}$ such that $x \in B \subseteq U$}
+    \begin{proof}
+      \pf\ Immediate from the definition of $\mathcal{T}$.
+    \end{proof}
+  \end{proof}
+  \step{<1>4}{$\mathcal{T}$ is unique.}
+  \begin{proof}
+    \pf\ From Proposition \ref{prop:topology:basis:open}.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{cor}
+  \label{cor:topology:basis:generate}
+  Let $X$ be a set and $\mathcal{B} \subseteq \mathcal{P} X$ be such that
+  $\bigcup \mathcal{B} = X$ and $\mathcal{B}$ is closed under binary
+  intersection. Then $\mathcal{B}$ is a basis for a unique topology on $X$.
+\end{cor}
+
+\begin{lm}
+  \label{lm:topology:basis:finer}
+  Let $\mathcal{B}$ and $\mathcal{B}'$ be bases for the topologies
+  $\mathcal{T}$ and $\mathcal{T}'$ on $X$ respectively. Then $\mathcal{T}
+  \subseteq \mathcal{T}'$ if and only if, for all $B \in \mathcal{B}$ and $x
+  \in B$, there exists $B' \in \mathcal{B}'$ such that $x \in B' \subseteq B$.
+\end{lm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{If $\mathcal{T} \subseteq \mathcal{T}'$ then, for all $B \in
+    \mathcal{B}$ and $x
+    \in B$, there exists $B' \in \mathcal{B}'$ such that $x \in B' \subseteq
+    B$.}
+  \begin{proof}
+    \step{<2>1}{\assume{$\mathcal{T} \subseteq \mathcal{T}'$}}
+    \step{<2>2}{\pflet{$B \in \mathcal{B}$ and $x \in B$}}
+    \step{<2>3}{$B \in \mathcal{T}$}
+    \begin{proof}
+      \pf\ This holds because $\mathcal{B} \subseteq \mathcal{T}$ by the
+      definition of basis. (\stepref{<2>2})
+    \end{proof}
+    \step{<2>4}{$B \in \mathcal{T}'$}
+    \begin{proof}
+      \pf\ From \stepref{<2>1} and \stepref{<2>3}.
+    \end{proof}
+    \step{<2>5}{There exists $B' \in \mathcal{B}'$ such that $x \in B'
+      \subseteq
+      B$.}
+  \end{proof}
+  \step{<1>2}{If, for all $B \in \mathcal{B}$ and $x
+    \in B$, there exists $B' \in \mathcal{B}'$ such that $x \in B' \subseteq
+    B$,   then $\mathcal{T} \subseteq \mathcal{T}'$.}
+  \begin{proof}
+    \step{<2>1}{\assume{For all $B \in \mathcal{B}$ and $x
+        \in B$, there exists $B' \in \mathcal{B}'$ such that $x \in B'
+        \subseteq B$}}
+    \step{<2>2}{\pflet{$U \in \mathcal{T}$} \prove{$U \in \mathcal{T}'$}}
+    \step{<2>3}{\pflet{$x \in U$}}
+    \step{<2>4}{\pick\ $B \in \mathcal{B}$ such that $x \in B \subseteq U$}
+    \begin{proof}
+      \pf\ Since $\mathcal{B}$ is a basis for $\mathcal{T}$ (\stepref{<2>2},
+      \stepref{<2>3}).
+    \end{proof}
+    \step{<2>5}{\pick\ $B' \in \mathcal{B}'$ such that $x \in B' \subseteq B$}
+    \begin{proof}
+      \pf\ From \stepref{<2>1} and \stepref{<2>4}.
+    \end{proof}
+    \step{<2>6}{$x \in B' \subseteq U$}
+    \begin{proof}
+      \pf\ From \stepref{<2>4} and \stepref{<2>5}.
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ By Proposition \ref{prop:topology:basis:open}.
+    \end{proof}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{df}[Lower Limit Topology]
+  The \emph{lower limit topology} on $\mathbb{R}$ is the one generated by the
+  set of all half-open intervals of the form $[a,b)$. We write $\mathbb{R}_l$
+  for the topological space consisting of $\mathbb{R}$ under this topology.
+
+  We prove this is a topology.
+\end{df}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$\mathcal{B}$ be the set of all half-open intervals of
+      the
+      form $[a,b)$.}}
+  \step{<1>2}{$\bigcup \mathcal{B} = \mathbb{R}$}
+  \begin{proof}
+    \pf\ For all $x \in \mathbb{R}$, we have $x \in [x, x+1) \in \mathcal{B}$.
+  \end{proof}
+  \step{<1>3}{For all $B_1, B_2 \in \mathcal{B}$ and $x \in B_1 \cap B_2$,
+    there
+    exists $B_3 \in \mathcal{B}$ such that $x \in B_3 \subseteq B_1 \cap
+    B_2$.}
+  \begin{proof}
+    \pf\ If $x \in [a,b) \cap [c,d)$ then $x \in [\max(a,c), \min(b,d))
+    \subseteq [a,b) \cap [c,d)$.
+  \end{proof}
+  \qedstep
+  \begin{proof}
+    \pf\ By Lemma \ref{lm:topology:basis:generate}.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{df}[$K$-topology]
+  The \emph{$K$-topology} on $\mathbb{R}$ is the one generated by the set of
+  all
+  open intervals $(a,b)$ and all sets of the form $(a,b) \setminus K$, where
+  $K =
+  \{ 1/n : n \in \mathbb{Z}^+ \}$. We write $\mathbb{R}_K$ for the
+  topological
+  space consisting of $\mathbb{R}$ under this topology.
+
+  We prove this is a topology.
+\end{df}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$\mathcal{B} = \{ (a,b) : a, b \in \mathbb{R}, a < b \}
+      \cup
+      \{ (a,b) \setminus K : a, b \in \mathbb{R}, a < b \}$}}
+  \step{<1>2}{$\bigcup \mathcal{B} = \mathbb{R}$}
+  \begin{proof}
+    \pf\ For all $x \in \mathbb{R}$, we have $x \in (x-1, x+1) \in
+    \mathcal{B}$.
+  \end{proof}
+  \step{<1>3}{For all $B_1, B_2 \in \mathcal{B}$ and $x \in B_1 \cap B_2$,
+    there
+    exists $B_3 \in \mathcal{B}$ such that $x \in B_3 \subseteq B_1 \cap
+    B_2$.}
+  \begin{proof}
+    \step{<2>1}{\pflet{$B_1, B_2 \in \mathcal{B}$ and $x \in B_1 \cap B_2$}
+      \prove{There exists $B_3 \in \mathcal{B}$ such that $x \in B_3
+        \subseteq
+        B_1 \cap B_2$}}
+    \step{<2>2}{\case{$B_1 = (a, b)$, $B_2 = (c, d)$}}
+    \begin{proof}
+      \pf\ Take $B_3 = (\max(a,c), \min(b,d))$
+    \end{proof}
+    \step{<2>3}{\case{$B_1 = (a, b)$, $B_2 = (c, d) \setminus K$}}
+    \begin{proof}
+      \pf\ Take $B_3 = (\max(a,c), \min(b,d)) \setminus K$
+    \end{proof}
+    \step{<2>4}{\case{$B_1 = (a, b) \setminus K$, $B_2 = (c, d)$}}
+    \begin{proof}
+      \pf\ Take $B_3 = (\max(a,c), \min(b,d)) \setminus K$
+    \end{proof}
+    \step{<2>5}{\case{$B_1 = (a, b) \setminus K$, $B_2 = (c, d) \setminus K$}}
+    \begin{proof}
+      \pf\ Take $B_3 = (\max(a,c), \min(b,d)) \setminus K$
+    \end{proof}
+  \end{proof}
+  \qedstep
+  \begin{proof}
+    \pf\ By Lemma \ref{lm:topology:basis:generate}.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{lm}
+  The lower limit topology and the $K$-topology are incomparable.
+\end{lm}
+
+\begin{proof}
+  \pf\ $[0, 1)$ is not open in the $K$-topology. $(-1, 1) \setminus K$ is not
+  open in the lower limit topology, because there is no half-open interval
+  $[a,
+  b)$ such that $0 \in [a,b) \subseteq (-1, 1) \setminus K$. \qed
+\end{proof}
+
+\begin{prop}
+  The set of all singletons is a basis for any discrete space.
+\end{prop}
+
+\begin{proof}
+  \pf\ Easy. \qed
+\end{proof}
+
+ \begin{df}[Line with Two Origins]
+ The \emph{line with two origins} is the set $\mathbb{R} \setminus \{ 0 \}
+ \cup \{ p,q \}$ under the topology generated by the basis consisting of:
+ \begin{itemize}
+   \item all open intervals in $\mathbb{R}$ that do not contain $0$;
+   \item all sets of the form $(-a, 0) \cup \{ p \} \cup (0, a)$ where $a
+> 0$;
+\item all sets of the form $(-a, 0) \cup \{ q \} \cup (0, a)$ where $a > 0$
+ \end{itemize}
+\end{df}
+
+\section{Closed Sets}
+
+\begin{df}[Closed]
+  Let $X$ be a topological space and $A \subseteq X$. Then $A$ is
+  \emph{closed}
+  iff $X \setminus A$ is open.
+\end{df}
+
+\begin{prop}
+  \label{prop:topology:closed:empty}
+  In any topological space $X$, the empty set $\emptyset$ is closed.
+\end{prop}
+
+\begin{proof}
+  \pf\ This holds because $X \setminus \emptyset = X$ is open. \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:topology:closed:whole_set}
+  In any topological space $X$, the set $X$ is closed.
+\end{prop}
+
+\begin{proof}
+  \pf\ This holds because $X \setminus X = \emptyset$ is open. \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:topology:closed:union}
+  The union of two closed sets is closed.
+\end{prop}
+
+\begin{proof}
+  \pf\ If $C$ and $D$ are closed then $X \setminus (C \cup D) = (X \setminus
+  C) \cup (X \setminus D)$ is open. \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:topology:closed:intersection}
+  In any topological space, the intersection of a nonempty set of closed sets
+  is closed.
+\end{prop}
+
+\begin{proof}
+  \pf\ Let $\mathcal{C}$ be a nonempty set of closed sets. Then $X \setminus
+  \bigcap \mathcal{C} = \bigcup \{ X \setminus C : C \in \mathcal{C} \}$ is
+  open. \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:topology:closed:open}
+  Let $X$ be a topological space and $U \subseteq X$. Then $U$ is open if and
+  only if $X \setminus U$ is closed.
+\end{prop}
+
+\begin{proof}
+  \pf\ Immediate from definitions.
+\end{proof}
+
+\begin{thm}
+  \label{thm:topology:closed}
+  Let $X$ be a set and $\mathcal{C} \subseteq \mathcal{P} X$. Suppose:
+  \begin{enumerate}
+    \item $\emptyset, X \in \mathcal{C}$;
+    \item for all nonempty $\mathcal{A} \subseteq \mathcal{C}$, we have
+    $\bigcap
+    \mathcal{A} \in \mathcal{C}$;
+    \item for all $C, D \in \mathcal{C}$, we have $C \cup D \in \mathcal{C}$.
+  \end{enumerate}
+  Then there exists a unique topology on $X$ under which $\mathcal{C}$ is the
+  set of all closed sets, namely
+  \[ \mathcal{T} = \{ U \subseteq X : X \setminus U \in \mathcal{C} \} \]
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$\mathcal{C}$ be a set satisfying 1--3}}
+  \step{<1>2}{\pflet{$\mathcal{T} = \{ X \setminus C : C \in \mathcal{C}
+      \}$}}
+  \step{<1>3}{$\mathcal{T}$ is a topology}
+  \begin{proof}
+    \step{<2>1}{$X \in \mathcal{T}$}
+    \begin{proof}
+      \pf\ $X \setminus X = \emptyset \in \mathcal{C}$ by condition 1.
+    \end{proof}
+    \step{<2>2}{For all $\mathcal{A} \subseteq \mathcal{T}$ we have
+      $\bigcup
+      \mathcal{A} \in \mathcal{T}$.}
+    \begin{proof}
+      \step{<3>1}{\pflet{$\mathcal{A} \subseteq \mathcal{T}$}}
+      \step{<3>2}{\case{$\mathcal{A} = \emptyset$}}
+      \begin{proof}
+        \pf\ In this case, $X \setminus \bigcup \mathcal{A} = X \in
+        \mathcal{C}$ by condition 1.
+      \end{proof}
+      \step{<3>3}{\case{$\mathcal{A}$ is nonempty}}
+      \begin{proof}
+        \pf\ In this case, we have $X \setminus \bigcup \mathcal{A} =
+        \bigcap
+        \{ X \setminus U : U \in \mathcal{A} \} \in \mathcal{C}$ by
+        condition
+        2.
+      \end{proof}
+    \end{proof}
+    \step{<2>3}{For all $U, V \in \mathcal{T}$ we have $U \cap V \in
+      \mathcal{T}$}
+    \begin{proof}
+      \pf\ $X \setminus (U \cap V) = (X \setminus U) \cup (X \setminus V)
+      \in
+      \mathcal{C}$ by condition 3.
+    \end{proof}
+  \end{proof}
+  \step{<1>4}{$\mathcal{C}$ is the set of closed sets.}
+  \begin{proof}
+    \pf
+    \begin{align*}
+      C \text{ is closed} & \Leftrightarrow X \setminus C \in \mathcal{T} \\
+      & \Leftrightarrow X \setminus (X \setminus C) \in \mathcal{C} \\
+      & \Leftrightarrow C \in \mathcal{C}
+    \end{align*}
+  \end{proof}
+  \step{<1>5}{$\mathcal{T}$ is unique.}
+  \begin{proof}
+    \pf\ By Proposition \ref{prop:topology:closed:open}.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{df}[Closed Covering]
+  A \emph{closed covering} of a topological space is a covering in which
+  every member is a closed set.
+\end{df}
+
+\section{Closed Refinements}
+
+\begin{df}[Closed Refinement]
+  Let $X$ be a space and $\mathcal{A}, \mathcal{B} \subseteq \mathcal{P} X$. Then $\mathcal{B}$ is an \emph{closed refinement} of $\mathcal{A}$ iff $\mathcal{B}$ is a refinement of $\mathcal{A}$ and every member of $\mathcal{B}$ is closed.
+\end{df}
+
+\section{Locally Finite Families}
+
+\begin{df}[Locally Finite]
+  Let $X$ be a topological space and $\{ A_i \}_{i \in I}$ a family of
+  subsets of $X$. Then $\{ A_i \}_{i \in I}$ is \emph{locally finite} iff,
+  for all $x \in X$, there exists a neighbourhood $N$ of $x$ such that there
+  are only finitely many $i \in I$ such that $N$ intersects $A_i$.
+\end{df}
+
+\begin{prop}
+  \label{prop:topology:locally_finite:subset}
+  If $\{ A_i \}_{i \in I}$ is locally finite and $B_i \subseteq A_i$ for all
+  $i$ then $\{ B_i \}_{i \in I}$ is locally finite.
+\end{prop}
+
+\begin{proof}
+  \pf\ Immediate from definitions. \qed
+\end{proof}
+
+\begin{prop}
+  Every finite family of open sets is locally finite.
+\end{prop}
+
+\begin{proof}
+  \pf\ Trivial. \qed
+\end{proof}
+
+\section{Countably Locally Finite Sets}
+
+\begin{df}[Countably Locally Finite]
+  Let $X$ be a space. A subset of $\mathcal{P} X$ is \emph{countably locally finite} iff it is the union of countably many locally finite sets.
+\end{df}
+
+\section{Locally Discrete Sets}
+
+\begin{df}[Locally Discrete]
+Let $X$ be a topological space and $\{ A_i \}_{i \in I}$ a family of subsets of $X$. Then $\{ A_i \}_{i \in I}$ is \emph{locally discrete} iff, for all $x \in X$, there exists a neighbourhood $U$ of $x$ such that there is at most one $i \in I$ such that $U$ intersects $A_i$.
+\end{df}
+
+\section{Countably Locally Discrete}
+
+\begin{df}[Countably Locally Discrete]
+Let $X$ be a topological space and $\mathcal{A} \subseteq \mathcal{P} X$. Then the set $\mathcal{A}$ is \emph{countably locally discrete} iff it is the union of countably many locally discrete sets.
+\end{df}
+
+\section{Closure of a Set}
+
+\begin{df}[Closure]
+  Let $X$ be a topological space and $A \subseteq X$. The \emph{closure} of
+  $A$, $\Cl A$ or $\overline{A}$, is the intersection of all closed sets that
+  include $A$.
+\end{df}
+
+\begin{proof}
+  \pf\ This intersection always exists because $X$ is a closed set that
+  includes $A$. \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:topology:closure:A_sub_Abar}
+  Let $X$ be a topological space and $A \subseteq X$. Then $A \subseteq
+  \overline{A}$.
+\end{prop}
+
+\begin{proof}
+  \pf\ Immediate from definitions. \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:topology:closure:closed}
+  Let $X$ be a topological space and $A \subseteq X$. Then $\overline{A}$ is
+  closed.
+\end{prop}
+
+\begin{proof}
+  \pf\ This follows from Proposition \ref{prop:topology:closed:intersection}.
+  \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:topology:closure:minimal}
+  Let $X$ be a topological space and $A, C \subseteq X$. If $A \subseteq C$
+  and $C$ is closed then $\overline{A} \subseteq C$.
+\end{prop}
+
+\begin{proof}
+  \pf\ Immediate from definitions. \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:topology:closure:monotone}
+  Let $X$ be a topological space and $A, B \subseteq X$. If $A \subseteq B$
+  then $\overline{A} \subseteq \overline{B}$.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\assume{$A \subseteq B$}}
+  \step{<1>2}{$A \subseteq \overline{B}$}
+  \begin{proof}
+    \pf\ Proposition \ref{prop:topology:closure:A_sub_Abar}.
+  \end{proof}
+  \step{<1>3}{$\overline{A} \subseteq \overline{B}$}
+  \begin{proof}
+    \pf\ Propositions \ref{prop:topology:closure:closed},
+    \ref{prop:topology:closure:minimal}.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:topology:closure:closed2}
+  Let $X$ be a set and $A \subseteq X$. Then $A$ is closed if and only if $A
+  = \overline{A}$.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{If $A$ is closed then $A = \overline{A}$}
+  \begin{proof}
+    \step{<2>1}{\assume{$A$ is closed}}
+    \step{<2>2}{$A \subseteq \overline{A}$}
+    \begin{proof}
+      \pf\ By Proposition \ref{prop:topology:closure:A_sub_Abar}.
+    \end{proof}
+    \step{<2>3}{$\overline{A} \subseteq A$}
+    \begin{proof}
+      \pf\ By Proposition \ref{prop:topology:closure:minimal} since $A
+      \subseteq A$.
+    \end{proof}
+  \end{proof}
+  \step{<1>2}{If $A = \overline{A}$ then $A$ is closed.}
+  \begin{proof}
+    \pf\ By Proposition \ref{prop:topology:closure:closed}.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{cor}
+  \[ \overline{\emptyset} = \emptyset \]
+\end{cor}
+
+\begin{thm}[Kuratowski Closure Axioms]
+  Let $X$ be a set and $(\overline{\ }) : \mathcal{P} X \rightarrow
+  \mathcal{P} X$ be a function such that:
+  \begin{enumerate}
+    \item $\overline{\emptyset} = \emptyset$
+    \item For all $A \subseteq X$, $A \subseteq \overline{A}$
+    \item For all $A \subseteq X$, $\overline{A} = \overline{\overline{A}}$
+    \item For all $A, B \subseteq X$, $\overline{A \cup B} = \overline{A}
+    \cup
+    \overline{B}$
+  \end{enumerate}
+  Then there exists a unique topology $\mathcal{T}$ on $X$ such that
+  $\overline{A}$ is the closure of $A$ for all $A \in \mathcal{P} X$.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{For all $C, D \subseteq X$, if $C \subseteq D$ then
+    $\overline{C} \subseteq \overline{D}$}
+  \begin{proof}
+    \step{<2>1}{\assume{$C \subseteq D$}}
+    \step{<2>2}{$\overline{C} = \overline{D}$}
+    \begin{proof}
+      \pf
+      \begin{align*}
+        \overline{D} & = \overline{C \cup D} & (\text{\stepref{<2>1}}) \\
+        & = \overline{C} \cup \overline{D} & (\text{axiom 4})
+      \end{align*}
+    \end{proof}
+  \end{proof}
+
+  \step{<1>2}{\pflet{$\mathcal{T}$ be the topology in which a set $C$ is
+      closed iff $\overline{C} = C$.}}
+  \begin{proof}
+    \step{<2>1}{$\overline{\emptyset} = \emptyset$}
+    \begin{proof}
+      \pf\ This is axiom 1.
+    \end{proof}
+    \step{<2>2}{$\overline{X} = X$}
+    \begin{proof}
+      \pf\ By axiom 2.
+    \end{proof}
+    \step{<2>3}{For any set $\mathcal{A}$ of sets $C$ such that $\overline{C}
+      =
+      C$, we have $\overline{\bigcap \mathcal{A}} = \bigcap \mathcal{A}$}
+    \begin{proof}
+      \step{<3>1}{$\overline{\bigcap \mathcal{A}} \subseteq \bigcap
+        \mathcal{A}$}
+      \begin{proof}
+        \step{<4>1}{\pflet{$C \in \mathcal{A}$}}
+        \step{<4>2}{$\overline{\bigcap \mathcal{A}} \subseteq C$}
+        \begin{proof}
+          \pf
+          \begin{align*}
+            \overline{\bigcap \mathcal{A}} & \subseteq \overline{C} &
+            (\text{\stepref{<1>1}}) \\
+            & = C & (\text{\stepref{<4>1}})
+          \end{align*}
+        \end{proof}
+      \end{proof}
+      \qedstep
+    \end{proof}
+    \step{<2>4}{If $\overline{C} = C$ and $\overline{D} = D$ then
+      $\overline{C
+        \cup D} = C \cup D$}
+    \begin{proof}
+      \pf\ By axiom 4.
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ By Theorem \ref{thm:topology:closed}.
+    \end{proof}
+  \end{proof}
+  \step{<1>3}{For all $A \subseteq X$, the closure of $A$ in $\mathcal{T}$ is
+    $\overline{A}$}
+  \begin{proof}
+    \step{<2>1}{$\overline{A}$ is closed}
+    \begin{proof}
+      \pf\ From axiom 3.
+    \end{proof}
+    \step{<2>2}{If $A \subseteq C$ and $C$ is closed then $\overline{A}
+      \subseteq C$}
+    \begin{proof}
+      \pf
+      \begin{align*}
+        C & = \overline{C} & (C \text{ is closed}) \\
+        & = \overline{A \cup C} & (A \subseteq C) \\
+        & = \overline{A} \cup \overline{C} & (\text{axiom 4})
+      \end{align*}
+
+    \end{proof}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{thm}
+  \label{thm:topology:closure:basis}
+  Let $A$ be a subset of the topological space $X$ and $\mathcal{B}$ a basis
+  for $X$. Then $x \in \overline{A}$ if and only if, for all $B \in
+  \mathcal{B}$, if $x \in B$ then $B$ intersects $A$.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{If $x \in \overline{A}$ then, for all $B \in \mathcal{B}$, if
+    $x
+    \in
+    B$ then $B$ intersects $A$.}
+  \begin{proof}
+    \pf\ Immediate from Theorem \ref{thm:topology:closure:neighbourhoods}.
+  \end{proof}
+  \step{<1>2}{If, for all $B \in \mathcal{B}$, if $x \in B$ then $B$
+    intersects
+    $A$, then $x \in \overline{A}$.}
+  \begin{proof}
+    \step{<2>1}{\assume{for all $B \in \mathcal{B}$, if $x \in B$ then $B$
+        intersects $A$.}}
+    \step{<2>2}{\pflet{$U$ be a neighbourhood of $x$}}
+    \step{<2>3}{\pick\ $B \in \mathcal{B}$ such that $x \in B \subseteq U$}
+    \begin{proof}
+      \pf\ $\mathcal{B}$ is a basis.
+    \end{proof}
+    \step{<2>4}{$B$ intersects $A$.}
+    \begin{proof}
+      \pf\ By \stepref{<2>1}.
+    \end{proof}
+    \step{<2>5}{$U$ intersects $A$.}
+    \qedstep
+    \begin{proof}
+      \pf\ By Theorem \ref{thm:topology:closure:neighbourhoods}.
+    \end{proof}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{lm}
+  \label{lm:topology:closure:locally_finite}
+  If $\{ A_i \}_{i \in I}$ is locally finite then so is $\{ \overline{A_i} \}_{i \in I}$.
+\end{lm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$\{A_i\}_{i \in I}$ be a locally finite family of subsets of the space $X$.}}
+  \step{<1>2}{\pflet{$x \in X$}}
+  \step{<1>3}{\pick\ a neighbourhood $U$ of $x$ that intersects only $A_{i_1}$, \ldots, $A_{i_n}$.}
+  \step{<1>4}{$U$ intersects only $\overline{A_{i_1}}$, \ldots, $\overline{A_{i_n}}$.}
+  \qed
+\end{proof}
+
+\begin{lm}
+  \label{lm:topology:closure:locally_finite_union}
+  Let $\{ A_i \}_{i \in I}$ be locally finite. Then $\overline{\bigcup_{i \in I} A_i} = \bigcup_{i \in I} \overline{A_i}$.
+\end{lm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$x \in \overline{\bigcup_{i \in I} A_i}$}}
+  \step{<1>2}{\pick\ a neighbourhood $U$ of $x$ that intersects only $A_{i_1}$, \ldots, $A_{i_n}$.}
+  \step{<1>3}{$x \in \overline{A_{i_1}} \cup \cdots \cup \overline{A_{i_n}}$}
+  \begin{proof}
+    \pf\ If not, then $U - \overline{A_{i_1}} - \cdots - \overline{A_{i_n}}$ would be a neighbourhood of $x$ that does not intersect $\bigcup_{i \in I} A_i$.
+  \end{proof}
+  \qed
+\end{proof}
+
+\section{Interior of a Set}
+
+\begin{df}[Interior]
+  Let $X$ be a topological space and $A \subseteq X$.
+  The \emph{interior} of $A$, $\Int A$, is the union of all open sets
+  included
+  in $A$.
+\end{df}
+
+\begin{lm}
+  If $A \subseteq B$ then $\overline{A} \subseteq \overline{B}$.
+\end{lm}
+
+\begin{proof}
+  \pf\ $\overline{B}$ is a closed set that includes $B$, hence includes $A$.
+  \qed
+\end{proof}
+
+\begin{thm}
+  \label{thm:topology:closure:neighbourhoods}
+  Let $A$ be a subset of the topological space $X$ and $x \in X$. Then $x \in
+  \overline{A}$ if and only if every neighbourhood of $x$ intersects $A$.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \begin{align*}
+    x \notin \overline{A} & \Leftrightarrow \exists C \text{ closed } (A
+    \subseteq C \wedge x \notin C) \\
+    & \Leftrightarrow \exists U \text{ open } (A \subseteq X \setminus U
+    \wedge x
+    \in U) \\
+    & \Leftrightarrow \exists U \text{ open } (A \text{ intersects } U \wedge
+    x
+    \in U) & \qed
+  \end{align*}
+\end{proof}
+
+\begin{lm}
+  \label{lm:topology:closure_interior:complementary}
+  \[ X \setminus \Int A = \overline{X \setminus A} \]
+\end{lm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{$X \setminus \Int A \subseteq \overline{X \setminus A}$}
+  \begin{proof}
+    \step{<2>1}{$X \setminus A \subseteq \overline{X \setminus A}$}
+    \step{<2>2}{$X \setminus \overline{X \setminus A} \subseteq A$}
+    \step{<2>3}{$X \setminus \overline{X \setminus A} \subseteq \Int A$}
+  \end{proof}
+  \step{<1>2}{$\overline{X \setminus A} \subseteq X \setminus \Int A$}
+  \begin{proof}
+    \step{<2>1}{$\Int A \subseteq A$}
+    \step{<2>2}{$X \setminus A \subseteq X \setminus \Int A$}
+    \step{<2>3}{$\overline{X \setminus A} \subseteq X \setminus \Int A$}
+  \end{proof}
+  \qed
+\end{proof}
+
+\section{Boundary}
+
+\begin{df}[Boundary]
+  Let $X$ be a topological space and $A \subseteq X$. The \emph{boundary} of
+  $A$, $\Bd A$, is $\overline{A} \cap \overline{X \setminus A}$.
+\end{df}
+
+\begin{lm}
+  \label{lm:topology:boundary:difference}
+  \[ \Bd A = \overline{A} \setminus \Int A \]
+\end{lm}
+
+\begin{proof}
+  \pf\ From Lemma \ref{lm:topology:closure_interior:complementary}. \qed
+\end{proof}
+
+\begin{lm}
+  \label{lm:topology:boundary:interior_disjoint}
+  $\overline{A} = \Int A \cup \Bd A$
+\end{lm}
+
+\begin{proof}
+  \pf
+  \begin{align*}
+    \Int A \cup \Bd A & = \Int A \cup (\overline{A} \cap (X \setminus \Int
+    A))
+    \\
+    & = \Int A \cup \overline{A} \\
+    & = \overline{A} & \qed
+  \end{align*}
+\end{proof}
+
+\begin{cor}
+  $\Bd A = \emptyset$ iff $A$ is open and closed.
+\end{cor}
+
+\begin{lm}
+  For any set $U$, the following are equivalent:
+  \begin{enumerate}
+    \item $U$ is open.
+    \item $\Bd U \cap U = \emptyset$
+    \item $\Bd U = \overline{U} \setminus U$
+  \end{enumerate}
+\end{lm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{$1 \Rightarrow 3$}
+  \begin{proof}
+    \pf\ From Lemma \ref{lm:topology:boundary:difference}.
+  \end{proof}
+  \step{<1>2}{$3 \Rightarrow 2$}
+  \begin{proof}
+    \pf\ Set theory.
+  \end{proof}
+  \step{<1>3}{$2 \Rightarrow 1$}
+  \begin{proof}
+    \pf
+    \begin{align*}
+      U & \subseteq \overline{U} \\
+      & = \Int U \cup \Bd U & (\text{Lemma
+        \ref{lm:topology:boundary:interior_disjoint}}) \\
+      \therefore U & \subseteq \Int U
+    \end{align*}
+  \end{proof}
+  \qed
+\end{proof}
+
+\section{Limit Points}
+
+\begin{df}[Limit Point]
+  Let $X$ be a topological space, $A \subseteq X$, and $x \in X$. Then $x$ is
+  a
+  \emph{limit point}, \emph{cluster point} or \emph{point of accumulation} of
+  $A$ iff every neighbourhood of $x$ intersects $A$ in a point other than $x$.
+\end{df}
+
+\begin{lm}
+  \label{lm:topology:limit_point:subset}
+  If $A \subseteq B$ then every limit point of $A$ is a limit point of $B$.
+\end{lm}
+
+\begin{proof}
+  \pf\ Immediate from the definition. \qed
+\end{proof}
+
+\begin{thm}
+  Let $A$ be a subset of the topological space $X$. Let $A'$ be the set of
+  all
+  limit points of $A$. Then $\overline{A} = A \cup A'$.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{If $x \in \overline{A}$ and $x \notin A$ then $x \in A'$}
+  \begin{proof}
+    \pf\ in this case, every neighbourhood of $x$ intersects $A$ in a point
+    other than $x$.
+  \end{proof}
+  \step{<1>2}{$A \subseteq \overline{A}$}
+  \begin{proof}
+    \pf\ From the definition of $\overline{A}$.
+  \end{proof}
+  \step{<1>3}{$A' \subseteq \overline{A}$}
+  \begin{proof}
+    \pf\ By Theorem \ref{thm:topology:closure:neighbourhoods}.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{cor}
+  \label{cor:topology:limit_point:closed}
+  A set is closed if and only if it contains all its limit points.
+\end{cor}
+
+\section{Subbases}
+
+\begin{df}[Subbasis]
+  Let $X$ be a topological space. A \emph{subbasis} for the topology on $X$
+  is
+  a set $\mathcal{S} \subseteq \mathcal{P} X$ such that, for every open set
+  $U$
+  and $x \in U$, there exist $S_1, \ldots, S_n \in \mathcal{S}$ such that $x
+  \in S_1 \cap \cdots \cap S_n \subseteq U$. We say the topology is
+  \emph{generated} by $\mathcal{S}$.
+\end{df}
+
+\begin{lm}
+  \label{lm:topology:subbasis:generate}
+  Let $\mathcal{T}$ be a topology on $X$ and $\mathcal{S}
+  \subseteq \mathcal{P} X$.   Then the following are equivalent:
+  \begin{enumerate}
+    \item $\mathcal{S}$ is a subbasis for $\mathcal{T}$.
+    \item The set of all finite intersections of members of $\mathcal{S}$ is
+    a
+    basis for $\mathcal{T}$
+    \item $\mathcal{T}$ is the set of all unions of finite intersections of
+    members of $\mathcal{S}$.
+  \end{enumerate}
+\end{lm}
+
+\begin{proof}
+  \pf\ $1 \Leftrightarrow 2$ holds immediately from the definitions. $2
+  \Leftrightarrow 3$ holds by Proposition \ref{prop:topology:basis:open}. \qed
+\end{proof}
+
+\begin{cor}
+  \label{cor:topology:subbasis:coarsest}
+  If $\mathcal{S}$ is a subbasis for the topology $\mathcal{T}$, then
+  $\mathcal{T}$ is the coarsest topology in which every element of
+  $\mathcal{S}$ is open.
+\end{cor}
+
+\begin{lm}
+  Let $X$ be a set and $\mathcal{S} \subseteq \mathcal{P} X$. Then
+  $\mathcal{S}$ is a subbasis for a topology on $X$ if and only if $\bigcup
+  \mathcal{S} = X$.
+\end{lm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{If $\mathcal{S}$ is a subbasis for a topology on $X$ then
+    $\bigcup
+    \mathcal{S} = X$}
+  \begin{proof}
+    \step{<2>1}{\assume{$\mathcal{S}$ is a subbasis for a topology
+        $\mathcal{T}$
+        on $X$.}}
+    \step{<2>2}{\pflet{$x \in X$}}
+    \step{<2>3}{\pick\ $S_1, \ldots, S_n \in \mathcal{S}$ such that $x \in
+      S_1
+      \cap \cdots \cap S_n \subseteq X$}
+    \begin{proof}
+      \pf\ From the definition of subbasis (\stepref{<2>1}, \stepref{<2>2}).
+    \end{proof}
+    \step{<2>4}{$x \in \bigcup \mathcal{S}$}
+    \begin{proof}
+      \pf\ Immediate from \stepref{<2>3}.
+    \end{proof}
+  \end{proof}
+  \step{<1>2}{If $\bigcup \mathcal{S} = X$ then $\mathcal{S}$ is a subbasis
+    for
+    a
+    topology on $X$}
+  \begin{proof}
+    \step{<2>1}{\assume{$\bigcup \mathcal{S} = X$}
+      \prove{The set of all finite intersections of elements of $\mathcal{S}$
+        is a basis for a topology on $X$.}}
+    \step{<2>2}{\pflet{$\mathcal{B}$ be the set of all finite intersections
+        of
+        elements of $\mathcal{S}$.}}
+    \step{<2>3}{$\bigcup \mathcal{B} = X$}
+    \begin{proof}
+      \pf\ From \stepref{<2>1} and \stepref{<2>2}.
+    \end{proof}
+    \step{<2>4}{For all $B_1, B_2 \in \mathcal{B}$ and $x \in B_1 \cap B_2$,
+      there exists $B_3 \in       \mathcal{B}$ such that $x \in B_3 \subseteq
+      B_1  \cap B_2$}
+    \begin{proof}
+      \pf\ Take $B_3 = B_1 \cap B_2$ (\stepref{<2>2}).
+    \end{proof}
+    \step{<2>5}{$\mathcal{B}$ is a basis for a topology on $X$.}
+    \begin{proof}
+      \pf\ By Lemma \ref{lm:topology:basis:generate}.
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ By Lemma \ref{lm:topology:subbasis:generate}.
+    \end{proof}
+  \end{proof}
+  \qed
+\end{proof}
+
+\section{Convergence}
+
+    \begin{df}[Net]
+  Let $X$ be a topological space. A \emph{net} $(x_\alpha)_{\alpha \in J}$ in
+$X$ consists of a directed set $J$ and a function $x : J \rightarrow X$.
+\end{df}
+
+  \begin{df}[Convergence]
+  Let $(x_\alpha)_{\alpha \in J}$ be a net in the topological space $X$, and
+  $l \in X$. Then the net \emph{converges} to $l$, $x_\alpha \rightarrow l$,
+if and only if, for every neighbourhood $U$ of $l$, there exists $\alpha \in J$
+such that, for all $\beta \geq \alpha$, we have $x_\beta \in U$.
+\end{df}
+
+  \begin{thm}[AC]
+    \label{thm:topology:convergence:closure}
+  Let $X$ be a topological space and $A \subseteq X$. Then $x \in
+\overline{A}$ if and only if there exists a net of points of $A$ converging to
+$x$.
+\end{thm}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{If $x \in \overline{A}$ then there exists a net of points of $A$
+   converging to $x$.}
+ \begin{proof}
+   \step{<2>1}{\pflet{$x \in \overline{A}$}}
+   \step{<2>2}{\pflet{$J$ be the poset of neighbourhoods of $x$ under
+       $\supseteq$.}}
+   \step{<2>3}{For $U \in J$ \pick\ a point $x_U \in U \cap A$}
+   \begin{proof}
+     \pf\ By Theorem \ref{thm:topology:closure:neighbourhoods}
+   \end{proof}
+   \step{<2>4}{$(x_U)_{U \in J}$ is a net}
+   \begin{proof}
+     \pf\ Given $U, V \in J$ we have $U \cap V \in J$ and $U \supseteq U \cup
+V$, $V \supseteq U \cup V$.
+   \end{proof}
+   \step{<2>5}{$x_U \rightarrow x$}
+   \begin{proof}
+     \pf\ For any neighbourhood $U$ of $x$ we have $U \in J$ and if $U
+\supseteq V$ then $x_V \in U$.
+   \end{proof}
+ \end{proof}
+ \step{<1>2}{If there exists a net of points of $A$ converging to $x$ then $x
+   \in \overline{A}$.}
+ \begin{proof}
+   \step{<2>1}{\pflet{$(x_\alpha)_{\alpha \in J}$ be a net of points in $A$ that
+       converges to          $x$.}}
+   \step{<2>2}{\pflet{$U$ be a neighbourhood of $x$}}
+   \step{<2>3}{\pick\ $\alpha \in J$ such that, for all $\beta \geq \alpha$, we
+     have $x_\beta \in U$}
+   \step{<2>4}{$x_\alpha \in U \cap A$}
+   \qedstep
+   \begin{proof}
+     \pf\ By Theorem \ref{thm:topology:closure:neighbourhoods}
+   \end{proof}
+ \end{proof}
+ \qed
+\end{proof}
+
+  \begin{thm}
+    \label{thm:topology:convergence:continuous}
+ Let $X$ and $Y$ be topological spaces and $f : X \rightarrow Y$. Then $f$ is
+ continuous if and only if, for every net $(x_\alpha)_{\alpha \in J}$ in $X$,
+if $x_\alpha \rightarrow x$ then $f(x_\alpha) \rightarrow f(x)$.
+\end{thm}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{If $f$ is continuous and $x_\alpha \rightarrow x$ then
+$f(x_\alpha)
+   \rightarrow f(x)$}
+ \begin{proof}
+   \step{<2>1}{\assume{$f$ is continuous.}}
+   \step{<2>2}{\assume{$x_\alpha \rightarrow x$}}
+   \step{<2>3}{\pflet{$V$ be a neighbourhood of $f(x)$}}
+   \step{<2>4}{$\inv{f}(V)$ is a neighbourhood of $x$}
+   \step{<2>5}{\pick\ $\alpha$ such that, for all $\beta \geq \alpha$, we
+have
+     $x_\beta \in \inv{f}(V)$}
+   \step{<2>6}{For all $\beta \geq \alpha$ we have $f(x_\beta) \in V$}
+ \end{proof}
+ \step{<1>2}{If, for every net $(x_\alpha)$ in $X$, if $x_\alpha \rightarrow
+x$
+   then $f(x_\alpha) \rightarrow f(x)$, then $f$ is continous.}
+ \begin{proof}
+   \step{<2>1}{\assume{for every net $(x_\alpha)$ in $X$, if $x_\alpha
+       \rightarrow x$ then $f(x_\alpha) \rightarrow f(x)$}}
+   \step{<2>2}{\pflet{$A \subseteq X$} \prove{$f(\overline{A}) \subseteq
+       \overline{f(A)}$}}
+   \step{<2>3}{\pflet{$x \in \overline{A}$}}
+   \step{<2>4}{\pick\ a net $(x_\alpha)$ in $A$ such that $x_\alpha
+\rightarrow
+     x$}
+   \begin{proof}
+     \pf\ Theorem \ref{thm:topology:convergence:closure}
+   \end{proof}
+   \step{<2>5}{$f(x_\alpha) \rightarrow f(x)$}
+   \begin{proof}
+     \pf\ By \stepref{<2>1}
+   \end{proof}
+   \step{<2>6}{$f(x) \in \overline{f(A)}$}
+   \begin{proof}
+     \pf\ Theorem \ref{thm:topology:convergence:closure}
+   \end{proof}
+   \qedstep
+   \begin{proof}
+     \pf\ By Theorem \ref{thm:topology:continuous:characterisation}.
+   \end{proof}
+ \end{proof}
+ \qed
+\end{proof}
+
+  \begin{df}[Subnet]
+  Let $(x_\alpha)_{\alpha \in J}$ be a net in $X$. Let $K$ be a directed set
+and $g : K \rightarrow J$ be a monotone function such that $g(K)$ is cofinal in
+$J$. Then the net $(x_{g(\beta)})_{\beta \in K}$ is called a \emph{subnet} of
+$(x_\alpha)$.
+\end{df}
+
+\section{Accumulation Points}
+
+  \begin{df}[Accumulation Point]
+  Let $X$ be a topological space, and $(x_\alpha)_{\alpha \in J}$ a net in $X$,
+and $a \in X$.    Then $a$ is an \emph{accumulation point} of $(x_\alpha)$ iff,
+for every    neighbourhood $U$ of $x$, the set $\{ \alpha \in J : x_\alpha \in
+U \}$ is cofinal in $J$.
+\end{df}
+
+  \begin{lm}
+    \label{lm:topology:accumulation_point:subnet}
+  Let $X$ be a topological space, $(x_\alpha)_{\alpha \in J}$ be a
+nonempty net in $X$
+and $a \in X$. Then $a$ is an accumulation point of $(x_\alpha)$ if and only if
+there exists a subnet of $(x_\alpha)$ that converges to $a$.
+\end{lm}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{If $a$ is an accumulation point of $(x_\alpha)$ then there exists
+a
+   subnet of $(x_\alpha)$ that converges to $a$.}
+ \begin{proof}
+   \step{<2>1}{\assume{$a$ is an accumulation point of $(x_\alpha)$.}}
+   \step{<2>2}{\pflet{$K$ be the poset $\{ (\alpha, U) : \alpha \in J, U
+\text{
+         is a neighbourhood of } a, x_\alpha \in U \}$ under: $(\alpha, U)
+       \leq (\beta, V)$ iff $\alpha \leq \beta$ and $U \subseteq V$.}}
+   \step{<2>3}{$(x_\alpha)_{(\alpha, U) \in K}$ is a subnet of
+     $(x_\alpha)_{\alpha \in J}$}
+   \begin{proof}
+     \step{<3>1}{$K$ is directed.}
+     \begin{proof}
+       \step{<4>1}{\pflet{$(\alpha, U), (\beta, V) \in K$}}
+       \step{<4>2}{\pick\ $\gamma \in J$ such that $\alpha \leq \gamma$ and
+         $\beta \leq \gamma$.}
+       \step{<4>3}{\pick\ $\delta \in J$ such that $\gamma \leq \delta$ and
+         $x_\delta \in U \cap V$}
+       \begin{proof}
+         \pf\ By \stepref{<2>1}.
+       \end{proof}
+       \step{<4>4}{$(\delta, U \cap V) \in K$ and $(\alpha, U) \leq (\delta,
+U
+         \cap V)$, $(\beta, V) \leq (\delta, U \cap V)$}
+     \end{proof}
+     \step{<3>2}{If $(\alpha, U) \leq (\beta, V)$ then $\alpha \leq \beta$}
+     \begin{proof}
+       \pf\ From \stepref{<2>2}.
+     \end{proof}
+     \step{<3>3}{$\{ \alpha : \exists U. (\alpha, U) \in K \}$ is cofinal in
+       $J$}
+     \begin{proof}
+       \pf\ For $\alpha \in J$ we have $(\alpha, X) \in K$, so in fact $\{
+       \alpha : \exists U. (\alpha, U) \in K \} = J$.
+     \end{proof}
+   \end{proof}
+   \step{<2>4}{The subnet converges to $a$.}
+   \begin{proof}
+     \step{<3>1}{\pflet{$U$ be a neighbourhood of $a$.}}
+     \step{<3>2}{\pick\ $\alpha \in J$}
+     \step{<3>3}{\pick\ $\beta \in J$ such that $\alpha \leq \beta$ and
+$x_\beta
+       \in U$}
+     \begin{proof}
+       \pf\ By \stepref{<2>1}.
+     \end{proof}
+     \step{<3>4}{For all $(\gamma, V) \geq (\beta, U)$ we have $x_\gamma \in
+       U$}
+     \begin{proof}
+       \pf\ $x_\gamma \in V \subseteq U$.
+     \end{proof}
+   \end{proof}
+ \end{proof}
+ \step{<1>2}{If there exists a subnet of $(x_\alpha)$ that converges to $a$
+then
+   $a$ is an accumulation point of $(x_\alpha)$.}
+ \begin{proof}
+   \step{<2>1}{\assume{$(x_{g(\beta)})_{\beta \in K}$ converges to $a$}}
+   \step{<2>2}{\pflet{$U$ be a neighbourhoof of $a$}}
+   \step{<2>3}{\pflet{$\alpha \in J$} \prove{There exists $\gamma \geq
+\alpha$
+       such that $x_\gamma \in U$}}
+   \step{<2>4}{\pick\ $\beta \in K$ such that, for all $\beta' \geq \beta$,
+we
+     have $x_{g(\beta')} \in U$}
+   \begin{proof}
+     \pf\ By \stepref{<2>1}.
+   \end{proof}
+   \step{<2>5}{\pick\ $\beta' \in K$ such that $g(\beta') \geq \alpha$}
+   \begin{proof}
+     \pf\ Since $g(K)$ is cofinal in $J$.
+   \end{proof}
+   \step{<2>6}{\pick\ $\beta'' \in K$ such that $\beta \leq \beta''$ and
+$\beta'
+     \leq \beta''$}
+   \begin{proof}
+     \pf\ $K$ is directed.
+   \end{proof}
+   \step{<2>7}{$g(\beta'') \geq \alpha$ and $x_{g(\beta'')} \in U$}
+ \end{proof}
+ \qed
+\end{proof}
+
+\section{Dense Sets}
+
+  \begin{df}[Dense]
+  Let $X$ be a topological space and $A \subseteq X$. Then $A$ is
+  \emph{dense} in $X$ iff $\overline{A} = X$.
+\end{df}
+
+\section{$G_\delta$ Sets}
+
+  \begin{df}[$G_\delta$ Set]
+  A \emph{$G_\delta$ set} is the intersection of a countable set of open sets.
+\end{df}
+
+\begin{df}[$F_\sigma$ Set]
+  Let $X$ be a topological space and $A \subseteq X$. Then $A$ is an
+  \emph{$F_\sigma$-set} iff it is a countable union of closed sets.
+\end{df}
+
+\section{Separated Sets}
+
+  \begin{df}[Separated Sets]
+ Let $X$ be a topological space and $A, B \subseteq X$. Then $A$ and $B$ are
+ \emph{separated} iff $\overline{A} \cap B = \emptyset$ and $A \cap
+ \overline{B} = \emptyset$.
+\end{df}
+
+\section{Coherent Topology}
+
+ \begin{df}[Coherent Topology]
+Let $X_1 \subseteq X_2 \subseteq \cdots$ be a sequence of topological spaces
+such that each $X_n$ is a closed subspace of $X_{n+1}$. Let $X =
+\bigcup_{n=1}^\infty X_n$. Then the topology on $X$ \emph{coherent} with the
+subspaces $X_n$ is the topology defined by: $U \subseteq X$ is open iff $U
+\cap  X_n$ is open in $X_n$ for all $n$.
+\end{df}

@@ -82,20 +82,20 @@
 \contentsline {section}{\numberline {9.2}Limit Point Compactness}{118}{section.9.2}
 \contentsline {section}{\numberline {9.3}Lindel\"{o}f Spaces}{119}{section.9.3}
 \contentsline {section}{\numberline {9.4}Paracompactness}{121}{section.9.4}
-\contentsline {section}{\numberline {9.5}Compactness}{127}{section.9.5}
-\contentsline {section}{\numberline {9.6}Perfect Maps}{138}{section.9.6}
-\contentsline {section}{\numberline {9.7}Sequential Compactness}{140}{section.9.7}
-\contentsline {section}{\numberline {9.8}Local Compactness}{140}{section.9.8}
-\contentsline {section}{\numberline {9.9}Compactifications}{143}{section.9.9}
-\contentsline {chapter}{\numberline {10}Metric Spaces}{150}{chapter.10}
-\contentsline {section}{\numberline {10.1}The Metric Topology}{150}{section.10.1}
-\contentsline {section}{\numberline {10.2}Isometries}{171}{section.10.2}
-\contentsline {section}{\numberline {10.3}Lebesgue Numbers}{171}{section.10.3}
-\contentsline {section}{\numberline {10.4}Uniform Continuity}{174}{section.10.4}
-\contentsline {section}{\numberline {10.5}Locally Metrizable Spaces}{174}{section.10.5}
-\contentsline {chapter}{\numberline {11}Manifolds}{178}{chapter.11}
-\contentsline {section}{\numberline {11.1}Manifolds}{178}{section.11.1}
-\contentsline {chapter}{\numberline {12}Normed Spaces}{181}{chapter.12}
-\contentsline {section}{\numberline {12.1}The Norm on $\mathbb {R}^n$}{181}{section.12.1}
-\contentsline {chapter}{\numberline {13}Topological Groups}{185}{chapter.13}
-\contentsline {section}{\numberline {13.1}Topological Groups}{185}{section.13.1}
+\contentsline {section}{\numberline {9.5}Compactness}{128}{section.9.5}
+\contentsline {section}{\numberline {9.6}Perfect Maps}{140}{section.9.6}
+\contentsline {section}{\numberline {9.7}Sequential Compactness}{141}{section.9.7}
+\contentsline {section}{\numberline {9.8}Local Compactness}{141}{section.9.8}
+\contentsline {section}{\numberline {9.9}Compactifications}{144}{section.9.9}
+\contentsline {chapter}{\numberline {10}Metric Spaces}{151}{chapter.10}
+\contentsline {section}{\numberline {10.1}The Metric Topology}{151}{section.10.1}
+\contentsline {section}{\numberline {10.2}Isometries}{172}{section.10.2}
+\contentsline {section}{\numberline {10.3}Lebesgue Numbers}{172}{section.10.3}
+\contentsline {section}{\numberline {10.4}Uniform Continuity}{175}{section.10.4}
+\contentsline {section}{\numberline {10.5}Locally Metrizable Spaces}{175}{section.10.5}
+\contentsline {chapter}{\numberline {11}Manifolds}{179}{chapter.11}
+\contentsline {section}{\numberline {11.1}Manifolds}{179}{section.11.1}
+\contentsline {chapter}{\numberline {12}Normed Spaces}{182}{chapter.12}
+\contentsline {section}{\numberline {12.1}The Norm on $\mathbb {R}^n$}{182}{section.12.1}
+\contentsline {chapter}{\numberline {13}Topological Groups}{186}{chapter.13}
+\contentsline {section}{\numberline {13.1}Topological Groups}{186}{section.13.1}
