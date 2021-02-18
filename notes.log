@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.10.15)  18 FEB 2021 23:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.10.15)  18 FEB 2021 23:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -435,17 +435,17 @@ Chapter 1.
 
 
 ] [5] [6]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 294.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 297.
 
  (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 294.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 297.
  [7]
 [8] [9] [10] [11]
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 656.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 659.
  [12] <xymatrix 2x2 182> <xymatrix 3x3 235> [13] <xymatrix
 3x3 331> <xymatrix 2x2 182> [14] <xymatrix 2x2 182> [15] <xymatrix 2x2 175>
 <xymatrix 4x4 400> [16] <xymatrix 3x3 330> [17] [18] [19] [20]) [21]
@@ -747,9 +747,6 @@ Package rerunfilecheck Info: File `notes.out' has not changed.
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 56.
  ) 
 Here is how much of TeX's memory you used:
@@ -778,7 +775,7 @@ mf/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf/fonts/type1
 s/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/symbols/msbm
 7.pfb></usr/share/texmf/fonts/type1/public/xypic/xyatip10.pfb></usr/share/texmf
 /fonts/type1/public/xypic/xybtip10.pfb>
-Output written on notes.pdf (202 pages, 825946 bytes).
+Output written on notes.pdf (202 pages, 825954 bytes).
 PDF statistics:
  3009 PDF objects out of 3580 (max. 8388607)
  2664 compressed objects within 27 object streams
