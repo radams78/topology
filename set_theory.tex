@@ -311,17 +311,7 @@ S \cong T$ such that $i = j \circ \phi$.
 
 \begin{proof}
  \pf
- \step{<1>1}{\pflet{$i : S \hookrightarrow A$ be a part of $A$.} \prove{$i
-     \equiv_A i$}}
- \step{<1>2}{$\id{S} : S \cong S$}
- \begin{proof}
-   \pf\ By Proposition \ref{prop:sets:isomorphism:identity}
- \end{proof}
- \step{<1>3}{$i = i \circ \id{S}$}
- \begin{proof}
-   \pf\ By the Right Unit Law.
- \end{proof}
- \qed
+ For any part $i : X \hookrightarrow A$ of $A$ we have $i = i \circ \id{X}$ by the Right Unit Law. \qed
 \end{proof}
 
 \begin{prop}
@@ -334,13 +324,21 @@ S \cong T$ such that $i = j \circ \phi$.
  \step{<1>2}{\assume{$i \equiv_A j$}}
  \step{<1>3}{\pick\ an isomorphism $\phi : S \cong T$ such that $i = j \circ
    \phi$}
+ \begin{proof}
+   \pf\ From \stepref{<1>2}
+ \end{proof}
  \step{<1>4}{$\inv{\phi} : T \cong S$}
  \begin{proof}
    \pf\ By Proposition \ref{prop:sets:isomorphism:inverse}.
  \end{proof}
  \step{<1>5}{$j = i \circ \inv{\phi}$}
  \begin{proof}
-   \pf\ Compose both sides of \stepref{<1>3} with $\inv{\phi}$.
+   \pf
+   \begin{align*}
+     j & = j \circ \id{T} & (\text{Right Unit Law})\\
+     & = j \circ \phi \circ \inv{\phi} & (\text{\stepref{<1>3}})\\
+     & = i \circ \inv{\phi} & (\text{\stepref{<1>3}})
+   \end{align*}
  \end{proof}
  \qed
 \end{proof}
@@ -435,6 +433,14 @@ S \cong T$ such that $i = j \circ \phi$.
   \qed
 \end{proof}
 
+\begin{prop}
+  For any part $i$ of $A$ we have $i \subseteq_A A$.
+\end{prop}
+
+\begin{proof}
+  \pf\ For any part $i$ of $A$, we have $i = \id{A} \circ i$ by the Left Unit Law. \qed
+\end{proof}
+
 \subsection{The Empty Set}
 
 \begin{ax}[Empty Set]
@@ -517,11 +523,15 @@ S \cong T$ such that $i = j \circ \phi$.
   \pf\ From the uniqueness of $!_1$. \qed
 \end{proof}
 
+\subsection{Elements}
+
 \begin{df}[Element]
   An \emph{element} of a set $A$ is a function $1 \rightarrow A$. We write $a
   \in A$ for $a : 1 \rightarrow A$. We write $f(a)$ for $f \circ a$ when $f :
   A \rightarrow B$ and $a \in A$.
 \end{df}
+
+\paragraph{The Axiom of Extensionality}
 
 \begin{ax}[Extensionality]
  Let $A$ and $B$ be sets and $f, g : A \rightarrow B$ be functions. If, for

@@ -1,6 +1,6 @@
 \chapter{Metric Spaces}
 
-\section{The Metric Topology}
+\section{Metrics}
 
 \begin{df}[Metric]
   A \emph{metric} on a set $X$ is a function $d : X \times X \rightarrow
@@ -47,6 +47,8 @@
   \end{proof}
   \qed
 \end{proof}
+
+\section{The Metric Topology}
 
 \begin{df}[Metric Topology]
   Let $d$ be a metric on $X$. The \emph{metric topology} on $X$ induced by
@@ -759,6 +761,7 @@ Not every metric space is second countable.
 \end{proof}
 
 \begin{lm}
+\label{lm:metric:metric:addition}
   Addition is a continuous function $\mathbb{R}^2 \rightarrow \mathbb{R}$.
 \end{lm}
 
@@ -1737,6 +1740,190 @@ Let $X$ be a topological space. Then the following are equivalent.
   \end{proof}
 \end{proof}
 \qed
+\end{proof}
+
+\begin{thm}[AC]
+\label{thm:metric:paracompact_Hausdorff:partition_of_unity}
+  Let $X$ be a paracompact Hausdorff space. Let $\{ U_\alpha \}_{\alpha \in J}$ be an open covering of $X$. Then there exists a partition of unity on $X$ dominated by $\{ U_\alpha \}_{\alpha \in J}$.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pick\ a locally finite open cover $\{ V_\alpha \}_{\alpha \in J}$ of $X$ such that $\overline{V_\alpha} \subseteq U_\alpha$ for all $\alpha$.}
+  \begin{proof}
+    \pf\ By the Shrinking Lemma.
+  \end{proof}
+  \step{<1>2}{\pick\ a locally finite open cover $\{ W_\alpha \}_{\alpha \in J}$ of $X$ such that $\overline{W_\alpha} \subseteq V_\alpha$ for all $\alpha$.}
+  \begin{proof}
+    \pf\ By the Shrinking Lemma and \stepref{<1>1}.
+  \end{proof}
+  \step{<1>3}{For $\alpha \in J$, \pick\ a continuous $\psi_\alpha : X \rightarrow [0,1]$ such that $\psi_\alpha(\overline{W_\alpha}) = \{1\}$ and $\psi_\alpha(X \setminus V_\alpha) = \{ 0 \}$.}
+  \begin{proof}
+    \step{<2>1}{\pflet{$\alpha \in J$}}
+    \step{<2>2}{$X$ is normal.}
+    \begin{proof}
+      \pf\ Theorem \ref{thm:topology:paracompact:Hausdorff_normal}.
+    \end{proof}
+    \step{<2>3}{$\overline{W_\alpha}$ and $X \setminus V_\alpha$ are disjoint.}
+    \begin{proof}
+      \pf\ From \stepref{<1>2}.
+    \end{proof}
+    \step{<2>4}{$\overline{W_\alpha}$ is closed.}
+    \begin{proof}
+      \pf\ Proposition \ref{prop:topology:closure:closed}.
+    \end{proof}
+    \step{<2>5}{$X \setminus V_\alpha$ is closed.}
+    \begin{proof}
+      \pf\ Proposition \ref{prop:topology:closed:open}, \stepref{<1>1}.
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ By the Urysohn Lemma.
+    \end{proof}
+  \end{proof}
+  \step{<1>4}{For all $\alpha \in J$ we have $\supp \psi_\alpha \subseteq \overline{V_\alpha}$}
+  \begin{proof}
+    \step{<2>1}{\pflet{$\alpha \in J$}}
+    \step{<2>2}{$\inv{\phi}(\mathbb{R} \setminus \{0\}) \subseteq V_\alpha$}
+    \begin{proof}
+      \pf\ \stepref{<1>3}, \stepref{<2>1}
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ Proposition \ref{prop:topology:closure:monotone}.
+    \end{proof}
+  \end{proof}
+  \step{<1>5}{$\{ \overline{V_\alpha} \}_{\alpha \in J}$ is locally finite.}
+  \begin{proof}
+    \pf\ Lemma \ref{lm:topology:closure:locally_finite}, \stepref{<1>1}.
+  \end{proof}
+  \step{<1>6}{$\{ \supp \psi_\alpha \}_{\alpha \in J}$ is locally finite.}
+  \begin{proof}
+    \pf\ Proposition \ref{prop:topology:locally_finite:subset}, \stepref{<1>4}, \stepref{<1>5}.
+  \end{proof}
+  \step{<1>7}{For $x \in X$, there exists $\alpha \in J$ such thot $\psi_\alpha(x) > 0$.}
+  \begin{proof}
+    \pf\ \stepref{<1>1}, \stepref{<1>3}.
+  \end{proof}
+  \step{<1>8}{\pflet{$\Psi : X \rightarrow \mathbb{R}$ with $\Psi(x) = \sum_{\alpha \in J} \psi_\alpha(x)$}}
+  \begin{proof}
+    \step{<2>1}{For all $x \in X$ there are only finitely many $\alpha$ such that $\psi_\alpha(x) \neq 0$.}
+    \begin{proof}
+      \step{<3>1}{\pflet{$x \in X$}}
+      \step{<3>2}{\pick\ a neighbourhood $U$ of $x$ that intersects only finitely many $V_\alpha$, say $V_{\alpha_1}$, \ldots, $V_{\alpha_n}$}
+      \begin{proof}
+        \pf\ \stepref{<1>1}, \stepref{<3>1}
+      \end{proof}
+      \step{<3>3}{If $\psi_\alpha(x) \neq 0$ then $\alpha$ is one of $\alpha_1$, \ldots, $\alpha_n$.}
+      \begin{proof}
+        \step{<4>1}{\assume{$\psi_\alpha(x) \neq 0$}}
+        \step{<4>2}{$x \in V_\alpha$}
+        \begin{proof}
+          \pf\ \stepref{<1>3}, \stepref{<4>1}
+        \end{proof}
+        \step{<4>3}{$U$ intersects $V_\alpha$}
+        \begin{proof}
+          \pf\ \stepref{<3>2}, \stepref{<4>2}
+        \end{proof}
+        \qedstep
+        \begin{proof}
+          \pf\ By \stepref{<3>2}
+        \end{proof}
+      \end{proof}
+    \end{proof}
+  \end{proof}
+  \step{<1>9}{$\Psi$ is continuous.}
+  \begin{proof}
+    \step{<2>1}{For $x \in X$, \pick\ an open neighbourhood $W_x$ of $x$ that intersects $\supp \psi_\alpha$ for only finitely many $\alpha$.}
+    \begin{proof}
+      \pf\ \stepref{<1>6}
+    \end{proof}
+    \step{<2>2}{For all $x \in X$ we have $\Psi \restriction W_x$ is continuous.}
+    \begin{proof}
+      \step{<3>1}{\pflet{$x \in X$}}
+      \step{<3>2}{$\alpha_1$, \ldots, $\alpha_n$ be the values of $\alpha$ such that $W_x$ intersects $\supp \psi_\alpha$}
+      \begin{proof}
+        \pf\ \stepref{<2>1}
+      \end{proof}
+      \step{<3>3}{For $y \in W_x$ we have $\Psi(y) = \sum_{i=1}^n \psi_{\alpha_i}(y)$}
+      \begin{proof}
+        \step{<4>1}{\pflet{$y \in W_x$}}
+        \step{<4>2}{For $\alpha \neq \alpha_1, \ldots, \alpha_n$ we have $\psi_\alpha(y) = 0$}
+        \begin{proof}
+          \step{<5>1}{\pflet{$\alpha \in J \setminus \{ \alpha_1, \ldots, \alpha_n \}$}}
+          \step{<5>2}{$y \notin \supp \psi_\alpha$}
+          \begin{proof}
+            \pf\ \stepref{<3>2}, \stepref{<4>1}, \stepref{<5>1}
+          \end{proof}
+          \step{<5>3}{$\psi_\alpha(y) = 0$}
+          \begin{proof}
+            \pf\ Proposition \ref{prop:topology:closure:A_sub_Abar}, \stepref{<5>2}
+          \end{proof}
+        \end{proof}
+      \end{proof}
+      \qedstep
+      \begin{proof}
+        \pf\ Theorem \ref{thm:topology:continuous:composite}, Lemma \ref{lm:metric:metric:addition}, \stepref{<1>3}.
+      \end{proof}
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ Theorem \ref{thm:topology:continuous:local}.
+    \end{proof}
+  \end{proof}
+  \step{<1>10}{$\Psi(x) > 0$ for all $x \in X$.}
+  \begin{proof}
+    \step{<2>1}{\pflet{$x \in X$}}
+    \step{<2>2}{\pick\ $\alpha \in J$ such that $x \in W_\alpha$}
+    \begin{proof}
+      \pf\ \stepref{<1>2}, \stepref{<2>1}
+    \end{proof}
+    \step{<2>3}{$\psi_\alpha(x) = 1$}
+    \begin{proof}
+      \pf\ \stepref{<1>3}, \stepref{<2>2}
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ \stepref{<1>3}, \stepref{<1>8}, \stepref{<2>3}
+    \end{proof}
+  \end{proof}
+  \step{<1>11}{For $\alpha \in J$, \pflet{$\phi_\alpha(x) = \psi_\alpha(x) / \Psi(x)$}}
+  \begin{proof}
+    \pf\ $\Psi(x) \neq 0$ by \stepref{<1>10}
+  \end{proof}
+  \step{<1>12}{$\{ \phi_\alpha \}_{\alpha \in J}$ is a partition of unity dominated by $\{ U_\alpha \}_{\alpha \in J}$.}
+  \begin{proof}
+    \step{<2>1}{For all $\alpha \in J$ we have $\supp \phi_\alpha = \supp \psi_\alpha$}
+    \begin{proof}
+      \step{<3>1}{\pflet{$\alpha \in J$}}
+      \step{<3>2}{For all $x \in X$ we have $\phi_\alpha(x) = 0$ iff $\psi_\alpha(x) = 0$}
+      \begin{proof}
+        \pf\ From \stepref{<1>11}
+      \end{proof}
+    \end{proof}
+    \step{<2>2}{For all $\alpha \in J$ we have $\supp \phi_\alpha \subseteq U_\alpha$.}
+    \begin{proof}
+      \step{<3>1}{\pflet{$\alpha \in J$}}
+      \step{<3>2}{$\supp \phi_\alpha \subseteq U_\alpha$}
+      \begin{proof}
+        \pf
+        \begin{align*}
+          \supp \phi_\alpha & = \supp \psi_\alpha & (\text{\stepref{<2>1}}) \\
+          & \subseteq \overline{V_\alpha} & (\text{\stepref{<1>4}, \stepref{<3>1}})\\
+          & \subseteq U_\alpha & (\text{\stepref{<1>1}, \stepref{<3>1}})
+        \end{align*}
+      \end{proof}
+    \end{proof}
+    \step{<2>3}{$\{ \supp\ \phi_\alpha \}_{\alpha \in J}$ is locally finite.}
+    \begin{proof}
+      \pf\ \stepref{<1>6}, \stepref{<2>1}
+    \end{proof}
+    \step{<2>4}{For all $x \in X$ we have $\sum_{\alpha \in J} \phi_\alpha(x) = 1$}
+    \begin{proof}
+      \pf\ \stepref{<1>8}, \stepref{<1>11}
+    \end{proof}
+  \end{proof}
+  \qed
 \end{proof}
 
 \section{Isometries}
