@@ -6,99 +6,99 @@
 \contentsline {section}{\numberline {1.5}Retractions and Sections}{5}
 \contentsline {section}{\numberline {1.6}Identity Functions}{6}
 \contentsline {subsection}{\numberline {1.6.1}Isomorphisms}{7}
-\contentsline {subsection}{\numberline {1.6.2}Parts of a Set}{7}
+\contentsline {subsection}{\numberline {1.6.2}Parts of a Set}{8}
 \contentsline {subsection}{\numberline {1.6.3}The Empty Set}{9}
 \contentsline {subsection}{\numberline {1.6.4}The Terminal Set}{10}
-\contentsline {subsection}{\numberline {1.6.5}Elements}{10}
-\contentsline {paragraph}{The Axiom of Extensionality}{10}
-\contentsline {subsection}{\numberline {1.6.6}Products}{11}
+\contentsline {subsection}{\numberline {1.6.5}Elements}{11}
+\contentsline {paragraph}{The Axiom of Extensionality}{11}
+\contentsline {subsection}{\numberline {1.6.6}Products}{12}
 \contentsline {subsection}{\numberline {1.6.7}Coproducts}{12}
 \contentsline {subsection}{\numberline {1.6.8}Equalizers}{12}
-\contentsline {subsection}{\numberline {1.6.9}Coequalizers}{12}
+\contentsline {subsection}{\numberline {1.6.9}Coequalizers}{13}
 \contentsline {subsection}{\numberline {1.6.10}Pullbacks}{13}
 \contentsline {subsection}{\numberline {1.6.11}Function Sets}{15}
-\contentsline {subsection}{\numberline {1.6.12}The Subset Classifier}{15}
+\contentsline {subsection}{\numberline {1.6.12}The Subset Classifier}{16}
 \contentsline {section}{\numberline {1.7}The Basics}{18}
 \contentsline {section}{\numberline {1.8}Refinements}{19}
-\contentsline {section}{\numberline {1.9}Order Theory}{19}
-\contentsline {chapter}{\numberline {2}Real Analysis}{22}
-\contentsline {chapter}{\numberline {3}Topological Spaces}{23}
-\contentsline {section}{\numberline {3.1}Topologies}{23}
-\contentsline {section}{\numberline {3.2}Neighbourhoods}{24}
-\contentsline {section}{\numberline {3.3}Open Refinements}{26}
-\contentsline {section}{\numberline {3.4}Local Bases}{26}
-\contentsline {section}{\numberline {3.5}Bases}{26}
-\contentsline {section}{\numberline {3.6}Closed Sets}{31}
-\contentsline {section}{\numberline {3.7}Closed Refinements}{32}
-\contentsline {section}{\numberline {3.8}Locally Finite Families}{32}
-\contentsline {section}{\numberline {3.9}Countably Locally Finite Sets}{32}
-\contentsline {section}{\numberline {3.10}Locally Discrete Sets}{33}
-\contentsline {section}{\numberline {3.11}Countably Locally Discrete}{33}
-\contentsline {section}{\numberline {3.12}Closure of a Set}{33}
-\contentsline {section}{\numberline {3.13}Interior of a Set}{36}
-\contentsline {section}{\numberline {3.14}Boundary}{37}
-\contentsline {section}{\numberline {3.15}Limit Points}{38}
-\contentsline {section}{\numberline {3.16}Subbases}{38}
-\contentsline {section}{\numberline {3.17}Convergence}{39}
-\contentsline {section}{\numberline {3.18}Accumulation Points}{41}
-\contentsline {section}{\numberline {3.19}Dense Sets}{42}
-\contentsline {section}{\numberline {3.20}$G_\delta $ Sets}{42}
-\contentsline {section}{\numberline {3.21}Separated Sets}{42}
-\contentsline {section}{\numberline {3.22}Coherent Topology}{42}
-\contentsline {chapter}{\numberline {4}Constructions of Topological Spaces}{43}
-\contentsline {section}{\numberline {4.1}The Order Topology}{43}
-\contentsline {section}{\numberline {4.2}The Product Topology}{47}
-\contentsline {section}{\numberline {4.3}The Subspace Topology}{48}
-\contentsline {section}{\numberline {4.4}The Box Topology}{52}
-\contentsline {section}{\numberline {4.5}The Quotient Topology}{54}
-\contentsline {chapter}{\numberline {5}Functions Between Topological Spaces}{58}
-\contentsline {section}{\numberline {5.1}Open Maps}{58}
-\contentsline {section}{\numberline {5.2}Continuous Functions}{59}
-\contentsline {subsection}{\numberline {5.2.1}Homeomorphisms}{63}
-\contentsline {subsection}{\numberline {5.2.2}Strongly Continuous Functions}{64}
-\contentsline {section}{\numberline {5.3}Closed Maps}{65}
-\contentsline {section}{\numberline {5.4}Local Homeomorphism}{65}
-\contentsline {section}{\numberline {5.5}Retracts}{65}
-\contentsline {chapter}{\numberline {6}Separation Axioms}{66}
-\contentsline {section}{\numberline {6.1}$T_1$ Spaces}{66}
-\contentsline {section}{\numberline {6.2}Hausdorff Spaces}{67}
-\contentsline {section}{\numberline {6.3}Regular Spaces}{69}
-\contentsline {section}{\numberline {6.4}Completely Regular Spaces}{72}
-\contentsline {section}{\numberline {6.5}Normal Spaces}{75}
-\contentsline {section}{\numberline {6.6}Completely Normal Spaces}{87}
-\contentsline {section}{\numberline {6.7}Perfectly Normal Spaces}{90}
-\contentsline {chapter}{\numberline {7}Countability Axioms}{91}
-\contentsline {section}{\numberline {7.1}The First Countability Axiom}{91}
-\contentsline {section}{\numberline {7.2}Separable Spaces}{94}
-\contentsline {section}{\numberline {7.3}The Second Countability Axiom}{96}
-\contentsline {chapter}{\numberline {8}Connectedness}{100}
-\contentsline {section}{\numberline {8.1}Connected Spaces}{100}
-\contentsline {section}{\numberline {8.2}Components and Local Connectedness}{106}
-\contentsline {section}{\numberline {8.3}Path Connectedness}{107}
-\contentsline {section}{\numberline {8.4}Connected Subspaces of Euclidean Space}{110}
-\contentsline {section}{\numberline {8.5}Local Connectedness}{112}
-\contentsline {section}{\numberline {8.6}Local Path Connectedness}{114}
-\contentsline {section}{\numberline {8.7}Weak Local Connectedness}{117}
-\contentsline {chapter}{\numberline {9}Compact Spaces}{118}
-\contentsline {section}{\numberline {9.1}Countable Compactness}{118}
-\contentsline {section}{\numberline {9.2}Limit Point Compactness}{118}
-\contentsline {section}{\numberline {9.3}Lindel\"{o}f Spaces}{119}
-\contentsline {section}{\numberline {9.4}Paracompactness}{121}
-\contentsline {section}{\numberline {9.5}Compactness}{130}
-\contentsline {section}{\numberline {9.6}Perfect Maps}{142}
-\contentsline {section}{\numberline {9.7}Sequential Compactness}{144}
-\contentsline {section}{\numberline {9.8}Local Compactness}{144}
-\contentsline {section}{\numberline {9.9}Compactifications}{146}
-\contentsline {chapter}{\numberline {10}Metric Spaces}{153}
-\contentsline {section}{\numberline {10.1}Metrics}{153}
-\contentsline {section}{\numberline {10.2}The Metric Topology}{154}
-\contentsline {section}{\numberline {10.3}Isometries}{176}
-\contentsline {section}{\numberline {10.4}Lebesgue Numbers}{176}
-\contentsline {section}{\numberline {10.5}Uniform Continuity}{179}
-\contentsline {section}{\numberline {10.6}Locally Metrizable Spaces}{179}
-\contentsline {chapter}{\numberline {11}Manifolds}{183}
-\contentsline {section}{\numberline {11.1}Manifolds}{183}
-\contentsline {chapter}{\numberline {12}Normed Spaces}{186}
-\contentsline {section}{\numberline {12.1}The Norm on $\mathbb {R}^n$}{186}
-\contentsline {chapter}{\numberline {13}Topological Groups}{190}
-\contentsline {section}{\numberline {13.1}Topological Groups}{190}
+\contentsline {section}{\numberline {1.9}Order Theory}{20}
+\contentsline {chapter}{\numberline {2}Real Analysis}{23}
+\contentsline {chapter}{\numberline {3}Topological Spaces}{24}
+\contentsline {section}{\numberline {3.1}Topologies}{24}
+\contentsline {section}{\numberline {3.2}Neighbourhoods}{25}
+\contentsline {section}{\numberline {3.3}Open Refinements}{27}
+\contentsline {section}{\numberline {3.4}Local Bases}{27}
+\contentsline {section}{\numberline {3.5}Bases}{27}
+\contentsline {section}{\numberline {3.6}Closed Sets}{32}
+\contentsline {section}{\numberline {3.7}Closed Refinements}{33}
+\contentsline {section}{\numberline {3.8}Locally Finite Families}{33}
+\contentsline {section}{\numberline {3.9}Countably Locally Finite Sets}{33}
+\contentsline {section}{\numberline {3.10}Locally Discrete Sets}{34}
+\contentsline {section}{\numberline {3.11}Countably Locally Discrete}{34}
+\contentsline {section}{\numberline {3.12}Closure of a Set}{34}
+\contentsline {section}{\numberline {3.13}Interior of a Set}{37}
+\contentsline {section}{\numberline {3.14}Boundary}{38}
+\contentsline {section}{\numberline {3.15}Limit Points}{39}
+\contentsline {section}{\numberline {3.16}Subbases}{39}
+\contentsline {section}{\numberline {3.17}Convergence}{40}
+\contentsline {section}{\numberline {3.18}Accumulation Points}{42}
+\contentsline {section}{\numberline {3.19}Dense Sets}{43}
+\contentsline {section}{\numberline {3.20}$G_\delta $ Sets}{43}
+\contentsline {section}{\numberline {3.21}Separated Sets}{43}
+\contentsline {section}{\numberline {3.22}Coherent Topology}{43}
+\contentsline {chapter}{\numberline {4}Constructions of Topological Spaces}{44}
+\contentsline {section}{\numberline {4.1}The Order Topology}{44}
+\contentsline {section}{\numberline {4.2}The Product Topology}{48}
+\contentsline {section}{\numberline {4.3}The Subspace Topology}{49}
+\contentsline {section}{\numberline {4.4}The Box Topology}{53}
+\contentsline {section}{\numberline {4.5}The Quotient Topology}{55}
+\contentsline {chapter}{\numberline {5}Functions Between Topological Spaces}{59}
+\contentsline {section}{\numberline {5.1}Open Maps}{59}
+\contentsline {section}{\numberline {5.2}Continuous Functions}{60}
+\contentsline {subsection}{\numberline {5.2.1}Homeomorphisms}{64}
+\contentsline {subsection}{\numberline {5.2.2}Strongly Continuous Functions}{65}
+\contentsline {section}{\numberline {5.3}Closed Maps}{66}
+\contentsline {section}{\numberline {5.4}Local Homeomorphism}{66}
+\contentsline {section}{\numberline {5.5}Retracts}{66}
+\contentsline {chapter}{\numberline {6}Separation Axioms}{67}
+\contentsline {section}{\numberline {6.1}$T_1$ Spaces}{67}
+\contentsline {section}{\numberline {6.2}Hausdorff Spaces}{68}
+\contentsline {section}{\numberline {6.3}Regular Spaces}{70}
+\contentsline {section}{\numberline {6.4}Completely Regular Spaces}{73}
+\contentsline {section}{\numberline {6.5}Normal Spaces}{76}
+\contentsline {section}{\numberline {6.6}Completely Normal Spaces}{88}
+\contentsline {section}{\numberline {6.7}Perfectly Normal Spaces}{91}
+\contentsline {chapter}{\numberline {7}Countability Axioms}{92}
+\contentsline {section}{\numberline {7.1}The First Countability Axiom}{92}
+\contentsline {section}{\numberline {7.2}Separable Spaces}{95}
+\contentsline {section}{\numberline {7.3}The Second Countability Axiom}{97}
+\contentsline {chapter}{\numberline {8}Connectedness}{101}
+\contentsline {section}{\numberline {8.1}Connected Spaces}{101}
+\contentsline {section}{\numberline {8.2}Components and Local Connectedness}{107}
+\contentsline {section}{\numberline {8.3}Path Connectedness}{108}
+\contentsline {section}{\numberline {8.4}Connected Subspaces of Euclidean Space}{111}
+\contentsline {section}{\numberline {8.5}Local Connectedness}{113}
+\contentsline {section}{\numberline {8.6}Local Path Connectedness}{115}
+\contentsline {section}{\numberline {8.7}Weak Local Connectedness}{118}
+\contentsline {chapter}{\numberline {9}Compact Spaces}{119}
+\contentsline {section}{\numberline {9.1}Countable Compactness}{119}
+\contentsline {section}{\numberline {9.2}Limit Point Compactness}{119}
+\contentsline {section}{\numberline {9.3}Lindel\"{o}f Spaces}{120}
+\contentsline {section}{\numberline {9.4}Paracompactness}{122}
+\contentsline {section}{\numberline {9.5}Compactness}{131}
+\contentsline {section}{\numberline {9.6}Perfect Maps}{143}
+\contentsline {section}{\numberline {9.7}Sequential Compactness}{145}
+\contentsline {section}{\numberline {9.8}Local Compactness}{145}
+\contentsline {section}{\numberline {9.9}Compactifications}{147}
+\contentsline {chapter}{\numberline {10}Metric Spaces}{154}
+\contentsline {section}{\numberline {10.1}Metrics}{154}
+\contentsline {section}{\numberline {10.2}The Metric Topology}{155}
+\contentsline {section}{\numberline {10.3}Isometries}{177}
+\contentsline {section}{\numberline {10.4}Lebesgue Numbers}{177}
+\contentsline {section}{\numberline {10.5}Uniform Continuity}{180}
+\contentsline {section}{\numberline {10.6}Locally Metrizable Spaces}{180}
+\contentsline {chapter}{\numberline {11}Manifolds}{184}
+\contentsline {section}{\numberline {11.1}Manifolds}{184}
+\contentsline {chapter}{\numberline {12}Normed Spaces}{187}
+\contentsline {section}{\numberline {12.1}The Norm on $\mathbb {R}^n$}{187}
+\contentsline {chapter}{\numberline {13}Topological Groups}{191}
+\contentsline {section}{\numberline {13.1}Topological Groups}{191}

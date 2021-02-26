@@ -31,37 +31,44 @@ $h$, and similarly for more than three functions.
 
 \begin{prop}
 \label{lm:sets:injective:comp}
+Let $A$, $B$ and $C$ be sets.
  Let $f : A \rightarrow B$ and $g : B \rightarrow C$. If $f$ and $g$ are
 injective then $g \circ f$ is injective.
 \end{prop}
 
 \begin{proof}
  \pf
- \step{<1>1}{\assume{$f$ is injective.}}
- \step{<1>2}{\assume{$g$ is injective.}}
- \step{<1>3}{\pflet{$X$ be a set and $x, y : X \rightarrow A$.}}
- \step{<1>4}{\assume{$g \circ f \circ x = g \circ f \circ y$.} \prove{$x = y$}}
- \step{<1>5}{$f \circ x = f \circ y$}
+ \step{<1>1}{\pflet{$A, B, C$ be sets.}}
+ \step{<1>2}{\pflet{$f : A \rightarrow B$.}}
+ \step{<1>3}{\pflet{$g : B \rightarrow C$.}}
+ \step{<1>4}{\assume{$f$ is injective.}}
+ \step{<1>5}{\assume{$g$ is injective.}}
+ \step{<1>6}{\pflet{$X$ be a set and $x, y : X \rightarrow A$.}}
+ \step{<1>7}{\assume{$g \circ f \circ x = g \circ f \circ y$} \prove{$x = y$}}
+ \step{<1>8}{$f \circ x = f \circ y$}
  \begin{proof}
-   \pf\ \stepref{<1>2}, \stepref{<1>4}
+   \pf\ \stepref{<1>5}, \stepref{<1>7}
  \end{proof}
- \step{<1>6}{$x = y$}
+ \step{<1>9}{$x = y$}
  \begin{proof}
-   \pf\ \stepref{<1>1}, \stepref{<1>5}
+   \pf\ \stepref{<1>4}, \stepref{<1>8}
  \end{proof}
  \qed
 \end{proof}
 
 \begin{lm}
   \label{lm:sets:injective:compr}
+  Let $A$, $B$ and $C$ be sets.
  Let $f : A \rightarrow B$ and $g : B \rightarrow C$. If $g \circ f$ is
 injective then $f$ is injective.
 \end{lm}
 
 \begin{proof}
  \pf
+ \step{1}{\pflet{$A$, $B$ and $C$ be sets.}}
+ \step{2}{\pflet{$f : A \rightarrow B$ and $g : B \rightarrow C$.}}
  \step{<1>1}{\assume{$g \circ f$ is injective.}}
- \step{<1>2}{\pflet{$X$ be any set and $x, y : X \rightarrow A$}}
+ \step{<1>2}{\pflet{$X$ be any set and $x, y : X \rightarrow A$.}}
  \step{<1>3}{\assume{$f \circ x = f \circ y$}}
  \step{<1>4}{$g \circ f \circ x = g \circ f \circ y$}
  \begin{proof}
