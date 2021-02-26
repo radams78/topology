@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.10.15)  26 FEB 2021 16:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.10.15)  26 FEB 2021 21:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -573,14 +573,11 @@ OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 1])$
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
  4585 strings out of 493029
  58067 string characters out of 6136233
- 173266 words of memory out of 5000000
+ 173267 words of memory out of 5000000
  7975 multiletter control sequences out of 15000+600000
  16756 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -603,7 +600,7 @@ mf/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf/fonts/type1
 s/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/symbols/msbm
 7.pfb></usr/share/texmf/fonts/type1/public/xypic/xyatip10.pfb></usr/share/texmf
 /fonts/type1/public/xypic/xybtip10.pfb>
-Output written on notes.pdf (207 pages, 785790 bytes).
+Output written on notes.pdf (207 pages, 785807 bytes).
 PDF statistics:
  764 PDF objects out of 1000 (max. 8388607)
  526 compressed objects within 6 object streams
