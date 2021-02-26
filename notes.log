@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.10.15)  22 FEB 2021 23:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.10.15)  26 FEB 2021 16:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -420,21 +420,21 @@ Overfull \hbox (48.84775pt too wide) detected at line 824
 \OML/cmm/m/it/10 ^^N[] \OT1/cmr/m/n/10 = []
  []
 
-[128] [129] [130]
-Overfull \hbox (0.47768pt too wide) in paragraph at lines 1112--1114
+[128] [129] [130] [131]
+Overfull \hbox (0.47768pt too wide) in paragraph at lines 1207--1209
 \OT1/cmr/bx/n/10 Corollary 9.5.10.1. \OT1/cmr/m/it/10 Let $\OMS/cmsy/m/n/10 f\O
 ML/cmm/m/it/10 X[]\OMS/cmsy/m/n/10 g[]$ \OT1/cmr/m/it/10 be a fam-ily of topo-l
 og-i-cal spaces. If $[][] \OML/cmm/m/it/10 X[]$
  []
 
-[131] [132]
-Overfull \hbox (6.39398pt too wide) in paragraph at lines 1287--1289
+[132] [133]
+Overfull \hbox (6.39398pt too wide) in paragraph at lines 1382--1384
 \OT1/cmr/bx/n/10 Proposition 9.5.15. \OT1/cmr/m/it/10 A topo-log-i-cal space is
  com-pact if and only if ev-ery nonempty
  []
 
-[133]
-Overfull \hbox (2.62741pt too wide) in paragraph at lines 1338--1340
+[134]
+Overfull \hbox (2.62741pt too wide) in paragraph at lines 1433--1435
 []\OT1/cmr/m/sc/10 Proof\OT1/cmr/m/n/10 : Let $\OML/cmm/m/it/10 g\OT1/cmr/m/n/1
 0 (\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 ) = \OML/cmm/m/it/10 f\OT1/cmr/m/n/10 (\OM
 L/cmm/m/it/10 x\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 f[]\OT1/
@@ -444,8 +444,8 @@ cmm/m/it/10 g[]\OT1/cmr/m/n/10 ((\OMS/cmsy/m/n/10 ^^@1\OML/cmm/m/it/10 ; ^^O\OT
 1/cmr/m/n/10 ))$. 
  []
 
-[134] [135] [136] [137] [138] [139] [140] [141] [142] [143] [144] [145]
-Overfull \hbox (2.18787pt too wide) in paragraph at lines 2355--2355
+[135] [136] [137] [138] [139] [140] [141] [142] [143] [144] [145] [146]
+Overfull \hbox (2.18787pt too wide) in paragraph at lines 2450--2450
 []$\OML/cmm/m/it/10 Y \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 X \OMS/cmsy/m/n/10 [ f
 1g$ \OT1/cmr/m/n/10 un-der the topol-ogy $\OMS/cmsy/m/n/10 T \OT1/cmr/m/n/10 = 
 \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 U \OMS/cmsy/m/n/10 ^^R \OML/cmm/m/it/10 X \O
@@ -453,7 +453,7 @@ T1/cmr/m/n/10 : \OML/cmm/m/it/10 U[]X\OMS/cmsy/m/n/10 g [
  []
 
 
-Overfull \hbox (1.25256pt too wide) in paragraph at lines 2422--2422
+Overfull \hbox (1.25256pt too wide) in paragraph at lines 2517--2517
 []$[] \OMS/cmsy/m/n/10 A \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 Y \OMS/cmsy/m/n/10 
 n \OT1/cmr/m/n/10 ([]\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 D \OMS/cmsy/m/n/10 ^^R 
 \OML/cmm/m/it/10 X \OT1/cmr/m/n/10 : \OML/cmm/m/it/10 D[]; Y \OMS/cmsy/m/n/10 n
@@ -461,16 +461,16 @@ n \OT1/cmr/m/n/10 ([]\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 D \OMS/cmsy/m/n/10 ^^R
 /n/10 :
  []
 
-[146] [147] [148] [149] [150]) [151]
+[147] [148] [149] [150] [151]) [152]
 \openout2 = `metric.aux'.
 
  (./metric.tex
 Chapter 10.
-[152
+[153
 
 
 
-] [153] [154] [155] [156] [157] [158] [159] [160] [161]
+] [154] [155] [156] [157] [158] [159] [160] [161] [162]
 Overfull \hbox (2.36778pt too wide) in paragraph at lines 878--878
 []\OT1/cmr/m/sc/10 Pick $\OML/cmm/m/it/10 ^^N > \OT1/cmr/m/n/10 0$ such that, f
 or all $\OML/cmm/m/it/10 x[] \OMS/cmsy/m/n/10 2 \OML/cmm/m/it/10 X$\OT1/cmr/m/n
@@ -487,7 +487,7 @@ Overfull \hbox (0.7718pt too wide) in paragraph at lines 936--936
 be a mono-tone in-creas-ing se-quence of real num-bers bounded
  []
 
-[162]
+[163]
 Overfull \hbox (6.28944pt too wide) in paragraph at lines 971--973
 []\OT1/cmr/m/sc/10 Proof\OT1/cmr/m/n/10 : $[][] \OMS/cmsy/m/n/10 j\OML/cmm/m/it
 /10 a[]\OMS/cmsy/m/n/10 j$ \OT1/cmr/m/n/10 is a mono-tone in-creas-ing se-quenc
@@ -501,46 +501,46 @@ m/n/10 is a mono-tone in-creas-ing se-quence bounded above by $2 [][] \OMS/cmsy
 /m/n/10 j\OML/cmm/m/it/10 a[]\OMS/cmsy/m/n/10 j$\OT1/cmr/m/n/10 . 
  []
 
-[163] [164] [165] [166] [167] [168] [169] [170] [171]
+[164] [165] [166] [167] [168] [169] [170] [171] [172]
 
 LaTeX Warning: Reference `lm:topology:metric:locally_finite_open_refinement' on
- page 172 undefined on input line 1700.
+ page 173 undefined on input line 1700.
 
-[172]
+[173]
 Overfull \hbox (2.41472pt too wide) in paragraph at lines 1747--1748
 \OT1/cmr/bx/n/10 Theorem 10.2.58 \OT1/cmr/m/n/10 (AC)\OT1/cmr/bx/n/10 . \OT1/cm
 r/m/it/10 Let $\OML/cmm/m/it/10 X$ \OT1/cmr/m/it/10 be a para-com-pact Haus-dor
 ff space. Let $\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 U[]\OMS/cmsy/m/n/10 g[]$
  []
 
-[173] [174] [175] [176] [177] [178] [179] [180]) [181]
+[174] [175] [176] [177] [178] [179] [180] [181]) [182]
 \openout2 = `manifolds.aux'.
 
  (./manifolds.tex
 Chapter 11.
-[182
+[183
 
 
 
-] [183]) [184]
+] [184]) [185]
 \openout2 = `normed_spaces.aux'.
 
  (./normed_spaces.tex
 Chapter 12.
-[185
+[186
 
 
 
-] [186] [187]) [188]
+] [187] [188]) [189]
 \openout2 = `topological_groups.aux'.
 
  (./topological_groups.tex
 Chapter 13.
-[189
+[190
 
 
 
-] [190] [191] [192] <xymatrix 3x2 305> [193] [194] [195] [196] [197]
+] [191] [192] [193] <xymatrix 3x2 305> [194] [195] [196] [197] [198]
 Overfull \hbox (18.02438pt too wide) in paragraph at lines 764--764
 []\OT1/cmr/m/n/10 Given $\OML/cmm/m/it/10 V[]$\OT1/cmr/m/n/10 , \OT1/cmr/m/sc/1
 0 Pick \OT1/cmr/m/n/10 a sym-met-ric neigh-bour-hood $\OML/cmm/m/it/10 V[]$ \OT
@@ -548,7 +548,7 @@ Overfull \hbox (18.02438pt too wide) in paragraph at lines 764--764
 0 V[]V[] \OMS/cmsy/m/n/10 ^^R
  []
 
-[198] [199]
+[199] [200]
 Overfull \hbox (0.2876pt too wide) in paragraph at lines 927--927
 []$\OML/cmm/m/it/10 k \OT1/cmr/m/n/10 : \OML/cmm/m/it/10 Z[] \OMS/cmsy/m/n/10 !
  \OT1/cmr/m/n/10 [0\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 1]$ be the con-tin-u-ous 
@@ -565,7 +565,7 @@ nd $\OML/cmm/m/it/10 g[]\OT1/cmr/m/n/10 ((1\OML/cmm/m/it/10 =\OT1/cmr/m/n/10 2\
 OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 1])$
  []
 
-[200] [201] [202] [203]) [204] (./notes.aux (./set_theory.aux) (./analysis.aux)
+[201] [202] [203] [204]) [205] (./notes.aux (./set_theory.aux) (./analysis.aux)
 (./topological_spaces.aux) (./constructions.aux) (./topological_functions.aux)
 (./separation.aux) (./countability.aux) (./connectedness.aux) (./compact.aux)
 (./metric.aux) (./manifolds.aux) (./normed_spaces.aux)
@@ -600,10 +600,10 @@ mf/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf/fonts/type1
 s/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/symbols/msbm
 7.pfb></usr/share/texmf/fonts/type1/public/xypic/xyatip10.pfb></usr/share/texmf
 /fonts/type1/public/xypic/xybtip10.pfb>
-Output written on notes.pdf (205 pages, 782269 bytes).
+Output written on notes.pdf (206 pages, 785534 bytes).
 PDF statistics:
- 758 PDF objects out of 1000 (max. 8388607)
- 522 compressed objects within 6 object streams
+ 761 PDF objects out of 1000 (max. 8388607)
+ 524 compressed objects within 6 object streams
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

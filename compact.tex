@@ -893,6 +893,101 @@ Let $X$ be a paracompact Hausdorff space. Let $\{ U_\alpha \}_{\alpha in J}$ be 
   \qed
 \end{proof}
 
+\begin{lm}[Expansion Lemma]
+  Let $\{ B_\alpha \}_{\alpha \in J}$ be a locally finite family of subsets of the paracompact Hausdorff space $X$. Then there exists a locally finite family $\{ U_\alpha \}_{\alpha \in J}$ of open sets such that $B_\alpha \subseteq U_\alpha$ for all $\alpha \in J$.
+\end{lm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$X$ be a paracompact Hausdorff space.}}
+  \step{<1>2}{\pflet{$\{ B_\alpha \}_{\alpha \in J}$ be locally finite}}
+  \step{<1>3}{\pflet{$\mathcal{A} = \{ U \text{ open in } X : U \text{ intersects } B_\alpha \text{ for only finitely many } \alpha \}$}}
+  \step{<1>4}{\pick\ a locally finite open refinement $\mathcal{B}$ of $\mathcal{A}$ that covers $X$.}
+  \begin{proof}
+    \step{<2>1}{Every element of $\mathcal{A}$ is open.}
+    \begin{proof}
+      \pf\ From \stepref{<1>3}.
+    \end{proof}
+    \step{<2>2}{$\mathcal{A}$ covers $X$}
+    \begin{proof}
+      \pf\ From \stepref{<1>2}, \stepref{<1>3}.
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ From \stepref{<1>1}.
+    \end{proof}
+  \end{proof}
+  \step{<1>5}{For $\alpha \in J$, \pflet{$U_\alpha = \bigcup \{ V \in \mathcal{B} : V \cap B_\alpha \neq \emptyset \}$}}
+  \step{<1>6}{$\{ U_\alpha \}_{\alpha \in J}$ is locally finite.}
+  \begin{proof}
+    \step{<2>1}{Every element of $\mathcal{B}$ intersects $B_\alpha$ for only finitely many $\alpha$.}
+    \begin{proof}
+      \step{<3>1}{\pflet{$V \in \mathcal{B}$}}
+      \step{<3>2}{\pick\ $U \in \mathcal{A}$ such that $U \subseteq V$}
+      \begin{proof}
+        \pf\ \stepref{<1>4}, \stepref{<3>1}
+      \end{proof}
+      \step{<3>3}{$U$ intersects $B_\alpha$ for only finitely many $\alpha$}
+      \begin{proof}
+        \pf\ \stepref{<1>3}, \stepref{<3>2}
+      \end{proof}
+      \step{<3>4}{$V$ intersects $B_\alpha$ for only finitely many $\alpha$}
+      \begin{proof}
+        \pf\ \stepref{<3>2}, \stepref{<3>3}
+      \end{proof}
+    \end{proof}
+    \step{<2>2}{\pflet{$x \in X$}}
+    \step{<2>3}{\pick\ an open neighbourhood $W$ of $x$ that intersects only finitely many elements of $\mathcal{B}$, say $V_1$, \ldots, $V_n$.}
+    \begin{proof}
+      \pf\ \stepref{<1>4}, \stepref{<2>2}
+    \end{proof}
+    \step{<2>4}{For $1 \leq i \leq n$, \pflet{$\alpha_{i1}$, \ldots, $\alpha_{ir_i}$ be the finitely many values of $\alpha$ such that $V_i$ intersects $B_\alpha$}
+    \prove{If $W$ intersects $B_\alpha$ then $\alpha = \alpha_{ij}$ for some $i$, $j$}}
+    \begin{proof}
+      \pf\ \stepref{<2>1}, \stepref{<2>3}.
+    \end{proof}
+    \step{<2>5}{\pflet{$y \in W \cap B_\alpha$}}
+    \step{<2>6}{\pick\ $V \in \mathcal{B}$ such that $y \in V$}
+    \begin{proof}
+      \pf\ \stepref{<1>4}
+    \end{proof}
+    \step{<2>7}{\pflet{$V = V_i$}}
+    \begin{proof}
+      \pf\ \stepref{<2>3}, \stepref{<2>5}, \stepref{<2>6}
+    \end{proof}
+    \step{<2>8}{$V_i$ intersects $B_\alpha$}
+    \begin{proof}
+      \pf\ \stepref{<2>5}, \stepref{<2>6}, \stepref{<2>7}
+    \end{proof}
+    \step{<2>9}{$\alpha = \alpha_{ij}$ for some $j$.}
+    \begin{proof}
+      \pf\ \stepref{<2>4}, \stepref{<2>8}
+    \end{proof}
+  \end{proof}
+  \step{<1>7}{For all $\alpha \in J$, we have $U_\alpha$ is open.}
+  \begin{proof}
+    \pf\ \stepref{<1>5}
+  \end{proof}
+  \step{<1>8}{For all $\alpha \in J$, we have $B_\alpha \subseteq U_\alpha$.}
+  \begin{proof}
+    \step{<2>1}{\pflet{$\alpha \in J$}}
+    \step{<2>2}{\pflet{$x \in B_\alpha$}}
+    \step{<2>3}{\pick\ $V \in \mathcal{B}$ such that $x \in V$}
+    \begin{proof}
+      \pf\ \stepref{<1>4}
+    \end{proof}
+    \step{<2>4}{$V \cap B_\alpha \neq \emptyset$}
+    \begin{proof}
+      \pf\ \stepref{<2>2}, \stepref{<2>3}
+    \end{proof}
+    \step{<2>5}{$x \in U_\alpha$}
+    \begin{proof}
+      \pf\ \stepref{<1>5}, \stepref{<2>3}, \stepref{<2>4}
+    \end{proof}
+  \end{proof}
+  \qed
+\end{proof}
+
 \section{Compactness}
 
 \begin{df}[Compact]

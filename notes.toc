@@ -84,21 +84,21 @@
 \contentsline {section}{\numberline {9.2}Limit Point Compactness}{118}
 \contentsline {section}{\numberline {9.3}Lindel\"{o}f Spaces}{119}
 \contentsline {section}{\numberline {9.4}Paracompactness}{121}
-\contentsline {section}{\numberline {9.5}Compactness}{129}
-\contentsline {section}{\numberline {9.6}Perfect Maps}{141}
-\contentsline {section}{\numberline {9.7}Sequential Compactness}{142}
-\contentsline {section}{\numberline {9.8}Local Compactness}{143}
-\contentsline {section}{\numberline {9.9}Compactifications}{145}
-\contentsline {chapter}{\numberline {10}Metric Spaces}{152}
-\contentsline {section}{\numberline {10.1}Metrics}{152}
-\contentsline {section}{\numberline {10.2}The Metric Topology}{153}
-\contentsline {section}{\numberline {10.3}Isometries}{175}
-\contentsline {section}{\numberline {10.4}Lebesgue Numbers}{175}
-\contentsline {section}{\numberline {10.5}Uniform Continuity}{178}
-\contentsline {section}{\numberline {10.6}Locally Metrizable Spaces}{178}
-\contentsline {chapter}{\numberline {11}Manifolds}{182}
-\contentsline {section}{\numberline {11.1}Manifolds}{182}
-\contentsline {chapter}{\numberline {12}Normed Spaces}{185}
-\contentsline {section}{\numberline {12.1}The Norm on $\mathbb {R}^n$}{185}
-\contentsline {chapter}{\numberline {13}Topological Groups}{189}
-\contentsline {section}{\numberline {13.1}Topological Groups}{189}
+\contentsline {section}{\numberline {9.5}Compactness}{130}
+\contentsline {section}{\numberline {9.6}Perfect Maps}{142}
+\contentsline {section}{\numberline {9.7}Sequential Compactness}{144}
+\contentsline {section}{\numberline {9.8}Local Compactness}{144}
+\contentsline {section}{\numberline {9.9}Compactifications}{146}
+\contentsline {chapter}{\numberline {10}Metric Spaces}{153}
+\contentsline {section}{\numberline {10.1}Metrics}{153}
+\contentsline {section}{\numberline {10.2}The Metric Topology}{154}
+\contentsline {section}{\numberline {10.3}Isometries}{176}
+\contentsline {section}{\numberline {10.4}Lebesgue Numbers}{176}
+\contentsline {section}{\numberline {10.5}Uniform Continuity}{179}
+\contentsline {section}{\numberline {10.6}Locally Metrizable Spaces}{179}
+\contentsline {chapter}{\numberline {11}Manifolds}{183}
+\contentsline {section}{\numberline {11.1}Manifolds}{183}
+\contentsline {chapter}{\numberline {12}Normed Spaces}{186}
+\contentsline {section}{\numberline {12.1}The Norm on $\mathbb {R}^n$}{186}
+\contentsline {chapter}{\numberline {13}Topological Groups}{190}
+\contentsline {section}{\numberline {13.1}Topological Groups}{190}
