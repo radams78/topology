@@ -390,6 +390,7 @@ Every paracompact Hausdorff space is normal.
 \end{proof}
 
 \begin{thm}
+  \label{thm:topology:paracompact:closed_subspace}
 Every closed subspace of a paracompact space is paracompact.
 \end{thm}
 
@@ -1459,24 +1460,12 @@ $\mathcal{T}'$ is compact then $\mathcal{T}$ is compact.
 
 \begin{proof}
   \pf
-  \step{<1>1}{\pflet{$A$ and $B$ be disjoint closed sets in the compact
-      Hausdorff space $X$.}}
-  \step{<1>2}{For all $a \in A$, there exist disjoint open sets $U$ and $V$
-    such
-    that $a \in U$ and $B \subseteq V$.}
-  \begin{proof}
-    \pf\ By Lemma \ref{lm:topology:compact:regular}.
-  \end{proof}
-  \step{<1>3}{$\{U \text{ open in } X : \exists V \text{ open in } Y. U \cap
-    V
-    = \emptyset, B \subseteq V \}$ is an open covering of $A$}
-  \step{<1>4}{\pick\ a finite subcovering $\{ U_1, \ldots, U_n \}$}
-  \step{<1>5}{For $1 \leq i \leq n$, \pick\ $V_i$ open in $Y$ such that $U_i
-    \cap V_i = \emptyset$ and $B \subseteq V_i$}
-  \step{<1>6}{\pflet{$U = U_1 \cup \cdots \cup U_n$ and $V = V_1 \cap \cdots
-      \cap V_n$}}
-  \qed
+  From Thearem \ref{thm:topology:paracompact:Hausdorff_normal}
 \end{proof}
+
+\begin{cor}
+ The ordered square is normal.
+\end{cor}
 
 \begin{thm}
   \label{thm:topology:compact:closed_interval}
@@ -1751,45 +1740,6 @@ Not every subspace of a compact space is compact.
     $\mathcal{A}$ that covers $C \cup D$.}
   \qedstep
 \end{proof}
-
-  \begin{thm}
- Every compact Hausdorff space is normal.
-\end{thm}
-
-\begin{proof}
- \pf
- \step{<1>1}{\pflet{$X$ be a compact Hausdorff space.}}
- \step{<1>2}{\pflet{$A$ and $B$ be disjoint closed sets in $X$.}}
- \step{<1>3}{$\{ U \text{ open in } X : \exists V \text{ open in } X. B
-   \subseteq V \wedge U \cap V = \emptyset\}$ covers $A$}
- \begin{proof}
-   \step{<2>1}{$B$ is compact}
-   \begin{proof}
-     \pf\ By Proposition \ref{prop:topology:compact:closed_is_compact}.
-   \end{proof}
-   \qedstep
-   \begin{proof}
-     \pf\ By Lemma \ref{lm:topology:compact:regular}.
-   \end{proof}
- \end{proof}
- \step{<1>4}{\pick\ a finite subcover $\{ U_1, \ldots, U_n \}$}
- \begin{proof}
-   \pf\ $A$ is compact by Proposition
-   \ref{prop:topology:compact:closed_is_compact}.
- \end{proof}
- \step{<1>5}{For $1 \leq i \leq n$, \pick\ $V_i$ open in $X$ such that $B
-   \subseteq V_i$ and $U_i \cap V_i = \emptyset$}
- \step{<1>6}{\pflet{$U = U_1 \cup \cdots \cup U_n$ and $V = V_1 \cap \cdots
-\cap
-     V_n$}}
- \step{<1>7}{$U$ and $V$ are disjoint open sets, $A \subseteq U$ and $B
-   \subseteq V$}
- \qed
-\end{proof}
-
-\begin{cor}
- The ordered square is normal.
-\end{cor}
 
 \begin{prop}
   Not every compact Hausdorff space is first countable.
@@ -2224,6 +2174,7 @@ For every ordinal $\alpha$, the space $S_\alpha$ is locally compact.
 
 
 \begin{thm}
+  \label{thm:topology:locally_compact:closed_subspace}
   Every closed subspace of a locally compact Hausdorff space is locally
   compact.
 \end{thm}
@@ -2281,10 +2232,6 @@ $x
 \qed
 \end{proof}
 
-\begin{cor}
-The Sorgenfrey plane is not locally compact.
-\end{cor}
-
 \begin{prop}
  Let $\{ X_\alpha \}_{\alpha \in J}$ be a family of locally compact spaces
 such that $X_\alpha$ is compact for all but finitely many values of $\alpha$.
@@ -2320,6 +2267,10 @@ X_{\alpha_i}$
 \pf\ $[0, +\infty)$ can be partitioned into infinitely many disjoint open
 sets, which therefore do not have a finite subcover. \qed
 \end{proof}
+
+\begin{cor}
+The Sorgenfrey plane is not locally compact.
+\end{cor}
 
   \begin{prop}
  Let $\{X_\alpha\}_{\alpha \in J}$ be a family of nonempty topological

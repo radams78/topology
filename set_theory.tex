@@ -32,42 +32,34 @@ $h$, and similarly for more than three functions.
 
 \begin{prop}
 \label{lm:sets:injective:comp}
-Let $A$, $B$ and $C$ be sets.
  Let $f : A \rightarrow B$ and $g : B \rightarrow C$. If $f$ and $g$ are
 injective then $g \circ f$ is injective.
 \end{prop}
 
 \begin{proof}
  \pf
- \step{<1>1}{\pflet{$A, B, C$ be sets.}}
- \step{<1>2}{\pflet{$f : A \rightarrow B$.}}
- \step{<1>3}{\pflet{$g : B \rightarrow C$.}}
- \step{<1>4}{\assume{$f$ is injective.}}
- \step{<1>5}{\assume{$g$ is injective.}}
- \step{<1>6}{\pflet{$X$ be a set and $x, y : X \rightarrow A$.}}
- \step{<1>7}{\assume{$g \circ f \circ x = g \circ f \circ y$} \prove{$x = y$}}
- \step{<1>8}{$f \circ x = f \circ y$}
+ \step{<1>1}{\assume{$f$ and $g$ are injective.}}
+ \step{<1>2}{\pflet{$X$ be a set and $x, y : X \rightarrow A$.}
+ \assume{$g \circ f \circ x = g \circ f \circ y$}}
+ \step{<1>3}{$f \circ x = f \circ y$}
  \begin{proof}
-   \pf\ \stepref{<1>5}, \stepref{<1>7}
- \end{proof}
- \step{<1>9}{$x = y$}
+   \pf\ $g$ is injective (\stepref{<1>1}).
+  \end{proof}
+ \step{<1>4}{$x = y$}
  \begin{proof}
-   \pf\ \stepref{<1>4}, \stepref{<1>8}
+   \pf\ $f$ is injective (\stepref{<1>1}).
  \end{proof}
  \qed
 \end{proof}
 
 \begin{lm}
   \label{lm:sets:injective:compr}
-  Let $A$, $B$ and $C$ be sets.
  Let $f : A \rightarrow B$ and $g : B \rightarrow C$. If $g \circ f$ is
 injective then $f$ is injective.
 \end{lm}
 
 \begin{proof}
  \pf
- \step{1}{\pflet{$A$, $B$ and $C$ be sets.}}
- \step{2}{\pflet{$f : A \rightarrow B$ and $g : B \rightarrow C$.}}
  \step{<1>1}{\assume{$g \circ f$ is injective.}}
  \step{<1>2}{\pflet{$X$ be any set and $x, y : X \rightarrow A$.}}
  \step{<1>3}{\assume{$f \circ x = f \circ y$}}
@@ -234,7 +226,7 @@ r & = r \circ \id{B} & (\text{Right Unit Law}) \\
 \end{align*}
 \end{proof}
 
-\subsection{Isomorphisms}
+\section{Isomorphisms}
 
 \begin{df}[Isomorphism]
 Let $A$ and $B$ be sets. A function $i : A \rightarrow B$  is an
@@ -296,8 +288,7 @@ $\inv{(j \circ i)} = \inv{i} \circ \inv{j}$.
 \pf\ Immediate from Proposition \ref{prop:sets:retraction:comp}. \qed
 \end{proof}
 
-
-\subsection{Parts of a Set}
+\section{Parts of a Set}
 
 \begin{df}[Part]
   A \emph{part} $S$ of a set $A$ consists of:
@@ -449,7 +440,7 @@ S \cong T$ such that $i = j \circ \phi$.
   \pf\ For any part $i$ of $A$, we have $i = \id{A} \circ i$ by the Left Unit Law. \qed
 \end{proof}
 
-\subsection{The Empty Set}
+\section{The Empty Set}
 
 \begin{ax}[Empty Set]
   There exists a set $\emptyset$, the \emph{empty set}, such that, for every
@@ -508,7 +499,7 @@ S \cong T$ such that $i = j \circ \phi$.
   \pf\ By the uniqueness of $\magic_\emptyset$. \qed
 \end{proof}
 
-\subsection{The Terminal Set}
+\section{The Terminal Set}
 
 \begin{ax}[Terminal Set]
   There exists a set $1$, the \emph{terminal set}, such that, for every set
@@ -531,7 +522,7 @@ S \cong T$ such that $i = j \circ \phi$.
   \pf\ From the uniqueness of $!_1$. \qed
 \end{proof}
 
-\subsection{Elements}
+\section{Elements}
 
 \begin{df}[Element]
   An \emph{element} of a set $A$ is a function $1 \rightarrow A$. We write $a
@@ -539,7 +530,7 @@ S \cong T$ such that $i = j \circ \phi$.
   A \rightarrow B$ and $a \in A$.
 \end{df}
 
-\paragraph{The Axiom of Extensionality}
+\subsection{The Axiom of Extensionality}
 
 \begin{ax}[Extensionality]
  Let $A$ and $B$ be sets and $f, g : A \rightarrow B$ be functions. If, for
@@ -954,159 +945,38 @@ then $q$ is injective.
  \qed
 \end{proof}
 
+\begin{prop}
+  Let $S$ be a part of $A$ and $\phi : A \rightarrow 2$ be its characteristic function. Then, for all $x \in A$, we have $\phi(x) = \top$ if and only if $x \in_A S$.
+\end{prop}
+
+\begin{proof}
+  \pf
+    \step{<1>1}{\pflet{$x \in A$}}
+    \step{<1>2}{If $\phi(x) = \top$ then $x \in_A S$.}
+    \begin{proof}
+      \pf\ If $\phi(x) = \top$ then there exists $y \in \dom S$ such that $S(y) = x$.
+    \end{proof}
+    \step{<1>3}{If $x \in_A S$ then $\phi(x) = \top$.}
+    \begin{proof}
+      \pf\ If $y \in \dom S$ and $S(y) = x$ then
+      \begin{align*}
+        \phi(x) & = \phi(S(y)) \\
+        & = \top \circ ! \circ y \\
+        & = y
+      \end{align*}
+    \end{proof}
+  \qed
+\end{proof}
+
+\begin{cor}
+  Two parts of a set are equivalent if and only if they have the same characteristic function.
+\end{cor}
+
 \begin{ax}[Boolean]
   For any $p \in 2$ we have $p = \top$ or $p = \bot$.
 \end{ax}
 
- \begin{prop}
-Let $i : U \hookrightarrow A$ and $j : V \hookrightarrow A$ be parts of $A$.
-Then the following are equivalent:
-\begin{enumerate}
-\item $i \subseteq_A j$ and $j \subseteq_A i$
-\item There exist $h : U \rightarrow V$ and $k : V \rightarrow U$ such that $i
-= j \circ h$, $j = i \circ k$, $k \circ h = \id{U}$ and $h \circ k = \id{V}$.
-\item The characteristic function of $i$ is the characteristic function of $j$.
-\end{enumerate}
-\end{prop}
-
-\begin{proof}
-\pf
-\step{<1>1}{$1 \Rightarrow 2$}
-\begin{proof}
-  \step{<2>1}{\assume{$i \subseteq_A j$ and $j \subseteq_A i$}}
-  \step{<2>2}{\pflet{$h : U \rightarrow V$ be such that $i = j \circ h$}}
-  \step{<2>3}{\pflet{$k : V \rightarrow U$ be such that $j = i \circ k$}}
-  \step{<2>4}{$k \circ h = \id{U}$}
-  \begin{proof}
-    \step{<3>1}{$i \circ k \circ h = i$}
-    \begin{proof}
-      \pf\ From \stepref{<2>2} and \stepref{<2>3}.
-    \end{proof}
-    \qedstep
-    \begin{proof}
-      \pf\ Since $i$ is injective.
-    \end{proof}
-  \end{proof}
-  \step{<2>5}{$h \circ k = \id{V}$}
-  \begin{proof}
-    \pf\ Similar.
-  \end{proof}
-\end{proof}
-\step{<1>2}{$2 \Rightarrow 1$}
-\begin{proof}
-  \pf\ Trivial.
-\end{proof}
-\step{<1>3}{$2 \Rightarrow 3$}
-\begin{proof}
-  \step{<2>1}{\assume{2}}
-  \step{<2>2}{\pflet{$\phi : A \rightarrow 2$ be the characteristic function
-of
-      $i$} \prove{$\phi$ is the characteristic function of $j$}
-    \[ \xymatrix{
-      X \ar[rrrdd] \ar[dddrr] \ar[dr] \\
-      & V \ar[rrd] \ar[ddr] \ar[dr] \\
-      & & U \ar[r] \ar[d] & 1 \ar[d]^{\top} \\
-      & & A \ar[r]_{\phi} & 2
-    }
-    \]
-  }
-  \begin{proof}
-    \pf\ By the Subset Classifier Axiom.
-  \end{proof}
-  \step{<2>3}{\pflet{$X$ be a set and $x : X \rightarrow 1$, $y : X
-\rightarrow
-      A$ satisfy $\phi \circ y = \top \circ x$}}
-  \step{<2>4}{\pflet{$\langle x,y \rangle : X \rightarrow U$ be the unique
-function such that $! \circ \langle x,y \rangle = x$ and $i \circ \langle x,y
-\rangle = y$}}
-\begin{proof}
-\pf\ By \stepref{<2>2}.
-\end{proof}
-\step{<2>5}{$h \circ \langle x,y \rangle$ is the unique function $X \rightarrow
-V$
-such that $! \circ h \circ \langle x,y \rangle = x$ and $j \circ h \circ
-\langle x,y \rangle = y$}
-\begin{proof}
-\step{<3>1}{$! \circ h \circ \langle x,y \rangle = x$}
-\begin{proof}
-  \pf\ Since 1 is terminal.
-\end{proof}
-\step{<3>2}{$j \circ h \circ \langle x,y \rangle = y$}
-\begin{proof}
-  \pf\ From \stepref{<2>1} and \stepref{<2>4}.
-\end{proof}
-\step{<3>3}{If $! \circ f = x$ and $j \circ f = y$ then $f = h  \circ \langle
-x,y
-  \rangle$}
-\begin{proof}
-  \step{<4>1}{\pflet{$f : X \rightarrow V$ satisfy $! \circ f = x$ and $j
-\circ
-      f = y$}}
-  \step{<4>2}{$! \circ k \circ f = x$}
-  \begin{proof}
-    \pf\ As 1 is terminal.
-  \end{proof}
-  \step{<4>3}{$i \circ k \circ f = y$}
-  \begin{proof}
-    \pf\ From \stepref{<2>1} and \stepref{<4>1}.
-  \end{proof}
-  \step{<4>4}{$k \circ f = \langle x, y \rangle$}
-  \begin{proof}
-    \pf\ From \stepref{<2>4}, \stepref{<4>2} and \stepref{<4>3}.
-  \end{proof}
-  \step{<4>5}{$f = h \circ \langle x,y \rangle$}
-  \begin{proof}
-    \pf\ From \stepref{<2>1} and \stepref{<4>4}.
-  \end{proof}
-\end{proof}
-\end{proof}
-%TODO Extract lemma
-\end{proof}
-\step{<1>4}{$3 \Rightarrow 2$
-  \[ \xymatrix{
-    U \ar[dr] \ar[rrd] \ar[ddr]_{i} \\
-    &  V \ar[r] \ar[d]_{j} \ar[ul] & 1 \ar[d]^{\top} \\
-   &  A \ar[r]_{\phi} & 2
-  } \]
-}
-\begin{proof}
-  \step{<2>1}{\assume{3}}
-  \step{<2>2}{\pflet{$\phi$ be the characteristic function of $i$ and $j$}}
-  \step{<2>3}{\pflet{$h : U \rightarrow V$ be the unique function such that
-$!
-      \circ h = !$ and $j \circ h = i$}}
-  \begin{proof}
-    \step{<3>1}{$\top \circ ! = \phi \circ i$}
-    \begin{proof}
-      \pf\ This holds because $\phi$ is the characteristic function of $i$.
-    \end{proof}
-    \qedstep
-    \begin{proof}
-      \pf\ Since $\phi$ is the characteristic function of $j$.
-    \end{proof}
-  \end{proof}
-  \step{<2>4}{\pflet{$k : V \rightarrow U$ be the unique function such that
-$!
-      \circ k = !$ and $i \circ k = j$}}
-  \begin{proof}
-    \pf\ Similar.
-  \end{proof}
-  \step{<2>5}{$k \circ h = \id{U}$}
-  \begin{proof}
-    \pf\ Each is the unique function $f$ such that $! \circ f = !$ and $i
-\circ f = i$
-\end{proof}
-  \step{<2>6}{$h \circ k = \id{V}$}
-  \begin{proof}
-    \pf\ Each is the unique function $f$ such that $! \circ f = !$ and $j
-\circ f = j$
-\end{proof}
-\end{proof}
-\qed
-\end{proof}
-
 \section{The Basics}
-
 
 \begin{lm}
   \label{lm:set_theory:union_of_subsets}
