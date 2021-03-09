@@ -97,9 +97,9 @@
 \contentsline {section}{\numberline {10.5}Uniform Continuity}{181}
 \contentsline {section}{\numberline {10.6}Locally Metrizable Spaces}{181}
 \contentsline {section}{\numberline {10.7}Completeness}{184}
-\contentsline {chapter}{\numberline {11}Manifolds}{189}
-\contentsline {section}{\numberline {11.1}Manifolds}{189}
-\contentsline {chapter}{\numberline {12}Normed Spaces}{192}
-\contentsline {section}{\numberline {12.1}The Norm on $\mathbb {R}^n$}{192}
-\contentsline {chapter}{\numberline {13}Topological Groups}{196}
-\contentsline {section}{\numberline {13.1}Topological Groups}{196}
+\contentsline {chapter}{\numberline {11}Manifolds}{190}
+\contentsline {section}{\numberline {11.1}Manifolds}{190}
+\contentsline {chapter}{\numberline {12}Normed Spaces}{193}
+\contentsline {section}{\numberline {12.1}The Norm on $\mathbb {R}^n$}{193}
+\contentsline {chapter}{\numberline {13}Topological Groups}{197}
+\contentsline {section}{\numberline {13.1}Topological Groups}{197}

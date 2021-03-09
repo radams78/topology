@@ -2882,3 +2882,76 @@
 \begin{proof}
   \pf\ From Theorem \ref{thm:topology:metric:bounded_closed} and Proposition \ref{prop:topology:metric:closed_complete}. \qed
 \end{proof}
+
+\begin{df}[Sup Metric]
+  Let $X$ be a nonempty set and $Y$ a metric space. The \emph{sup metric} $\rho$ on the set $\mathcal{B}(X, Y)$ of all bounded functions from $X$ to $Y$ is defined by
+  \[ \rho(f, g) = \sup_{x \in X} d(f(x), g(x)) \enspace . \]
+
+  We prove this is a metric.
+\end{df}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$X$ be a nonempty set.}}
+  \step{<1>2}{\pflet{$Y$ be a metric space.}}
+  \step{<1>3}{For all $f,g \in \mathcal{B}(X, Y)$, the set $\{ d(f(x), g(x)) : x \in X \}$ is bounded above.}
+  \begin{proof}
+    \step{<2>1}{\pflet{$f, g \in \mathcal{B}(X, Y)$}}
+    \step{<2>2}{\pflet{$M = \diam f(X)$ and $N = \diam g(X)$}}
+    \step{<2>3}{\pick\ $x_0 \in X$}
+    \begin{proof}
+      \pf\ \stepref{<1>1}
+    \end{proof}
+    \step{<2>4}{\pflet{$D = d(f(x_0), g(x_0))$}}
+    \step{<2>5}{\pflet{$x \in X$}}
+    \step{<2>6}{$d(f(x), g(x)) \leq M + N + D$}
+    \begin{proof}
+      \pf
+      \begin{align*}
+        d(f(x), g(x)) & \leq d(f(x), f(x_0)) + d(f(x_0), g(x_0)) + d(g(x_0), g(x)) & (\text{Triangle inequality}) \\
+        & \leq M + D + N & (\text{\stepref{<2>2}, \stepref{<2>4}})
+        \end{align*}
+    \end{proof}
+  \end{proof}
+  \step{<1>4}{For all $f,g \in \mathcal{B}(X, Y)$ we have $\rho(f, g) \geq 0$}
+  \begin{proof}
+    \step{<2>1}{\pflet{$f, g \in \mathcal{B}(X, Y)$}}
+    \step{<2>2}{\pick\ $x_0 \in X$}
+    \begin{proof}
+      \pf\ \stepref{<1>1}
+    \end{proof}
+    \step{<2>3}{$\rho(f, g) \geq 0$}
+    \begin{proof}
+      \pf
+      \begin{align*}
+        \rho(f, g) & \geq d(f(x_0), g(x_0)) & (\text{Definition of } \rho) \\
+        & \geq 0 & (\text{\stepref{<1>2}})
+      \end{align*}
+    \end{proof}
+  \end{proof}
+  \step{<1>5}{For all $f \in \mathcal{B}(X, Y)$ we have $\rho(f, f) = 0$}
+  \begin{proof}
+    \pf\ This holds because $d(f(x), f(x)) = 0$ for all $x \in X$.
+  \end{proof}
+  \step{<1>6}{For all $f, g \in \mathcal{B}(X, Y)$ we have $\rho(f, g) = \rho(g, f)$}
+  \begin{proof}
+    \pf
+    \begin{align*}
+      \rho(f, g) & = \sup_{x \in X} d(f(x), g(x)) & (\text{definition of } \rho)\\
+      & = \sup_{x \in X} d(g(x), f(x)) & (\text{\stepref{<1>2}}) \\
+      & = \rho(g, f) & (\text{definition of } \rho)
+    \end{align*}
+  \end{proof}
+  \step{<1>7}{For all $f, g, h \in \mathcal{B}(X, Y)$ we have $\rho(f, h) \leq \rho(f, g) + \rho(g, h)$}
+  \begin{proof}
+    \pf
+    \begin{align*}
+      \rho(f,h) & = \sup_{x \in X} d(f(x), h(x)) & (\text{definition of } \rho) \\
+      & \leq \sup_{x \in X} (d(f(x), g(x)) + d(g(x), h(x))) &
+        (\text{Triangle inequality})\\
+      & \leq \sup_{x \in X} d(f(x), g(x)) + \sup_{x \in X} d(g(x), h(x)) & (\text{Lemma \ref{lm:analysis:sup_plus}}) \\
+      & = \rho(f,g) + \rho(g,h)
+    \end{align*}
+  \end{proof}
+  \qed
+\end{proof}

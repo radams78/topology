@@ -1,5 +1,15 @@
 \chapter{Real Analysis}
 
+\begin{lm}
+  \label{lm:analysis:sup_plus}
+  Let $f, g : X \rightarrow \mathbb{R}$. If $f(X)$ and $g(X)$ are bounded above then $\{ f(x) + g(x) : x \in X \}$ is bounded above and
+  \[ \sup_{x \in X} (f(x) + g(x)) \leq \sup_{x \in X} f(x) + \sup_{x \in X} g(x) \]
+\end{lm}
+
+\begin{proof}
+  \pf\ For $x \in X$ we have $f(x) + g(x) \leq \sup_{x \in X} f(x) + \sup_{x \in X} g(x)$. \qed
+\end{proof}
+
 \begin{df}[Cantor Set]
   Define a sequence of sets $A_n \subseteq [0, 1]$ by:
   \begin{align*}
