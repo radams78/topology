@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.10.15)  12 MAR 2021 07:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.10.15)  12 MAR 2021 23:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -302,7 +302,7 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
  [7]
 [8] [9] [10] [11]
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 668.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 673.
  [12] <xymatrix 2x2 182> <xymatrix 3x3 235> [13] <xymatrix
 3x3 331> [14] <xymatrix 2x2 182> [15] <xymatrix 2x2 182> <xymatrix 2x2 175>
 [16] [17] [18] [19]) [20]
@@ -465,12 +465,13 @@ n \OT1/cmr/m/n/10 ([]\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 D \OMS/cmsy/m/n/10 ^^R
 
  (./metric.tex
 Chapter 10.
-[153
+(./metric_metric.tex) (./metric_topology.tex [153
 
 
 
-] [154] [155] [156] [157] [158] [159] [160] [161] [162]
-Overfull \hbox (2.36778pt too wide) in paragraph at lines 909--909
+] [154] [155] [156] [157]
+[158] [159] [160] [161] [162]
+Overfull \hbox (2.36778pt too wide) in paragraph at lines 859--859
 []\OT1/cmr/m/sc/10 Pick $\OML/cmm/m/it/10 ^^N > \OT1/cmr/m/n/10 0$ such that, f
 or all $\OML/cmm/m/it/10 x[] \OMS/cmsy/m/n/10 2 \OML/cmm/m/it/10 X$\OT1/cmr/m/n
 /10 , if $\OML/cmm/m/it/10 d\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x; x[]\OT1/cmr/m/
@@ -481,20 +482,20 @@ n/10 ) \OML/cmm/m/it/10 < ^^N$ \OT1/cmr/m/n/10 then $\OML/cmm/m/it/10 d\OT1/cmr
  []
 
 [163]
-Overfull \hbox (0.7718pt too wide) in paragraph at lines 968--968
+Overfull \hbox (0.7718pt too wide) in paragraph at lines 918--918
 []$\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 s[]\OMS/cmsy/m/n/10 g[]$ \OT1/cmr/m/n/10 
 be a mono-tone in-creas-ing se-quence of real num-bers bounded
  []
 
 
-Overfull \hbox (6.28944pt too wide) in paragraph at lines 1003--1005
+Overfull \hbox (6.28944pt too wide) in paragraph at lines 953--955
 []\OT1/cmr/m/sc/10 Proof\OT1/cmr/m/n/10 : $[][] \OMS/cmsy/m/n/10 j\OML/cmm/m/it
 /10 a[]\OMS/cmsy/m/n/10 j$ \OT1/cmr/m/n/10 is a mono-tone in-creas-ing se-quenc
 e bounded above by $[][] \OML/cmm/m/it/10 b[]$\OT1/cmr/m/n/10 . 
  []
 
 
-Overfull \hbox (12.99199pt too wide) in paragraph at lines 1009--1012
+Overfull \hbox (12.99199pt too wide) in paragraph at lines 959--962
 []\OT1/cmr/m/sc/10 Proof\OT1/cmr/m/n/10 : $[][] \OML/cmm/m/it/10 c[]$ \OT1/cmr/
 m/n/10 is a mono-tone in-creas-ing se-quence bounded above by $2 [][] \OMS/cmsy
 /m/n/10 j\OML/cmm/m/it/10 a[]\OMS/cmsy/m/n/10 j$\OT1/cmr/m/n/10 . 
@@ -503,43 +504,45 @@ m/n/10 is a mono-tone in-creas-ing se-quence bounded above by $2 [][] \OMS/cmsy
 [164] [165] [166] [167] [168] [169] [170] [171] [172]
 
 LaTeX Warning: Reference `lm:topology:metric:locally_finite_open_refinement' on
- page 173 undefined on input line 1733.
+ page 173 undefined on input line 1683.
 
 [173]
-Overfull \hbox (2.41472pt too wide) in paragraph at lines 1780--1781
+Overfull \hbox (2.41472pt too wide) in paragraph at lines 1730--1731
 \OT1/cmr/bx/n/10 Theorem 10.2.59 \OT1/cmr/m/n/10 (AC)\OT1/cmr/bx/n/10 . \OT1/cm
 r/m/it/10 Let $\OML/cmm/m/it/10 X$ \OT1/cmr/m/it/10 be a para-com-pact Haus-dor
 ff space. Let $\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 U[]\OMS/cmsy/m/n/10 g[]$
  []
 
 [174] [175] [176] [177]
-Overfull \hbox (1.87167pt too wide) in paragraph at lines 2109--2109
+Overfull \hbox (1.87167pt too wide) in paragraph at lines 2059--2059
 [] 
  []
 
-[178] [179] [180] [181] [182] [183] [184] [185] [186] [187] [188]
-Overfull \hbox (32.80577pt too wide) in paragraph at lines 2957--2957
+) (./metric_isometry.tex) (./metric_lebesgue [178] [179] [180])
+(./metric_uniform.tex [181]) (./metric_local.tex [182] [183])
+(./metric_complete [184] [185] [186] [187] [188]
+Overfull \hbox (32.80577pt too wide) in paragraph at lines 353--353
 [] 
  []
 
 [189] [190]
-Overfull \hbox (87.06317pt too wide) in paragraph at lines 3100--3100
+Overfull \hbox (87.06317pt too wide) in paragraph at lines 496--496
 [] 
  []
 
 
-Overfull \hbox (87.06317pt too wide) in paragraph at lines 3121--3121
+Overfull \hbox (87.06317pt too wide) in paragraph at lines 517--517
 [] 
  []
 
 [191]
-Overfull \hbox (5.22699pt too wide) in paragraph at lines 3175--3176
+Overfull \hbox (5.22699pt too wide) in paragraph at lines 571--572
 []\OT1/cmr/m/sc/10 Proof\OT1/cmr/m/n/10 : This holds be-cause $[][]$ is the uni
 que iso-met-ric imbed-ding $\OML/cmm/m/it/10 C[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/
 10 X\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 !
  []
 
-) [192]
+)) [192]
 \openout2 = `manifolds.aux'.
 
  (./manifolds.tex
@@ -601,8 +604,8 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 4596 strings out of 493029
- 58712 string characters out of 6136233
+ 4617 strings out of 493029
+ 59063 string characters out of 6136233
  171155 words of memory out of 5000000
  7986 multiletter control sequences out of 15000+600000
  16756 words of font info for 67 fonts, out of 8000000 for 9000
@@ -626,7 +629,7 @@ mf/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf/fonts/type1
 s/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/symbols/msbm
 7.pfb></usr/share/texmf/fonts/type1/public/xypic/xyatip10.pfb></usr/share/texmf
 /fonts/type1/public/xypic/xybtip10.pfb>
-Output written on notes.pdf (216 pages, 807986 bytes).
+Output written on notes.pdf (216 pages, 808512 bytes).
 PDF statistics:
  792 PDF objects out of 1000 (max. 8388607)
  545 compressed objects within 6 object streams

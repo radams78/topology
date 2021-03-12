@@ -1,0 +1,578 @@
+\section{Completeness}
+
+\begin{df}[Cauchy Sequence]
+  Let $X$ be a metric space. A sequence $(x_n)$ of points in $X$ is a \emph{Cauchy sequence} iff, for every $\epsilon > 0$, there exists $N$ such that, for all $m, n \geq N$,
+  \[ d(x_m, x_n) < \epsilon \enspace . \]
+\end{df}
+
+\begin{lm}
+  \label{lm:topology:metric:convergent_cauchy}
+  Every convergent sequence is Cauchy.
+\end{lm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$x_n \rightarrow l$ as $n \rightarrow \infty$}}
+  \step{<1>2}{\pflet{$\epsilon > 0$}}
+  \step{<1>3}{\pick\ $N$ such that, for all $n \geq N$, we have $d(x_n, l) < \epsilon / 2$}
+  \step{<1>4}{For all $m,n \geq N$, we have $d(x_m, x_n) < \epsilon$}
+  \qed
+\end{proof}
+
+\begin{df}[Complete]
+  A metric space is \emph{complete} iff every Cauchy sequence converges.
+\end{df}
+
+\begin{lm}
+  \label{lm:topology:metric:complete}
+  A metric space is complete if and only if every Cauchy sequence has a convergent subsequence.
+\end{lm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{In a complete metric space, every Cauchy sequence has a convergent subsequence.}
+  \begin{proof}
+    \pf\ Trivial.
+  \end{proof}
+  \step{<1>2}{In a metric space, if every Cauchy sequence has a convergent subsequence, then the space is complete.}
+  \begin{proof}
+    \step{<2>1}{\pflet{$X$ be a metric space in which every Cauchy sequence has a convergent subsequence.}}
+    \step{<2>2}{\pflet{$(x_n)$ be a Cauchy sequence in $X$.}}
+    \step{<2>3}{\pick\ a convergent subsequence $(x_{n_r})$ with limit $l$.}
+    \step{<2>4}{$x_n \rightarrow l$ as $n \rightarrow \infty$}
+    \begin{proof}
+      \step{<3>1}{\pflet{$\epsilon > 0$}}
+      \step{<3>2}{\pick\ $N$ such that, for all $m, n \geq N$ we have $d(x_m, x_n) < \epsilon / 2$ and for all $r \geq N$ we have $d(x_{n_r}, l) < \epsilon / 2$}
+      \begin{proof}
+        \pf\ \stepref{<2>3}, \stepref{<2>4}
+      \end{proof}
+      \step{<3>3}{For $n \geq N$ we have $d(x_n, l) < \epsilon$.}
+      \begin{proof}
+        \pf
+        \begin{align*}
+          d(x_n, l) & \leq d(x_n, x_{n_n}) + d(x_{n_n}, l) & (\text{Triangle Inequality})\\
+          & < \epsilon / 2 + \epsilon / 2 & (\text{\stepref{<3>2}})\\
+          & = \epsilon
+        \end{align*}
+      \end{proof}
+    \end{proof}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{thm}[DC]
+  \label{thm:topology:metric:Euclidean_complete}
+  For any $k$ we have $\mathbb{R}^k$ is complete.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$(x_n)$ be a Cauchy sequence in $\mathbb{R}^k$}}
+  \step{<1>2}{$\{ x_n : n \geq 1 \}$ is bounded.}
+  \begin{proof}
+    \step{<2>1}{\pick\ $N$ such that, for all $m, n \geq N$, we have $\rho(x_m, x_n) < 1$}
+    \begin{proof}
+      \pf\ \stepref{<1>1}
+    \end{proof}
+    \step{<2>2}{\pflet{$M = \max(\rho(x_1, 0), \ldots, \rho(x_{N-1},0), \rho(x_N, 0) + 1)$}}
+    \step{<2>3}{For all $n$, we have $x_n \in [-M, M]^k$}
+    \begin{proof}
+      \step{<3>1}{\pflet{$n \geq 1$} \prove{$x_n \in [-M, M]^k$}}
+      \step{<3>2}{\case{$n < N$}}
+      \begin{proof}
+        \pf\ For $1 \leq i \leq k$,
+        \begin{align*}
+          |\pi_i(x_n)| & \leq \rho(x_n, 0) & (\text{definition of Euclidean metric})\\
+          & \leq M & (\text{\stepref{<2>2}})
+        \end{align*}
+      \end{proof}
+      \step{<3>3}{\case{$n \geq N$}}
+      \begin{proof}
+        \pf\ For $1 \leq i \leq k$,
+        \begin{align*}
+          |\pi_i(x_n)| & \leq \rho(x_n, 0) & (\text{definition of Euclidean metric})\\
+          & \leq \rho(x_n, x_N) + \rho(x_N, 0) & (\text{Triangle inequality}) \\
+          & < 1 + \rho(x_N, 0) & (\text{\stepref{<2>1}})\\
+          & \leq M & (\text{\stepref{<2>2}})
+        \end{align*}
+      \end{proof}
+    \end{proof}
+  \end{proof}
+  \step{<1>3}{\pick\ $M$ such that $\{ x_n : n \geq 1 \} \subseteq [-M, M]^k$}
+  \begin{proof}
+    \pf\ From \stepref{<1>2}.
+  \end{proof}
+  \step{<1>4}{$(x_n)$ has a convergent subsequence.}
+  \begin{proof}
+    \step{<2>1}{$[-M, M]^k$ is compact.}
+    \begin{proof}
+      \pf\ Theorem \ref{thm:topology:compact:closed_interval}, Proposition \ref{prop:topology:compact:product}.
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ Theorem \ref{thm:topology:metric:compact}.
+    \end{proof}
+  \end{proof}
+  \qedstep
+  \begin{proof}
+    \pf\ Lemma \ref{lm:topology:metric:complete}.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{thm}[DC]
+  For any $k$ we have $\mathbb{R}^k$ is complete under the square metric.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$(x_n)$ be a Cauchy sequence under the square metric.}}
+  \step{<1>2}{$(x_n)$ is Cauchy under the Euclidean metric.}
+  \begin{proof}
+    \step{<2>1}{\pflet{$\epsilon > 0$}}
+    \step{<2>2}{\pick\ $N$ such that, for all $m, n \geq N$, we have $\rho(x_m, x_n) < \epsilon / \sqrt{k}$}
+    \step{<2>3}{For $m, n \geq N$, we have $d(x_m, x_n) < \epsilon$}
+    \begin{proof}
+      \pf
+      \begin{align*}
+        d(x_m, x_n) & = \sqrt{((x_m)_1 - (x_n)_1)^2 + \cdots + ((x_m)_k - (x_n)_k)^2} \\
+        & \leq \sqrt{\rho(x_m, x_n)^2 + \cdots + \rho(x_m, x_n)^2} \\
+        & = \sqrt{k} \rho(x_m, x_n) \\
+        & < \epsilon & (\text{\stepref{<2>2}})
+      \end{align*}
+    \end{proof}
+  \end{proof}
+  \step{<1>3}{\pick\ a subsequence $(x_{n_r})$ that converges under the Euclidean metric.}
+  \begin{proof}
+    \pf\ Theorem \ref{thm:topology:metric:Euclidean_complete}, \stepref{<1>2}.
+  \end{proof}
+  \step{<1>4}{$(x_{n_r})$ converges under the square metric.}
+  \begin{proof}
+    \step{<2>1}{\pflet{$l = \lim_{r \rightarrow \infty} x_{n_r}$ under the Euclidean metric.}}
+    \step{<2>2}{\pflet{$\epsilon > 0$}}
+    \step{<2>3}{\pick\ $R$ such that, for all $r \geq R$, we have $d(x_{n_r}, l) < \epsilon$}
+    \step{<2>4}{For all $r \geq R$ we have $\rho(x_{n_r}, l) < \epsilon$}
+    \begin{proof}
+      \pf\ From \stepref{<2>3} since $\rho(x,y) \leq d(x,y)$ for all $x$, $y$.
+    \end{proof}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{thm}
+  There exists a metric under which $\mathbb{R}^\omega$ is complete.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$\overline{d}$ be the standard bounded metric on $\mathbb{R}$.}}
+  \step{<1>2}{\pflet{$D : (\mathbb{R}^\omega)^2 \rightarrow \mathbb{R}$ be defined by $D(x,y) = \sup_{i \geq 1} \overline{d}(x_i, y_i) / i$}}
+  \step{<1>3}{$D$ is a metric that induces the product topology on $\mathbb{R}^\omega$}
+  \begin{proof}
+    %TODO Extract Lemma  \step{<1>3}{$D$ is a metric on $X$.}
+    \step{<2>1}{$D$ is a metric on $\mathbb{R}^\omega$}
+    \begin{proof}
+      \step{<3>1}{$D(\vec{x}, \vec{y}) \geq 0$}
+      \begin{proof}
+        \pf\ Immediate from definitions.
+      \end{proof}
+      \step{<3>2}{$D(\vec{x}, \vec{y}) = 0$ iff $\vec{x} = \vec{y}$}
+      \begin{proof}
+        \pf\ Immediate from definitions.
+      \end{proof}
+      \step{<3>3}{$D(\vec{x}, \vec{y}) = D(\vec{y}, \vec{x})$}
+      \begin{proof}
+        \pf\ Immediate from definitions.
+      \end{proof}
+      \step{<3>4}{$D(\vec{x}, \vec{z}) \leq D(\vec{x}, \vec{y}) + D(\vec{y},
+      \vec{z})$}
+      \begin{proof}
+        \step{<4>1}{For all $n$, we have $\frac{d(x_n, z_n)}{n} \leq
+        \frac{d(x_n,
+        y_n)}{n} + \frac{d(y_n, z_n)}{n}$}
+        \step{<4>2}{For all $n$, we have $\frac{d(x_n, z_n)}{n} \leq D(\vec{x},
+        \vec{y}) + D(\vec{y}, \vec{z})$}
+        \step{<4>3}{$D(\vec{x}, \vec{z}) \leq D(\vec{x}, \vec{y}) + D(\vec{y},
+        \vec{z})$}
+      \end{proof}
+    \end{proof}
+    \step{<2>2}{\pflet{$\mathcal{T}_D$ be the topology induced by $D$ and
+    $\mathcal{T}_p$ the product topology.}}
+    \step{<2>3}{$\mathcal{T}_D \subseteq \mathcal{T}_p$}
+    \begin{proof}
+      \step{<3>1}{\pflet{$U \in \mathcal{T}_D$} \prove{$U \in \mathcal{T}_p$}}
+      \step{<3>2}{\pflet{$\vec{x} \in U$}}
+      \step{<3>3}{\pick\ $\epsilon > 0$ such that $B_D(\vec{x}, \epsilon)
+      \subseteq
+      U$}
+      \step{<3>4}{\pick\ $N$ such that $1 / N < \epsilon$}
+      \step{<3>5}{\pflet{$V = B(x_1, \epsilon) \times \cdots \times B(x_N,
+      \epsilon) \times \mathbb{R} \times \mathbb{R} \times \cdots$}}
+      \step{<3>6}{$\vec{x} \in V \subseteq B_D(\vec{x}, \epsilon)$}
+    \end{proof}
+    \step{<2>4}{$\mathcal{T}_p \subseteq \mathcal{T}_D$}
+    \begin{proof}
+      \step{<3>1}{\pflet{$U = \prod_{n=1}^\infty U_n$ be a basic open set in
+      $\mathcal{T}_p$, where each $U_n$ is open, and $U_n = \mathbb{R}$
+      for $n > N$.}}
+      \step{<3>2}{\pflet{$\vec{x} \in U$} \prove{There exists $\epsilon > 0$
+      such
+      that $B_D(\vec{x}, \epsilon) \subseteq U$.}}
+      \step{<3>3}{For $n \leq N$, \pick\ $\epsilon_n > 0$ such that $B(x_n,
+      \epsilon_n) \subseteq U_n$}
+      \step{<3>4}{\pflet{$\epsilon = \min(\epsilon_1, \epsilon_2 / 2, \ldots,
+      \epsilon_n / n)$}}
+      \step{<3>5}{\pflet{$\vec{y} \in B_D(\vec{x}, \epsilon)$}}
+      \step{<3>6}{For $n \leq N$, $y_n \in U_n$}
+      \begin{proof}
+        \step{<4>1}{$D(\vec{x}, \vec{y}) < \epsilon$}
+        \step{<4>2}{$d(x_n, y_n) / n < \epsilon$}
+        \step{<4>3}{$d(x_n, y_n) / n < \epsilon_n / n$}
+        \qedstep
+        \begin{proof}
+          \pf\ By \stepref{<3>3}.
+        \end{proof}
+      \end{proof}
+    \end{proof}
+  \end{proof}
+  \step{<1>4}{$\mathbb{R}^\omega$ is complete under $D$.}
+  \begin{proof}
+    \step{<2>1}{\pflet{$(x_n)$ be a Cauchy sequence}}
+    \step{<2>2}{For all $i$ we have $(\pi_i(x_n))$ is Cauchy.}
+    \begin{proof}
+      \step{<3>1}{\pflet{$\epsilon > 0$}}
+      \step{<3>2}{\pick\ $N$ such that, for all $m, n \geq N$, we have $D(x_m, x_n) < \epsilon / i$}
+      \step{<3>3}{For all $m, n \geq N$ we have $d(\pi_i(x_m), \pi_i(x_n)) < \epsilon$}
+    \end{proof}
+    \step{<2>3}{For all $i$ we have $(\pi_i(x_n))$ converges.}
+    \qedstep
+    \begin{proof}
+      pf\ Corollary \ref{cor:topology:continuous:product_converge}.
+    \end{proof}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{thm}
+  Let $X$ be a complete metric space and $J$ a set. Then $X^J$ is complete under the uniform metric.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$(f_n)$ be a Cauchy sequence in $X^J$.}}
+  \step{<1>2}{\pflet{$f : J \rightarrow X$ be given by: $f(\alpha) = \lim_{n \rightarrow \infty} f_n(\alpha)$} \prove{$f_n \rightarrow f$ as $n \rightarrow \infty$}}
+  \begin{proof}
+    \step{<2>1}{For all $\alpha \in J$, we have $(f_n(\alpha))$ is Cauchy in $X$.}
+    \begin{proof}
+      \step{<3>1}{\pflet{$\alpha \in J$}}
+      \step{<3>2}{\pflet{$\epsilon > 0$}}
+      \step{<3>3}{\pick\ $N$ such that, for all $m, n \geq N$, we have $\overline{\rho}(f_m, f_n) < \epsilon$}
+      \step{<3>4}{For all $m, n \geq N$ we have $d(f_m(\alpha), f_n(\alpha)) < \epsilon$}
+    \end{proof}
+    \step{<2>2}{For all $\alpha \in J$, we have $(f_n(\alpha))$ converges.}
+    \begin{proof}
+      \pf\ Since $X$ is complete.
+    \end{proof}
+  \end{proof}
+  \step{<1>3}{\pflet{$\epsilon > 0$}}
+  \step{<1>4}{\pick\ $N$ such that, for all $m, n \geq N$, we have $\overline{\rho}(f_m, f_n) < \epsilon / 2$}
+  \step{<1>5}{For all $\alpha \in J$ and $m \geq N$ we have $\overline{d}(f_m(\alpha), f(\alpha)) \leq \epsilon / 2$}
+  \begin{proof}
+    \step{<2>1}{\pflet{$\alpha \in J$ and $m \geq N$}}
+    \step{<2>2}{For all $n \geq N$ we have $d(f_m(\alpha), f_n(\alpha)) < \epsilon / 2$}
+    \qedstep
+    \begin{proof}
+      \pf\ Taking the limit as $n \rightarrow \infty$.
+    \end{proof}
+  \end{proof}
+  \step{<1>6}{For $n \geq N$ we have $\overline{\rho}(f_n, f) < \epsilon$}
+  \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:topology:metric:closed_complete}
+  A closed subspace of a complete metric space is complete.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$X$ be a complete metric space and $A \subseteq X$ be closed.}}
+  \step{<1>2}{\pflet{$(x_n)$ be a Cauchy sequence in $A$.}}
+  \step{<1>3}{\pflet{$l$ be the limit of $x_n$ in $X$}}
+  \step{<1>4}{$l \in A$}
+  \begin{proof}
+    \pf\ Corollary \ref{cor:topology:limit_point:closed}.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{thm}
+  Let $X$ be a topological space and $Y$ a metric space. Then the space $\mathcal{C}(X, Y)$ of all continuous functions under the uniform metric is complete.
+\end{thm}
+
+\begin{proof}
+  \pf\ From Theorem \ref{thm:topology:metric:continuous_closed} and Proposition \ref{prop:topology:metric:closed_complete}. \qed
+\end{proof}
+
+\begin{thm}
+  \label{thm:topology:metric:bounded_complete}
+  Let $X$ be a topological space and $Y$ a metric space. Then the space $\mathcal{B}(X, Y)$ of all bounded functions under the uniform metric is complete.
+\end{thm}
+
+\begin{proof}
+  \pf\ From Theorem \ref{thm:topology:metric:bounded_closed} and Proposition \ref{prop:topology:metric:closed_complete}. \qed
+\end{proof}
+
+\begin{df}[Sup Metric]
+  Let $X$ be a nonempty set and $Y$ a metric space. The \emph{sup metric} $\rho$ on the set $\mathcal{B}(X, Y)$ of all bounded functions from $X$ to $Y$ is defined by
+  \[ \rho(f, g) = \sup_{x \in X} d(f(x), g(x)) \enspace . \]
+
+  We prove this is a metric.
+\end{df}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$X$ be a nonempty set.}}
+  \step{<1>2}{\pflet{$Y$ be a metric space.}}
+  \step{<1>3}{For all $f,g \in \mathcal{B}(X, Y)$, the set $\{ d(f(x), g(x)) : x \in X \}$ is bounded above.}
+  \begin{proof}
+    \step{<2>1}{\pflet{$f, g \in \mathcal{B}(X, Y)$}}
+    \step{<2>2}{\pflet{$M = \diam f(X)$ and $N = \diam g(X)$}}
+    \step{<2>3}{\pick\ $x_0 \in X$}
+    \begin{proof}
+      \pf\ \stepref{<1>1}
+    \end{proof}
+    \step{<2>4}{\pflet{$D = d(f(x_0), g(x_0))$}}
+    \step{<2>5}{\pflet{$x \in X$}}
+    \step{<2>6}{$d(f(x), g(x)) \leq M + N + D$}
+    \begin{proof}
+      \pf
+      \begin{align*}
+        d(f(x), g(x)) & \leq d(f(x), f(x_0)) + d(f(x_0), g(x_0)) + d(g(x_0), g(x)) & (\text{Triangle inequality}) \\
+        & \leq M + D + N & (\text{\stepref{<2>2}, \stepref{<2>4}})
+      \end{align*}
+    \end{proof}
+  \end{proof}
+  \step{<1>4}{For all $f,g \in \mathcal{B}(X, Y)$ we have $\rho(f, g) \geq 0$}
+  \begin{proof}
+    \step{<2>1}{\pflet{$f, g \in \mathcal{B}(X, Y)$}}
+    \step{<2>2}{\pick\ $x_0 \in X$}
+    \begin{proof}
+      \pf\ \stepref{<1>1}
+    \end{proof}
+    \step{<2>3}{$\rho(f, g) \geq 0$}
+    \begin{proof}
+      \pf
+      \begin{align*}
+        \rho(f, g) & \geq d(f(x_0), g(x_0)) & (\text{Definition of } \rho) \\
+        & \geq 0 & (\text{\stepref{<1>2}})
+      \end{align*}
+    \end{proof}
+  \end{proof}
+  \step{<1>5}{For all $f \in \mathcal{B}(X, Y)$ we have $\rho(f, f) = 0$}
+  \begin{proof}
+    \pf\ This holds because $d(f(x), f(x)) = 0$ for all $x \in X$.
+  \end{proof}
+  \step{<1>6}{For all $f, g \in \mathcal{B}(X, Y)$ we have $\rho(f, g) = \rho(g, f)$}
+  \begin{proof}
+    \pf
+    \begin{align*}
+      \rho(f, g) & = \sup_{x \in X} d(f(x), g(x)) & (\text{definition of } \rho)\\
+      & = \sup_{x \in X} d(g(x), f(x)) & (\text{\stepref{<1>2}}) \\
+      & = \rho(g, f) & (\text{definition of } \rho)
+    \end{align*}
+  \end{proof}
+  \step{<1>7}{For all $f, g, h \in \mathcal{B}(X, Y)$ we have $\rho(f, h) \leq \rho(f, g) + \rho(g, h)$}
+  \begin{proof}
+    \pf
+    \begin{align*}
+      \rho(f,h) & = \sup_{x \in X} d(f(x), h(x)) & (\text{definition of } \rho) \\
+      & \leq \sup_{x \in X} (d(f(x), g(x)) + d(g(x), h(x))) &
+      (\text{Triangle inequality})\\
+      & \leq \sup_{x \in X} d(f(x), g(x)) + \sup_{x \in X} d(g(x), h(x)) & (\text{Lemma \ref{lm:analysis:sup_plus}}) \\
+      & = \rho(f,g) + \rho(g,h) & (\text{definition of } \rho)
+    \end{align*}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{thm}
+  \label{thm:topology:metric:imbed_in_complete}
+  Every metric space can be isometrically imbedded in a complete metric space.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$X$ be a metric space.}}
+  \step{<1>2}{\assume{w.l.o.g. $X$ is nonempty}}
+  \begin{proof}
+    \pf\ Otherwise $X$ is already complete.
+  \end{proof}
+  \step{<1>3}{\pick\ $x_0 \in X$}
+  \begin{proof}
+    \pf\ \stepref{<1>2}
+  \end{proof}
+  \step{<1>4}{$\mathcal{B}(X, \mathbb{R})$ is complete.}
+  \begin{proof}
+    \pf\ Theorem \ref{thm:topology:metric:bounded_complete}.
+  \end{proof}
+  \step{<1>5}{\pflet{$\Phi : X \rightarrow \mathcal{B}(X, \mathbb{R})$ be defined by
+  \[ \Phi(x)(y) = d(x, y) - d(x_0, y) \]
+  }}
+  \begin{proof}
+    \pf\ For all $x \in X$, $\Phi(x)$ is bounded because $\Phi(x)(y) \leq d(x, x_0)$ for all $y \in X$ by the triangle inequality.
+  \end{proof}
+  \step{<1>6}{$\Phi$ is an isometric imbedding.}
+  \begin{proof}
+    \step{<2>1}{For $x,y \in X$ we have $\sup_{z \in X} |d(x, z) - d(y, z)| = d(x,y)$}
+    \begin{proof}
+      \step{<3>1}{$\sup_{z \in X} |d(x, z) - d(y, z)| \leq d(x,y)$}
+      \begin{proof}
+        \pf\ From the triangle inequality.
+      \end{proof}
+      \step{<3>2}{$\sup_{z \in X} |d(x, z) - d(y, z)| \geq d(x,y)$}
+      \begin{proof}
+        \pf\ This holds because $|d(x, y) - d(y, y)| = d(x, y)$.
+      \end{proof}
+    \end{proof}
+    \step{<2>2}{For $x,y \in X$ we have $\overline{\rho}(\Phi(x), \Phi(y)) = d(x,y)$}
+    \begin{proof}
+      \pf
+      \begin{align*}
+        \overline{\rho}(\Phi(x), \Phi(y)) & = \sup_{z \in X} |\Phi(x)(z) - \Phi(y)(z)| \\
+        & = \sup_{z \in X} |d(x, z) - d(x_0, z) - d(y, z) + d(y_0, z)| \\
+        & = \sup_{z \in X} |d(x, z) - d(y, z)| \\
+        & = d(x, y) & (\text{\stepref{<2>1}})
+      \end{align*}
+    \end{proof}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{thm}
+  For every metric space $X$, there exists a complete metric space $C(X)$ and an isometric imbedding $i : X \rightarrow C(X)$ such that, for every complete metric space $Y$ and isometric imbedding $j : X \rightarrow Y$, there exists a unique isometric imbedding $\overline{j} : C(X) \rightarrow Y$ such that
+  \[ j = \overline{j} \circ i \]
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pick\ a complete metric space $Z$ such that $X \subseteq Z$}
+  \begin{proof}
+    \pf\ From Theorem \ref{thm:topology:metric:imbed_in_complete}.
+  \end{proof}
+  \step{<1>2}{\pflet{$C(X) = \overline{X}$ as a subspace of $Z$ and $i$ be the inclusion.}}
+  \step{<1>3}{\pflet{$Y$ be a complete metric space and $j : X \rightarrow Y$ an isometric imbedding}}
+  \step{<1>4}{\pflet{$\overline{j} : C(X) \rightarrow Y$ be defined as follows: for $a \in \overline{X}$, pick a sequence $(x_n)$ in $X$ that converges to $a$. Then $\overline{j}(a) = \lim_{n \rightarrow \infty} j(x_n)$}}
+  \begin{proof}
+    \step{<2>1}{For all $a \in \overline{X}$, there exists a sequence in $X$ that converges to $a$.}
+    \begin{proof}
+      \pf\ By the Sequence Lemma.
+    \end{proof}
+    \step{<2>2}{If $(x_n)$ is a sequence in $X$ that converges in $C(X)$ then $(j(x_n))$ converges in $Y$}
+    \begin{proof}
+      \step{<3>1}{\pflet{$(x_n)$ be a convergent sequence in $X$.}}
+      \step{<3>2}{$(x_n)$ is Cauchy.}
+      \begin{proof}
+        \pf\ Lemma \ref{lm:topology:metric:convergent_cauchy}
+      \end{proof}
+      \step{<3>3}{$(j(x_n))$ is Cauchy in $Y$.}
+      \begin{proof}
+        \pf\ This holds because $j$ is an isometry between $X$ and $j(X)$.
+      \end{proof}
+      \qedstep
+      \begin{proof}
+        \pf\ Since $Y$ is complete.
+      \end{proof}
+    \end{proof}
+    \step{<2>3}{If $(x_n)$ and $(y_n)$ are sequences in $X$ that have the same limit in $C(X)$ then $\lim_{n \rightarrow \infty} j(x_n) = \lim_{n \rightarrow \infty} j(y_n)$}
+    \begin{proof}
+      \pf
+      \begin{align*}
+        d(\lim_{n \rightarrow \infty} j(x_n), \lim_{n \rightarrow \infty} j(y_n))
+        & = \lim_{n \rightarrow \infty} d(j(x_n), j(y_n)) (\text{Theorem \ref{thm:topology:continuous:convergence}, Lemma \ref{lm:topology:metric:continuous}})\\
+        & = \lim_{n \rightarrow \infty} d(x_n, y_n) & (j \text{ is isometric})\\
+        & = d(\lim_{n \rightarrow \infty} x_n, \lim_{n \rightarrow \infty} y_n) (\text{Theorem \ref{thm:topology:continuous:convergence}, Lemma \ref{lm:topology:metric:continuous}}) \\
+        & = 0
+      \end{align*}
+    \end{proof}
+  \end{proof}
+  \step{<1>5}{$\overline{j}$ is an isometric imbedding}
+  \begin{proof}
+    \step{<2>1}{\pflet{$a, b \in C(X)$}}
+    \step{<2>2}{\pick\ sequences $(x_n)$, $(y_n)$ in $X$ that converge to $a$ and $b$ respectively.}
+    \begin{proof}
+      \pf\ By the Sequence Lemma.
+    \end{proof}
+    \step{<2>3}{$d(\overline{j}(a), \overline{j}(b)) = d(a,b)$}
+    \begin{proof}
+      \pf
+      \begin{align*}
+        d(\overline{j}(a), \overline{j}(b))
+        & = d(\lim_{n \rightarrow \infty} j(x_n), \lim_{n \rightarrow \infty} j(y_n)) \\
+        d(\lim_{n \rightarrow \infty} j(x_n), \lim_{n \rightarrow \infty} j(y_n))
+        & = \lim_{n \rightarrow \infty} d(j(x_n), j(y_n)) (\text{Theorem \ref{thm:topology:continuous:convergence}, Lemma \ref{lm:topology:metric:continuous}})\\
+        & = \lim_{n \rightarrow \infty} d(x_n, y_n) & (j \text{ is isometric})\\
+        & = d(\lim_{n \rightarrow \infty} x_n, \lim_{n \rightarrow \infty} y_n) (\text{Theorem \ref{thm:topology:continuous:convergence}, Lemma \ref{lm:topology:metric:continuous}}) \\
+        & = d(a, b)
+      \end{align*}
+    \end{proof}
+  \end{proof}
+  \step{<1>6}{$j = \overline{j} \circ i$}
+  \begin{proof}
+    \pf\ For $a \in X$ we have
+    \begin{align*}
+      \overline{j}(i(a)) & = \overline{j}(a) \\
+      & = \overline{j}(\lim_{n \rightarrow \infty} a) \\
+      & = \lim_{n \rightarrow \infty} j(a) \\
+      & = j(a)
+    \end{align*}
+  \end{proof}
+  \step{<1>7}{If $k : C(X) \rightarrow Y$ is an isometric imbedding and $j = k \circ i$ then $k = \overline{j}$}
+  \begin{proof}
+    \step{<2>1}{\pflet{$a \in C(X)$}}
+    \step{<2>2}{\pick\ a sequence $(x_n)$ in $X$ that converges to $a$}
+    \begin{proof}
+      \pf\ By the Sequence Lemma.
+    \end{proof}
+    \step{<2>3}{$k(a) = \lim_{n \rightarrow \infty} j(x_n)$}
+    \begin{proof}
+      \pf
+      \begin{align*}
+        k(a) & = k(\lim_{n \rightarrow \infty} x_n) \\
+        & = \lim_{n \rightarrow \infty} k(x_n) & (Theorem \ref{thm:topology:continuous:convergence})\\
+        & = \lim_{n \rightarrow \infty} j(x_n) & (j = k \circ i) \\
+        & = \overline{j}(a)
+      \end{align*}
+    \end{proof}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{df}[Completion]
+  The \emph{completion} of a metric space $X$ is the complete metric space $C(X)$ such that:
+  \begin{itemize}
+    \item
+    $X$ is a sub-metric space of $C(X)$
+    \item
+    For every complete metric space $Y$, every isometric imbedding $X \rightarrow Y$ extends uniquely to an isometric imbedding $C(X) \rightarrow Y$
+  \end{itemize}
+\end{df}
+
+\begin{thm}[Uniqueness of Completion]
+  Suppose $C_1(X)$ and $C_2(X)$ are both completions of the metric space $X$. Then there exists a unique isometry $\phi : C_1(X) \cong C_2(X)$ that is the identity on $X$.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$\phi : C_1(X) \rightarrow C_2(X)$ be the unique isometric imbedding that extends the inclusion $X \hookrightarrow C_2(X)$}}
+  \step{<1>2}{\pflet{$\inv{\phi} : C_2(X) \rightarrow C_1(X)$ be the unique isometric imbedding that extends the inclusion $X \hookrightarrow C_1(X)$}}
+  \step{<1>3}{$\phi \circ \inv{\phi} = \id{C_2(X)}$}
+  \begin{proof}
+    \pf\ This holds because $\id{C_2(X)}$ is the unique isometric imbedding $C_2(X) \rightarrow C_2(X)$ that extends the inclusion $X \hookrightarrow C_2(X)$.
+  \end{proof}
+  \step{<1>4}{$\inv{\phi} \circ \phi = \id{C_1(X)}$}
+  \begin{proof}
+    \pf\ Similar.
+  \end{proof}
+  \qed
+\end{proof}

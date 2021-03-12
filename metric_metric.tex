@@ -1,0 +1,47 @@
+\section{Metrics}
+
+\begin{df}[Metric]
+  A \emph{metric} on a set $X$ is a function $d : X \times X \rightarrow
+  \mathbb{R}$ such that, for all $x, y, z \in X$:
+  \begin{enumerate}
+    \item $d(x, y) \geq 0$;
+    \item $d(x, y) = 0$ if and only if $x = y$;
+    \item $d(x, y) = d(y, x)$;
+    \item \textbf{Triangle Inequality}
+
+    $d(x, z) \leq d(x, y) + d(y, z)$
+  \end{enumerate}
+  A \emph{metric space} $X$ consists of a set $X$ and a metric on $X$. We
+  call $d(x, y)$ the \emph{distance} between $x$ and $y$.
+\end{df}
+
+\begin{df}[Open Ball]
+  Let $X$ be a metric space with metric $d$, $x \in X$ and $\epsilon > 0$.
+  The \emph{open       ball} with \emph{centre} $x$ and \emph{radius}
+  $\epsilon$
+  is
+  \[ B_d(x, \epsilon) = \{ y \in X : d(x, y) < \epsilon \} \enspace . \]
+\end{df}
+
+\begin{lm}
+  \label{lm:topology:metric:balls}
+  Let $X$ be a metric space, $x, y \in X$ and $\epsilon > 0$. If $y \in B(x,
+  \epsilon)$, then there exists $\delta$ such that $0 < \delta < \epsilon$ and
+  \[ B(y, \delta) \subseteq B(x, \epsilon) \enspace . \]
+\end{lm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$\delta = \epsilon - d(x, y)$}}
+  \step{<1>2}{\pflet{$z \in B(y, \delta)$}}
+  \step{<1>3}{$d(x, z) < \epsilon$}
+  \begin{proof}
+    \pf
+    \begin{align*}
+      d(x, z) & \leq d(x, y) + d(y, z) & (\text{Triangle Inequality}) \\
+      & < d(x, y) + \delta & (\text{\stepref{<1>2}}) \\
+      & = \epsilon & (\text{\stepref{<1>1}})
+    \end{align*}
+  \end{proof}
+  \qed
+\end{proof}
