@@ -95,11 +95,11 @@
 \contentsline {section}{\numberline {10.3}Isometries}{178}
 \contentsline {section}{\numberline {10.4}Lebesgue Numbers}{178}
 \contentsline {section}{\numberline {10.5}Uniform Continuity}{181}
-\contentsline {section}{\numberline {10.6}Locally Metrizable Spaces}{181}
-\contentsline {section}{\numberline {10.7}Completeness}{184}
-\contentsline {chapter}{\numberline {11}Manifolds}{191}
-\contentsline {section}{\numberline {11.1}Manifolds}{191}
-\contentsline {chapter}{\numberline {12}Normed Spaces}{194}
-\contentsline {section}{\numberline {12.1}The Norm on $\mathbb {R}^n$}{194}
-\contentsline {chapter}{\numberline {13}Topological Groups}{198}
-\contentsline {section}{\numberline {13.1}Topological Groups}{198}
+\contentsline {section}{\numberline {10.6}Locally Metrizable Spaces}{182}
+\contentsline {section}{\numberline {10.7}Completeness}{185}
+\contentsline {chapter}{\numberline {11}Manifolds}{193}
+\contentsline {section}{\numberline {11.1}Manifolds}{193}
+\contentsline {chapter}{\numberline {12}Normed Spaces}{196}
+\contentsline {section}{\numberline {12.1}The Norm on $\mathbb {R}^n$}{196}
+\contentsline {chapter}{\numberline {13}Topological Groups}{200}
+\contentsline {section}{\numberline {13.1}Topological Groups}{200}
