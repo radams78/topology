@@ -1,0 +1,58 @@
+\newcommand{\finsubseteq}{\ensuremath{\subseteq^{\mathrm{fin}}}}
+
+\chapter{Set Theory}
+
+\section{Unions}
+
+\begin{prop}
+  \label{prop:set_theory:unions}
+  Let $X$ be a set and $U \subseteq X$ and $\mathcal{B} \subseteq \mathcal{P} X$. Then the following are equivalent:
+  \begin{enumerate}
+    \item there exists $\mathcal{B}_0 \subseteq \mathcal{B}$ such that $U = \bigcup \mathcal{B}_0$
+    \item for all $x$, we have $x \in U$ iff there exists $B \in \mathcal{B}$ such that $x \in B \subseteq U$
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{$1 \Rightarrow 2$}
+  \begin{proof}
+    \step{<2>1}{\assume{1}}
+    \step{<2>2}{\pick\ $\mathcal{B}_0 \subseteq \mathcal{B}$ such that $U = \bigcup \mathcal{B}_0$}
+    \step{<2>3}{If $x \in U$ then there exists $B \in \mathcal{B}_0$ such that $x \in B \subseteq U$}
+    \step{<2>4}{If there exists $B \in \mathcal{B}$ such that $x \in B \subseteq U$ then $x \in U$}
+  \end{proof}
+  \step{<1>2}{$2 \Rightarrow 1$}
+  \begin{proof}
+    \step{<2>1}{\assume{2}}
+    \step{<2>2}{\pflet{$\mathcal{B}_0 = \{ B \in \mathcal{B} : B \subseteq U \}$}}
+    \step{<2>3}{For all $x \in U$, there exists $B \in \mathcal{B}_0$ such that $x \in B$}
+    \step{<2>4}{For all $B \in \mathcal{B}_0$ and $x \in B$ we have $x \in U$}
+  \end{proof}
+  \qed
+\end{proof}
+
+\section{Saturated Sets}
+
+\begin{df}[Saturated Set]
+  Let $f : X \rightarrow Y$ and $A \subseteq X$. Then $A$ is \emph{saturated} w.r.t.~$f$ iff, for all $x \in A$ and $x' \in X$, if $f(x) = f(x')$ then $x' \in A$.
+\end{df}
+
+\begin{prop}
+  Let $f : X \rightarrow Y$ and $A \subseteq X$. The following are equivalent:
+  \begin{enumerate}
+    \item $A$ is saturated
+    \item $A = \inv{f}(B)$ for some $B \subseteq Y$
+    \item $A = \inv{f}(f(A))$.
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  \pf\ Easy. \qed
+\end{proof}
+
+\chapter{Order Theory}
+
+\begin{df}[Linear Continuum]
+  A \emph{linear continuum} is a complete dense linearly ordered set with more than one element.
+\end{df}

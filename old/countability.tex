@@ -1,0 +1,665 @@
+\chapter{Countability Axioms}
+
+\section{The First Countability Axiom}
+
+\begin{df}[First Countability Axiom]
+  A topological space $X$ satisfies the \emph{first countability axiom}, or
+  is \emph{first countable}, iff every point has a countable local basis.
+\end{df}
+
+ \begin{prop}
+$S_\Omega$ is first countable.
+\end{prop}
+
+\begin{proof}
+ \pf\ For every countable ordinal $\alpha > 0$, the set $\{ (\beta, \alpha +
+ 1) :    \beta < \alpha \}$ is a local basis at $\alpha$. The set $\{ \{ 0
+ \} \}$ is a local basis at 0. \qed
+\end{proof}
+
+\begin{thm}[The Sequence Lemma (CC)]
+  Let $X$ be a first countable space and $A \subseteq X$. If $x \in
+  \overline{A}$, then there exists a sequence of points of $A$ that converges
+  to $x$.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$x \in \overline{A}$}}
+  \step{<1>2}{\pick\ a countable basis $\{ B_n \}_{n \in \mathbb{Z}^+}$ at
+    $x$.}
+  \step{<1>3}{For $n \geq 1$, \pick\ a point $a_n \in B_1 \cap \cdots \cap
+    B_n
+    \cap A$ \prove{$a_n \rightarrow x$ as $n \rightarrow \infty$}}
+  % TODO Extract lemma
+  \begin{proof}
+    \pf\ Using Countable Choice. Such an $a_n$ exists because $B_1 \cap
+    \cdots
+    \cap B_n$ is a neighbourhood of $x$. Apply Theorem
+    \ref{thm:topology:closure:neighbourhoods}.
+  \end{proof}
+  \step{<1>4}{\pflet{$U$ be a neighbourhood of $x$}}
+  \step{<1>5}{\pick\ $N$ such that $B_N \subseteq U$}
+  \begin{proof}
+    \pf\ From \stepref{<1>2}.
+  \end{proof}
+  \step{<1>6}{For $n \geq N$, we have $a_n \in U$}
+  \begin{proof}
+    \pf
+    \begin{align*}
+      a_n & \in B_1 \cap \cdots \cap B_n & (\text{\stepref{<1>3}}) \\
+      & \subseteq B_N & (n \geq N) \\
+      & \subseteq U & (\text{\stepref{<1>5}})
+    \end{align*}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{thm}[CC]
+  Let $X$ and $Y$ be topological spaces where $X$ is first countable. Let $x
+  \in X$. Suppose that, for every sequence $\{ x_n \}_{n \geq 1}$ such that
+  $x_n \rightarrow x$ as $n \rightarrow \infty$, we have $f(x_n) \rightarrow
+  f(x)$ as $n \rightarrow \infty$. Then $f$ is continuous at $x$.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$V$ be a neighbourhood of $f(x)$}}
+  \step{<1>2}{\assume{for a contradiction that, for every neighbourhood $U$
+      of
+      $x$, $f(U) \nsubseteq V$}}
+  \step{<1>3}{\pick\ a countable local basis $\{ B_n \}_{n \geq 1}$}
+  \step{<1>4}{For $n \geq 1$, \pick\ $a_n \in B_1 \cap \cdots \cap B_n$ such
+    that
+    $f(a_n) \notin V$}
+  \step{<1>5}{$a_n \rightarrow x$ as $n \rightarrow \infty$}
+  \begin{proof}
+    \pf
+    \step{<2>1}{\pflet{$U$ be a neighbourhood of $x$}}
+    \step{<2>2}{\pick\ $N$ such that $B_N \subseteq U$}
+    \step{<2>3}{For all $n \geq N$, $a_n \in U$}
+    \begin{proof}
+      \pf
+      \begin{align*}
+        a_n & \in B_1 \cap \cdots \cap B_n & (\text{\stepref{<1>4}}) \\
+        & \subseteq B_N & (n \geq N) \\
+        & \subseteq U & (\text{\stepref{<2>2}})
+      \end{align*}
+    \end{proof}
+  \end{proof}
+  \step{<1>6}{$f(a_n) \rightarrow f(x)$ as $n \rightarrow \infty$}
+  \step{<1>7}{There exists $N$ such that, for all $n \geq N$, we have $f(a_n)
+    \in
+    V$}
+  \qedstep
+\end{proof}
+
+\begin{lm}[CC]
+  $\mathbb{R}^\omega$ under the box topology is not first countable.
+\end{lm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$\{ B_n \}_{n \geq 1}$ be any countable set of
+      neighbourhoods of $\vec{0}$}}
+  \step{<1>2}{For $n \geq 1$, \pick\ $U_{nm}$ for $m \geq 1$ such that
+    $\vec{0}
+    \in \prod_{m = 1}^\infty U_{nm} \subseteq B_n$}
+  \step{<1>3}{For $n \geq 1$, \pick\ $a_n$, $b_n$ such that $0 \in (a_n, b_n)
+    \subseteq U_{nn}$}
+  \step{<1>4}{\pflet{$U = \prod_{n = 1}^\infty (a_n / 2, b_n / 2)$}}
+  \step{<1>5}{$\vec{0} \in U$}
+  \step{<1>6}{For all $n$, $B_n \nsubseteq U$}
+  \qed
+\end{proof}
+
+\begin{lm}[CC]
+  If $J$ is uncountable then $\mathbb{R}^J$ is not first countable.
+\end{lm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$\{ B_n \}_{n \geq 1}$ be a countable family of
+      neighbourhoods of $\vec{0}$}}
+  \step{<1>2}{For $n \geq 1$, \pick\ $U_{n \alpha}$ such that $\vec{0} \in
+    \prod_{\alpha \in J} U_{n \alpha} \subseteq B_n$ where $U_{n \alpha}$ is
+    open in $\mathbb{R}$ and $U_{n \alpha} = \mathbb{R}$ except for $\alpha =
+    \alpha_{n1}, \ldots, \alpha_{nr_n}$}
+  \step{<1>3}{\pick\ $\beta$ such that $\beta$ is different from
+    $\alpha_{ni}$
+    for all $n$, $i$}
+  \step{<1>4}{\pflet{$V = \pi_\beta^{-1}((-1, 1))$}}
+  \step{<1>5}{$\vec{0} \in V$}
+  \step{<1>6}{$V \nsubseteq B_n$ for all $n$}
+  \qed
+\end{proof}
+
+\begin{lm}
+  $\mathbb{R}_l$ is first countable.
+\end{lm}
+
+\begin{proof}
+  \pf\ For all $x \in \mathbb{R}$, $\{ [x, q) : q \in \mathbb{Q}, q > x \}$
+  is a basis at $x$. \qed
+\end{proof}
+
+\begin{lm}
+  The ordered square is first countable.
+\end{lm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$(x, y) \in I_o^2$} \prove{There exists a countable
+      local
+      basis $\mathcal{B}$ at $(x, y)$}}
+  \step{<1>2}{\case{$(x, y) = (0, 0)$}}
+  \begin{proof}
+    \pf\ Take $\mathcal{B} = \{ [(0, 0), (0, q)) : q \in \mathbb{Q}, 0 < q <
+    1
+    \}$.
+  \end{proof}
+  \step{<1>3}{\case{$0 < y < 1$}}
+  \begin{proof}
+    \pf\ Take $\mathcal{B} = \{ ((x, q), (x, q')) : q, q' \in \mathbb{Q}, q <
+    y < q' \}$.
+  \end{proof}
+  \step{<1>4}{\case{$x < 1, y = 1$}}
+  \begin{proof}
+    \pf\ Take $\mathcal{B} = \{ ((x, q), (q', 0)) : q, q' \in \mathbb{Q}, 0 <
+    q < 1, x < q' < 1 \}$.
+  \end{proof}
+  \step{<1>5}{\case{$x > 0, y = 0$}}
+  \begin{proof}
+    \pf\ Take $\mathcal{B} = \{ ((q, 1), (x, q')) : q, q' \in \mathbb{Q}, 0 <
+    q < x, 0 < q' < 1 \}$
+  \end{proof}
+  \step{<1>6}{\case{$(x, y) = (1, 1)$}}
+  \begin{proof}
+    \pf\ Take $\mathcal{B} = \{ ((1, q), (1, 1)] : q \in \mathbb{Q}, 0 < q <
+    1
+    \}$.
+  \end{proof}
+  \qed
+\end{proof}
+
+  \begin{prop}
+ A subspace of a first countable space is first countable.
+\end{prop}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\pflet{$X$ be a first countable space and $A \subseteq X$}}
+ \step{<1>2}{\pflet{$a \in A$}}
+ \step{<1>3}{\pick\ a countable basis $\mathcal{B}$ at $a$ in $X$}
+ \step{<1>4}{$\{ B \cap A : B \in \mathcal{B}$ is a countable basis at $a$ in
+   $A$.} % TODO Extract lemma
+ \qed
+\end{proof}
+
+\begin{prop}[CC]
+ A countable product of first countable spaces is first countable.
+\end{prop}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\pflet{$\{ X_n \}_{n \in \mathbb{Z}^+}$ be a countable family of
+     first countable spaces.}}
+ \step{<1>2}{\pflet{$\vec{x} \in \prod_{n=1}^\infty X_n$}}
+ \step{<1>3}{\pick\ a countable basis $\mathcal{B}_n$ at $x_n$ in $X_n$ for
+all
+   $n$}
+ \step{<1>4}{\pflet{$\mathcal{B}$ be the set of all sets $\prod_{i=1}^n U_n$
+     where $U_n \in \mathcal{B}_n$ for finitely many $n$ and $U_n = X_n$ for
+     all other $n$.}}
+ \step{<1>5}{$\mathcal{B}$ is a countable basis at $\vec{x}$ in
+   $\prod_{n=1}^\infty X_n$}
+ \qed
+\end{proof}
+
+\begin{cor}
+  The space $\mathbb{R}^\omega$ is first countable.
+\end{cor}
+
+  \begin{prop}
+ The space $S_\Omega$ is first countable.
+\end{prop}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\pflet{$\alpha \in S_\Omega$} \prove{$\alpha$ has a countable
+local
+     basis.}}
+ \step{<1>2}{\case{$\alpha$ is zero or a successor ordinal.}}
+ \begin{proof}
+   \pf\ In this case, $\{ \{ \alpha \} \}$ is a local basis.
+ \end{proof}
+ \step{<1>3}{\case{$\alpha$ is a limit ordinal.}}
+ \begin{proof}
+   \step{<2>1}{\pick\ a countable sequence $(\beta_n)$ with supremum $\alpha$}
+   \step{<2>2}{$\{ (\beta_n, \alpha + 1) : n \in \mathbb{Z}^+ \}$ is a local
+     basis.}
+ \end{proof}
+ \qed
+\end{proof}
+
+  \begin{prop}
+    \label{prop:topology:first_countable:S_omega}
+  The space $\overline{S_\Omega}$ is not first countable.
+\end{prop}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\assume{for a contradiction $\mathcal{B}$ is a countable local
+     basis at $\Omega$}}
+ \step{<1>2}{\pflet{$\alpha = \sup \{ \inf B : B \in \mathcal{B} \}$}}
+ \step{<1>3}{$\alpha < \Omega$}
+ \step{<1>4}{There is no $B \in \mathcal{B}$ such that $B \subseteq (\alpha,
++
+   \infty)$}
+ \qed
+\end{proof}
+
+\begin{prop}
+ The continuous image of a first countable space is first countable.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$X$ be a first countable space, $Y$ a space and $f : X
+      \rightarrow Y$ continuous.}}
+  \step{<1>2}{\pflet{$y \in f(X)$}}
+  \step{<1>3}{\pick\ $x \in X$ such that $y = f(x)$}
+  \step{<1>4}{\pick\ a countable local basis $\mathcal{B}$ at $x$}
+  \step{<1>5}{$\{ f(B) : B \in \mathcal{B} \}$ is a countable local basis at
+    $y$.}
+  \qed
+\end{proof}
+
+\begin{prop}
+ $S_\Omega \times \overline{S_\Omega}$ is not first countable.
+\end{prop}
+
+\begin{proof}
+\pf\ $(0, \Omega)$ has no countable basis. \qed
+\end{proof}
+
+\begin{prop}
+The Sorgenfrey plane is first countable.
+\end{prop}
+
+\begin{proof}
+ \pf\ For any point $(a,b)$, the set $\{ [a, a + q) \times [b, b + r) : q, r
+ \in \mathbb{Q} \}$ is a countable local basis at $(a,b)$. \qed
+\end{proof}
+
+
+\section{Separable Spaces}
+
+  \begin{df}[Separable Space]
+  A topological space $X$ is \emph{separable} iff it has a countable dense
+  subset.
+\end{df}
+
+  \begin{prop}
+    \label{prop:topology:separable:S_omega}
+ The space $S_\Omega$ is not separable.
+\end{prop}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\pflet{$D \subseteq S_\Omega$ be countable.}}
+ \step{<1>2}{\pflet{$\alpha = \sup D$}}
+ \step{<1>3}{$\overline{D} \subseteq (-\infty, \alpha]$}
+ \qed
+\end{proof}
+
+  \begin{prop}
+  The space $\overline{S_\Omega}$ is not separable.
+\end{prop}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\pflet{$D \subseteq S_\Omega$ be countable.}}
+ \step{<1>2}{\pflet{$\alpha = \sup \{ \beta \in D : \beta < \Omega \}$}}
+ \step{<1>3}{$\alpha < \Omega$}
+ \begin{proof}
+   \pf\ $\alpha$ is the supremum of countably many countable ordinals.
+ \end{proof}
+ \step{<1>4}{$\overline{D} \subseteq (-\infty, \alpha] \cup \{ \Omega \}$}
+ \qed
+\end{proof}
+
+\begin{cor}
+  Not every compact Hausdorff space is separable.
+\end{cor}
+
+\begin{prop}
+  Every open subspace of a separable space is separable.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$X$ be a separable space with countable dense subset $D$.}}
+  \step{<1>2}{\pflet{$U$ be an open subspace of $X$} \prove{$D \cap U$ is a countable dense subset of $U$.}}
+  \step{<1>3}{$D \cap U$ is countable.}
+  \step{<1>4}{\pflet{$V$ be an open set in $U$.}}
+  \step{<1>5}{$V$ is open in $X$}
+  \begin{proof}
+    \pf\ Lemma \ref{lm:topology:subspace:open}
+  \end{proof}
+  \step{<1>6}{$V$ intersects $D$}
+  \step{<1>7}{$V$ intensects $D \cap U$}
+  \qed
+\end{proof}
+
+\begin{prop}[CC]
+ The product of a countable family of separable spaces is separable.
+\end{prop}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\pflet{$(X_n)$ be a countable family of separable spaces.}}
+ \step{<1>2}{For $n \geq 1$, \pick\ a dense set $D_n$ in $X_n$}
+ \step{<1>3}{$\prod_{n=1}^\infty D_n$ is dense in $\prod_{n=1}^\infty X_n$.}
+ \qed
+\end{proof}
+
+\begin{prop}
+ The continuous image of a separable space is separable.
+\end{prop}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\pflet{$X$ be a separable space, $Y$ a space and $f : X
+\rightarrow
+     Y$ be continuous.}}
+ \step{<1>2}{\pick\ a countable dense set $D$ in $X$}
+ \step{<1>3}{$f(D)$ is dense in $f(X)$.}
+ \qed
+\end{proof}
+
+\begin{cor}
+  Let $\{ X_\alpha \}_{\alpha \in J}$ be a family of nonempty topological
+  spaces. If $\prod_{\alpha \in J} X_\alpha$ is separable then each
+$X_\alpha$ is separable.
+\end{cor}
+
+\begin{cor}
+  $S_\Omega \times \overline{S_\Omega}$ is not separable.
+\end{cor}
+
+\begin{prop}
+The ordered square is not separable.
+\end{prop}
+
+\begin{proof}
+ \pf\ $\{ \{x\} \times (0,1) : x \in [0,1] \}$ is an uncountable set of
+disjoint open sets. \qed
+\end{proof}
+
+\begin{prop}
+ $\mathbb{R}_l$ is separable.
+\end{prop}
+
+\begin{proof}
+ \pf\ $\mathbb{Q}$ is dense. \qed
+\end{proof}
+
+\begin{prop}
+The Sorgenfrey plane is separable.
+\end{prop}
+
+\begin{proof}
+ \pf\ $\mathbb{Q}^2$ is dense. \qed
+\end{proof}
+
+\begin{prop}
+ Not every closed subspace of a separable space is separable.
+\end{prop}
+
+\begin{proof}
+ \pf\ $\mathbb{R}_l^2$ is separable but the subspace $\{ (x, -x) : x \in \mathbb{R} \}$ is not. \qed
+\end{proof}
+
+\section{The Second Countability Axiom}
+
+  \begin{df}[Second Countability Axiom]
+  A topological space satisfies the \emph{second countability axiom}, or is
+  \emph{second countable}, iff it has a countable basis.
+\end{df}
+
+ \begin{prop}
+$S_\Omega$ is not second countable.
+\end{prop}
+
+\begin{proof}
+ \pf\ $\{ \{ \alpha \} : \alpha \text{ is a countable successor ordinal} \}$
+is an uncountable set of disjoint open sets. \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:topology:second_countable:subspace}
+ A subspace of a second countable space is second countable.
+\end{prop}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\pflet{$X$ be a second countable space and $A \subseteq X$}}
+ \step{<1>2}{\pick\ a countable basis $\mathcal{B}$ for $X$}
+ \step{<1>3}{$\{ B \cap A : B \in \mathcal{B} \}$ is a countable basis for
+$A$}
+ \qed
+\end{proof}
+
+  \begin{prop}[CC]
+ The product of countably many second countable spaces is second countable.
+\end{prop}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\pflet{$\{X_n\}_{n \in \mathbb{Z}^+}$ be a countable family of
+     second countable spaces.}}
+ \step{<1>2}{For $n \in \mathbb{Z}^+$, \pick\ a countable basis
+$\mathcal{B}_n$
+   for $X_n$.}
+ \step{<1>3}{\pflet{$\mathcal{B}$ be the set of all sets of the form
+     $\prod_{n=1}^\infty U_n$, where $U_n \in \mathcal{B}_n$ for finitely
+many        $n$, and $U_n = X_n$ for all other $n$.}}
+\step{<1>4}{$\mathcal{B}$ is a countable basis for $\prod_{n=1}^\infty X_n$}
+\qed
+\end{proof}
+
+  \begin{thm}[CC]
+ Every second countable space is separable.
+\end{thm}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\pflet{$X$ be a second countable space.}}
+ \step{<1>2}{\pick\ a countable basis $\mathcal{B}$ for $X$}
+ \step{<1>3}{For $B \in \mathcal{B}$ nonempty, \pick\ a point $x_B \in B$}
+ \step{<1>4}{$D = \{ x_B : B \in \mathcal{B} \setminus \{ \emptyset \} \}$ is
+dense.}
+ \begin{proof}
+   \step{<2>1}{\pflet{$l \in X$} \prove{$l \in \overline{D}$}}
+   \step{<2>2}{\pflet{$B \in \mathcal{B}$ such that $l \in B$}}
+   \step{<2>3}{$x_B \in B \cap D$}
+   \qedstep
+   \begin{proof}
+     \pf By Theorem \ref{thm:topology:closure:basis}
+   \end{proof}
+ \end{proof}
+\end{proof}
+
+\begin{cor}
+  $S_\Omega \times \overline{S_\Omega}$ is not second countable.
+\end{cor}
+
+\begin{cor}
+  The space $\mathbb{R}^\omega$ is separable.
+\end{cor}
+
+\begin{cor}
+If $J$ is uncountable then $\mathbb{R}^J$ is not second countable.
+\end{cor}
+
+  \begin{prop}
+ The ordered square is not second countable.
+\end{prop}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\pflet{$\mathcal{B}$ be any basis}}
+ \step{<1>2}{For $x \in [0,1]$, \pick\ $B_x$ such that $x \in B_x \subseteq
+((x,
+   0), (x, 1))$}
+ \step{<1>3}{The function $B_{(-)}$ is an injective function $[0, 1]
+\rightarrow
+   \mathcal{B}$}
+ \step{<1>4}{$\mathcal{B}$ is uncountable.}
+ \qed
+\end{proof}
+
+\begin{prop}
+  The space $\overline{S_\Omega}$ is not second countable.
+\end{prop}
+
+\begin{proof}
+  \pf\ It is not first countable (Proposition
+  \ref{prop:topology:first_countable:S_omega}). \qed
+\end{proof}
+
+\begin{prop}
+ The continuous image of a second countable space is second countable.
+\end{prop}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\pflet{$X$ be a second countable space, $Y$ a space and $f : X
+     \rightarrow Y$ be continuous.}}
+ \step{<1>2}{\pick\ a countable basis $\mathcal{B}$ for $X$.}
+ \step{<1>3}{$\{ f(B) : B \in \mathcal{B}$ is a countable basis for $f(X)$}
+ \qed
+\end{proof}
+
+\begin{thm}
+  \label{thm:topology:normal:regular_lindelof}
+  Every regular Lindel\"{o}f space is normal.
+\end{thm}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\pflet{$X$ be a regular Lindel\"{o}f space.}}
+ \step{<1>2}{\pflet{$A$ and $B$ be disjoint closed sets in $X$.}}
+ \step{<1>3}{$\{ U \text{ open in } X : \overline{U} \cap B = \emptyset \}$
+   covers $A$}
+     \begin{proof}
+       \pf\ Proposition \ref{prop:topology:regular:closure}.
+     \end{proof}
+ \step{<1>4}{\pick\ a countable open covering $\{ U_n : n \in \mathbb{Z}^+
+\}$
+   of $A$ such that $\overline{U_n} \cap B = \emptyset$ for all $n$}
+ \step{<1>5}{\pick\ a countable open covering $\{ V_n : n \in \mathbb{Z}^+
+\}$
+   of $B$ such that $\overline{V_n} \cap A = \emptyset$ for all $n$}
+ \begin{proof}
+   \pf\ Similar.
+ \end{proof}
+ \step{<1>6}{For $n \in \mathbb{Z}^+$, \pflet{$U_n' = U_n \setminus
+     \bigcup_{i=1}^n \overline{V_i}$ and $V_n' = V_n \setminus
+     \bigcup_{i=1}^n \overline{U_i}$}}
+ \step{<1>7}{\pflet{$U' = \bigcup_{n=1}^\infty U_n'$ and $V =
+     \bigcup_{n=1}^\infty V_n'$}}
+ \step{<1>8}{$A \subseteq U'$ and $B \subseteq V'$}
+ \step{<1>9}{$U' \cap V' = \emptyset$}
+ \qed
+\end{proof}
+
+\begin{cor}
+If $J$ is uncountable then $\mathbb{R}^J$ is not Lindel\"{o}f.
+\end{cor}
+  \begin{prop}
+ Every second countable regular space is completely normal.
+\end{prop}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\pflet{$X$ be second countable and regular and $Y \subseteq X$}}
+ \step{<1>2}{$Y$ is second countable}
+ \begin{proof}
+   \pf\ Proposition \ref{prop:topology:second_countable:subspace}.
+ \end{proof}
+ \step{<1>3}{$Y$ is regular}
+ \begin{proof}
+   \pf\ Proposition \ref{prop:topology:regular:subspace}
+ \end{proof}
+ \step{<1>4}{$Y$ is normal}
+ \begin{proof}
+   \pf\ Theorem \ref{thm:topology:normal:regular_lindelof}
+ \end{proof}
+ \qed
+\end{proof}
+
+ \begin{prop}
+ The space $\mathbb{R}^\omega$ is second countable.
+\end{prop}
+
+\begin{proof}
+ \pf\ The sets $\prod_{n=0}^\infty U_n$ form a basis, where $U_n$ is an
+ interval of the form $(q, r)$ for $q, r \in \mathbb{Q}$ for finitely many
+ $n$, and $U_n = \mathbb{R}$ for all other $n$. \qed
+\end{proof}
+
+\begin{prop}[CC]
+In a second countable space, every discrete subspace is countable.
+\end{prop}
+
+\begin{proof}
+\pf
+\step{<1>1}{\pflet{$X$ be a second countable space}}
+\step{<1>2}{\pick\ a countable basis $\mathcal{B}$}
+\step{<1>3}{\pflet{$D \subseteq X$ be discrete}}
+\step{<1>4}{For $a \in D$, \pick\ $B_a \in \mathcal{B}$ such that $B_a \cap D
+=
+  \{ a \}$}
+\step{<1>5}{$a \mapsto B_a$ is injective}
+\qed
+\end{proof}
+
+\begin{prop}
+The space $\mathbb{R}_K$ is second countable.
+\end{prop}
+
+\begin{proof}
+\pf\ $\{ (a,b) : a, b \in \mathbb{R} \} \cup \{ (a, b) - K : a, b \in
+\mathbb{Q} \}$ is a basis. \qed
+\end{proof}
+
+\begin{cor}
+The space $\mathbb{R}_K$ is first countable.
+\end{cor}
+
+\begin{cor}
+The space $\mathbb{R}_K$ is separable.
+\end{cor}
+
+\begin{prop}
+Let $J$ be a set with $|J| > |\mathbb{R}|$. Then $\mathbb{R}^J$ is not separable.
+\end{prop}
+
+\begin{proof}
+\pf
+\step{<1>1}{\assume{$D$ is countable and dense in $\mathbb{R}^J$} \prove{$|J| \leq |\mathbb{R}|$}}
+\step{<1>2}{Define $f : J \rightarrow \mathcal{P} D$ by $f(\alpha) = D \cap \inv{\pi_\alpha}((0,1))$}
+\step{<1>3}{$f$ is injective}
+\begin{proof}
+  \step{<2>1}{\pflet{$\alpha, \beta \in J$ with $\alpha \neq \beta$}}
+  \step{<2>2}{\pick\ $x \in D \cap \inv{\pi_\alpha}((0,1)) \cap \inv{\pi_\beta}((2, 3))$}
+  \step{<2>3}{$x \in f(\alpha)$ but $x \notin f(\beta)$}
+\end{proof}
+\qed
+\end{proof}
+
+\begin{cor}
+The product of a family of separable spaces is not necessarily separable.
+\end{cor}

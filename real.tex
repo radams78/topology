@@ -1,0 +1,83 @@
+\chapter{Real Analysis}
+
+\begin{df}
+  Let $\mathbb{R}^\infty$ be the set of all sequences in $\mathbb{R}^\omega$ that are eventually zero.
+\end{df}
+
+\begin{df}[Hilbert Cube]
+  The \emph{Hilbert cube} is the set $\prod_{n=1}^\infty [0, 1/n]$, a subset of $\mathbb{R}^\omega$.
+\end{df}
+
+\begin{prop}
+  A bounded increasing sequence of real numbers converges to its supremum.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$(s_n)$ be a bounded increasing sequence.}}
+  \step{<1>2}{\pflet{$l = \sup_{n \in \mathbb{Z}^+} s_n$}}
+  \step{<1>3}{\pflet{$\epsilon > 0$}}
+  \step{<1>4}{\pick\ $N$ such that $s_N > l - \epsilon$}
+  \begin{proof}
+    \pf\ Such an $N$ exists because $l - \epsilon$ is not an upper bound for $(s_n)$.
+  \end{proof}
+  \step{<1>5}{For $n \geq N$ we have $l - \epsilon < s_n \leq l$}
+  \qed
+\end{proof}
+
+\begin{prop}[Comparison Test]
+  Suppose $|a_n| \leq b_n$ for all $n$. If $\sum_{n=1}^\infty b_n < \infty$ then $\sum_{n=1}^\infty a_n < \infty$.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{$\sum_{n=1}^\infty |a_n| < \infty$}
+  \begin{proof}
+    \pf\ $\sum_{n=1}^N |a_n|$ is an increasing sequence bounded above by $\sum_{n=1}^\infty b_n$.
+  \end{proof}
+  \step{<1>2}{\pflet{$c_n = |a_n| + a_n$ for all $n$}}
+  \step{<1>3}{$\sum_{n=1}^\infty c_n < \infty$}
+  \begin{proof}
+    \pf\ $\sum_{n=1}^N c_n$ is an increasing sequence bounded above by $2 \sum_{n=1}^\infty |a_n|$.
+  \end{proof}
+  \qedstep
+  \begin{proof}
+    \pf\ $\sum_{n=1}^\infty a_n = \sum_{n=1}^\infty c_n - \sum_{n=1}^\infty |a_n|$.
+  \end{proof}
+\end{proof}
+
+\begin{prop}[Weierstrass $M$-test]
+  Let $X$ be a set. Let $f_n : X \rightarrow \mathbb{R}$ be a sequence of functions. Let
+  \[ s_n(x) = \sum_{i=1}^n f_i(x) \]
+  for $n \geq 1$ and $x \in X$. Let $M_n > 0$ for all $n$. Suppose $|f_n(x)| \leq M_n$ for all $n$ and all $x \in X$.
+  If $\sum_{n=1}^\infty M_n < \infty$, then $s_n$ converges uniformly to some function.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$s(x) = \sum_{i=1}^\infty f_i(x)$ for all $x \in X$}}
+  \begin{proof}
+    \pf\ This sequence converges by the Comparison Test.
+  \end{proof}
+  \step{<1>2}{\pflet{$r_n = \sum_{i=n+1}^\infty M_i$ for all $n$.}}
+  \step{<1>3}{For $k > n$ we have $|s_k(x) - s_n(x)| < r_n$ for all $x \in X$}
+  \begin{proof}
+    \pf
+    \begin{align*}
+      |s_k(x) - s_n(x)| & = \sum_{i=n+1}^k f_i(x) \\
+      & \leq \sum_{i=n+1}^k M_i \\
+      & < r_n
+    \end{align*}
+  \end{proof}
+  \step{<1>4}{For all $n$ and $x \in X$ we have $|s(x) - s_n(x)| \leq r_n$}
+  \begin{proof}
+    \pf\ Take the limit as $k \rightarrow \infty$.
+  \end{proof}
+  \step{<1>5}{$s_n$ converges uniformly to $s$ as $n \rightarrow \infty$.}
+  \begin{proof}
+    \step{<2>1}{\pflet{$\epsilon > 0$}}
+    \step{<2>2}{\pick\ $N$ such that for all $n \geq N$ we have $r_n < \epsilon$}
+    \step{<2>3}{For $n \geq N$ and $x \in X$ we have $|s(x) - s_n(x)| < \epsilon$}
+  \end{proof}
+  \qed
+\end{proof}

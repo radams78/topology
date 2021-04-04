@@ -663,6 +663,19 @@
   set $f(C)$ is closed in $Y$.
 \end{df}
 
+\begin{lm}
+  \label{lm:topology:closed_map:open}
+  Let $p : X \rightarrow Y$ be a closed map. Let $B \subseteq Y$. Let $U$ be an open neighbourhood of $\inv{p}(B)$. Then there exists an open neighbourhood $V$ of $B$ such that $\inv{p}(V) \subseteq U$.
+\end{lm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$V = Y \setminus p(X \setminus U)$}}
+  \step{<1>2}{$V$ is open}
+  \step{<1>3}{$\inv{p}(V) \subseteq U$}
+  \qed
+\end{proof}
+
 \section{Local Homeomorphism}
 
 \begin{df}[Locally Homeomorphic]

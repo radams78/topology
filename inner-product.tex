@@ -1,0 +1,235 @@
+\chapter{Inner Product Spaces}
+
+\begin{df}[Inner Product]
+  Let $K$ be either $\mathbb{R}$ or $\mathbb{C}$. Let $X$ be a $K$-vector space. An \emph{inner product} on $X$ is a function $\cdot : X^2 \rightarrow K$ such that, for all $\alpha \in K$ and $x, y, z \in X$:
+  \begin{enumerate}
+    \item
+    $\alpha x \cdot y = \alpha (x \cdot y)$
+    \item
+    $(x + y) \cdot z = x \cdot z + y \cdot z$
+    \item
+    $x \cdot y = \overline{y \cdot x}$
+    \item
+    If $x \neq 0$ then $x \cdot x > 0$.
+  \end{enumerate}
+\end{df}
+
+\begin{ex}
+  The \emph{standard inner product} on $K^n$ is given by
+  \[ (x_1, \ldots, x_n) \cdot (y_1, \ldots, y_n) = x_1 \overline{y_1} + \cdots + x_n \overline{y_n} \]
+
+  It is easy to check this is an inner product.
+\end{ex}
+
+\begin{prop}
+  \label{prop:inner_product:positive_definite}
+  \[ x \cdot x \geq 0 \]
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{$0 \cdot 0 = 0$}
+  \begin{proof}
+    \pf
+    \begin{align*}
+      0 \cdot 0 & = (0 + 0) \cdot 0 \\
+      & = 0 \cdot 0 + 0 \cdot 0
+    \end{align*}
+  \end{proof}
+  \step{<1>2}{For $x \neq 0$ we have $x \cdot x > 0$}
+  \qed
+\end{proof}
+
+\begin{prop}lCauchy-Schwarz Inequality]
+  \[ | x \cdot y |^2 \leq (x \cdot x) (y \cdot y) \]
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\case{$y = 0$}}
+  \begin{proof}
+    \pf\ In this case, both sides are 0.
+  \end{proof}
+  \step{<1>2}{\case{$y \neq 0$}}
+  \begin{proof}
+    \step{<2>1}{\pflet{$\lambda = x \cdot y / y \cdot y$}}
+    \step{<2>2}{$x \cdot x - |x \cdot y|^2 / y \cdot y \geq 0$}
+    \begin{proof}
+      \pf
+      \begin{align*}
+        0 & \leq (x - \lambda y) \cdot (x - \lambda y) \\
+        & = x \cdot x - \overline{\lambda} (x \cdot y) - \lambda (y \cdot x) + |\lambda|^2 y \cdot y \\
+        & = x \cdot x - | x \cdot y |^2 / y \cdot y - |x \cdot y|^2 / y \cdot y + |x \cdot y|^2 / y \cdot y \\
+        & = x \cdot x - |x \cdot y|^2 / y \cdot y
+      \end{align*}
+    \end{proof}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{df}
+  Given an inner product on $X$, the norm \emph{induced} by the inner product is defined by
+  \[ \| x \| = \sqrt{x \cdot x} \]
+  We prove this is a norm.
+\end{df}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{$\|x \| \geq 0$}
+  \begin{proof}
+    \pf\ Proposition \ref{prop:inner_product:positive_definite}
+  \end{proof}
+  \step{<1>2}{$\| x \| = 0$ iff $x = 0$}
+  \begin{proof}
+    \pf\ We have $\| x \| = 0$ iff $x \cdot x = 0$ iff $x = 0$.
+  \end{proof}
+  \step{<1>3}{$\| \alpha x \| = | \alpha | \| x \|$}
+  \begin{proof}
+    \pf
+    \begin{align*}
+      \| \alpha x \|^2
+      & = \alpha x \cdot \alpha x \\
+      & = \alpha \overline{\alpha} (x \cdot x) \\
+      & = |\alpha|^2 \| x \|^2
+    \end{align*}
+  \end{proof}
+  \step{<1>4}{$\| x + y \| \leq \| x \| + \| y \|$}
+  \begin{proof}
+    \pf
+    \begin{align*}
+      \| x + y \|^2 & = (x + y) \cdot (x + y) \\
+      & = \| x \| ^2 + x \cdot y + y \cdot x + \| y \|^2 \\
+      & = \| x \| ^2 + x \cdot y + \overline{x \cdot y} + \| y \|^2 \\
+      & \leq \| x \|^2 + 2 |x \cdot y| + \| y \|^2 \\
+      & \leq \| x \|^2 + 2 \| x \| \| y \| + \| y \|^2 & (\text{Cauchy-Schwarz}) \\
+      & = (\| x \| + \| y \|)^2
+    \end{align*}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{prop}
+  The topology induced by the standard inner product on $\mathbb{R}^n$ is the standard topology.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$d$ be the topology induced by the standard inner product and $\rho$ the square topology.}}
+  \step{<1>2}{For all $\vec{x}, \vec{y} \in \mathbb{R}^n$ we have $\rho(\vec{x}, \vec{y}) \leq d(\vec{x}, \vec{y})$}
+  \begin{proof}
+    \pf
+    \begin{align*}
+      \rho(\vec{x}, \vec{y})^2 & = \max(|x_1 - y_1|, \ldots, |x_n - y_n|)^2 \\
+      & \leq |x_1 - y_1|^2 + \cdots + |x_n - y_n|^2 \\
+      & = d(\vec{x}, \vec{y})^2
+    \end{align*}
+  \end{proof}
+  \step{<1>3}{For all $\vec{x}, \vec{y} \in \mathbb{R}^n$ we have $d(\vec{x}, \vec{y}) \leq \sqrt{n} \rho(\vec{x}, \vec{y})$}
+  \begin{proof}
+    \pf
+    \begin{align*}
+      d(\vec{x}, \vec{y})^2 & = |x_1 - y_1|^2 + \cdots + |x_n - y_n|^2 \\
+      & \leq n \rho(\vec{x}, \vec{y})^2
+    \end{align*}
+  \end{proof}
+  \step{<1>4}{$d$ and $\rho$ induce the same topology.}
+  \begin{proof}
+    \pf\ Proposition \ref{prop:metric:finer}.
+  \end{proof}
+  \qedstep
+  \begin{proof}
+    \pf\ Proposition \ref{prop:metric:square}.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{df}[$l^2$-inner product]
+  Let
+  \[ l^2 = \left\{ \vec{x} \in \mathbb{R}^\omega : \sum_{n=1}^\infty x_n^2 < \infty \right\} \]
+  The \emph{$l^2$-inner product} on $l^2$ is defined by
+  \[ \vec{x} \cdot \vec{y} = \sum_{n=1}^\infty x_n y_n \]
+
+  The norm (metric, topology) induced by this inner product is the \emph{$l^2$-norm (metric, topology)}.
+
+  We prove this is an inner product.
+\end{df}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{For all $\vec{x}, \vec{y} \in l^2$ we have $\sum_{n=1}^\infty x_n y_n < \infty$}
+  \begin{proof}
+    \pf
+    We have
+    \begin{align*}
+      \left| \sum_{n=1}^N x_n y_n \right|^2 & \leq \left( \sum_{n=1}^N x_n^2 \right) \left( \sum_{n=1}^N y_n^2 \right) & (\text{Cauchy-Schwarz})\\
+      & \leq \left( \sum_{n=1}^\infty x_n^2 \right) \left( \sum_{n=1}^\infty y_n^2 \right)
+    \end{align*}
+    Hence $\sum_{n=1}^\infty x_n y_n$ converges by the Comparison Test.
+  \end{proof}
+  \step{<1>2}{$\alpha \vec{x} \cdot \vec{y} = \alpha (\vec{x} \cdot \vec{y})$}
+  \begin{proof}
+    \pf\ Immediate from definitions.
+  \end{proof}
+  \step{<1>3}{$(\vec{x} + \vec{y}) \cdot \vec{z} = \vec{x} \cdot \vec{z} + \vec{y} \cdot \vec{z}$}
+  \begin{proof}
+    \pf\ Immediate from definitions.
+  \end{proof}
+  \step{<1>4}{$\vec{x} \cdot \vec{y} = \vec{y} \cdot \vec{x}$}
+  \begin{proof}
+    \pf\ Immediate from definitions.
+  \end{proof}
+  \step{<1>5}{If $\vec{x} \neq 0$ then $\vec{x} \cdot \vec{x} > 0$}
+  \begin{proof}
+    \pf\ Immediate from definitions.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{prop}
+  The $l^2$-topology is strictly coarser than the box topology. In fact, the $l^2$-topology is strictly coarser than the box topology on $\mathbb{R}^\infty$.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{The $l^2$-topology is coarser than the box topology.}
+  \begin{proof}
+    \step{<2>1}{\pflet{$U$ be open in the $l^2$-topology and $\vec{x} \in U$}}
+    \step{<2>2}{\pick\ $\epsilon > 0$ such that $B_{l^2}(\vec{x}, \epsilon) \subseteq U$}
+    \step{<2>3}{\pick\ a sequence of positive real numbers $a_1$, $a_2$, \ldots such that $\sum_{n=1}^\infty a_n^2 < \epsilon^2$}
+    \step{<2>4}{$\vec{x} \in \prod_{n=1}^\infty (x_n - a_n, x_n + a_n) \subseteq U$}
+    \begin{proof}
+      \pf\ For $\vec{y} \in \prod_{n=1}^\infty (x_n - a_n, x_n + a_n)$ we have
+      \begin{align*}
+        d_{l^2}(\vec{x}, \vec{y})^2 & = \sum_{n=1}^\infty (x_n - y_n)^2 \\
+        & < \sum_{n=1}^\infty a_n^2 \\
+        & < \epsilon^2
+      \end{align*}
+    \end{proof}
+  \end{proof}
+  \step{<1>2}{There exists a subset of $\mathbb{R}^\infty$ that is open in the box topology but not in the $l^2$-topology.}
+  \begin{proof}
+    \pf\ The set $\prod_{n=1}^\infty (-1/n,1/n) \cap \mathbb{R}^\infty$ is open in the box topology but not in the $l^2$-topology.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{prop}
+  The $l^2$-topology is strictly finer than the uniform topology. In fact, the $l^2$-topology is strictly finer than the uniform topology on $\mathbb{R}^\infty$.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{The $l^2$-topology is finer than the uniform topology.}
+  \begin{proof}
+    \step{<2>1}{\pflet{$\vec{x} \in l^2$ and $\epsilon > 0$} \prove{For all $\vec{y}$, if $d_{l^2}(\vec{x}, \vec{y}) < 2 \epsilon$ then $\overline{\rho}(\vec{x}, \vec{y}) < \epsilon$}}
+    \step{<2>2}{\pflet{$\vec{y} \in l^2$ with $d_{l^2}(\vec{x}, \vec{y}) < 2 \epsilon$}}
+    \step{<2>3}{$\sum (x_n - y_n)^2 < 4 \epsilon^2$}
+    \step{<2>4}{For all $n$ we have $|x_n - y_n| < 2 \epsilon$}
+    \step{<2>5}{$\overline{\rho}(\vec{x}, \vec{y}) \leq 2 \epsilon$}
+  \end{proof}
+  \step{<1>2}{There exists a subset of $\mathbb{R}^\infty$ that is open in the $l^2$-topology but not in the uniform topology.}
+  \begin{proof}
+    \pf\ $B_{l^2}(0, 1)$ is open in the $l^2$-topology but not in the uniform topology.
+  \end{proof}
+  \qed
+\end{proof}

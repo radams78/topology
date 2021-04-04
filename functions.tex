@@ -1,0 +1,801 @@
+\chapter{Functions Between Topological Spaces}
+
+\section{Continuous Functions}
+
+\begin{df}[Continuous]
+  Let $X$ and $Y$ be topological spaces. A function $f : X \rightarrow Y$ is \emph{continuous} iff, for every open set $V$ in $Y$, we have $\inv{f}(V)$ is open in $X$.
+\end{df}
+
+\begin{prop}
+  \label{prop:continuous:closed}
+  Let $X$ and $Y$ be topological spaces and $f : X \rightarrow Y$. Then $f$ is continuous if and only if, for every closed set $C$ in $Y$, we have $\inv{f}(C)$ is closed in $X$.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \begin{align*}
+    f \text{ is continuous} & \Leftrightarrow (\forall V \subseteq Y. V \text{ open} \Rightarrow \inv{f}(V) \text{ open}) \\
+    & \Leftrightarrow (\forall V \subseteq Y. Y \setminus V \text{ closed} \Rightarrow X \setminus \inv{f}(V) \text{ closed}) & (\text{Proposition \ref{prop:closed}})\\
+    & \Leftrightarrow (\forall V \subseteq Y. Y \setminus V \text{ closed} \Rightarrow \inv{f}(Y \setminus V) \text{ closed}) \\
+    & \Leftrightarrow (\forall C \subseteq Y. C \text{ closed } \Rightarrow \inv{f}(C) \text{ closed}) & \qed
+  \end{align*}
+\end{proof}
+
+\begin{prop}
+  \label{prop:continuous:closure}
+  Let $X$ and $Y$ be topological spaces and $f : X \rightarrow Y$. Then $f$ is continuous if and only if, for all $A \subseteq X$, we have $f(\overline{A}) \subseteq \overline{f(A)}$.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$X$ and $Y$ be topological spaces and $f : X \rightarrow Y$}}
+  \step{<1>2}{If $f$ is continuous then, for all $A \subseteq X$, we have $f(\overline{A}) \subseteq \overline{f(A)}$.}
+  \begin{proof}
+    \pf
+    \step{<2>1}{\assume{$f$ is continuous.}}
+    \step{<2>2}{\pflet{$A \subseteq X$}}
+    \step{<2>3}{$\inv{f}(\overline{f(A)})$ is closed}
+    \begin{proof}
+      \pf\ Proposition \ref{prop:continuous:closed}
+    \end{proof}
+    \step{<2>4}{$A \subseteq \inv{f}(\overline{f(A)})$}
+    \begin{proof}
+      \pf\ This holds because $f(A) \subseteq \overline{f(A)}$
+    \end{proof}
+    \step{<2>5}{$\overline{A} \subseteq \inv{f}(\overline{f(A)})$}
+    \begin{proof}
+      \pf\ From \stepref{<2>3} and \stepref{<2>4}
+    \end{proof}
+    \step{<2>6}{$f(\overline{A}) \subseteq \overline{f(A)}$}
+    \begin{proof}
+      \pf\ From \stepref{<2>5}
+    \end{proof}
+  \end{proof}
+  \step{<1>3}{If, for all $A \subseteq X$, we have $f(\overline{A}) \subseteq \overline{f(A)}$, then $f$ is continuous.}
+  \begin{proof}
+    \step{<2>1}{\assume{for all $A \subseteq X$, we have $f(\overline{A}) \subseteq \overline{f(A)}$}}
+    \step{<2>2}{\pflet{$C \subseteq Y$ be closed}}
+    \step{<2>3}{$f(\overline{\inv{f}(C)}) \subseteq \overline{C}$}
+    \begin{proof}
+      \pf\ \stepref{<2>1}
+    \end{proof}
+    \step{<2>4}{$f(\overline{\inv{f}(C)}) \subseteq C$}
+    \begin{proof}
+      \pf\ Proposition \ref{prop:closure}, \stepref{<2>2}, \stepref{<2>3}
+    \end{proof}
+    \step{<2>5}{$\overline{\inv{f}(C)} \subseteq \inv{f}(C)$}
+    \begin{proof}
+      \pf\ \stepref{<2>4}
+    \end{proof}
+    \step{<2>6}{$\inf{f}(C)$ is closed}
+    \begin{proof}
+      \pf\ Proposition \ref{prop:closure}, \stepref{<2>5}
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ Proposition \ref{prop:continuous:closed}
+    \end{proof}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:continuous:basis}
+  Let $X$ and $Y$ be topological spaces and $f : X \rightarrow Y$. Let $\mathcal{B}$ be a basis for the topology on $Y$. Then $f$ is continuous if and only if, for all $B \in \mathcal{B}$, we have $\inv{f}(B)$ is open in $X$.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$X$ and $Y$ be topological spaces and $f : X \rightarrow Y$}}
+  \step{<1>2}{\pflet{$\mathcal{B}$ be a basis for the topology on $Y$}}
+  \step{<1>3}{If $f$ is continuous then, for all $B \in \mathcal{B}$, we have $\inv{f}(B)$ is open in $X$.}
+  \begin{proof}
+    \pf\ Immediate from definitions and the fact that every element of $\mathcal{B}$ is open in $Y$ (\stepref{<1>2}).
+  \end{proof}
+  \step{<1>4}{If, for all $B \in \mathcal{B}$, we have $\inv{f}(B)$ is open in $X$, then $f$ is continuous.}
+  \begin{proof}
+    \step{<2>1}{\assume{for all $B \in \mathcal{B}$, we have $\inv{f}(B)$ is open in $X$}}
+    \step{<2>2}{\pflet{$V$ be open in $Y$}}
+    \step{<2>3}{\pflet{$x \in \inv{f}(V)$}}
+    \step{<2>4}{\pick\ $B \in \mathcal{B}$ such that $f(x) \in B \subseteq V$}
+    \begin{proof}
+      \pf\ \stepref{<1>2}, \stepref{<2>2}, \stepref{<2>3}
+    \end{proof}
+    \step{<2>5}{$x \in \inv{f}(B) \subseteq \inf{f}(V)$}
+    \begin{proof}
+      \pf\ \stepref{<2>4}
+    \end{proof}
+    \step{<2>6}{$\inv{f}(V)$ is a neighbourhood of $x$}
+    \begin{proof}
+      \pf\ \stepref{<2>1}, \stepref{<2>4}, \stepref{<2>5}
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ Proposition \ref{prop:neighbourhood}
+    \end{proof}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:continuous:subbasis}
+  Let $X$ and $Y$ be topological spaces and $f : X \rightarrow Y$. Let $\mathcal{S}$ be a basis for the topology on $Y$. Then $f$ is continuous if and only if, for all $S \in \mathcal{S}$, we have $\inv{f}(S)$ is open in $X$.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$X$ and $Y$ be topological spaces and $f : X \rightarrow Y$}}
+  \step{<1>2}{\pflet{$\mathcal{S}$ be a subbasis for the topology on $Y$}}
+  \step{<1>3}{If $f$ is continuous then, for all $S \in \mathcal{S}$, we have $\inv{f}(S)$ is open in $X$}
+  \begin{proof}
+    \pf\ Immediate from definitions and the fact that every member of $\mathcal{S}$ is open in $Y$ (\stepref{<1>2}).
+  \end{proof}
+  \step{<1>4}{If, for all $S \in \mathcal{S}$, we have $\inv{f}(S)$ is open in $X$, then $f$ is continuous.}
+  \begin{proof}
+    \step{<2>1}{\assume{for all $S \in \mathcal{S}$, we have $\inv{f}(S)$ is open in $X$}}
+    \step{<2>2}{The set of all finite intersections of elements of $\mathcal{S}$ form a basis $\mathcal{B}$ for $Y$}
+    \begin{proof}
+      \pf\ Proposition \ref{prop:subbasis}.
+    \end{proof}
+    \step{<2>3}{\pflet{$B \in \mathcal{B}$} \prove{$\inv{f}(B)$ is open in $X$}}
+    \step{<2>4}{\pick\ $S_1, \ldots, S_n \in \mathcal{S}$ such that $B = S_1 \cap \cdots \cap S_n$}
+    \begin{proof}
+      \pf\ \stepref{<2>2}, \stepref{<2>3}
+    \end{proof}
+    \step{<2>5}{$\inv{f}(B) = \inv{f}(S_1) \cap \cdots \cap \inv{f}(S_n)$}
+    \begin{proof}
+      \pf\ From \stepref{<2>4}
+    \end{proof}
+    \step{<2>6}{$\inv{f}(B)$ is open.}
+    \begin{proof}
+      \pf\ From \stepref{<2>1}, \stepref{<2>4}, \stepref{<2>5}.
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ Proposition \ref{prop:continuous:basis}.
+    \end{proof}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:continuous:constant}
+  Let $X$ and $Y$ be topological functions. Every constant function $f : X \rightarrow Y$ is continuous.
+\end{prop}
+
+\begin{proof}
+  \pf\ For $V \subseteq Y$ open, we have $\inv{f}(V)$ is either $\emptyset$ or $X$. \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:continuous:inclusion}
+  Let $X$ be a topological space and $Y$ a subspace of $X$. Then the inclusion $i : Y \hookrightarrow X$ is continuous.
+\end{prop}
+
+\begin{proof}
+  \pf\ For $U \subseteq X$ open, we have $\inv{i}(U) = U \cap Y$ is open in $Y$. \qed
+\end{proof}
+
+\begin{cor}
+  \label{cor:continuous:identity}
+  The identity function on a topological space $X$ is continuous.
+\end{cor}
+
+\begin{prop}
+  \label{prop:continuous:composite}
+  If $f : X \rightarrow Y$ and $g : Y \rightarrow Z$ are continuous then $g \circ f : X \rightarrow Z$ is continuous.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$U \subseteq Z$ be open.}}
+  \step{<1>2}{$\inv{g}(U)$ is open in $Y$}
+  \step{<1>3}{$\inf{f}(\inf{g}(U))$ is open in $X$.}
+  \qed
+\end{proof}
+
+\begin{prop}
+  Let $f : X \rightarrow Y$ be continuous and $A \subseteq X$. Then the restriction $f \restriction A : A \rightarrow Y$ is continuous.
+\end{prop}
+
+\begin{proof}
+  \pf\ From Propositions \ref{prop:continuous:inclusion} and \ref{prop:continuous:composite} since $f \restriction A = f \circ i$ where $i : A \hookrightarrow X$ is the inclusion. \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:continuous:restrict_domain}
+  Let $f : X \rightarrow Y$ be continuous and $f(X) \subseteq Z \subseteq Y$. Then $f$ is continuous considered as a function $X \rightarrow Z$.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$f : X \rightarrow Y$ be continuous}}
+  \step{<1>2}{\pflet{$f(X) \subseteq Z \subseteq Y$}}
+  \step{<1>3}{\pflet{$V \subseteq Z$ be open}}
+  \step{<1>4}{\pick\ $U$ open in $Y$ such that $V = U \cap Z$}
+  \begin{proof}
+    \pf\ \stepref{<1>3}
+  \end{proof}
+  \step{<1>5}{$\inv{f}(U)$ is open}
+  \begin{proof}
+    \pf \stepref{<1>1}, \stepref{<1>4}
+  \end{proof}
+  \step{<1>6}{$\inv{f}(U) = \inv{f}(V)$}
+  \begin{proof}
+    \pf\ \stepref{<1>2}, \stepref{<1>4}
+  \end{proof}
+  \step{<1>7}{$\inv{f}(V)$ is open}
+  \begin{proof}
+    \pf\ \stepref{<1>5}, \stepref{<1>6}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:continuous:expand_domain}
+  Let $X$ and $Y$ be topological spaces and $Z \subseteq Y$. Let $f : X \rightarrow Z$. If $f$ is continuous as a function $X \rightarrow Z$, then $f$ is continuous as a function $X \rightarrow Y$.
+\end{prop}
+
+\begin{proof}
+  \pf\ From Propositions \ref{prop:continuous:composite} and \ref{prop:continuous:inclusion} since $f = i \circ f$ where $i : Z \rightarrow Y$ is the inclusion. \qed
+\end{proof}
+
+\begin{prop}
+  Let $f : X \rightarrow Y$ be continuous. Let $\mathcal{U} \subseteq \mathcal{P} X$. If $X = \bigcup \mathcal{U}$ and $f \restriction U : U \rightarrow Y$ is continuous for all $U \in \mathcal{U}$, then $f$ is continuous.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$f : X \rightarrow Y$ be continuous}}
+  \step{<1>2}{\pflet{$\mathcal{U} \subseteq \mathcal{P} X$}}
+  \step{<1>3}{\assume{$X = \bigcup \mathcal{U}$}}
+  \step{<1>4}{\assume{$f \restriction U : U \rightarrow Y$ is continuous for all $U \in \mathcal{U}$}}
+  \step{<1>5}{\pflet{$V \subseteq Y$ be open}}
+  \step{<1>6}{$\inv{f}(V)$ is open.}
+  \begin{proof}
+    \step{<2>1}{\pflet{$x \in \inv{f}(V)$}}
+    \step{<2>2}{\pick\ $U \in \mathcal{U}$ such that $x \in U$}
+    \begin{proof}
+      \pf\ \stepref{<1>3}
+    \end{proof}
+    \step{<2>3}{$\inv{f}(V) \cap U$ is open}
+    \begin{proof}
+      \pf\ By \stepref{<1>4} since $\inv{f}(V) \cap U = \inv{(f \restriction U)}(V)$
+    \end{proof}
+    \step{<2>4}{$x \in \inv{f}(V) \cap U \subseteq \inv{f}(V)$}
+    \begin{proof}
+      \pf\ \stepref{<2>1}, \stepref{<2>2}
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ Proposition \ref{prop:neighbourhood}.
+    \end{proof}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{prop}[Pasting Lemma]
+  Let $X$ and $Y$ be topological spaces. Let $X = A \cup B$ where $A$ and $B$ are closed in $X$. Let $f : A \rightarrow Y$ and $g : B \rightarrow Y$ be continuous,
+  and suppose $f(x) = g(x)$ for all $x \in A \cap B$. Then the function $h : X \rightarrow Y$ defined by
+  \[ h(x) = \begin{cases}
+  f(x) & \text{if } x \in A \\
+  g(x) & \text{if } x \in B
+\end{cases} \]
+is continuous.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$X$ and $Y$ be topological spaces.}}
+  \step{<1>2}{\pflet{$X = A \cup B$ where $A$ and $B$ are closed in $X$.}}
+  \step{<1>3}{\pflet{$f : A \rightarrow Y$ and $g : B \rightarrow Y$ be continuous.}}
+  \step{<1>4}{\assume{$f(x) = g(x)$ for all $x \in A \cap B$}}
+  \step{<1>5}{\pflet{$h : X \rightarrow Y$ be defined by
+  \[ h(x) = \begin{cases}
+  f(x) & \text{if } x \in A \\
+  g(x) & \text{if } x \in B
+\end{cases} \]
+  }}
+  \begin{proof}
+    \pf\ This is well-defined by \stepref{<1>2} and \stepref{<1>4}.
+  \end{proof}
+  \step{<1>6}{\pflet{$C \subseteq Y$ be closed}}
+  \step{<1>7}{$\inv{h}(C) = \inv{f}(C) \cup \inv{g}(C)$}
+  \begin{proof}
+    \pf\ \stepref{<1>5}
+  \end{proof}
+  \step{<1>8}{$\inv{f}(C)$ is closed in $X$}
+  \begin{proof}
+    \step{<2>1}{$\inv{f}(C)$ is closed in $A$}
+    \begin{proof}
+      \pf\ Proposition \ref{prop:continuous:closed}, \stepref{<1>3}, \stepref{<1>6}.
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ Proposition \ref{prop:subspace:closed}, \stepref{<1>2}, \stepref{<1>6}.
+    \end{proof}
+  \end{proof}
+  \step{<1>9}{$\inv{g}(C)$ is closed in $X$}
+  \begin{proof}
+    \pf\ Similar.
+  \end{proof}
+  \step{<1>10}{$\inv{h}(C)$ is closed in $X$}
+  \begin{proof}
+    \pf\ Proposition \ref{prop:closed}, \stepref{<1>7}, \stepref{<1>8}, \stepref{<1>9}.
+  \end{proof}
+  \qedstep
+  \begin{proof}
+    \pf\ Proposition \ref{prop:continuous:closed}.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:continuous:projection}
+  Let $\{ X_\alpha \}_{\alpha \in J}$ be a family of topological spaces. For all $\alpha \in J$, the projection $\pi_\alpha : \prod_{\alpha \in J} X_\alpha \rightarrow X_\alpha$ is continuous.
+\end{prop}
+
+\begin{proof}
+  \pf\ Immediate from definitions. \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:continuous:coordinate}
+  Let $X$ be a space and $\{ Y_\alpha \}_{\alpha \in J}$ a family of spaces. Let $f_\alpha : X \rightarrow Y_\alpha$ for all $\alpha \in J$.
+  Then $\langle f_\alpha \mid \alpha \in J \rangle : X \rightarrow \prod_{\alpha \in J} Y_\alpha$ is continuous iff each $f_\alpha$ is continuous.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$X$ be a space and $\{ Y_\alpha \}_{\alpha \in J}$ a family of spaces.}}
+  \step{<1>2}{\pflet{$f_\alpha : X \rightarrow Y_\alpha$ for all $\alpha \in J$.}}
+  \step{<1>3}{If $\langle f_\alpha \mid \alpha \in J \rangle$ is continuous then each $f_\alpha$ is continuous.}
+  \begin{proof}
+    \pf\ From Propositions \ref{prop:continuous:composite} and \ref{prop:continuous:projection} since $f_\alpha = \pi_\alpha \circ \langle f_\alpha \mid \alpha \in J \rangle$.
+  \end{proof}
+  \step{<1>4}{If each $f_\alpha$ is continuous then $\langle f_\alpha \mid \alpha \in J \rangle$ is continuous.}
+  \begin{proof}
+    \step{<2>1}{\assume{each $f_\alpha$ is continuous.}}
+    \step{<2>2}{\pflet{$\alpha \in J$ and $U$ be open in $\alpha$}}
+    \step{<2>3}{$\inv{\langle f_\alpha \mid \alpha \in J \rangle}(\inv{\pi_\alpha}(U)) = \inv{f_\alpha}(U)$}
+    \step{<2>4}{$\inv{\langle f_\alpha \mid \alpha \in J \rangle}(\inv{\pi_\alpha}(U))$ is open in $X$}
+    \begin{proof}
+      \pf\ \stepref{<2>1}, \stepref{<2>2}, \stepref{<2>3}.
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ Proposition \ref{prop:continuous:subbasis}
+    \end{proof}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{df}[Continuity at a Point]
+  Let $X$ and $Y$ be topological spaces, $f : X \rightarrow Y$ and $x \in X$. Then $f$ is \emph{continuous at $x$} iff, for every neighbourhood $N$ of $f(x)$,
+  there exists a neighbourhood $M$ of $x$ such that $f(M) \subseteq N$.
+\end{df}
+
+\begin{prop}
+  \label{prop:continuous:at_every_point}
+  Let $X$ and $Y$ be topological spaces and $f : X \rightarrow Y$. Then $f$ is continuous if and only if it is continuous at every point.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$X$ and $Y$ be topological spaces and $f : X \rightarrow Y$}}
+  \step{<1>2}{If $f$ is continuous then $f$ is continuous at every point.}
+  \begin{proof}
+    \step{<2>1}{\assume{$f$ is continuous.}}
+    \step{<2>2}{\pflet{$x \in X$}}
+    \step{<2>3}{\pflet{$N$ be a neighbourhood of $f(x)$}}
+    \step{<2>4}{\pick\ $V$ open in $Y$ such that $f(x) \in V \subseteq Y$}
+    \begin{proof}
+      \pf\ \stepref{<2>3}
+    \end{proof}
+    \step{<2>5}{\pflet{$M = \inv{f}(V)$}}
+    \step{<2>6}{$M$ is a neighbourhood of $x$}
+    \begin{proof}
+      \step{<3>1}{$M$ is open}
+      \begin{proof}
+        \pf\ \stepref{<2>1}, \stepref{<2>4}, \stepref{<2>5}
+      \end{proof}
+      \step{<3>2}{$x \in M$}
+      \begin{proof}
+        \pf\ \stepref{<2>4}, \stepref{<2>5}
+      \end{proof}
+      \qedstep
+      \begin{proof}
+        \pf\ Proposition \ref{prop:neighbourhood}
+      \end{proof}
+    \end{proof}
+    \step{<2>7}{$f(M) \subseteq N$}
+    \begin{proof}
+      \pf\ \stepref{<2>4}, \stepref{<2>5}
+    \end{proof}
+  \end{proof}
+  \step{<1>3}{If $f$ is continuous at every point then $f$ is continuous.}
+  \begin{proof}
+    \step{<2>1}{\assume{$f$ is continuous at every point}}
+    \step{<2>2}{\pflet{$V$ be open in $Y$} \prove{$\inv{f}(V)$ is open in $X$}}
+    \step{<2>3}{\pflet{$x \in \inv{f}(V)$}}
+    \step{<2>4}{\pick\ a neighbourhood $M$ of $x$ such that $f(M) \subseteq V$}
+    \begin{proof}
+      \step{<3>1}{$V$ is a neighbourhood of $f(x)$}
+      \begin{proof}
+        \pf\ \stepref{<2>2}, \stepref{<2>3}
+      \end{proof}
+      \qedstep
+      \begin{proof}
+        \pf\ \stepref{<2>1}
+      \end{proof}
+    \end{proof}
+    \step{<2>5}{$M \subseteq \inv{f}(V)$}
+    \begin{proof}
+      \pf\ \stepref{<2>4}
+    \end{proof}
+    \step{<2>6}{$\inv{f}(V)$ is a neighbourhood of $x$}
+    \begin{proof}
+      \pf\ Proposition \ref{prop:neighbourhood}, \stepref{<2>4}, \stepref{<2>5}
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ Proposition \ref{prop:neighbourhood}
+    \end{proof}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:continuous:converge}
+  Let $X$ and $Y$ be topological spaces and $f : X \rightarrow Y$. If $x_n \rightarrow l$ as $n \rightarrow \infty$ in $X$ and $f$ is continuous at $l$ then $f(x_n) \rightarrow f(l)$ as $n \rightarrow \infty$.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$X$ and $Y$ be topological spaces and $f : X \rightarrow Y$ be continuous.}}
+  \step{<1>2}{\assume{$x_n \rightarrow l$ as $n \rightarrow \infty$}}
+  \step{3}{\assume{$f$ is continuous at $l$.}}
+  \step{<1>3}{\pflet{$N$ be a neighbourhood of $f(l)$}}
+  \step{<1>4}{\pick\ a neighbourhood $M$ of $l$ such that $f(M) \subseteq N$}
+  \begin{proof}
+    \pf\ \stepref{3}, \stepref{<1>1}, \stepref{<1>3}.
+  \end{proof}
+  \step{<1>5}{\pick\ $N$ such that, for all $n \geq N$, we have $x_n \in M$}
+  \begin{proof}
+    \pf\ \stepref{<1>2}, \stepref{<1>4}.
+  \end{proof}
+  \step{<1>6}{For all $n \geq N$ we have $f(x_n) \in M$}
+  \begin{proof}
+    \pf\ \stepref{<1>4}, \stepref{<1>5}.
+  \end{proof}
+  \qed
+\end{proof}
+
+\section{Homeomorphisms}
+
+\begin{df}[Homeomorphism]
+  Let $X$ and $Y$ be topological spaces. A \emph{homeomorphism} $f : X \cong Y$ is a bijective function $f : X \rightarrow Y$ such that $f$ and $\inv{f} : Y \rightarrow X$ are continuous.
+
+  Spaces $X$ and $Y$ are \emph{homeomorphic}, $X \cong Y$, iff there exists a homeomorphism between them.
+\end{df}
+
+\begin{prop}
+  Let $X$ and $Y$ be topological spaces and $f : X \rightarrow Y$. Then $f$ is a homeomorphism iff $f$ is a bijection and, for all $U \subseteq X$, we have $U$ is open iff $f(U)$ is open.
+\end{prop}
+
+\begin{proof}
+  \pf\ Immediate from definitions. \qed
+\end{proof}
+
+\begin{df}[Topological Property]
+  A property $P$ of topological spaces is a \emph{topological property} iff, given homeomorphic spaces $X \cong Y$, we have that $X$ has the property $P$ if and only if $Y$ has the property $P$.
+\end{df}
+
+\begin{df}[Homogeneous]
+  A topological space $X$ is \emph{homogeneous} iff, for all $x, y \in X$, there exists a homeomorphism $\phi : X \cong X$ such that $\phi(x) = y$.
+\end{df}
+
+\section{Topological Imbeddings}
+
+\begin{df}[Topological Imbedding]
+  Let $X$ and $Y$ be topological spaces and $f : X \rightarrow Y$. Then $f$ is a \emph{(topological) imbedding} iff $f$ is a homeomorphism between $X$ and $f(X)$.
+\end{df}
+
+\begin{prop}
+  \label{prop:imbedding}
+  Let $X$ and $Y$ be topological spaces and $f : X \rightarrow Y$. Then $f$ is an imbedding iff $f$ is continuous, injective, and $f(U)$ is open in $f(X)$ for all $U$ open in $X$.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$X$ and $Y$ be topological spaces and $f : X \rightarrow Y$.}}
+  \step{<1>2}{If $f$ is an imbedding then $f$ is continuous.}
+  \begin{proof}
+    \pf\ From Proposition \ref{prop:continuous:expand_domain}.
+  \end{proof}
+  \step{<1>3}{If $f$ is an imbedding then $f$ is injective.}
+  \begin{proof}
+    \pf\ Immediate from definition.
+  \end{proof}
+  \step{<1>4}{If $f$ is an imbedding then $f(U)$ is open in $f(X)$ for all $U$ open in $X$}
+  \begin{proof}
+    \pf\ From the fact that $\inv{f} : f(X) \rightarrow X$ is continuous.
+  \end{proof}
+  \step{<1>5}{If $f$ is continuous, injective, and $f(U)$ is open in $f(X)$ for all $U$ open in $X$, then $f$ is an imbedding.}
+  \begin{proof}
+    \step{<2>1}{\assume{$f$ is continuous}}
+    \step{<2>2}{\assume{$f$ is injective}}
+    \step{<2>3}{\assume{$f(U)$ is open in $f(X)$ for all $U$ open in $X$}}
+    \step{<2>4}{$f$ is a bijection between $X$ and $f(X)$}
+    \begin{proof}
+      \pf\ From \stepref{<2>2}
+    \end{proof}
+    \step{<2>5}{$f : X \rightarrow f(X)$ is continuous.}
+    \begin{proof}
+      \pf\ Proposition \ref{prop:continuous:restrict_domain}, \stepref{<2>1}.
+    \end{proof}
+    \step{<2>6}{$\inv{f} : f(X) \rightarrow X$ is continuous.}
+    \begin{proof}
+      \pf\ From \stepref{<2>3}
+    \end{proof}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{prop}
+  Let $\{ X_\alpha \}_{\alpha \in J}$ be a family of topological spaces. Let $\alpha \in J$. Pick $a_\beta \in X_\beta$ for all $\beta \neq \alpha$.
+  Then the function $f : X_\alpha \rightarrow \prod_{\alpha \in J} X_\alpha$ given by
+  \begin{align*}
+    f(x)_\alpha & = x \\
+    f(x)_\beta & = a_beta & (\beta \neq \alpha)
+  \end{align*}
+  is an imbedding.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$\{ X_\alpha \}_{\alpha \in J}$ be a family of topological spaces.}}
+  \step{<1>2}{\pflet{$\alpha \in J$}}
+  \step{<1>3}{\pflet{$a_\beta \in X_\beta$ for all $\beta \neq \alpha$}}
+  \step{<1>4}{\pflet{$f : X_\alpha \rightarrow \prod_{\alpha \in J} X_\alpha$ given by
+  \begin{align*}
+    f(x)_\alpha & = x \\
+    f(x)_\beta & = a_beta & (\beta \neq \alpha)
+  \end{align*}}}
+  \step{<1>5}{$f$ is continuous.}
+  \begin{proof}
+    \pf\ From Proposition \ref{prop:continuous:coordinate}, Corollary \ref{cor:continuous:identity}, Proposition \ref{prop:continuous:constant}.
+  \end{proof}
+  \step{<1>6}{$f$ is injective}
+  \begin{proof}
+    \pf\ From \stepref{<1>4}.
+  \end{proof}
+  \step{<1>7}{For all $U$ open in $X_\alpha$ we have $f(U)$ is open in $f(X_\alpha)$}
+  \begin{proof}
+    \pf\ For $U \subseteq X_\alpha$ open we have $f(U) = \inv{\pi_\alpha}(U) \cap f(X_\alpha)$ is open in $f(X_\alpha)$.
+  \end{proof}
+  \qedstep
+  \begin{proof}
+    \pf\ Proposition \ref{prop:imbedding}.
+  \end{proof}
+  \qed
+\end{proof}
+
+\section{Open Maps}
+
+\begin{df}[Open Map]
+  Let $X$ and $Y$ be topological spaces and $f : X \rightarrow Y$. Then $f$ is an \emph{open map} iff, for every $U$ open in $X$, we have $f(U)$ is open in $Y$.
+\end{df}
+
+\begin{prop}
+  \label{prop:open_map:basis}
+  Let $X$ and $Y$ be topological spaces and $f : X \rightarrow Y$. Let $\mathcal{B}$ be a basis for $X$. Then $f$ is an open map iff, for all $B \in \mathcal{B}$, we have $f(B)$ is open in $Y$.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{If $f$ is open then, for all $B \in \mathcal{B}$, we have $f(B)$ is open.}
+  \begin{proof}
+    \pf\ This holds because every element of $\mathcal{B}$ is open.
+  \end{proof}
+  \step{<1>2}{If, for all $B \in \mathcal{B}$, $f(B)$ is open, then $f$ is open.}
+  \begin{proof}
+    \step{<2>1}{\assume{for all $B \in \mathcal{B}$, $f(B)$ is open.}}
+    \step{<2>2}{\pflet{$U \subseteq X$ be open}}
+    \step{<2>3}{$f(U)$ is open.}
+    \begin{proof}
+      \pf
+      \begin{align*}
+        f(U) & = f(\bigcup \{ B \in \mathcal{B} : B \subseteq U \}) & (\text{$\mathcal{B}$ is a basis})\\
+        & = \bigcup \{ f(B) : B \in \mathcal{B}, B \subseteq U \}
+      \end{align*}
+    \end{proof}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{cor}
+  Let $\{ X_\alpha \}_{\alpha \in J}$ be a family of topological spaces. Each projection $\pi_\alpha : \prod_{\alpha \in J} X_\alpha \rightarrow X_\alpha$ is an open map.
+\end{cor}
+
+\section{Closed Maps}
+
+\begin{df}[Closed Map]
+  Let $X$ and $Y$ be topological spaces and $f : X \rightarrow Y$. Then $f$ is a \emph{closed map} iff, for every closed $C \subseteq X$, we have $f(C)$ is closed.
+\end{df}
+
+\section{Strong Continuity}
+
+\begin{df}[Strong Continuity]
+  Let $X$ and $Y$ be topological spaces and $f : X \rightarrow Y$. Then $f$ is \emph{strongly continuous} iff, for all $U \subseteq Y$, we have $U$ is open in $Y$ if and only if $\inv{f}(U)$ is open in $X$.
+\end{df}
+
+\begin{prop}
+  Let $X$ and $Y$ be topological spaces and $f : X \rightarrow Y$. Then $f$ is strongly continuous iff, for all $C \subseteq Y$, we have $C$ is closed in $Y$ iff $\inv{f}(C)$ is closed in $X$.
+\end{prop}
+
+\begin{proof}
+  \pf\ Easy. \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:strongly_continuous}
+  Let $X$ and $Y$ be topological spaces and $p : X \rightarrow Y$. The following are equivalent.
+  \begin{enumerate}
+    \item
+    $p$ is strongly continuous.
+    \item
+    $p$ is continuous and maps saturated open sets to open sets.
+    \item
+    $p$ is continuous and maps saturated closed sets to closed sets.
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  \pf\ From definitions. \qed
+\end{proof}
+
+\begin{cor}
+  \label{cor:strongly_continuous:open_closed}
+  \begin{enumerate}
+    \item Every open continuous map is strongly continuous.
+    \item Every closed continuous map is strongly continuous.
+  \end{enumerate}
+\end{cor}
+
+\begin{prop}
+The composite of two strongly continuous functions is strongly continuous.
+\end{prop}
+
+\begin{proof}
+  \pf\ Easy. \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:strongly_continuous:continuous}
+  Let $p : X \rightarrow Y$ be strongly continuous and $f : Y \rightarrow Z$. If $f \circ p$ is continuous then $f$ is continuous.
+\end{prop}
+
+\begin{proof}
+  \pf\ For $V \subseteq Z$ open we have $\inv{p}(\inv{f}(V))$ is open, hence $\inv{f}(V)$ open.
+\end{proof}
+
+\begin{prop}
+  Let $f : X \rightarrow Y$ be strongly continuous and $g : Y \rightarrow Z$.
+  If $g \circ f$ is strongly continuous then $g$ is strongly continuous.
+\end{prop}
+
+\begin{proof}
+  \pf\ For $V \subseteq Z$ we have $V$ is open iff $\inv{f}(\inv{g}(V))$ is open iff $\inv{g}(V)$ is open. \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:strongly_continuous:product}
+  Let $p : A \rightarrow B$ and $q : C \rightarrow D$ be open strongly continuous maps. Then $p \times q : A \times C \rightarrow B \times D$ is open and strongly continuous.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{$p \times q$ is an open map.}
+  \begin{proof}
+    \step{<2>1}{\pflet{$U$ be open in $A$ and $V$ open in $C$}}
+    \step{<2>2}{$(p \times q)(U \times V)$ is open in $B \times D$}
+    \qedstep
+    \begin{proof}
+      \pf\ Proposition \ref{prop:open_map:basis}.
+    \end{proof}
+  \end{proof}
+  \step{<1>2}{$p \times q$ is strongly continuous.}
+  \begin{proof}
+    \pf\ Corollary \ref{cor:strongly_continuous:open_closed}.
+  \end{proof}
+  \qed
+\end{proof}
+
+\section{Quotient Maps}
+
+\begin{df}[Quotient Map]
+  Let $X$ and $Y$ be topological spaces and $p : X \rightarrow Y$. Then $p$ is a \emph{quotient map} iff $p$ is surjective and strongly continuous.
+\end{df}
+
+\begin{ex}
+  For $\{ X_\alpha \}_{\alpha \in J}$ a family of topological spaces, the projections $\pi_\alpha : \prod_{\alpha \in J} X_\alpha \rightarrow X_\alpha$ are quotient maps, because they are open maps, continuous and surjective.
+\end{ex}
+
+\begin{prop}
+  Let $p : X \twoheadrightarrow Y$ be a quotient map. Let $A \subseteq X$ be saturated w.r.t.~$p$. Let $q : A \rightarrow p(A)$ be the restriction of $p$ to $A$.
+  \begin{enumerate}
+    \item
+    If $A$ is either open or closed in $X$ then $q$ is a quotient map.
+    \item
+    If $p$ is either an open map or a closed map then $q$ is a quotient map.
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{For all $V \subseteq p(A)$ we have $\inv{q}(V) = \inv{p}(V)$}
+  \begin{proof}
+    \pf\ From the fact that $A$ is saturated.
+  \end{proof}
+  \step{<1>2}{For all $U \subseteq X$ we have $p(U \cap A) = p(U) \cap p(A)$}
+  \begin{proof}
+    \pf\ From the fact that $A$ is saturated.
+  \end{proof}
+  \step{<1>3}{If either $A$ is open or $p$ is an open map then $q$ is a quotient map.}
+  \begin{proof}
+    \step{<2>1}{\assume{Either $A$ is open or $p$ is an open map.} \prove{For all $V \subseteq p(A)$, if $\inv{q}(V)$ is  open in $A$ then $V$ is open in $p(A)$.}}
+    \step{<2>2}{\pflet{$V \subseteq p(A)$}}
+    \step{<2>3}{\assume{$\inv{q}(V)$ is open in $A$}}
+    \step{<2>4}{\case{$A$ is open}}
+    \begin{proof}
+      \step{<3>1}{$\inv{q}(V)$ is open in $X$.}
+      \begin{proof}
+        \pf\ Proposition \ref{prop:subspace:open}
+      \end{proof}
+      \step{<3>2}{$\inv{p}(V)$ is open in $X$.}
+      \begin{proof}
+        \pf\ By \stepref{<1>1}.
+      \end{proof}
+      \step{<3>3}{$V$ is open in $Y$}
+      \begin{proof}
+        \pf\ Since $p$ is a quotient map.
+      \end{proof}
+      \step{<3>4}{$V$ is open in $p(A)$}
+    \end{proof}
+    \step{<2>5}{\case{$p$ is an open map}}
+    \begin{proof}
+      \step{<3>1}{\pick\ $U$ open in $X$ such that $\inv{p}(V) = \inv{q}(V) = U \cap A$}
+      \step{<3>2}{$V = p(U) \cap p(A)$}
+      \begin{proof}
+        \pf
+        \begin{align*}
+          V & = p(\inv{p}(V)) & (\text{$p$ is surjective})\\
+          & = p(U \cap A) & (\text{\stepref{<3>1}}) \\
+          & = p(U) \cap p(A) & (\text{\stepref{<1>2}})
+        \end{align*}
+      \end{proof}
+    \end{proof}
+  \end{proof}
+  \step{<1>4}{If either $A$ is closed or $p$ is a closed map then $q$ is a quotient map.}
+  \begin{proof}
+    \pf\ Similar.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{prop}
+  Let $X$ be a topological space and $Y$ a set. Let $p : X \rightarrow Y$ be surjective. Then there exists a unique topology on $Y$ with respect to which $p$ is a quotient map.
+\end{prop}
+
+\begin{proof}
+  \pf\ The topology is given by: $U$ is open if and only if $\inv{p}(U)$ is open. \qed
+\end{proof}
+
+\begin{df}[Quotient Topology]
+  Let $X$ be a topological space and $Y$ a set. Let $p : X \rightarrow Y$ be surjective. The \emph{quotient topology} on $Y$ induced by $p$ is the unique topology with respect to which $p$ is a quotient map.
+\end{df}
+
+\begin{df}[Quotient Space]
+  Let $X$ be a topological space and $\sim$ an equivalence relation on $X$. The \emph{quotient space}, \emph{identification space} or \emph{decomposition space} $X / \sim$ is the quotient set $X / \sim$ under the quotient topology induced by the canonical map $X \rightarrow X / \sim$.
+\end{df}

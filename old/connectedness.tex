@@ -1107,6 +1107,7 @@ $S_\Omega$ is not locally connected.
 \end{proof}
 
 \begin{prop}
+  \label{prop:topology:locally_connected:component_open}
   Let $X$ be a topological space. Then $X$ is locally connected if and only
   if, for every open set $U$ in $X$, every component of $U$ is open in $X$.
 \end{prop}
@@ -1502,6 +1503,68 @@ connected.
  The continuous image of a locally path connected space is not necessarily locally path connected.
 \end{cor}
 
+\begin{prop}
+  \label{prop:topology:locally_connected:quotient}
+A quotient of a locally connected space is locally connected.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$p : X \twoheadrightarrow Y$ be a quotient map where $X$ is locally connected.}}
+  \step{<1>2}{\pflet{$U$ be open in $Y$}}
+  \step{<1>3}{\pflet{$C$ be a component of $U$} \prove{$C$ is open}}
+  \step{<1>4}{$\inv{p}(C)$ is a union of components of $\inv{p}(U)$}
+  \begin{proof}
+    \step{<2>1}{\pflet{$x \in \inv{p}(C)$ and $D$ be the component of $\inv{p}(U)$ that contains $x$}}
+    \step{<2>2}{$p(D)$ is connected.}
+    \begin{proof}
+      \pf\ Theorem \ref{thm:topology:connected:image}.
+    \end{proof}
+    \step{<2>3}{$p(D) \subseteq U$}
+    \begin{proof}
+      \pf\ Because $D \subseteq \inv{p}(U)$
+    \end{proof}
+    \step{<2>4}{$p(D)$ intersects $C$}
+    \begin{proof}
+      \pf\ Both contain $p(x)$
+    \end{proof}
+    \step{<2>5}{$p(D) \subseteq C$}
+    \begin{proof}
+      \pf\ From \stepref{<1>3} and \stepref{<2>2} and \stepref{<2>4}
+    \end{proof}
+    \step{<2>6}{$D \subseteq \inv{p}(C)$}
+    \begin{proof}
+      \pf\ From \stepref{<2>5}
+    \end{proof}
+  \end{proof}
+  \step{a}{Every component of $\inv{p}(U)$ is open in $X$}
+  \begin{proof}
+    \step{1}{$\inv{p}(U)$ is open.}
+    \step{2}{$\inv{p}(U)$ is locally connected.}
+    \step{3}{Every component of $\inv{p}(U)$ is open in $\inv{p}(U)$}
+    \step{4}{Every component of $\inv{p}(U)$ is open in $X$.}
+  \end{proof}
+  \step{<1>5}{$\inv{p}(C)$ is a saturated open set.}
+  \begin{proof}
+    \step{<2>1}{$\inv{p}(C)$ is saturated.}
+    \begin{proof}
+      \pf\ If $x \in \inv{p}(C)$ and $p(x) = p(y)$ then $p(y) \in C$ so $y \in \inv{p}(C)$.
+    \end{proof}
+    \step{<2>2}{$\inv{p}(C)$ is open.}
+    \begin{proof}
+      \pf\ By \stepref{<1>4} and \stepref{a}.
+    \end{proof}
+  \end{proof}
+  \step{<1>6}{$C$ is open.}
+  \begin{proof}
+    \pf\ Lemma \ref{lm:topology:quotient:saturated}.
+  \end{proof}
+  \qedstep
+  \begin{proof}
+    \pf\ Proposition \ref{prop:topology:locally_connected:component_open}
+  \end{proof}
+  \qed
+\end{proof}
 
 \section{Weak Local Connectedness}
 

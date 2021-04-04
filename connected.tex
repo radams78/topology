@@ -1,0 +1,417 @@
+\chapter{Connectedness}
+
+\section{Connectedness}
+
+\begin{df}[Connected]
+  Let $X$ be a topological space. A \emph{separation} of $X$ is a pair of nonempty disjoint open sets $U$, $V$ such that $U \cup V = X$. The space $X$ is \emph{connected} iff it does not have a separation.
+\end{df}
+
+\begin{prop}
+  A space $X$ is connected iff the only sets that are both open and closed are $\emptyset$ and $X$.
+\end{prop}
+
+\begin{proof}
+  \pf\ Immediate from definitions. \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:connected:subspace}
+  Let $X$ be a topological space and $Y$ a subspace of $X$. Then a separation of $Y$ is a pair of disjoint nonempty sets $A$ and $B$ such that $A \cup B = Y$ and neither of $A$, $B$ contains a limit point of the other.
+\end{prop}
+
+\begin{proof}
+  \pf\ If $A$ and $B$ are disjoint, nonempty, and $A \cup B = Y$, then we have
+  \begin{align*}
+    & \text{$A$ and $B$ form a separation of $Y$} \\
+    \Leftrightarrow & \text{$A$ and $B$ are open in $Y$} \\
+    \Leftrightarrow & \text{$A$ and $B$ are closed in $Y$} \\
+    \Leftrightarrow & \text{$A$ and $B$ each contain all their limit points in $Y$} \\
+    \Leftrightarrow & \text{neither of $A$, $B$ contains a point that is a limit point of the other in $Y$} \\
+    \Leftrightarrow & \text{neither of $A$, $B$ contains a point that is a limit point of the other in $X$}
+  \end{align*}
+  \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:connected:subset}
+  If $C$ and $D$ form a separation of $X$ and $Y$ is a connected subspace of $X$ then $Y \subseteq C$ or $Y \subseteq D$.
+\end{prop}
+
+\begin{proof}
+  \pf\ Otherwise $C \cap Y$ and $D \cap Y$ would form a separation of $Y$. \qed
+\end{proof}
+
+\begin{prop}
+  Let $\mathcal{A}$ be a set of connected subspaces of a space $X$ and $B$ a connected subspace of $X$ such that every element of $\mathcal{A}$ intersects $B$. Then $\bigcup \mathcal{A} \cup B$ is connected.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$\mathcal{A}$ be a set of connected subspaces of a space $X$ and $B$ a connected subspace of $X$ such that every element of $\mathcal{A}$ intersects $B$.}}
+  \step{<1>2}{\assume{for a contradiction $C$ and $D$ form a separation of $\bigcup \mathcal{A} \cup B$}}
+  \step{<1>3}{\assume{w.l.o.g.~$B \subseteq C$}}
+  \begin{proof}
+    \pf\ Proposition \ref{prop:connected:subset}, \stepref{<1>1}, \stepref{<1>2}.
+  \end{proof}
+  \step{<1>4}{For all $A \in \mathcal{A}$ we have $A \subseteq C$}
+  \begin{proof}
+    \pf\ Proposition \ref{prop:connected:subset}, \stepref{<1>1}, \stepref{<1>2}, \stepref{<1>3}.
+  \end{proof}
+  \step{<1>5}{$\bigcup \mathcal{A} \cup B \subseteq C$}
+  \begin{proof}
+    \pf\ \stepref{<1>3}, \stepref{<1>4}.
+  \end{proof}
+  \qedstep
+  \begin{proof}
+    \pf\ This contradicts the fact that $D$ is nonempty.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{cor}
+  \label{cor:connected:union}
+  The union of a set of connected subspaces of a space $X$ that have a point in common is connected.
+\end{cor}
+
+\begin{prop}
+  Let $(A_n)$ be a sequence of connected subspaces of $X$ such that $A_n$ intersects $A_{n+1}$ for all $n$. Then $\bigcup_n A_n$ is connected.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$(A_n)$ be a sequence of connected subspaces of $X$ such that $A_n$ intersects $A_{n+1}$ for all $n$}}
+  \step{<1>2}{\assume{for a contradiction $C$ and $D$ form a separation of $\bigcup_n A_n$}}
+  \step{<1>3}{\assume{w.l.o.g.~$A_1 \subseteq C$}}
+  \begin{proof}
+    \pf\ Proposition \ref{prop:connected:subset}, \stepref{<1>1}, \stepref{<1>2}.
+  \end{proof}
+  \step{<1>4}{For all $n$, $A_n \subseteq C$}
+  \begin{proof}
+    \step{<2>1}{\assume{$A_n \subseteq C$}}
+    \step{<2>2}{\pick\ $a \in A_n \cap A_{n+1}$}
+    \begin{proof}
+      \pf\ \stepref{<1>1}.
+    \end{proof}
+    \step{<2>3}{$a \in C$}
+    \begin{proof}
+      \pf\ \stepref{<2>1}, \stepref{<2>2}
+    \end{proof}
+    \step{<2>4}{$A_{n+1} \subseteq C$}
+    \begin{proof}
+      \pf\ Proposition \ref{prop:connected:subset}, \stepref{<1>1}, \stepref{<1>2}, \stepref{<2>2}, \stepref{<2>3}.
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ By induction using \stepref{<1>3}.
+    \end{proof}
+  \end{proof}
+  \qedstep
+  \begin{proof}
+    \pf\ This contradicts the fact that $D$ is nonempty.
+  \end{proof}
+\end{proof}
+
+\begin{prop}
+  \label{prop:connected:closure}
+  Let $A$ be a connected subspace of $X$. If $A \subseteq B \subseteq \overline{A}$ then $B$ is connected.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\assume{for a contradiction $C$ and $D$ form a separation of $B$}}
+  \step{<1>2}{\assume{w.l.o.g.~$A \subseteq C$}}
+  \begin{proof}
+    \pf\ Using Proposition \ref{prop:connected:subset}.
+  \end{proof}
+  \step{<1>3}{\pick\ $x \in D$}
+  \begin{proof}
+    \pf\ Since $D$ is nonempty.
+  \end{proof}
+  \step{<1>4}{$x$ is a limit point of $A$}
+  \begin{proof}
+    \pf\ Since $x \in \overline{A}$ and $x \notin A$.
+  \end{proof}
+  \step{<1>5}{$x$ is a limit point of $C$}
+  \begin{proof}
+    \pf\ By \stepref{<1>2}
+  \end{proof}
+  \qedstep
+  \begin{proof}
+    \pf\ This contradicts Proposition \ref{prop:connected:subspace}.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{cor}
+  \label{cor:connected:closure}
+  Let $X$ be a topological space. The closure of a connected subspace of $X$ is connected.
+\end{cor}
+
+\begin{prop}
+  \label{prop:connected:image}
+  The continuous image of a connected space is connected.
+\end{prop}
+
+\begin{proof}
+  \pf\ Let $f : X \rightarrow Y$ be continuous and $X$ be connected. If $C$ and $D$ formed a separation of $f(X)$ then $\inv{f}(C)$ and $\inv{f}(D)$ would form a separation of $X$. \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:connected:binary_product}
+  The product of two connected spaces is connected.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$X$ and $Y$ be connected.}}
+  \step{<1>2}{\pick\ $(a,b) \in X \times Y$}
+  \begin{proof}
+    \pf\ If either $X$ or $Y$ is empty then $X \times Y$ is empty and hence connected.
+  \end{proof}
+  \step{<1>3}{$X \times \{ b \}$ is connected.}
+  \begin{proof}
+    \pf\ It is homeomorphic to $X$.
+  \end{proof}
+  \step{<1>4}{For all $x \in X$ we have $\{ x \} \times Y$ is connected.}
+  \begin{proof}
+    \pf\ It is homeomorphic to $Y$.
+  \end{proof}
+  \step{<1>5}{For $x \in X$ \pflet{$T_x = (X \times \{ b \}) \cup (\{x\} \times Y)$}}
+  \step{<1>6}{For all $x \in X$ we have $T_x$ is connected.}
+  \begin{proof}
+    \pf\ Corollary \ref{cor:connected:union} since the two sets have $(x,b)$ is common.
+  \end{proof}
+  \step{<1>7}{$X \times Y = \bigcup_{x \in X} T_x$}
+  \step{<1>8}{$X \times Y$ is connected.}
+  \begin{proof}
+    \pf\ Corollary \ref{cor:connected:union} since the sets all have $(a,b)$ in common.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{prop}
+  The product of a family of connected spaces is connected.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$\{ X_\alpha \}_{\alpha \in J}$ be a family of connected spaces.}}
+  \step{<1>2}{\pflet{$X = \prod_{\alpha \in J} X_\alpha$}}
+  \step{<1>3}{\pick\ $(a_\alpha) \in X$}
+  \begin{proof}
+    \pf\ We may assume $X$ is nonempty as the empty space is trivially connected.
+  \end{proof}
+  \step{<1>4}{For $K \finsubseteq J$, \pflet{$X_K = \{ (x_\alpha) \in X : \forall \alpha \notin K. x_\alpha = a_\alpha \}$}}
+  \step{<1>5}{For $K \finsubseteq J$, we have $X_K$ is connected.}
+  \begin{proof}
+    \pf\ This holds  using Proposition \ref{prop:connected:binary_product} because $X_K \cong \prod_{\alpha \in K} X_\alpha$.
+  \end{proof}
+  \step{<1>6}{\pflet{$Y = \bigcup_{K \finsubseteq J} X_K$}}
+  \step{<1>7}{$Y$ is connected.}
+  \begin{proof}
+    \pf\ Corollary \ref{cor:connected:union}
+  \end{proof}
+  \step{<1>8}{$\overline{Y} = X$}
+  \begin{proof}
+    \step{<2>1}{\pflet{$(x_\alpha) \in X$}}
+    \step{<2>2}{\pflet{$(x_\alpha) \in \prod_{\alpha \in J} U_\alpha$ where each $U_\alpha$ is open in $X_\alpha$ and $U_\alpha = X_\alpha$ for all but finitely many $\alpha$}}
+    \step{<2>3}{\pflet{$K = \{ \alpha \in J : U_\alpha \neq X_\alpha \}$}}
+    \step{<2>4}{\pflet{$(y_alpha)$ be the point with $y_\alpha = x_\alpha$ for $\alpha \in K$ and $y_\alpha = a_\alpha$ for all other $\alpha$}}
+    \step{<2>5}{$(y_\alpha) \in \prod_{\alpha \in J} U_\alpha$}
+    \step{<2>6}{$(y_\alpha) \in X_K$}
+    \step{<2>7}{$\prod_{\alpha \in J} U_\alpha$ intersects $X_K$}
+    \qedstep
+    \begin{proof}
+      \pf\ Proposition \ref{prop:closure:membership}.
+    \end{proof}
+    \qed
+  \end{proof}
+  \step{<1>9}{$X$ is connected.}
+  \begin{proof}
+    \pf\ Proposition \ref{prop:connected:closure}.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{prop}
+  Any linear continuum is connected under the order topology.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$L$ be a linear continuum under the order topology.}}
+  \step{<1>2}{\assume{for a contradiction $U$ and $V$ form a separation of $L$.}}
+  \step{<1>3}{\pick\ $a \in U$ and $b \in V$}
+  \step{<1>4}{\assume{w.l.o.g.~$a < b$}}
+  \step{<1>5}{\pflet{$s = \sup \{ x \in U : a \leq x < b \}$}}
+  \begin{proof}
+    \pf\ $L$ is complete.
+  \end{proof}
+  \step{<1>6}{\case{$s \in U$}}
+  \begin{proof}
+    \step{<2>1}{$s < b$}
+    \step{<2>2}{\pick\ $u > s$ such that $[s,u) \subseteq U$}
+    \begin{proof}
+      \pf\ Proposition \ref{prop:order:open_up}
+    \end{proof}
+    \step{<2>3}{\pick\ $t$ such that $s < t < u$}
+    \begin{proof}
+      \pf\ $L$ is dense.
+    \end{proof}
+    \step{<2>4}{$t \in U$ and $a \leq t < b$}
+    \qedstep
+    \begin{proof}
+      \pf\ This contradicts \stepref{<1>5}.
+    \end{proof}
+  \end{proof}
+  \step{<1>7}{\case{$s \in V$}}
+  \begin{proof}
+    \step{<2>1}{$a < s$}
+    \step{<2>2}{\pick\ $u < s$ such that $(u,s] \subseteq V$}
+    \begin{proof}
+      \pf\ Proposition \ref{prop:order:open_down}
+    \end{proof}
+    \step{<2>3}{$u$ is an upper bound for $\{ x \in U : a \leq x < b \}$}
+    \qedstep
+    \begin{proof}
+      \pf\ This contradicts \stepref{<1>5}.
+    \end{proof}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{cor}
+  If $L$ is a linear continuum under the order topology, then every interval and ray in $L$ is connected.
+\end{cor}
+
+\begin{ex}
+  \begin{enumerate}
+    \item   The real line $\mathbb{R}$ is connected, and so is every interval and ray in $\mathbb{R}$.
+    \item Any set with more than one point is disconnected under the discrete topology.
+    \item Any set is connected under the indiscrete topology.
+    \item Any infinite set is connected under the finite complement topology.
+    \item Any uncountable set is connected under the countable complement topology.
+    \item The space $\mathbb{R}_l$ is not connected because $(- \infty, 0)$ and $[0, + \infty)$ form a separation.
+    \item The space $\mathbb{R}^\omega$ in the uniform topology is not connected. The set of bounded sequences and the set of unbounded sequences form a separation.
+    \item The space $\mathbb{R}^\omega$ in the box topology is not connected because it is finer than the uniform topology.
+    \item The ordered square is connected, because it is a linear continuum.
+    \item The topologist's sine curve is connected. The set $\{ (x, \sin 1/x) : 0 < x \leq 1 \}$ is connected by Proposition \ref{prop:connected:image}, and so the topologist's sine curve is connected by Corollary \ref{cor:connected:closure}.
+  \end{enumerate}
+\end{ex}
+
+\begin{prop}
+  Let $X$ be a topological space, $C$ a connected subspace of $X$, and $A \subseteq X$. If $C$ intersects $A$ and $X \setminus A$ then $C$ intersects $\partial A$.
+\end{prop}
+
+\begin{proof}
+  \pf\ Otherwise $C \cap \Int A$ and $C \cap \Int (X \setminus A)$ would form a separation of $C$. \qed
+\end{proof}
+
+\begin{thm}[Intermediate Value Theorem]
+  Let $X$ be a connected space and $Y$ a linearly ordered set under the order topology. Let $f : X \rightarrow Y$ be continuous. Let $a,b \in X$ and $c \in Y$. If $f(a) < c < f(b)$, then there exists $x \in X$ such that $f(x) = c$.
+\end{thm}
+
+\begin{proof}
+  \pf\ If not, then $(- \infty, c) \cap f(X)$ and $(c, +\infty) \cap f(X)$ would form a separation of $f(X)$, contradicting Proposition \ref{prop:connected:image}. \qed
+\end{proof}
+
+\section{Totally Disconnected Spaces}
+
+\begin{df}[Totally Disconnected]
+  A topological space $X$ is \emph{totally disconnected} iff the only nonempty connected subspaces are the one-point sets.
+\end{df}
+
+\begin{ex}
+  \begin{enumerate}
+    \item Any set under the discrete topology is totally disconnected.
+    \item The space $\mathbb{Q}$ is totally disconnected.
+  \end{enumerate}
+\end{ex}
+
+\section{Path Connected Spaces}
+
+\begin{df}[Path]
+  Let $X$ be a topological space and $a, b \in X$. A \emph{path} from $a$ to $b$ is a continuous function $f : [0,1] \rightarrow X$ such that $f(0) = a$ and $f(1) = b$.
+\end{df}
+
+\begin{df}[Path Connected]
+  A topological space $X$ is \emph{path connected} iff, for any points $a$, $b$, there exists a path from $a$ to $b$.
+\end{df}
+
+\begin{prop}
+  Every path connected space is connected.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$X$ be a path connected space.}}
+  \step{<1>2}{\assume{for a contradiction $U$ and $V$ form a separation of $X$.}}
+  \step{<1>3}{\pick\ $a \in U$ and $b \in V$}
+  \step{<1>4}{\pick\ a path $p : [0,1] \rightarrow X$ from $a$ to $b$}
+  \step{<1>5}{$p([0,1]) \cap U$ and $p([0,1]) \cap V$ form a separation of $p([0,1])$}
+  \qedstep
+\end{proof}
+
+\begin{prop}
+  The continuous image of a path connected space is path connected.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$X$ be path connected and $f : X \twoheadrightarrow Y$ surjective continuous.}}
+  \step{<1>2}{\pflet{$a, b \in Y$.}}
+  \step{<1>3}{\pick\ $x, y \in X$ such that $f(x) = a$ and $f(y) = b$.}
+  \step{<1>4}{\pick\ a path $p : [0,1] \rightarrow X$ from $x$ to $y$.}
+  \step{<1>5}{$f \circ p$ is a path from $a$ to $b$.}
+  \qed
+\end{proof}
+
+\begin{ex}
+  \begin{enumerate}
+    \item For $n \geq 1$, the unit $n$-ball is path connected, hence connected. Given $a, b \in B^n$, the function $p : [0,1] \rightarrow B^n$ given by $p(t) = (1-t)a + tb$ is a path from $a$ to $b$.
+    \item For $n > 1$, $n$-dimensional punctured Euclidean space is path connected, hence connected. Given $a, b \in \mathbb{R}^n \setminus \{0\}$, we can find a path from $a$ to $b$ that consists of at most two line segments.
+    \item For $n \geq 1$, the unit $n$-sphere is path connected, hence connected. For the map $g : \mathbb{R}^{n+1} \setminus \{ 0 \} \twoheadrightarrow S^n$ given by $g(x_1, \ldots, x_n) = (x_1, \ldots, x_n) / \sqrt{x_1^2 + \cdots + x_n^2}$ is continuous.
+    \item The ordered square is not path connected. If $p : [0,1] \rightarrow I_o^2$ is a path from $(0,0)$ to $(1,1)$ then $\{ \inv{p}(\{x\} \times (0,1)) : x \in [0,1] \}$ is a set of uncountably many disjoint open sets in $[0,1]$, which is impossible because each must contain a different rational.
+  \end{enumerate}
+\end{ex}
+
+\begin{prop}[DC]
+  The topologist's sine curve is not path connected.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$S = \{ (x, \sin 1/x) : 0 < x \leq 1 \}$.}}
+  \step{<1>2}{\assume{for a contradiction $p : [0,1] \rightarrow \overline{S}$ is a path from $(0,0)$ to $(1, \sin 1)$.}}
+  \step{<1>3}{\pflet{$p(t) = (x(t), y(t))$ for $t \in [0,1]$}}
+  \step{<1>4}{$x$ and $y$ are continuous.}
+  \begin{proof}
+    \pf\ Proposition \ref{prop:continuous:coordinate}, \stepref{<1>2}, \stepref{<1>3}.
+  \end{proof}
+  \step{<1>5}{$\{ t \in [0,1] : x(t) = 0 \}$ is closed.}
+  \begin{proof}
+    \pf\ From \stepref{<1>4} since the set is $\inv{x}(\{0\})$.
+  \end{proof}
+  \step{<1>6}{\pflet{$b$ be the greatest element of $[0,1]$ such that $x(b) = 0$ for some $y$.}}
+  \begin{proof}
+    \pf\ Proposition \ref{prop:order:closed_greatest}
+  \end{proof}
+  \step{<1>7}{There exists a sequence $(t_n)$ in $(b,1]$ such that $t_n \rightarrow b$ as $n \rightarrow \infty$ and $y(t_n) = (-1)^n$}
+  \begin{proof}
+    \step{<2>1}{\pflet{$U = 1 - b$}}
+    \step{<2>2}{For all $n$, \pick\ $u_n$ with $0 < u_n < x(b + U/n)$ such that $\sin 1/u_n = (-1)^n$}
+    \begin{proof}
+      \pf\ This is possible since $\sin 1/x$ takes values 1 and -1 infinitely often in $(0, \epsilon)$ for any $\epsilon$.
+    \end{proof}
+    \step{<2>3}{For all $n$, \pick\ $t_n$ with $b < t_n < b + U/n$ such that $x(t_n) = u_n$}
+    \begin{proof}
+      \pf\ One such value must exist by the Intermediate Value Theorem.
+    \end{proof}
+    \step{<2>4}{$t_n \rightarrow b$ as $n \rightarrow \infty$}
+    \step{<2>5}{$y(t_n) = (-1)^n$ for all $n$}
+  \end{proof}
+  \qedstep
+  \begin{proof}
+    \pf\ This contradicts Proposition \ref{prop:continuous:converge}.
+  \end{proof}
+\end{proof}

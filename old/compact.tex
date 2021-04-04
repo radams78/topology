@@ -2107,6 +2107,26 @@ that
  \qed
 \end{proof}
 
+\begin{prop}
+  \label{prop:topology:regular:perfect_map}
+  The image of a regular space under a perfect map is regular.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$p : X \twoheadrightarrow Y$ be a perfect map where $X$ is regular.}}
+  \step{<1>2}{\pflet{$A \subseteq Y$ be closed and $a \notin A$.}}
+  \step{<1>3}{\pick\ disjoint open neighbourhoods $U$ and $V$ of $\inv{p}(A)$ and $\inv{p}(a)$ respectively.}
+  \begin{proof}
+    \pf\ Lemma \ref{lm:topology:compact:regular}
+  \end{proof}
+  \step{<1>4}{\pick\ neighbourhoods $U'$ of $A$ and $V'$ of $a$ such that $\inv{p}(U') \subseteq U$ and $\inv{p}(V') \subseteq V$.}
+  \begin{proof}
+    \pf\ Lemma \ref{lm:topology:closed_map:open}.
+  \end{proof}
+  \step{<1>5}{$U'$ and $V'$ are disjoint.}
+  \qed
+\end{proof}
 
 \section{Sequential Compactness}
 

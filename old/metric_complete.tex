@@ -23,6 +23,10 @@
   A metric space is \emph{complete} iff every Cauchy sequence converges.
 \end{df}
 
+\begin{df}[Topologically Complete]
+  A topological space $X$ is \emph{topologically complete} iff there exists a metric that induces the topology on $X$ under which $X$ is complete.
+\end{df}
+
 \begin{lm}
   \label{lm:topology:metric:complete}
   A metric space is complete if and only if every Cauchy sequence has a convergent subsequence.
@@ -160,7 +164,7 @@
 \end{proof}
 
 \begin{thm}
-  There exists a metric under which $\mathbb{R}^\omega$ is complete.
+  There exists a metric that induces the product topology on $\mathbb{R}^\omega$ under which $\mathbb{R}^\omega$ is complete.
 \end{thm}
 
 \begin{proof}
@@ -323,79 +327,6 @@
   \pf\ From Theorem \ref{thm:topology:metric:bounded_closed} and Proposition \ref{prop:topology:metric:closed_complete}. \qed
 \end{proof}
 
-\begin{df}[Sup Metric]
-  Let $X$ be a nonempty set and $Y$ a metric space. The \emph{sup metric} $\rho$ on the set $\mathcal{B}(X, Y)$ of all bounded functions from $X$ to $Y$ is defined by
-  \[ \rho(f, g) = \sup_{x \in X} d(f(x), g(x)) \enspace . \]
-
-  We prove this is a metric.
-\end{df}
-
-\begin{proof}
-  \pf
-  \step{<1>1}{\pflet{$X$ be a nonempty set.}}
-  \step{<1>2}{\pflet{$Y$ be a metric space.}}
-  \step{<1>3}{For all $f,g \in \mathcal{B}(X, Y)$, the set $\{ d(f(x), g(x)) : x \in X \}$ is bounded above.}
-  \begin{proof}
-    \step{<2>1}{\pflet{$f, g \in \mathcal{B}(X, Y)$}}
-    \step{<2>2}{\pflet{$M = \diam f(X)$ and $N = \diam g(X)$}}
-    \step{<2>3}{\pick\ $x_0 \in X$}
-    \begin{proof}
-      \pf\ \stepref{<1>1}
-    \end{proof}
-    \step{<2>4}{\pflet{$D = d(f(x_0), g(x_0))$}}
-    \step{<2>5}{\pflet{$x \in X$}}
-    \step{<2>6}{$d(f(x), g(x)) \leq M + N + D$}
-    \begin{proof}
-      \pf
-      \begin{align*}
-        d(f(x), g(x)) & \leq d(f(x), f(x_0)) + d(f(x_0), g(x_0)) + d(g(x_0), g(x)) & (\text{Triangle inequality}) \\
-        & \leq M + D + N & (\text{\stepref{<2>2}, \stepref{<2>4}})
-      \end{align*}
-    \end{proof}
-  \end{proof}
-  \step{<1>4}{For all $f,g \in \mathcal{B}(X, Y)$ we have $\rho(f, g) \geq 0$}
-  \begin{proof}
-    \step{<2>1}{\pflet{$f, g \in \mathcal{B}(X, Y)$}}
-    \step{<2>2}{\pick\ $x_0 \in X$}
-    \begin{proof}
-      \pf\ \stepref{<1>1}
-    \end{proof}
-    \step{<2>3}{$\rho(f, g) \geq 0$}
-    \begin{proof}
-      \pf
-      \begin{align*}
-        \rho(f, g) & \geq d(f(x_0), g(x_0)) & (\text{Definition of } \rho) \\
-        & \geq 0 & (\text{\stepref{<1>2}})
-      \end{align*}
-    \end{proof}
-  \end{proof}
-  \step{<1>5}{For all $f \in \mathcal{B}(X, Y)$ we have $\rho(f, f) = 0$}
-  \begin{proof}
-    \pf\ This holds because $d(f(x), f(x)) = 0$ for all $x \in X$.
-  \end{proof}
-  \step{<1>6}{For all $f, g \in \mathcal{B}(X, Y)$ we have $\rho(f, g) = \rho(g, f)$}
-  \begin{proof}
-    \pf
-    \begin{align*}
-      \rho(f, g) & = \sup_{x \in X} d(f(x), g(x)) & (\text{definition of } \rho)\\
-      & = \sup_{x \in X} d(g(x), f(x)) & (\text{\stepref{<1>2}}) \\
-      & = \rho(g, f) & (\text{definition of } \rho)
-    \end{align*}
-  \end{proof}
-  \step{<1>7}{For all $f, g, h \in \mathcal{B}(X, Y)$ we have $\rho(f, h) \leq \rho(f, g) + \rho(g, h)$}
-  \begin{proof}
-    \pf
-    \begin{align*}
-      \rho(f,h) & = \sup_{x \in X} d(f(x), h(x)) & (\text{definition of } \rho) \\
-      & \leq \sup_{x \in X} (d(f(x), g(x)) + d(g(x), h(x))) &
-      (\text{Triangle inequality})\\
-      & \leq \sup_{x \in X} d(f(x), g(x)) + \sup_{x \in X} d(g(x), h(x)) & (\text{Lemma \ref{lm:analysis:sup_plus}}) \\
-      & = \rho(f,g) + \rho(g,h) & (\text{definition of } \rho)
-    \end{align*}
-  \end{proof}
-  \qed
-\end{proof}
-
 \begin{thm}
   \label{thm:topology:metric:imbed_in_complete}
   Every metric space can be isometrically imbedded in a complete metric space.
@@ -448,6 +379,8 @@
   \end{proof}
   \qed
 \end{proof}
+
+\subsection{Completion of a Metric Space}
 
 \begin{thm}
   For every metric space $X$, there exists a complete metric space $C(X)$ and an isometric imbedding $i : X \rightarrow C(X)$ such that, for every complete metric space $Y$ and isometric imbedding $j : X \rightarrow Y$, there exists a unique isometric imbedding $\overline{j} : C(X) \rightarrow Y$ such that
@@ -573,6 +506,175 @@
   \step{<1>4}{$\inv{\phi} \circ \phi = \id{C_1(X)}$}
   \begin{proof}
     \pf\ Similar.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{df}[Peano space]
+  A topological space is a \emph{Peano space} iff it is Hausdorff and it is the continuous image of the unit interval $[0,1]$.
+\end{df}
+
+\begin{thm}
+  $[0,1]^2$ is a Peano space.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$I = [0,1]$}}
+  \step{<1>2}{Give $I^2$ the square metric and $\mathcal{C}(I, I^2)$ the sup-metric.}
+  \step{<1>3}{Define the sequence $(f_n)$ in $\mathcal{C}(I, I^2)$ by:
+  \begin{itemize}
+    \item $f_0$ is the path consisting of a straight line from $(0,0)$ to $(1/2,1/2)$ then a straight line from $(1/2,1/2)$ to $(1,0)$.
+    \item Given $f_n$, $f_{n+1}$ is the result of replacing:
+    \begin{itemize}
+      \item Every path UR-DR with a path UR-UL-UR-DR-UR-DR-DL-DR
+      \item Every path UR-UL with a path UR-DR-UR-UL-UR-UL-DL-UL
+      \item Etc.
+    \end{itemize}
+  \end{itemize}}
+  \step{<1>4}{$\rho(f_n, f_{n+1}) \leq 1/2^n$}
+  \step{<1>5}{$(f_n)$ is Cauchy}
+  \step{<1>6}{\pflet{$f$ be the limit of $(f_n)$}}
+  \step{<1>7}{$f(I)$ is dense in $I^2$}
+  \begin{proof}
+    \step{<2>1}{\pflet{$x \in I^2$ and $\epsilon > 0$}}
+    \step{<2>2}{\pick\ $N$ such that $\rho(f_N, f) < \epsilon / 2$ and $1/2^N < \epsilon / 2$}
+    \step{<2>3}{\pick\ $t \in I$ such that $d(f_N(t), x) < 1/2^N$}
+    \step{<2>4}{$d(f(t),x) < \epsilon$}
+  \end{proof}
+  \step{<1>8}{$f(I) = I^2$}
+  \begin{proof}
+    \step{<2>1}{$f(I)$ is compact.}
+    \begin{proof}
+      \pf\ Proposition \ref{prop:topology:compact:image}.
+    \end{proof}
+    \step{<2>2}{$f(I)$ is closed.}
+    \begin{proof}
+      \pf\ Proposition \ref{prop:topology:compact:compact_is_closed}.
+    \end{proof}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{thm}[Hahn-Mazurkiewicz]
+  A space is a Peano space if and only if it is compact, connected, locally connected and metrizable.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{Every Peano space is compact, connected, locally connected and metrizable.}
+  \begin{proof}
+  \step{<2>1}{\pflet{$X$ be a Peano space.}}
+  \step{<2>2}{\pick\ a continuous surjection $p : [0,1] \twoheadrightarrow X$}
+  \step{<2>3}{$p$ is a perfect map.}
+  \begin{proof}
+    \step{<3>1}{$p$ is a closed map.}
+    \begin{proof}
+      \step{<4>1}{\pflet{$C \subseteq [0,1]$ be closed.}}
+      \step{<4>2}{$C$ is compact.}
+      \begin{proof}
+        \pf\ Proposition \ref{prop:topology:compact:closed_is_compact}.
+      \end{proof}
+      \step{<4>3}{$p(C)$ is compact.}
+      \begin{proof}
+        \pf\ Proposition \ref{prop:topology:compact:image}.
+      \end{proof}
+      \step{<4>4}{$p(C)$ is closed.}
+      \begin{proof}
+        \pf\ Proposition \ref{prop:topology:compact:compact_is_closed}.
+      \end{proof}
+    \end{proof}
+    \step{<3>2}{For all $x \in X$ we have $\inv{p}(x)$ is compact.}
+    \begin{proof}
+      \step{<4>1}{\pflet{$x \in X$}}
+      \step{<4>2}{$\{x\}$ is closed.}
+      \begin{proof}
+        \pf\ Theorem \ref{thm:topology:Hausdorff:T1}
+      \end{proof}
+      \step{<4>3}{$\inv{p}(x)$ is closed.}
+      \begin{proof}
+        \pf\ Theorem \ref{thm:topology:continuous:characterisation}
+      \end{proof}
+      \step{<4>4}{$\inv{p}(x)$ is compact.}
+      \begin{proof}
+        \pf\ Proposition \ref{prop:topology:compact:compact_is_closed}.
+      \end{proof}
+    \end{proof}
+  \end{proof}
+  \step{<2>4}{$X$ is compact.}
+  \begin{proof}
+    \pf\ Proposition \ref{prop:topology:compact:image}.
+  \end{proof}
+  \step{<2>5}{$X$ is connected.}
+  \begin{proof}
+    \pf\ Theorem \ref{thm:topology:connected:image}.
+  \end{proof}
+  \step{<2>6}{$X$ is locally connected.}
+  \begin{proof}
+    \pf\ Proposition \ref{prop:topology:locally_connected:quotient}
+  \end{proof}
+  \step{<2>7}{$X$ is metrizable.}
+  \begin{proof}
+    \step{<3>1}{$X$ is second countable.}
+    \begin{proof}
+      \pf\ Proposition \ref{prop:topology:second_countable:perfect}
+    \end{proof}
+    \step{<3>2}{$X$ is regular.}
+    \begin{proof}
+      \pf\ Proposition \ref{prop:topology:regular:perfect_map}.
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ By the Urysohn Metrization Theorem.
+    \end{proof}
+  \end{proof}
+\end{proof}
+  \step{<1>2}{Every compact, connected, locally connected, metrizable space is a Peano space.}
+  \begin{proof}
+    \pf\ See J. G. Hocking and G. S. Young, \emph{Topology} p. 129.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{thm}[DC]
+  A metric space is compact if and only if it is complete and totally bounded.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{Every compact metric space is complete.}
+  \begin{proof}
+    \pf\ Lemma \ref{lm:topology:metric:complete} and Theorem \ref{thm:topology:metric:compact}.
+  \end{proof}
+  \step{<1>2}{Every compact metric space is totally bounded.}
+  \begin{proof}
+    \pf\ For every $\epsilon > 0$, the set of all $\epsilon$-balls covers the space, hence has a finite subcover.
+  \end{proof}
+  \step{<1>3}{Every complete, totally bounded metric space is compact.}
+  \begin{proof}
+    \step{<2>1}{\pflet{$X$ be a complete, totally bounded metric space.} \prove{$X$ is sequentially compact.}}
+    \step{<2>2}{\pflet{$(x_n)$ be a sequence of points in $X$.}}
+    \step{<2>3}{\pick\ a sequence of infinite sets of integers $J_1 \supseteq J_2 \supseteq \cdots$ such that, for each $k$, there exists an open ball of radius $1/k$ that contains $x_n$ for all $n \in J_k$}
+    \begin{proof}
+      \step{<3>1}{\pflet{$J_0 = \mathbb{Z}^+$}}
+      \step{<3>2}{\assume{we have chosen $J_1 \supseteq \cdots \supseteq J_{k-1}$ satisfying the condition}}
+      \step{<3>3}{\pick\ finitely many balls $B_1$, \ldots, $B_r$ of radius $1/k$ that cover $X$.}
+      \step{<3>4}{\pick\ $i$ such that $B_i$ contains $x_n$ for infinitely many $n \in J_{k-1}$}
+      \step{<3>5}{\pflet{$J_k = \{ n \in J_{k-1} : x_n \in B_i \}$}}
+    \end{proof}
+    \step{<2>4}{\pick\ a sequence $n_1 < n_2 < \cdots$ with $n_k \in J_k$ for all $k$.}
+    \step{<2>5}{$(x_{n_r})$ is Cauchy.}
+    \begin{proof}
+      \pf\ For all $r, s$ with $r \leq s$ we have $d(x_{n_r}, x_{n_s}) \leq 2 / r$.
+    \end{proof}
+    \step{<2>6}{$(x_{n_r})$ converges.}
+    \begin{proof}
+      \pf\ \stepref{<2>1}, \stepref{<2>5}
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ Theorem \ref{thm:topology:metric:compact}.
+    \end{proof}
   \end{proof}
   \qed
 \end{proof}

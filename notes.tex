@@ -21,36 +21,28 @@
 \theoremstyle{definition}
 \newtheorem{df}[lm]{Definition}
 \newtheorem{ex}[lm]{Example}
+\newtheorem*{note}{Note}
 
-\pfshortindent
-
-\newcommand{\id}[1]{\ensuremath{\mathrm{id}_{#1}}}
-\newcommand{\inv}[1]{\ensuremath{{#1}^{-1}}}
-\newcommand{\dom}{\ensuremath{\operatorname{dom}}}
-\newcommand{\im}{\ensuremath{\operatorname{im}}}
-\newcommand{\supp}{\ensuremath{\operatorname{supp}}}
 \newcommand{\Int}{\ensuremath{\operatorname{Int}}}
-\newcommand{\Cl}{\ensuremath{\operatorname{Cl}}}
-\newcommand{\Bd}{\ensuremath{\operatorname{Bd}}}
+\newcommand{\inv}[1]{\ensuremath{{#1}^{-1}}}
 \newcommand{\diam}{\ensuremath{\operatorname{diam}}}
 
-\DeclareMathSymbol{\magic}{\mathord}{operators}{"3C}
-
 \begin{document}
-  \maketitle
-  \tableofcontents
 
-  \include{set_theory}
-  \include{analysis}
-  \include{topological_spaces}
-  \include{constructions}
-  \include{topological_functions}
-  \include{separation}
-  \include{countability}
-  \include{connectedness}
-  \include{compact}
-  \include{metric}
-  \include{manifolds}
-  \include{normed_spaces}
-  \include{topological_groups}
+\maketitle
+\tableofcontents
+
+\include{sets}
+\include{real}
+\include{topology}
+\include{constructions}
+\include{functions}
+\include{separation}
+\include{countability}
+\include{connected}
+\include{metric}
+\include{norm}
+\include{inner-product}
+\include{groups}
+
 \end{document}
