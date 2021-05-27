@@ -2053,3 +2053,10 @@
   \end{proof}
   \qed
 \end{proof}
+
+\begin{df}[Equicontinuous]
+  Let $X$ be a topological space and $Y$ a metric space. Let $\mathcal{F}$ be a set of continuous functions from $X$ to $Y$ and $x \in X$. Then $\mathcal{F}$ is \emph{equicontinuous} at $x$ iff, for every $\epsilon > 0$, there exists an open neighbourhood $U$ of $x$ such that, for all $y \in U$ and $f \in \mathcal{F}$,
+  \[ d(f(x), f(y)) < \epsilon \enspace . \]
+
+  The set $\mathcal{F}$ is \emph{equicontinuous} iff it is equicontinuous at every point of $X$.
+\end{df}
