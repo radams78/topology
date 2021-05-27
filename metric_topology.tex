@@ -2060,3 +2060,27 @@
 
   The set $\mathcal{F}$ is \emph{equicontinuous} iff it is equicontinuous at every point of $X$.
 \end{df}
+
+\begin{lm}
+  Let $X$ be a topological space and $Y$ a metric space. Let $\mathcal{F} \subseteq \mathcal{C}(X, Y)$. If $\mathcal{F}$ is totally bounded under the uniform metric, then $\mathcal{F}$ is equicontinuous.
+\end{lm}
+
+\begin{proof}
+  \pf
+  \step{1}{\assume{$\mathcal{F}$ is totally bounded under the uniform metric.}}
+  \step{2}{\pflet{$x \in X$ and $\epsilon > 0$}}
+  \step{3}{\pick\ a finite covering $B(f_1, \epsilon / 3)$, \ldots, $B(f_n, \epsilon / 3)$ of $\mathcal{F}$ by $\epsilon / 3$-balls.}
+  \step{4}{For $i = 1, \ldots, n$, \pick\ an open neighbourhood $U_i$ of $x$ such that, for all $y \in U_i$, we have $d(f_i(x), f_i(y)) < \epsilon / 3$}
+  \step{5}{\pflet{$U = U_1 \cap \cdots \cap U_n$}}
+  \step{6}{\pflet{$y \in U$ and $f \in \mathcal{F}$}}
+  \step{7}{\pick\ $i$ such that $f \in B(f_i, \epsilon / 3)$}
+  \step{8}{$d(f(x), f(y)) < \epsilon$}
+  \begin{proof}
+    \pf
+    \begin{align*}
+      d(f(x), f(y)) & \leq d(f(x), f_i(x)) + d(f_i(x), f_i(y)) + d(f_i(y), f(y)) \\
+      & < \epsilon / 3 + \epsilon / 3 + \epsilon / 3 \\
+      & < \epsilon & \qed
+    \end{align*}
+  \end{proof}
+\end{proof}
