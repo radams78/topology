@@ -1,0 +1,1281 @@
+\chapter{Topological Groups}
+
+\section{Topological Groups}
+
+\begin{df}[Topological Group]
+  A \emph{topological group} $G$ consists of a group $G$ that is also a $T_1$
+  space such that $\cdot : G^2 \rightarrow G$ and $(\ )^{-1} : G \rightarrow
+  G$ are continuous.
+\end{df}
+
+\begin{prop}
+  Every topological group is homogeneous.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$G$ be a topological group.}}
+  \step{<1>2}{\pflet{$x, y \in G$}}
+  \step{<1>3}{\pflet{$f : G \rightarrow G$ be given by $f(g) = yx^{-1}z$}}
+  \step{<1>4}{$f$ is a homeomorphism}
+  \step{<1>5}{$f(x) = y$}
+  \qed
+\end{proof}
+
+\begin{df}[Symmetric]
+  Let $G$ be a topological group. A neighbourhood $U$ of $e$ is
+  \emph{symmetric} iff $U = U^{-1}$.
+\end{df}
+
+\begin{prop}
+  \label{prop:topological_group:neighbourhood}
+  For every neighbourhood $U$ of $e$, there exists a symmetric neighbourhood
+  $V$ of $e$ such that $VV \subseteq U$.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$m : G^2 \rightarrow G$ be the multiplication function}}
+  \step{<1>2}{$ee \in U$}
+  \step{<1>3}{$(e, e) \in m^{-1}(U)$}
+  \step{<1>4}{\pick\ neighbourhoods $U_1$, $U_2$ of $e$ such that $(e, e) \in
+    U_1
+    \times U_2 \subseteq m^{-1}(U)$}
+  \step{<1>5}{\pflet{$V' = U_1 \cap U_2$}}
+  \step{<1>6}{$V'V' \subseteq U$}
+  \step{<1>7}{\pflet{$f : G^2 \rightarrow G$ be the function $f(x, y) =
+      xy^{-1}$}}
+  \step{<1>8}{$(e, e) \in f^{-1}(V')$}
+  \step{<1>9}{\pick\ a neighbourhood $W$ of $e$ such that $W W^{-1} \subseteq
+    V'$} % TODO Extract lemma
+  \step{<1>10}{\pflet{$V = W W^{-1}$}}
+  \step{<1>11}{$V$ is a neighbourhood of $e$}
+  \begin{proof}
+    \pf\ $V$ is open because $V = \bigcup_{a \in W^{-1}} Wa$.  % TODO Extract
+    % lemma
+  \end{proof}
+  \step{<1>12}{$V$ is symmetric}
+  \step{<1>13}{$VV \subseteq U$}
+  \qed
+\end{proof}
+
+\begin{prop}
+  Every topological group is regular.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$G$ be a topological group}}
+  \step{<1>2}{\pflet{$A \subseteq G$ be closed and $a \notin A$}}
+  \step{<1>3}{$G \setminus A a^{-1}$ is a neighbourhood of $e$}
+  \step{<1>4}{\pick\ a symmetric neighbourhood $V$ of $e$ such that $VV
+    \subseteq
+    G \setminus A a^{-1}$}
+  \begin{proof}
+    \pf\ Proposition \ref{prop:topological_group:neighbourhood}.
+  \end{proof}
+  \step{<1>5}{$VA$ and $Va$ are disjoint neighbourhoods of $A$ and $a$}
+  \qed
+\end{proof}
+
+\begin{prop}
+  The long line is not second countable.
+\end{prop}
+
+\begin{proof}
+  \pf Let $\mathcal{B}$ be a basis for $L$. Then, for every countable ordinal
+  $\alpha$, $\mathcal{B}$ mst contain a basic open set that contains
+  $(\alpha, 1/2)$ but not $(\beta, 1/2)$ for any other $\beta$. Therefore,
+  $\mathcal{B}$ is uncountable. \qed
+\end{proof}
+
+\begin{cor}
+  The long line cannot be imbedded in $\mathbb{R}$.
+\end{cor}
+
+\begin{thm}
+  Let $f : X \rightarrow Y$. Let $Y$ be compact Hausdorff. Then $f$ is
+  continuous if and only if the graph of $f$ is closed in $X \times Y$.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$G_f$ be the graph of $f$.}}
+  \step{<1>2}{If $f$ is continuous then the graph of $f$ is closed.}
+  \begin{proof}
+    \step{<2>1}{\assume{$f$ is continuous.}}
+    \step{<2>2}{\pflet{$(x, y) \in (X \times Y) \setminus G_f$}}
+    \step{<2>3}{$y \neq f(x)$}
+    \step{<2>4}{\pick\ disjoint open neighbourhoods $U$ of $f(x)$ and $V$ of
+      $y$}
+    \begin{proof}
+      \pf\ $Y$ is Hausdorff.
+    \end{proof}
+    \step{<2>5}{$(x, y) \in f^{-1}(U) \times V \subseteq (X \times Y)
+      \setminus
+      G_f$}
+    \qedstep
+  \end{proof}
+  \step{<1>3}{If the graph of $f$ is closed then $f$ is continuous.}
+  \begin{proof}
+    \step{<2>1}{\assume{$G_f$ is closed.}}
+    \step{<2>2}{\pflet{$x_0 \in X$ and $V$ be an open neighbourhood of
+        $f(x_0)$}}
+    \step{<2>3}{$G_f \cap (X \times (Y \setminus V))$ is closed}
+    \step{<2>4}{$\pi_1(G_f \cap (X \times (Y \setminus V)))$ is closed}
+    \begin{proof}
+      \pf\ Lemma \ref{lm:topology:compact:projection_closed}
+    \end{proof}
+    \step{<2>5}{$x_0 \in X \setminus \pi_1(G_f \cap (X \times (Y \setminus
+      V)))
+      \subseteq f^{-1}(V)$}
+    \qedstep
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{thm}
+  Let $X$ be a compact Hausdorff space. Let $\mathcal{A}$ be a set of closed
+  connected subspaces of $X$ that is linearly ordered by proper inclusion.
+  Then
+  \[ Y = \bigcap \mathcal{A} \]
+  is connected.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\assume{for a contradiction $C$ and $D$ form a separation of
+      $Y$}}
+  \step{<1>2}{\pick\ disjoint $U$ and $V$ open in $X$ such that $C = U \cap
+    Y$ and $D = V       \cap Y$}
+  \begin{proof}
+    \step{<2>1}{$C$ and $D$ are compact}
+    \begin{proof}
+      \step{<3>1}{$Y$ is compact}
+      \begin{proof}
+        \pf\ $Y$ is a closed subset of $X$, hence compact by Proposition
+        \ref{prop:topology:compact:closed_is_compact}.
+      \end{proof}
+      \qedstep
+      \begin{proof}
+        \pf\ $C$ and $D$ are closed subsets of $Y$ hence compact by
+        Proposition \ref{prop:topology:compact:closed_is_compact}.
+      \end{proof}
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ By Lemma \ref{lm:topology:compact:normal}.
+    \end{proof}
+  \end{proof}
+  \step{<1>3}{For all $A \in \mathcal{A}$, we have $A \setminus (U \cup V)$
+    is
+    nonempty}
+  \begin{proof}
+    \pf\ Since $A$ is connected.
+  \end{proof}
+  \step{<1>4}{$\{ A \setminus (U \cup V) : A \in \mathcal{A} \}$ has the
+    finite intersection property}
+  \begin{proof}
+    \pf\ This holds because $\mathcal{A}$ is linearly ordered under proper
+    inclusion.
+  \end{proof}
+  \step{<1>5}{$\bigcap_{A \in \mathcal{A}} (A \setminus (U \cup V))$ is
+    nonempty}
+  \begin{proof}
+    \pf\ By Proposition \ref{prop:topology:compact:finite_intersection}.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{thm}
+  Let $A \subseteq \mathbb{R}^n$. Then the following are equivalent:
+  \begin{enumerate}
+    \item $A$ is compact.
+    \item $A$ is closed and bounded under the euclidean metric.
+    \item $A$ is closed and bounded under the square metric.
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{$1 \Rightarrow 2$}
+  \begin{proof}
+    \step{<2>1}{\assume{$A$ is compact.}}
+    \step{<2>2}{$A$ is closed.}
+    \begin{proof}
+      \pf\ By Proposition \ref{prop:topology:compact:compact_is_closed}.
+    \end{proof}
+    \step{<2>3}{$\{ B(\vec{0}, n) : n \in \mathbb{Z}^+ \}$ covers $A$}
+    \step{<2>4}{\pick\ a finite subcover $\{ B(\vec{0}, n_1), \ldots,
+      B(\vec{0},
+      n_k) \}$}
+    \step{<2>5}{\pflet{$N = \max(n_1, \ldots, n_k)$}}
+    \step{<2>6}{For all $x, y \in A$ we have $d(x, y) < 2 N$}
+    \begin{proof}
+      \pf\ We have $d(x, y) \leq d(\vec{0}, x) + d(\vec{0}, y) < N + N$.
+    \end{proof}
+  \end{proof}
+  \step{<1>2}{$2 \Rightarrow 3$}
+  \begin{proof}
+    \pf\ If $d(x, y) < \epsilon$ for all $x, y \in A$ then $\rho(x, y) <
+    \epsilon \sqrt{n}$ by Lemma \ref{lm:topology:metric:euclidean_square}.
+  \end{proof}
+  \step{<1>3}{$3 \Rightarrow 1$}
+  \begin{proof}
+    \step{<2>1}{\assume{$A$ is closed and $\rho(x, y) < \epsilon$ for all $x,
+        y
+        \in A$}}
+    \step{<2>2}{\pick\ $x_0 \in A$}
+    \step{<2>3}{\pflet{$b = \rho(\vec{0}, x_0)$}}
+    \step{<2>4}{\pflet{$P = \epsilon + b$}}
+    \step{<2>5}{$A \subseteq [-P, P]^n$}
+    \begin{proof}
+      \pf For any $y \in A$ we have
+      \begin{align*}
+        \rho(\vec{0}, y) & \leq \rho(\vec{0}, x_0)
+        + \rho(x_0, y) & (\text{Triangle Inequality}) \\
+        & < b + \epsilon & (\text{\stepref{<2>3}, \stepref{<2>1}}) \\
+        & = P & (\text{\stepref{<2>4}})
+      \end{align*}
+    \end{proof}
+    \step{<2>6}{$[-P, P]^n$ is compact.}
+    \begin{proof}
+      \pf\ By Corollary \ref{cor:topology:compact:real_closed_interval} and
+      Proposition \ref{prop:topology:compact:product}.
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ By Proposition \ref{prop:topology:compact:closed_is_compact}.
+    \end{proof}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{thm}[AC]
+  \label{thm:topology:convergence:compact}
+ Let $X$ be a topological space. Then $X$ is compact if and only if every
+ nonempty net in $X$ has a convergent subnet.
+\end{thm}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{If $X$ is compact then every nonempty net in $X$ has a convergent
+   subnet.}
+ \begin{proof}
+   \step{<2>1}{\assume{$X$ is compact.}}
+   \step{<2>2}{\pflet{$(x_\alpha)_{\alpha \in J}$ be a nonempty net in $X$}}
+   \step{<2>3}{For $\alpha \in J$, \pflet{$B_\alpha = \{ \beta \in J : \alpha
+       \leq \beta \}$.}}
+   \step{<2>4}{$\{ B_\alpha : \alpha \in J \}$ has the finite intersection
+     property.}
+   \begin{proof}
+     \step{<3>1}{\pflet{$\alpha_1, \ldots, \alpha_n \in J$}}
+     \step{<3>2}{\pick\ $\beta \in J$ such that $\alpha_1 \leq \beta$, \ldots,
+       $\alpha_n \leq \beta$}
+     \step{<3>3}{$x_\beta \in B_{\alpha_1} \cap \cdots \cap B_{\alpha_n}$}
+   \end{proof}
+   \step{<2>5}{\pick\ $l \in \bigcap_{\alpha \in J} B_\alpha$}
+   \begin{proof}
+     \pf\ Proposition \ref{prop:topology:compact:finite_intersection}.
+   \end{proof}
+   \step{<2>6}{\pflet{$K = \{ \alpha \in J : x_\alpha = l \}$}}
+   \step{<2>7}{$K$ is cofinal in $J$}
+   \begin{proof}
+     \step{<3>1}{\pflet{$\alpha \in J$}}
+     \step{<3>2}{$l \in B_\alpha$}
+     \begin{proof}
+       \pf\ By \stepref{<2>5}.
+     \end{proof}
+     \step{<3>3}{There exists $\beta \geq \alpha$ such that $x_\beta = l$.}
+   \end{proof}
+   \step{<2>8}{$(x_\alpha)_{\alpha \in K}$ is a subnet of $(x_\alpha)_{\alpha
+       \in J}$ that converges to $l$.}
+ \end{proof}
+ \step{<1>2}{If every nonempty net in $X$ has a convergent subnet then $X$ is
+   compact.}
+ \begin{proof}
+   \step{<2>1}{\assume{Every nonempty net in $X$ has a convergent subnet}}
+   \step{<2>2}{\pflet{$\mathcal{A}$ be a nonempty set of closed sets with the
+       finite intersection property.}}
+   \step{<2>3}{\pflet{$J$ be the poset of all finite intersections of elements
+       of          $\mathcal{A}$ under $\supseteq$}}
+   \step{<2>4}{\pick\ $x_C \in C$ for all $C \in J$}
+   \begin{proof}
+     \pf\ These are all nonempty by \stepref{<2>2}.
+   \end{proof}
+   \step{<2>5}{\pick\ an accumulation point $l$ of $(x_C)$ \prove{$l \in
+       \bigcap \mathcal{A}$}}
+   \begin{proof}
+    \pf\ One exists by Lemma \ref{lm:topology:accumulation_point:subnet}.
+   \end{proof}
+   \step{<2>6}{\pflet{$C \in \mathcal{A}$} \prove{$l \in C$}}
+   \step{<2>7}{\pflet{$U$ be a neighbourhood of $l$} \prove{$U$ intersects
+       $C$}}
+   \step{<2>8}{\pick\ $D \subseteq C$ such that $x_D \in U$}
+   \begin{proof}
+     \pf\ By \stepref{<2>5}.
+   \end{proof}
+   \step{<2>9}{$U$ intersects $C$}
+   \step{<2>10}{$l \in C$}
+   \begin{proof}
+    \pf\ By Theorem \ref{thm:topology:closure:neighbourhoods} since $C$ is
+    closed (\stepref{<2>2}).
+   \end{proof}
+   \qedstep
+   \begin{proof}
+     \pf\ Proposition \ref{prop:topology:compact:finite_intersection}.
+   \end{proof}
+ \end{proof}
+ \qed
+\end{proof}
+
+\begin{cor}[AC]
+ Let $G$ be a topological group. Let $A$ and $B$ be subsets of $G$. If $A$ is
+closed in $G$ and $B$ is compact then $AB$ is closed in $G$.
+\end{cor}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\pflet{$c \in \overline{AB}$} \prove{$c \in AB$}}
+ \step{<1>2}{\pick\ a net $(x_\alpha)_{\alpha \in J}$ that converges to $c$}
+ \begin{proof}
+   \pf\ By Theorem \ref{thm:topology:convergence:closure}.
+ \end{proof}
+ \step{<1>3}{For $\alpha \in J$, \pick\ $a_\alpha \in A$ and $b_\alpha \in B$
+   such that $x_\alpha = a_\alpha b_\alpha$}
+ \step{<1>4}{\pick\ a convergent subnet $(b_{g(\beta)})_{\beta \in K}$ of
+   $(b_\alpha)_{\alpha \in J}$}
+ \begin{proof}
+   \pf\ By Theorem \ref{thm:topology:convergence:compact}.
+ \end{proof}
+ \step{<1>5}{\pflet{$b_{g(\beta)} \rightarrow b$}}
+ \step{<1>6}{$b \in B$}
+ \begin{proof}
+   \step{<2>1}{$B$ is closed}
+   \begin{proof}
+     \pf\ By Proposition \ref{prop:topology:compact:compact_is_closed}.
+   \end{proof}
+   \qedstep
+   \begin{proof}
+   \pf\ By Theorem \ref{thm:topology:convergence:closure}
+ \end{proof}
+ \end{proof}
+ \step{<1>7}{$a_{g(\beta)} \rightarrow cb^{-1}$}
+ \begin{proof}
+   \pf\ By Theorem \ref{thm:topology:convergence:continuous}
+ \end{proof}
+ \step{<1>8}{$cb^{-1} \in A$}
+ \begin{proof}
+   \pf\ By Theorem \ref{thm:topology:convergence:closure}
+ \end{proof}
+ \step{<1>9}{$c \in AB$}
+ \qedstep
+ \begin{proof}
+   \pf\ By Proposition \ref{prop:topology:closure:closed2}.
+ \end{proof}
+\end{proof}
+
+\begin{prop}
+  Let $A_0 + A_1$ be the sum of $A_0$ and $A_1$ with injections $i_0 : A_0
+\rightarrow A_0 + A_1$ and $i_1 : A_1 \rightarrow A_0 + A_1$.
+
+Let $g : B \rightarrow A_0 + A_1$ be a function.
+
+Let $B_0$ be the pullback of $i_0$ and $g$ with projections $j_0 : B_0
+\rightarrow B$ and $k_0 : B_0 \rightarrow A_0$.
+
+Let $B_1$ be the pullback of $i_1$ and $g$ with projection s$j_1 : B_1
+\rightarrow B$ and $k_1 : B_1 \rightarrow A_1$.
+
+Then $B$ is the sum of $B_0$ and $B_1$ with injections $j_0$ and $j_1$.
+
+  \[ \xymatrix{
+    B_0 \ar[r]^{j_0} \ar[d] & B \ar[d]^g & B_1 \ar[l]^{j_1} \ar[d] \\
+    A_0 \ar[r]_-{i_0} & A_0 + A_1 & A_1 \ar[l]_-{i_1}
+  } \]
+\end{prop}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\pflet{$X$ be any set and $x : B_0 \rightarrow X$, $y : B_1
+     \rightarrow X$}}
+\end{proof}
+
+\begin{prop}[CC]
+  \label{prop:topology:Lindelof:basis}
+  Let $X$ be a space and $\mathcal{B}$ be a basis for $X$. Suppose that every
+  subset of $\mathcal{B}$ that covers $X$ has a countable subcover. Then $X$
+  is Lindel\"{o}f.
+\end{prop}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\pflet{$\mathcal{A}$ be an open cover of $X$.}}
+ \step{<1>2}{$\{ B \in \mathcal{B} : \exists U \in \mathcal{A}. B \subseteq U
+   \}$ covers $X$.}
+ \step{<1>3}{\pick\ a countable subcover $\mathcal{B}_0$}
+ \step{<1>4}{For $B \in \mathcal{B}_0$, \pick\ $U_B \in \mathcal{A}$ such that
+   $B \subseteq U_B$}
+ \step{<1>5}{$\{ U_B : B \in \mathcal{B}_0 \}$ is a countable subcover of
+   $\mathcal{A}$.}
+ \qed
+\end{proof}
+
+\begin{prop}[CC]
+  The space $\mathbb{R}_l$ is Lindel\"{o}f.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$\mathcal{A}$ be a set of basis elements $[a, b)$ that
+      covers $X$} \prove{$\mathcal{A}$ has a countable subcover.}}
+  \step{<1>2}{\pflet{$C = \bigcup \{ (a, b) : [a, b) \in \mathcal{A} \}$}}
+  \step{<1>3}{$\mathbb{R} \setminus C$ is countable.}
+  \begin{proof}
+    \step{<2>1}{For all $x \in \mathbb{R} \setminus C$, \pick\ a rational $q_x$
+      such that there exists $b$ such that $q_x \in [x, b) \in \mathcal{A}$}
+    \begin{proof}
+      \step{<3>1}{\pick\ $[a, b) \in \mathcal{A}$ such that $x \in [a, b)$}
+      \step{<3>2}{$x = a$}
+      \begin{proof}
+        \pf\ If not we would have $x \in C$
+      \end{proof}
+      \step{<3>3}{There exists a rational in $(a, b)$}
+    \end{proof}
+    \step{<2>2}{For $x, y \in \mathbb{R} \setminus C$, if $x < y$ then $q_x < q_y$}
+    \begin{proof}
+      \step{<3>1}{\pick\ $b$, $c$ such that $q_x \in [x, b) \in \mathcal{A}$ and
+        $q_y \in [y, c) \in \mathcal{A}$}
+      \begin{proof}
+        \pf\ By \stepref{<2>1}.
+      \end{proof}
+      \step{<3>2}{$b \leq y$}
+      \begin{proof}
+        \pf\ Otherwise we would have $y \in (x, b) \subseteq C$.
+      \end{proof}
+      \step{<3>3}{$q_x < q_y$}
+      \begin{proof}
+        \pf\ $q_x < b \leq y \leq q_y$
+      \end{proof}
+    \end{proof}
+    \step{<2>3}{The map $q_{-} : \mathbb{R} \setminus C \rightarrow \mathbb{Q}$
+      is injective.}
+  \end{proof}
+  \step{<1>4}{For $x \in \mathbb{R} \setminus C$, \pick\ $[a_x, b_x) \in
+    \mathcal{A}$ such that $a_x \leq x < b_x$}
+  \step{<1>5}{\pick\ a countable subset $( (a_n, b_n) )_{n \in \mathbb{Z}^+}$ of
+    $\{ (a, b) : [a, b) \in \mathcal{A} \}$ that covers $C$}
+  \begin{proof}
+    \step{<2>1}{The set $C$ as a subspace of $\mathbb{R}$ with the standard
+      topology is second countable.}
+    \step{<2>2}{The set $C$ as a subspace of $\mathbb{R}$ with the standard
+      topology is Lindel\"{o}f.}
+    \begin{proof}
+      \pf\ By Theorem \ref{thm:topology:lindelof:second_countable}.
+    \end{proof}
+  \end{proof}
+  \step{<1>6}{$\{ [a_x, b_x) : x \in \mathbb{R} \setminus C \} \cup \{ [a_n,
+    b_n) : n \in \mathbb{Z}^+ \}$ is a countable subcover of $\mathcal{A}$.}
+  \qedstep
+  \begin{proof}
+    \pf\ By Proposition \ref{prop:topology:Lindelof:basis}.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{prop}[AC]
+  The space $\mathbb{R}_l$ is not second countable.
+\end{prop}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\pflet{$\mathcal{B}$ be any basis for $\mathbb{R}_l$}}
+ \step{<1>2}{For $x \in \mathbb{R}$, \pick\ $B_x \in \mathcal{B}$ such that $x
+   \in B_x \subseteq [x, x+1)$}
+ \step{<1>3}{The mapping $B_{(-)}$ is an injective function $\mathbb{R}
+   \rightarrow \mathcal{B}$}
+ \begin{proof}
+   \pf\ For any $x$ we have $x = \min B_x$.
+ \end{proof}
+ \step{<1>4}{$\mathcal{B}$ is uncountable.}
+ \qed
+\end{proof}
+
+  \begin{prop}
+  The product of a Lindel\"{o}f space and a compact space is Lindel\"{o}f.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$X$ be a Lindel\"{o}f space and $Y$ a compact space.}}
+  \step{<1>2}{\pflet{$\mathcal{A}$ be an open covering of $X \times Y$}}
+  \step{<1>3}{For all $x \in X$, there exists a neighbourhood $W$ of $x$ such
+    that $W \times Y$ is      covered by finitely many elements of
+    $\mathcal{A}$.}
+  \begin{proof}
+    \step{<2>1}{\pflet{$x \in X$}}
+    \step{<2>2}{$\{x\} \times Y$ is compact.}
+    \begin{proof}
+      \pf\ It is homeomorphic to $Y$.
+    \end{proof}
+    \step{<2>3}{\pick\ a finite subset $\{ U_1, \ldots, U_m \}$ of
+      $\mathcal{A}$
+      that covers $\{x\} \times Y$}
+    \begin{proof}
+      \pf\ By Proposition \ref{prop:topology:compact:subspace}.
+    \end{proof}
+    \step{<2>4}{There exists a neighbourhood $W$ of $x$ such that $W \times Y
+      \subseteq U_1 \cup \cdots \cup U_m$}
+    \begin{proof}
+      \pf\ By the Tube Lemma.
+    \end{proof}
+  \end{proof}
+  \step{<1>4}{$\{ W \text{ open in } X : W \times Y \text{ is covered by
+      finitely
+      many        elements of } \mathcal{A} \}$ is an open covering of $X$.}
+  \step{<1>5}{\pick\ a countable subcovering $\{ W_1, W_2, \ldots \}$}
+  \step{<1>6}{For $i \geq 1$, \pick\ a finite subset $\{ U_{i1},
+    \ldots,
+    U_{ir_i} \}$ of $\mathcal{A}$ that covers $W_i \times Y$}
+  \step{<1>7}{$\{ U_{1j} : i \geq 1, 1 \leq j \leq r_i \}$ is a countable
+subcovering of
+    $\mathcal{A}$.}
+  \qed
+\end{proof}
+
+\begin{prop}
+  \label{prop:topology:normal:shrinking}
+ Let $X$ be a $T_1$ space. Then $X$ is normal if and only if, for every
+closed set $A$ and open set $U \supseteq A$, there exists an open set $V
+\supseteq A$ such that $\overline{V} \subseteq U$.
+\end{prop}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{If $X$ is normal then,  for every
+closed set $A$ and open set $U \supseteq A$, there exists an open set $V
+\supseteq A$ such that $\overline{V} \subseteq U$.}
+\begin{proof}
+\step{<2>1}{\assume{$X$ is normal.}}
+\step{<2>2}{\pflet{$A$ be a closed set and $U$ an open set with $A \subseteq U$}}
+\step{<2>3}{\pick\ disjoint open sets $V$, $W$ such that $A \subseteq V$ andn $X
+  \setminus U \subseteq W$}
+\step{<2>4}{$\overline{V} \subseteq U$}
+\begin{proof}
+  \pf
+  \begin{align*}
+    \overline{V} & \subseteq X \setminus W \\
+    & \subseteq U
+  \end{align*}
+\end{proof}
+\end{proof}
+\step{<1>2}{If, for every
+closed set $A$ and open set $U \supseteq A$, there exists an open set $V
+\supseteq A$ such that $\overline{V} \subseteq U$, then $X$ is normal.}
+\begin{proof}
+\step{<2>1}{\assume{ for every
+closed set $A$ and open set $U \supseteq A$, there exists an open set $V
+\supseteq A$ such that $\overline{V} \subseteq U$.}}
+\step{<2>2}{\pflet{$A$, $B$ be disjoint closed sets}}
+\step{<2>3}{\pick\ an open set $V$ such that $A \subseteq V$ and $\overline{V}
+\subseteq X \setminus B$}
+\step{<2>4}{$A \subseteq V$ and $B \subseteq X \setminus \overline{V}$}
+\end{proof}
+\qed
+\end{proof}
+
+\begin{df}[Action]
+  Let $G$ be a topological group and $X$ a topological space. An
+\emph{action} of $G$ on $X$ is a continuous function $\cdot : G \times X
+\rightarrow X$ such that, for all $g, h \in G$ and $x \in X$:
+\begin{enumerate}
+\item $e \cdot x = x$
+\item $g \cdot (h \cdot x) = gh \cdot x$
+\end{enumerate}
+\end{df}
+
+\begin{df}[Orbit Space]
+ Let $G$ be a topological group, $X$ a topological space, and $\cdot : G
+ \times X \rightarrow X$ an action of $G$ on $X$. Then the \emph{orbit space}
+$X / G$ is the quotient space of $X$ by the equivalence relation $\sim$
+generated by $x \sim g \cdot x$ for all $x \in X$, $g \in G$.
+\end{df}
+
+\begin{thm}
+ Let $G$ be a topological group. Let $X$ be a topological space. Let
+$\cdot : G \times X \rightarrow X$ be an action of $G$ on $X$. Then the
+canonical map $\pi : X \twoheadrightarrow X / G$ is perfect.
+\end{thm}
+
+\begin{proof}
+   \step{<1>1}{$\pi$ is closed.}
+   \begin{proof}
+     \step{<2>1}{\pflet{$A \subseteq X$ be closed.}}
+     \step{<2>2}{$GA = \{ g \cdot a : g \in G, a \in A \}$ is closed}
+     \begin{proof}
+       \step{<3>1}{\pflet{$z \notin GA$}}
+       \step{<3>2}{For all $g \in G$ we have $g \cdot z \notin A$}
+       \step{<3>3}{For $g \in G$, there exist $U$ an open neighbourhood of $g$
+         and            $V$ an open neighbourhood of $z$ such that $UV$ does
+         not  intersect $A$}
+       \step{<3>4}{$\{ U \text{ open in } G : \exists V \text{ an open
+           neighbourhood of } z . UV \cap A = \emptyset \}$ covers $G$}
+       \step{<3>5}{\pick\ a finite subcover $\{ U_1, \ldots, U_n \}$}
+       \step{<3>6}{For $1 \leq i \leq n$, \pick\ $V_i$ an open neighbourhood of
+         $z$ such that $U_i V_i \cap A = \emptyset$}
+       \step{<3>7}{$z \in V_1 \cap \cdots \cap V_n \subseteq X \setminus GA$}
+     \end{proof}
+     \step{<2>3}{$\pi(A)$ is closed}
+     \begin{proof}
+       $\inv{\pi}(\pi(A)) = GA$
+     \end{proof}
+   \end{proof}
+   \step{<1>2}{$\pi$ is continuous.}
+   \begin{proof}
+    \pf\ By definition of the quotient topology.
+   \end{proof}
+   \step{<1>3}{$\pi$ is surjective.}
+   \begin{proof}
+    \pf\ By definition.
+   \end{proof}
+   \step{<1>4}{For all $a \in X / G$ we have $\inv{\pi}(a)$ is compact.}
+   \begin{proof}
+     \step{<2>1}{\pflet{$a \in X / G$}}
+     \step{<2>2}{\pick\ $x \in X$ such that $a = \pi(x)$}
+     \step{<2>3}{$\inv{\pi}(a) = \{ gx : g \in G \}$}
+     \step{<2>4}{$\inv{\pi}(a)$ is homeomorphic to $G$}
+   \end{proof}
+ \qed
+\end{proof}
+
+\begin{cor}
+ If $X$ is Hausdorff then so is $X / G$.
+\end{cor}
+
+\begin{cor}
+ If $X$ is regular then so is $X / G$.
+\end{cor}
+
+\begin{cor}
+ If $X$ is normal then so is $X / G$.
+\end{cor}
+
+\begin{cor}
+  If $X$ is locally compact then so is $X / G$.
+\end{cor}
+
+\begin{cor}
+ If $X$ is second countable then so is $X / G$.
+\end{cor}
+
+\begin{prop}
+  \label{prop:topology:second_countable:perfect}
+ Let $p : X \twoheadrightarrow Y$ be perfect. If $X$ is second countable then
+so is $Y$.
+\end{prop}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\pick\ a countable basis $\mathcal{B}$ for $X$}
+ \step{<1>2}{\pflet{$\mathcal{J} = \{ J \subseteq^{\mathrm{fin}} \mathcal{B} :
+     \exists W \text{ open in } Y. \inv{p}(W) \subseteq \bigcup J \}$}}
+ \step{<1>3}{For every $J \in \mathcal{J}$, \pflet{$W_J = \bigcup \{ W \text{
+       open in } Y : \inv{p}(W) \subseteq \bigcup J \}$.} \prove{$\{ W_J : J
+\in \mathcal{J} \}$        is a basis for $Y$.}}
+ \step{<1>4}{$y \in V$ where $V$ is open in $Y$}
+ \step{<1>5}{$\{ B \in \mathcal{B} : x \in B \subseteq \inv{p}(V) \}$ covers
+   $\inv{p}(y)$}
+ \step{<1>6}{\pick\ a countable subcover $J \subseteq^{\mathrm{fin}}
+   \mathcal{B}$}
+ \step{<1>7}{$y \in W_J \subseteq V$}
+ \begin{proof}
+   \step{<2>1}{$\inv{p}(y) \subseteq \bigcup J$}
+   \step{<2>2}{\pick\ an open neighbourhood $W$ of $y$ such that $\inv{p}(W)
+     \subseteq \bigcup J$}
+   \begin{proof}
+     \pf\ By Proposition \ref{prop:topology:perfect:neighbourhood}.
+   \end{proof}
+   \step{<2>3}{$W \subseteq W_J$}
+ \end{proof}
+ \qed
+\end{proof}
+
+\begin{prop}
+ A subspace of a $T_1$ space is $T_1$.
+\end{prop}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\pflet{$X$ be $T_1$ and $Y \subseteq X$}}
+ \step{<1>2}{\pflet{$a \in Y$}}
+ \step{<1>3}{$\{a\}$ is closed in $X$}
+ \step{<1>4}{$\{a\}$ is closed in $Y$}
+ \begin{proof}
+   \pf\ By Corollary \ref{cor:topology:subspace:closed}.
+ \end{proof}
+ \qed
+\end{proof}
+
+\begin{prop}[DC]
+ Not every topological group is normal.
+\end{prop}
+
+\begin{proof}
+ \pf\ From Proposition \ref{prop:topology:normal:uncountable}. \qed
+\end{proof}
+
+\begin{thm}
+ A subspace of a completely regular space is completely regular.
+\end{thm}
+
+\begin{proof}
+ \pf
+ \step{<1>1}{\pflet{$X$ be completely regular and $Y \subseteq X$}}
+ \step{<1>2}{\pflet{$a \in Y$ and $A$ be closed in $Y$ such that $a \notin A$}}
+ \step{<1>3}{\pick\ $C$ closed in $X$ such that $A = X \cap C$}
+ \step{<1>4}{\pick\ a continuous function $f : X \rightarrow [0,1]$ such that
+   $f(a) = 0$ and $f(C) = \{ 1 \}$}
+ \step{<1>5}{$f \restriction Y : Y \rightarrow [0,1]$ is a continuous function
+   such that $(f \restriction Y)(a) = 0$ and $(f \restriction Y)(A) = \{ 1
+   \}$}
+ \qed
+\end{proof}
+
+\begin{prop}[DC]
+Every topological group is completely regular.
+\end{prop}
+
+\begin{proof}
+\pf
+\step{<1>1}{\pflet{$G$ be a topological group}}
+\step{<1>2}{\pflet{$x \in G$ and $A \subseteq G$ be closed such that $x \notin
+    A$} \prove{There exists a continuous $f : G \rightarrow [0,1]$ such that
+    $f(x) = 0$ and $f(A) = \{ 1 \}$}}
+\step{<1>3}{\assume{w.l.o.g.~$x = e$}}
+\begin{proof}
+  \pf\ $\lambda y. x^{-1}y$ is an automorphism of $G$ that maps $x$ to $e$.
+\end{proof}
+\step{<1>4}{\pick\ a sequence $V_n$ ($n \geq 0$) of symmetric neighbourhoods
+of $e$
+disjoint from $A$     such that $V_n V_n \subseteq V_{n-1}$ for all $n$}
+\begin{proof}
+\step{<2>1}{\pflet{$V_0 = X \setminus A$}}
+\step{<2>2}{Given $V_n$, \pick\ a symmetric neighbourhood $V_{n+1}$ of $e$
+such that
+  $V_{n+1} V_{n+1} \subseteq V_n$}
+\begin{proof}
+  \pf\ By Proposition \ref{prop:topological_group:neighbourhood}.
+\end{proof}
+\end{proof}
+\step{<1>5}{For every dyadic rational $p$, define an open set $U(p)$
+as follows:
+\begin{align*}
+U(1/2^n) & = V_n & (n \geq 0) \\
+U((2k+1)/2^{n+1}) & = V_{n+1} U(k/2^n) & (0 < k < 2^n) \\
+U(p) & = \emptyset & (p \leq 0) \\
+U(p) & = G & (p > 1)
+\end{align*}
+}
+\step{<1>6}{For all $k$ and $n$, we have
+\[ V_n U(k / 2^n) \subseteq U((k+1)/2^n) \]}
+\begin{proof}
+\step{<2>1}{$k \leq 0$}
+\begin{proof}
+  \pf\ In this case, $V_n U(k / 2^n) = \emptyset$
+\end{proof}
+\step{<2>2}{$k = 1$ and $n > 0$}
+\begin{proof}
+  \pf
+  \begin{align*}
+   V_n U(1 / 2^n) & = V_n V_n \\
+   & \subseteq V_{n-1} \\
+   & = U(1 / 2^{n-1})
+  \end{align*}
+\end{proof}
+\step{<2>3}{$k = 2a$ for some $0 < a < 2^{n-1}$}
+\begin{proof}
+  \pf
+  \begin{align*}
+    V_n U(2a / 2^n) & = V_n U(a / 2^{n-1}) \\
+    & = U(2a+1 / 2^n)
+  \end{align*}
+\end{proof}
+\step{<2>4}{$k = 2a+1$ for some $0 < a < 2^{n-1}$}
+\begin{proof}
+  \pf
+  \begin{align*}
+    V_n U((2a+1) / 2^n) & = V_n V_n U(a / 2^{n-1}) \\
+    & \subseteq V_{n-1} U(a / 2^{n-1}) \\
+  & \subseteq U((a+1) / 2^{n-1})
+  \end{align*}
+\end{proof}
+\step{<2>5}{$k \geq 2^n$}
+\begin{proof}
+  \pf\ In this case, $U((k+1)/2^n) = G$.
+\end{proof}
+\end{proof}
+\step{<1>7}{Define $f : G \rightarrow [0,1]$ by
+\[ f(x) = \inf \{ p : x \in U(p) \} \]}
+\begin{proof}
+\pf\ This set is nonempty because $x \in U(1)$ and bounded below because if
+$x \in U(p)$ then $p > 0$.
+\end{proof}
+\step{<1>8}{For $n > 0$ we have $\overline{U(k / 2^n)} \subseteq V_n U(k/2^n)$}
+\begin{proof}
+\step{<2>1}{\pflet{$x \in \overline{U(k / 2^n)}$}}
+\step{<2>2}{$V_n x$ is a neighbourhood of $x$}
+\step{<2>3}{\pick\ $y \in V_n x \cap U(k / 2^n)$}
+\step{<2>4}{\pick\ $z \in V_n$ such that $y = zx$}
+\step{<2>5}{$x = z^{-1} y$}
+\end{proof}
+\step{<1>9}{For $p$ and $q$ dyadic rationals, if $p < q$ then $\overline{U(p)}
+\subseteq U(q)$}
+\step{<1>10}{If $x \in \overline{U(p)}$ then $f(x) \leq p$}
+\begin{proof}
+\step{<2>1}{For all $q > p$ we have $x \in U(q)$}
+\step{<2>2}{For all $q > p$ we have $f(x) \leq q$}
+\end{proof}
+\step{<1>11}{If $x \notin U(p)$ then $f(x) \geq p$}
+\begin{proof}
+\pf\ If $x \notin U(p)$ and $x \in U(q)$ then $q > p$.
+\end{proof}
+\step{<1>12}{$f$ is continuous}
+\begin{proof}
+\step{<2>1}{\pflet{$x_0 \in X$}}
+\step{<2>2}{\pflet{$c < f(x_0) < d$} \prove{There exist a neighbourhood $U$ of
+    $x_0$ such that $f(U) \subseteq (c, d)$}}
+\step{<2>3}{\pick\ rational numbers $p$, $q$ such that $c < p < f(x_0) < q < d$}
+\step{<2>4}{$x \notin \overline{U(p)}$}
+\step{<2>5}{$x \in U(q)$}
+\step{<2>6}{Take $U = U(q) \setminus \overline{U(p)}$}
+\end{proof}
+\step{<1>13}{$f(e) = 0$}
+\begin{proof}
+\pf\ We have $e \in U(1/2^n)$ for all $n$.
+\end{proof}
+\step{<1>14}{$f(A) = \{ 1 \}$}
+\begin{proof}
+\pf\ If $x \in A$ and $x \in U(p)$ then $p > 1$.
+\end{proof}
+\qed
+\end{proof}
+
+\begin{df}[Bijection]
+ A function $f : A \rightarrow B$ is a \emph{bijection}, $f : A \cong B$, iff
+ there exists a function $\inv{f} : B \rightarrow A$, the \emph{inverse} of
+ $f$, such that $\inv{f} \circ f = \id{A}$ and $f \circ \inv{f} = \id{B}$.
+\end{df}
+
+\begin{thm}
+Let $Y$ be a normal space. Then $Y$ is an absolute retract if and only if $Y$
+has the universal extension property.
+\end{thm}
+
+\begin{proof}
+\pf
+\step{<1>1}{If $Y$ is an absolute retract then $Y$ has the universal extension
+  property.}
+\begin{proof}
+  \step{<2>1}{\assume{$Y$ is an absolute retract.}}
+  \step{<2>2}{\pflet{$X$ be a normal space, $A$ a closed subspace of $X$ and $f
+      : A \rightarrow Y$ a continuous function.}}
+  \step{<2>3}{\pflet{$Z_f$ be the quotient space of $X \cup Y$ under: $a \sim
+      f(a)$ for all $a \in A$}}
+  \step{<2>4}{\pflet{$p : X \cup Y \twoheadrightarrow Z_f$ be the quotient
+map}}
+  \step{<2>5}{For all $x_1, x_2 \in X$ we have $p(x_1) = p(x_2)$ iff
+$x_1 = x_2$ or $x_1, x_2 in A$ and $f(x_1) =
+f(x_2)$; and for $x \in X$ and $y \in Y$ we have $p(x) = p(y)$ iff $f(x) = y$;
+and for $y_1, y_2 \in Y$ we have $p(y_1) = p(y_2)$ iff $y_1 = y_2$}
+  \step{<2>6}{$p$ imbeds $Y$ into a closed subspace of $Z_f$}
+  \begin{proof}
+    \step{<3>1}{$p$ is injective on $Y$}
+    \step{<3>2}{$\inv{p} : p(Y) \rightarrow Y$ is continuous}
+    \begin{proof}
+      \step{<4>1}{\pflet{$U \subseteq Y$ be open} \prove{$p(U)$ is open}}
+      \step{<4>2}{$\inv{p}(p(U)) = \inv{f}(U) \cup U$}
+    \end{proof}
+    \step{<3>3}{$p(Y)$ is closed}
+    \begin{proof}
+      \pf\ $\inv{p}(p(Y)) = A \cup Y$
+    \end{proof}
+  \end{proof}
+  \step{<2>7}{$Z_f$ is normal}
+  \begin{proof}
+    \step{<3>1}{$Z_f$ is $T_1$}
+    \begin{proof}
+      \pf\ For $y \in Y$ we have $\inv{p}(y) = \inv{f}(y) \cup \{ y \}$ which
+      is closed.
+    \end{proof}
+    \step{<3>2}{Any two disjoint closed sets in $Z_f$ can be
+separated by a continuous function.}
+    \begin{proof}
+      \step{<4>1}{\pflet{$C$ and $D$ be disjoint closed sets in $Z_f$}}
+      \step{<4>2}{\pick\ $g : Y \rightarrow [0,1]$ such that $g(Y \cap
+        \inv{p}(C)) = \{ 0           \}$ and $g(Y \cap \inv{p}(D)) = \{ 1 \}$}
+      \begin{proof}
+        \pf\ By the Urysohn Lemma.
+      \end{proof}
+      \step{<4>3}{\pick\ $h : X \rightarrow [0,1]$ such that $h(X \cap
+        \inv{p}(C)) = \{ 0           \}$ and $h(X \cap \inv{p}(D)) = \{ 1 \}$
+        and $h$ agrees with $g \circ f$ on $A$}
+      \begin{proof}
+        \pf\ By the Tietze Extension Theorem applied to $A \cup (X \cap
+        \inv{p}(C)) \cup (X \cap \inv{p}(D))$.
+      \end{proof}
+      \step{<4>4}{\pflet{$k : Z_f \rightarrow [0,1]$ be the continuous function
+such that             $k(p(x)) = h(x)$             for $x \in X$ and $k(p(y)) =
+g(y)$ for             $y \in Y$}}
+\begin{proof}
+\pf\ By the Pasting Lemma
+\end{proof}
+      \step{<4>5}{$k(C) = \{ 0 \}$}
+      \step{<4>6}{$k(D) = \{ 1 \}$}
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ If $g$ is such a continuous function then $\inv{g}([0, 1/2))$ and
+      $\inv{g}((1/2,1])$ are disjoint open sets that include $A$ and $B$
+      respectively.
+    \end{proof} % TODO Extract lemma
+  \end{proof}
+  \step{<2>8}{\pick\ a retraction $r : Z_f \rightarrow p(Y)$}
+  \step{<2>9}{$\inv{p} \circ r \circ p : X \rightarrow Y$ extends $f$}
+\end{proof}
+\step{<1>2}{If $Y$ has the universal extension property then $Y$ is an absolute
+  retract.}
+\begin{proof}
+  \step{<2>1}{\assume{$Y$ has the universal extension property}}
+  \step{<2>2}{\pflet{$Z$ be a normal space, $Y_0$ a closed subspace of $Z$, and
+      $\phi : Y \cong Y_0$ a homeomorphism}}
+  \step{<2>3}{\pick\ a continuous extension $f : Z \rightarrow Y$ of
+    $\inv{\phi}$}
+  \step{<2>4}{$\phi \circ f$ is a retraction}
+\end{proof}
+\qed
+\end{proof}
+
+\begin{thm}
+Every manifold is metrizable.
+\end{thm}
+
+\begin{proof}
+\pf
+\step{<1>1}{\pflet{$X$ be an $m$-manifold.}}
+\step{<1>2}{$X$ is regular.}
+\begin{proof}
+  \step{<2>1}{$X$ is $T_1$}
+  \step{<2>2}{\pflet{$x \in X$ and $U$ be a neighbourhood of $x$}}
+  \step{<2>3}{\pick\ a neighbourhood $V$ of $x$ that is imbeddable in
+    $\mathbb{R}^m$}
+  \step{<2>4}{\pick\ a neighbourhood $W$ of $x$ such that $\overline{W}
+    \subseteq U \cap V$}
+  \begin{proof}
+    \pf\ One exists since $V$ is regular (Proposition
+    \ref{prop:topology:regular:subspace})
+  \end{proof}
+  \step{<2>5}{$x \in W$ and $\overline{W} \subseteq U$}
+  \qedstep
+  \begin{proof}
+    \pf\ Proposition \ref{prop:topology:regular:closure}
+  \end{proof}
+\end{proof}
+\qedstep
+\begin{proof}
+  \pf\ By the Urysohn Metrization Theorem.
+\end{proof}
+\qed
+\end{proof}
+
+\begin{thm}
+Let $X$ be a compact Hausdorff space in which every point has a neighbourhood
+that is imbeddable in $\mathbb{R}^m$. Then $X$ is an $m$-manifold.
+\end{thm}
+
+\begin{proof}
+\pf
+\step{<1>1}{There exists $N$ such that $X$ is imbeddable in $\mathbb{R}^N$}
+\begin{proof}
+  \pf\ Theorem \ref{thm:topology:manifolds:compact_Hausdorff}
+\end{proof}
+\step{<1>2}{$X$ is second countable.}
+\begin{proof}
+  \pf\ Proposition \ref{prop:topology:second_countable:subspace}
+\end{proof}
+\qed
+\end{proof}
+
+\begin{prop}
+$S_\Omega$ is locally metrizable.
+\end{prop}
+
+\begin{proof}
+\pf\ For any $\alpha \in S_\Omega$, the neighbourhood $[0, \alpha] = (-
+\infty, \alpha + 1)$ is imbeddable in $\mathbb{R}$. \qed
+\end{proof}
+
+\begin{prop}[DC]
+ $\overline{S_\Omega}$ is compact.
+\end{prop}
+
+\begin{proof}
+\pf
+   \pf
+ \step{<1>1}{\pflet{$\mathcal{A}$ be an open cover of $\overline{S_\Omega}$}}
+ \step{<1>2}{\assume{for a contradiction there is no finite subcover of
+     $\mathcal{A}$}}
+ \step{<1>3}{There exists a sequence of sets $U_n \in \mathcal{A}$ and ordinals
+   $\alpha_n$ such that $\alpha_{n+1} < \alpha_n$ for all $n$ and $\alpha_n
+   \in U_n$ for all $n$}
+ \begin{proof}
+   \step{<2>1}{\pflet{$\alpha_1 = \Omega$}}
+   \step{<2>2}{Given $\alpha_1$, \ldots, $\alpha_n$ and $U_1$, \ldots,
+     $U_{n-1}$ with $0 \neq \alpha_n < \alpha_{n-1} < \cdots < \alpha_1$ and
+     $\alpha_i \in U_i$ for $i < n$, \pick\ $U_n \in \mathcal{A}$ with
+     $\alpha_n \in U_n$}
+   \begin{proof}
+     \pf\ By \stepref{<1>1}.
+   \end{proof}
+   \step{<2>3}{\pick\ $\alpha_{n+1} < \alpha_n$ such that $(\alpha_{n+1},
+     \alpha_n] \subseteq U_n$}
+   \begin{proof}
+     \pf\ By Lemma \ref{lm:topology:order:open}.
+   \end{proof}
+   \step{<2>4}{$\alpha_{n+1} \neq 0$}
+   \begin{proof}
+     \pf\ If $\alpha_{n+1} = 0$ then $U_1$, \ldots, $U_n$ cover
+     $\overline{S_\Omega}$, contradicting \stepref{<1>2}.
+   \end{proof}
+ \end{proof}
+ \qedstep
+ \begin{proof}
+   \pf\ This is a contradiction because the ordinals are well-ordered.
+ \end{proof}
+ \qed
+\end{proof}
+
+\begin{prop}
+ $\mathbb{R}_l$ is not limit point compact.
+\end{prop}
+
+\begin{proof}
+ \pf\ $\mathbb{Z}$ has no limit point. \qed
+\end{proof}
+
+\begin{prop}
+ \label{prop:topology:Lindelof:subspace}
+ Every closed subspace of a Lindel\"{o}f space is Lindel\"{o}f.
+\end{prop}
+
+\begin{proof}
+\pf
+\step{<1>1}{\pflet{$X$ be Lindel\"{o}f and $A \subseteq X$ be closed}}
+\step{<1>2}{\pflet{$\mathcal{U}$ be an open covering of $A$}}
+\step{<1>3}{$\{ U \text{ open in } X : U \cap A \in \mathcal{U} \} \cup \{ X
+  \setminus A \}$ covers $X$}
+\step{<1>4}{\pick\ a countable subcovering $\mathcal{V}$}
+\step{<1>5}{$\{ U \cap A : U \in \mathcal{V}, U \neq X \setminus A \}$ is a
+  countable subcover of $\mathcal{U}$}
+\qed
+\end{proof}
+
+\begin{prop}
+ $\mathbb{R}^\omega$ is locally connected.
+\end{prop}
+
+\begin{proof}
+\pf This holds because every basic open set is connected, being the product
+of a family of connected spaces. \qed
+\end{proof}
+
+\begin{prop}
+The space $\mathbb{R}^\omega$ under the box topology is not first countable.
+\end{prop}
+
+\begin{proof}
+\pf
+\step{<1>1}{\assume{for a contradiction $\{ U_n \}_{n \geq 0}$ is a countable basis at 0.}}
+\step{<1>2}{For $n \geq 1$, \pick\ a basic open set $B_n = \prod_{j=0}^\infty (a_{nj}, b_{nj})$ such that $0 \in B_n \subseteq U_n$}
+\step{<1>3}{$\prod_{n=0}^\infty (a_{nn}/2, b_{nn}/2)$ is a neighbourhood of 0 that does not include any $U_n$}
+\qed
+\end{proof}
+
+\begin{prop}
+The space $\mathbb{R}^\omega$ under the box topology is not locally metrizable.
+\end{prop}
+
+\begin{proof}
+\pf
+\step{<1>1}{\pflet{$U$ be any neighbourhood of $0$}}
+\step{<1>2}{\pflet{$A$ be the set of all sequences in $U$ with all coordinates positive}}
+\step{<1>3}{$0 \in \overline{A}$}
+\step{<1>4}{There is no sequence of points of $A$ converging to 0.}
+\step{<1>5}{$U$ is not metrizable.}
+\begin{proof}
+  \pf\ By the Sequence Lemma.
+\end{proof}
+\qed
+\end{proof}
+
+\begin{prop}
+For any nonempty set $I$, the space $\mathbb{R}^I$ is not limit point compact.
+\end{prop}
+
+\begin{proof}
+\pf\ $\mathbb{Z}^I$ is an infinite set with no limit point. \qed
+\end{proof}
+
+\begin{prop}
+The space $\mathbb{R}^{[0,1]}$ is separable.
+\end{prop}
+
+\begin{proof}
+\pf\ The set $D$ is dense where $D$ is the set of all functions $f : [0,1]
+\rightarrow \mathbb{Q}$ such that there exists a sequence of rationals $0 = q_0
+< q_1 < \cdots < q_N = 1$ such that $f$ is constant on $[q_i, q_{i+1})$ for $0
+\leq i < N$. \qed
+\end{proof}
+
+\begin{prop}
+If $J$ is uncountable then $\mathbb{R}^J$ is not locally metrizable.
+\end{prop}
+
+\begin{proof}
+\pf\ Every point has a neighbourhood homeomorphic to $\mathbb{R}^J$. \qed
+\end{proof}
+
+\begin{prop}
+The space $\mathbb{R}_K$ is not limit point compact.
+\end{prop}
+
+\begin{proof}
+\pf\ The set $\mathbb{Z}$ has no limit point. \qed
+\end{proof}
+
+\begin{prop}
+The topologist's sine curve is not locally connected.
+\end{prop}
+
+\begin{proof}
+\pf\ There is no connected neighbourhood of $(0,0)$. \qed
+\end{proof}
+
+\begin{cor}
+Not every metric space is locally connected.
+\end{cor}
+
+\begin{cor}
+Not every metric space is locally path connected.
+\end{cor}
+
+\begin{prop}
+Not every metric space is compact.
+\end{prop}
+
+\begin{proof}
+\pf\ The space $\mathbb{R}$ is not compact. \qed
+\end{proof}
+
+\begin{prop}
+Every closed subspace of a limit point compact space is limit point compact.
+\end{prop}
+
+\begin{proof}
+\pf
+\step{<1>1}{\pflet{$X$ be a limit point compact space and $C \subseteq X$ be closed.}}
+\step{<1>2}{\pflet{$A \subseteq C$ be infinite.}}
+\step{<1>3}{\pick\ a limit point $l$ of $A$ in $X$}
+\step{<1>4}{$l \in C$}
+\begin{proof}
+  \step{<2>1}{$l$ is a limt point of $C$}
+  \begin{proof}
+    \pf\ By Lemma \ref{lm:topology:limit_point:subset}.
+  \end{proof}
+  \qedstep
+  \begin{proof}
+    \pf\ By Corollary \ref{cor:topology:limit_point:closed}.
+  \end{proof}
+\end{proof}
+\step{<1>5}{$l$ is a limit point of $A$ in $C$.}
+\begin{proof}
+  \pf\ By Proposition \ref{prop:topology:subspace:limit_point}.
+\end{proof}
+\qed
+\end{proof}
+
+\begin{prop}
+For any part $i : S \hookrightarrow X$ of a set $X$, we have $\emptyset \subseteq_X i$.
+\end{prop}
+
+\begin{proof}
+\pf\ We have $i \circ \magic_S = \magic_X$ by the uniqueness of $\magic_X$. \qed
+\end{proof}
+
+\begin{thm}
+Let $X$ be a completely regular space. Then there exists a compactification $Y$ of $X$ such that every bounded continuous map $X \rightarrow \mathbb{R}$
+extends uniquely to a continuous map $Y \rightarrow \mathbb{R}$.
+\end{thm}
+
+\begin{proof}
+\pf
+\step{<1>1}{\pflet{$J$ be the set of all bounded continuous functions $X \rightarrow \mathbb{R}$}}
+\step{<1>2}{For $\alpha \in J$, \pflet{$I_\alpha = [\inf \alpha, \sup \alpha]$}}
+\step{<1>3}{\pflet{$Z = \prod_{\alpha \in J} I_\alpha$}}
+\step{<1>4}{\pflet{$h : X \rightarrow Z$ be defined by
+$$ h(x)_\alpha = \alpha(x)$$}}
+\step{<1>5}{$Z$ is compact Hausdorff}
+\begin{proof}
+  \step{<2>1}{$Z$ is compact}
+  \begin{proof}
+    \pf\ By Tychonoff's Theorem.
+  \end{proof}
+  \step{<2>2}{$Z$ is Hausdorff}
+  \begin{proof}
+    \pf\ By Theorem \ref{thm:topology:Hausdorff:product}
+  \end{proof}
+\end{proof}
+\step{<1>6}{$h$ is an imbedding}
+\begin{proof}
+  \step{<2>1}{The set $J$ separates points from closed sets}
+  \begin{proof}
+    \pf\ This holds because $X$ is completely regular.
+  \end{proof}
+  \qedstep
+  \begin{proof}
+    \pf\ By the Imbedding Theorem.
+  \end{proof}
+\end{proof}
+\step{<1>7}{\pflet{$Y$ be the compactification of $X$ such that $X \subseteq Y \rightarrow Z$ factors $h$}}
+\begin{proof}
+  \pf\ By Lemma \ref{lm:topology:compactification:factorization}
+\end{proof}
+\step{<1>8}{Every bounded continuous map $X \rightarrow \mathbb{R}$ extends uniquely to a continuous map $Y \rightarrow \mathbb{R}$}
+\begin{proof}
+  \step{<2>1}{\pflet{$\alpha : X \rightarrow \mathbb{R}$ be a bounded continuous function}}
+  \step{<2>2}{\pflet{$k : Y \rightarrow Z$ be the imbedding from \stepref{<1>7}}}
+  \step{<2>3}{\pflet{$\overline{\alpha} = \pi_\alpha \circ k : Y \rightarrow \mathbb{R}$}}
+  \step{<2>4}{$\overline{\alpha}$ extends $\alpha$}
+  \begin{proof}
+    \pf For $x \in X$, we have
+    \begin{align*}
+      \overline{\alpha}(x) & = k(x)_\alpha \\
+      & = h(x)_\alpha \\
+      & = \alpha(x)
+    \end{align*}
+  \end{proof}
+  \step{<2>5}{If $f : Y \rightarrow Z$ is continuous and extends $\alpha$ then $f = \overline{\alpha}$}
+  \begin{proof}
+    \pf\ By Lemma \ref{lm:topology:Hausdorff:continuous_extension}.
+  \end{proof}
+\end{proof}
+\qed
+\end{proof}
+
+\begin{lm}
+\label{lm:topology:locally_finite:subfamily}
+Every subfamily of a locally finite family is locally finite.
+\end{lm}
+
+\begin{proof}
+\pf\ Immediate from the definition. \qed
+\end{proof}

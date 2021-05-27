@@ -1,0 +1,20 @@
+theory ETCS
+  imports Pure
+begin
+
+typedecl Set
+typedecl Fun
+typedecl Judg
+
+judgment Derivable :: "Judg \<Rightarrow> prop" ("(_)" 5)
+
+axiomatization isSet :: "Set \<Rightarrow> Judg"
+ and maps :: "[Fun, Set, Set] \<Rightarrow> Judg" ("_:_\<rightarrow>_" 20)
+ and eq :: "[Fun, Fun, Set, Set] \<Rightarrow> Judg" ("_=_:_\<rightarrow>_" 20)
+ and comp :: "[Fun, Fun] \<Rightarrow> Fun" ("_\<circ>_" 50)
+ and id :: "Set \<Rightarrow> Fun"
+ where
+  isComp : "\<lbrakk>f : A \<rightarrow> B; g : B \<rightarrow> C\<rbrakk> \<Longrightarrow> g \<circ> f : A \<rightarrow> C"
+  and assoc : "\<lbrakk>f : A \<rightarrow> B; g : B \<rightarrow> C; h : C \<rightarrow> D\<rbrakk> \<Longrightarrow> h \<circ> (g \<circ> f) = (h \<circ> g) \<circ> f : A \<rightarrow> D"
+  and unitl : "f : A \<rightarrow> B \<Longrightarrow> id B \<circ> f = f : A \<rightarrow> B"
+  and unitr : "f : A \<rightarrow> B \<Longrightarrow> f \<circ> id A = f : A \<rightarrow> B"

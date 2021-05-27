@@ -1,0 +1,150 @@
+\section{Metrics}
+
+\begin{df}[Metric]
+  A \emph{metric} on a set $X$ is a function $d : X \times X \rightarrow
+  \mathbb{R}$ such that, for all $x, y, z \in X$:
+  \begin{enumerate}
+    \item $d(x, y) \geq 0$;
+    \item $d(x, y) = 0$ if and only if $x = y$;
+    \item $d(x, y) = d(y, x)$;
+    \item \textbf{Triangle Inequality}
+
+    $d(x, z) \leq d(x, y) + d(y, z)$
+  \end{enumerate}
+  A \emph{metric space} $X$ consists of a set $X$ and a metric on $X$. We
+  call $d(x, y)$ the \emph{distance} between $x$ and $y$.
+\end{df}
+
+\subsection{Open Balls}
+
+\begin{df}[Open Ball]
+  Let $X$ be a metric space with metric $d$, $x \in X$ and $\epsilon > 0$.
+  The \emph{open       ball} with \emph{centre} $x$ and \emph{radius}
+  $\epsilon$
+  is
+  \[ B_d(x, \epsilon) = \{ y \in X : d(x, y) < \epsilon \} \enspace . \]
+\end{df}
+
+\begin{lm}
+  \label{lm:topology:metric:balls}
+  Let $X$ be a metric space, $x, y \in X$ and $\epsilon > 0$. If $y \in B(x,
+  \epsilon)$, then there exists $\delta$ such that $0 < \delta < \epsilon$ and
+  \[ B(y, \delta) \subseteq B(x, \epsilon) \enspace . \]
+\end{lm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$\delta = \epsilon - d(x, y)$}}
+  \step{<1>2}{\pflet{$z \in B(y, \delta)$}}
+  \step{<1>3}{$d(x, z) < \epsilon$}
+  \begin{proof}
+    \pf
+    \begin{align*}
+      d(x, z) & \leq d(x, y) + d(y, z) & (\text{Triangle Inequality}) \\
+      & < d(x, y) + \delta & (\text{\stepref{<1>2}}) \\
+      & = \epsilon & (\text{\stepref{<1>1}})
+    \end{align*}
+  \end{proof}
+  \qed
+\end{proof}
+
+\subsection{Bounded Sets}
+
+\begin{df}[Bounded]
+  Let $X$ be a metric space and $A \subseteq X$. Then $A$ is \emph{bounded}
+  iff $\{ d(x, y) : x, y \in A \}$ is bounded above, in which case its
+  \emph{diameter} is
+  \[ \diam A = \sup_{x, y \in A} d(x, y) \enspace . \]
+\end{df}
+
+\subsection{Bounded Functions}
+
+\begin{df}[Bounded Function]
+Let $X$ be a set and $Y$ a metric space. A function $f : X \rightarrow Y$ is \emph{bounded} iff
+$\ran f$ is bounded.
+
+We write $\mathcal{B}(X, Y)$ for the set of all bounded functions $X \rightarrow Y$.
+\end{df}
+
+\subsubsection{The Sup Metric}
+
+\begin{df}[Sup Metric]
+  Let $X$ be a nonempty set and $Y$ a metric space. The \emph{sup-metric} $\rho$ on $\mathcal{B}(X, Y)$ is defined by
+  \[ \rho(f, g) = \sup_{x \in X} d(f(x), g(x)) \enspace . \]
+
+  We write $\mathcal{B}(X, Y)$ for the metric space of all bounded functions $X \rightarrow Y$ under the sup-metric.
+
+  We prove this is well-defined and is a metric.
+\end{df}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$X$ be a nonempty set.}}
+  \step{<1>2}{\pflet{$Y$ be a metric space.}}
+  \step{<1>3}{For all $f,g \in \mathcal{B}(X, Y)$, the set $\{ d(f(x), g(x)) : x \in X \}$ is bounded above.}
+  \begin{proof}
+    \step{<2>1}{\pflet{$f, g \in \mathcal{B}(X, Y)$}}
+    \step{<2>2}{\pflet{$M = \diam f(X)$ and $N = \diam g(X)$}}
+    \step{<2>3}{\pick\ $x_0 \in X$}
+    \begin{proof}
+      \pf\ \stepref{<1>1}
+    \end{proof}
+    \step{<2>4}{\pflet{$D = d(f(x_0), g(x_0))$}}
+    \step{<2>5}{\pflet{$x \in X$}}
+    \step{<2>6}{$d(f(x), g(x)) \leq M + N + D$}
+    \begin{proof}
+      \pf
+      \begin{align*}
+        d(f(x), g(x)) & \leq d(f(x), f(x_0)) + d(f(x_0), g(x_0)) + d(g(x_0), g(x)) & (\text{Triangle inequality}) \\
+        & \leq M + D + N & (\text{\stepref{<2>2}, \stepref{<2>4}})
+      \end{align*}
+    \end{proof}
+  \end{proof}
+  \step{<1>4}{For all $f,g \in \mathcal{B}(X, Y)$ we have $\rho(f, g) \geq 0$}
+  \begin{proof}
+    \step{<2>1}{\pflet{$f, g \in \mathcal{B}(X, Y)$}}
+    \step{<2>2}{\pick\ $x_0 \in X$}
+    \begin{proof}
+      \pf\ \stepref{<1>1}
+    \end{proof}
+    \step{<2>3}{$\rho(f, g) \geq 0$}
+    \begin{proof}
+      \pf
+      \begin{align*}
+        \rho(f, g) & \geq d(f(x_0), g(x_0)) & (\text{Definition of } \rho) \\
+        & \geq 0 & (\text{\stepref{<1>2}})
+      \end{align*}
+    \end{proof}
+  \end{proof}
+  \step{<1>5}{For all $f \in \mathcal{B}(X, Y)$ we have $\rho(f, f) = 0$}
+  \begin{proof}
+    \pf\ This holds because $d(f(x), f(x)) = 0$ for all $x \in X$.
+  \end{proof}
+  \step{<1>6}{For all $f, g \in \mathcal{B}(X, Y)$ we have $\rho(f, g) = \rho(g, f)$}
+  \begin{proof}
+    \pf
+    \begin{align*}
+      \rho(f, g) & = \sup_{x \in X} d(f(x), g(x)) & (\text{definition of } \rho)\\
+      & = \sup_{x \in X} d(g(x), f(x)) & (\text{\stepref{<1>2}}) \\
+      & = \rho(g, f) & (\text{definition of } \rho)
+    \end{align*}
+  \end{proof}
+  \step{<1>7}{For all $f, g, h \in \mathcal{B}(X, Y)$ we have $\rho(f, h) \leq \rho(f, g) + \rho(g, h)$}
+  \begin{proof}
+    \pf
+    \begin{align*}
+      \rho(f,h) & = \sup_{x \in X} d(f(x), h(x)) & (\text{definition of } \rho) \\
+      & \leq \sup_{x \in X} (d(f(x), g(x)) + d(g(x), h(x))) &
+      (\text{Triangle inequality})\\
+      & \leq \sup_{x \in X} d(f(x), g(x)) + \sup_{x \in X} d(g(x), h(x)) & (\text{Lemma \ref{lm:analysis:sup_plus}}) \\
+      & = \rho(f,g) + \rho(g,h) & (\text{definition of } \rho)
+    \end{align*}
+  \end{proof}
+  \qed
+\end{proof}
+
+\subsection{Totally Bounded Metric Spaces}
+
+\begin{df}[Totally Bounded]
+  A metric space $X$ is \emph{totally bounded} iff, for every $\epsilon > 0$, there exists a finite covering of $X$ by $\epsilon$-balls.
+\end{df}

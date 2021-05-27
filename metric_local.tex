@@ -1,0 +1,224 @@
+\section{Locally Metrizable Spaces}
+
+\begin{df}[Locally Metrizable]
+  A space is \emph{locally metrizable} iff every point has a metrizable
+  neighbourhood.
+\end{df}
+
+\begin{prop}
+  Every metrizable space is locally metrizable.
+\end{prop}
+
+\begin{proof}
+  \pf\ Trivial. \qed
+\end{proof}
+
+\begin{cor}
+  The space $\mathbb{R}^\omega$ is locally metrizable.
+\end{cor}
+
+\begin{prop}
+  A compact Hausdorff space is metrizable if and only if it is locally
+  metrizable.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$X$ be a locally metrizable compact Hausdorff space}}
+  \step{<1>2}{$X$ is regular}
+  \begin{proof}
+    \pf\ Lemma \ref{lm:topology:compact:normal}
+  \end{proof}
+  \step{<1>3}{$X$ is second countable}
+  \begin{proof}
+    \step{<2>1}{$\{ U : U \text{ open in } X \text{ and metrizable} \}$ covers
+    $X$}
+    \step{<2>2}{\pick\ a finite subcover $U_1$, \ldots, $U_n$}
+    \step{<2>3}{For $1 \leq i \leq n$, \pick\ a countable basis $\mathcal{B}_i$
+    of
+    $U_i$}
+    \step{<2>4}{$\mathcal{B}_1 \cup \cdots \cup \mathcal{B}_n$ is a basis for
+    $X$}
+  \end{proof}
+  \qedstep
+  \begin{proof}
+    \pf\ By the Urysohn Metrization Theorem.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{cor}
+  $\overline{S_\Omega}$ is not locally metrizable.
+\end{cor}
+
+\begin{cor}
+  The ordered square is not locally metrizable.
+\end{cor}
+
+\begin{prop}
+  Every subspace of a locally metrizable space is locally metrizable.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$X$ be locally metrizable and $Y \subseteq X$}}
+  \step{<1>2}{\pflet{$y \in Y$}}
+  \step{<1>3}{\pick\ a metrizable neighbourhood $U$ of $y$ in $X$}
+  \step{<1>4}{$U \cap Y$ is a metrizable neighbourhood of $y$ in $Y$}
+  \qed
+\end{proof}
+
+\begin{cor}
+  $S_\Omega \times \overline{S_\Omega}$ is not locally metrizable.
+\end{cor}
+
+\begin{proof}
+  \pf\ It has a subspace homeomorphic to $\overline{S_\Omega}$. \qed
+\end{proof}
+
+\begin{prop}[CC]
+  Every locally metrizable regular Lindel\"{o}f space is metrizable.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$X$ be a locally metrizable regular Lindel\"{o}f space.}}
+  \step{<1>2}{Every point in $X$ has an open second countable neighbourhood.}
+  \begin{proof}
+    \step{<2>1}{\pflet{$x \in X$}}
+    \step{<2>2}{\pick\ an open metrizable $U$ containing $x$}
+    \begin{proof}
+      \pf\ $X$ is locally metrizable (\stepref{<1>1})
+    \end{proof}
+    \step{<2>3}{\pick\ an open $V$ such that $x \in V \subseteq \overline{V}
+    \subseteq
+    U$}
+    \begin{proof}
+      \pf\ Proposition \ref{prop:topology:regular:closure}
+    \end{proof}
+    \step{<2>4}{$\overline{V}$ is Lindel\"{o}f}
+    \begin{proof}
+      \pf\ Proposition \ref{prop:topology:Lindelof:subspace}
+    \end{proof}
+    \step{<2>5}{$\overline{V}$ is second countable}
+    \begin{proof}
+      \pf\ Proposition \ref{prop:topology:metric:Lindelof_second_countable}
+    \end{proof}
+  \end{proof}
+  \step{<1>3}{\pick\ a countable covering of secound countable open sets
+  $\mathcal{U}$}
+  \begin{proof}
+    \pf\ $X$ is Lindel\"{o}f (\stepref{<1>1})
+  \end{proof}
+  \step{<1>4}{For $U \in \mathcal{U}$, \pick\ a countable basis $\mathcal{B}_U$}
+  \step{<1>5}{$\bigcup_{U \in \mathcal{U}} \mathcal{B}_U$ is a countable basis
+  for
+  $X$}
+  \begin{proof}
+    \step{<2>1}{\pflet{$x \in U$ where $U$ is open in $X$}}
+    \step{<2>2}{\pick\ $V \in \mathcal{U}$ such that $x \in V$}
+    \step{<2>3}{There exists $B \in \mathcal{B}_V$ such that $x \in B \subseteq
+    U
+    \cap       V$}
+  \end{proof}
+  \qedstep
+  \begin{proof}
+    \pf\ By the Urysohn Metrization Theorem.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{cor}
+  $\mathbb{R}_l$ is not locally metrizable.
+\end{cor}
+
+\begin{prop}
+  The Sorgenfrey plane is not locally metrizable.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$U$ be any neighbourhood of $(0,0)$} \prove{$U$ is not
+  Lindel\"{o}f}}
+  \step{<1>2}{\pick\ $a > 0$ such that $[0,a)^2 \subseteq U$}
+  \step{<1>3}{\pflet{$L = \{ (x, a-x) : 0 < x < a \}$}}
+  \step{<1>4}{$L$ is closed in $U$}
+  \begin{proof}
+    \pf\ By Lemma \ref{lm:closed_sorgenfrey} since $(x,y) \mapsto (x,a+y)$ is
+    a homeomorphism of $\mathbb{R}_l^2$ with itself.
+  \end{proof}
+  \step{<1>5}{\pflet{$\mathcal{U} = \{ U \setminus L \} \cup \{ ([x,b) \times
+  [a-x,c)) \cap U : b > a, c > a - x \}$}}
+  \step{<1>6}{$\mathcal{U}$ covers $U$}
+  \step{<1>7}{No countable subset of $\mathcal{U}$ covers $U$}
+  \begin{proof}
+    \pf\ Every set of the for $[x,b) \times [a-x,c)$ intersects $L$ in exactly
+    one point.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{cor}
+  The Sorgenfrey plane is not metrizable.
+\end{cor}
+
+\begin{prop}
+  The space $\mathbb{R}_K$ is locally metrizable.
+\end{prop}
+
+\begin{proof}
+  \pf\ The set $(-1, 1) - K$ is a metrizable neighbourhood of 0. For any other
+  point $p$, pick an open interval around $p$ that does not contain 0. \qed
+\end{proof}
+\begin{prop}
+  The product of two locally metrizable spaces is locally metrizable.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$X$ and $Y$ be locally metrizable}}
+  \step{<1>2}{\pflet{$(a, b) \in X \times Y$}}
+  \step{<1>3}{\pick\ metrizable neighbourhoods $U$ of $a$ and $V$ of $b$}
+  \step{<1>4}{$U \times V$ is a metrizable neighbourhood of $(a, b)$.}
+  \begin{proof}
+    \pf\ By Lemma \ref{lm:topology:metric:product}.
+  \end{proof}
+  \qed
+\end{proof}
+
+
+\begin{prop}
+  The product of two locally metrizable spaces is locally metrizable.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$X$ and $Y$ be locally metrizable}}
+  \step{<1>2}{\pflet{$(a, b) \in X \times Y$}}
+  \step{<1>3}{\pick\ metrizable neighbourhoods $U$ of $a$ and $V$ of $b$}
+  \step{<1>4}{$U \times V$ is a metrizable neighbourhood of $(a, b)$.}
+  \begin{proof}
+    \pf\ By Lemma \ref{lm:topology:metric:product}.
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{prop}
+  The space $\mathbb{R}_K^\omega$ is not locally metrizable.
+\end{prop}
+
+\begin{proof}
+  \pf\ If it were, then there would be a basic open set $\prod_n U_n$ that is metrizable, but then $\mathbb{R}_K$ would be metrizable as it is homeomorphic to a subspace of $\prod_n U_n$. \qed
+\end{proof}
+
+\begin{cor}
+  The product of a countable family of locally metrizable spaces is not necessarily locally metrizable.
+\end{cor}
+
+\begin{prop}
+  The continuous image of a locally metrizable space is not necessarily locally metrizable.
+\end{prop}
+
+\begin{proof}
+  \pf\ The identity map from the discrete two-point space to the indiscrete two-point space is continuous. \qed
+\end{proof}

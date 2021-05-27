@@ -1,0 +1,40 @@
+\section{Uniform Continuity}
+
+\begin{df}[Uniform Continuity]
+  Let $X$ and $Y$ be metric spaces and $f : X \rightarrow Y$. Then $f$ is
+  \emph{uniformly continuous} iff, for all $\epsilon > 0$, there exists
+  $\delta > 0$ such that, for all $x, y \in X$, if $d(x, y) < \delta$ then
+  $d(f(x), f(y)) < \epsilon$.
+\end{df}
+
+\begin{thm}[Uniform Continuity Theorem]
+  Let $X$ be a compact metric space, $Y$ a metric space, and $f : X
+  \rightarrow Y$ be continuous. Then $f$ is uniformly continuous.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$\epsilon > 0$} \prove{There exists $\delta > 0$ such
+  that,
+  for all $x, y \in X$, if $d(x, y) < \delta$ then $d(f(x), f(y)) <
+  \epsilon$.}}
+  \step{<1>2}{\pflet{$\mathcal{A} = \{ f^{-1}(B(y, \epsilon / 2)) : y \in Y
+  \}$}}
+  \step{<1>3}{$\mathcal{A}$ is an open covering of $X$}
+  \step{<1>4}{\pick\ a Lebesgue number $\delta$ for $\mathcal{A}$. \prove{For
+  all
+  $x, y \in X$, if $d(x, y) < \delta$ then $d(f(x), f(y)) < \epsilon$}}
+  \begin{proof}
+    \pf\ By the Lebesgue Number Lemma
+  \end{proof}
+  \step{<1>5}{\pflet{$x, y \in X$ with $d(x, y) < \delta$}}
+  \step{<1>6}{$\diam \{ x, y \} < \delta$}
+  \step{<1>7}{\pick\ $z \in Y$ such that $\{ x, y \} \subseteq f^{-1}(B(z,
+  \epsilon / 2))$}
+  \step{<1>8}{$d(f(x), f(y)) < \epsilon$}
+  \qed
+\end{proof}
+
+\begin{df}[Metrically Equivalent]
+  Let $d$ and $d'$ be two metrics on the same set $X$. Then $d$ and $d'$ are \emph{metrically equivalent} iff the identity map $i : (X, d) \rightarrow (X, d')$ and its inverse are both uniformly continuous.
+\end{df}
