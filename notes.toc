@@ -82,15 +82,15 @@
 \contentsline {subsubsection}{The Sup Metric}{144}
 \contentsline {subsection}{\numberline {10.1.4}Totally Bounded Metric Spaces}{145}
 \contentsline {section}{\numberline {10.2}The Metric Topology}{145}
-\contentsline {section}{\numberline {10.3}Isometries}{170}
+\contentsline {section}{\numberline {10.3}Isometries}{171}
 \contentsline {section}{\numberline {10.4}Lebesgue Numbers}{171}
 \contentsline {section}{\numberline {10.5}Uniform Continuity}{174}
-\contentsline {section}{\numberline {10.6}Locally Metrizable Spaces}{174}
-\contentsline {section}{\numberline {10.7}Completeness}{177}
-\contentsline {subsection}{\numberline {10.7.1}Completion of a Metric Space}{182}
-\contentsline {chapter}{\numberline {11}Manifolds}{187}
-\contentsline {section}{\numberline {11.1}Manifolds}{187}
-\contentsline {chapter}{\numberline {12}Normed Spaces}{190}
-\contentsline {section}{\numberline {12.1}The Norm on $\mathbb {R}^n$}{190}
-\contentsline {chapter}{\numberline {13}Topological Groups}{194}
-\contentsline {section}{\numberline {13.1}Topological Groups}{194}
+\contentsline {section}{\numberline {10.6}Locally Metrizable Spaces}{175}
+\contentsline {section}{\numberline {10.7}Completeness}{178}
+\contentsline {subsection}{\numberline {10.7.1}Completion of a Metric Space}{183}
+\contentsline {chapter}{\numberline {11}Manifolds}{188}
+\contentsline {section}{\numberline {11.1}Manifolds}{188}
+\contentsline {chapter}{\numberline {12}Normed Spaces}{191}
+\contentsline {section}{\numberline {12.1}The Norm on $\mathbb {R}^n$}{191}
+\contentsline {chapter}{\numberline {13}Topological Groups}{195}
+\contentsline {section}{\numberline {13.1}Topological Groups}{195}

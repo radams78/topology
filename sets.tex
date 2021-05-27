@@ -32,6 +32,17 @@ For any functions $f : A \rightarrow B$, $g : B \rightarrow C$ and $h : C \right
   For any sets $A$ and $B$, there exists a set $A \times B$, the \emph{product} of $A$ and $B$, and functions $\pi_1 : A \times B \rightarrow A$ and $\pi_2 : A \times B \rightarrow B$, the \emph{projections}, such that, for every set $X$ and functions $f : X \rightarrow A$ and $g : X \rightarrow B$, there exists a unique function $\langle f, g \rangle : X \rightarrow A \times B$ such that $\pi_1 \circ \langle f,g \rangle = f$ and $\pi_2 \circ \langle f,g \rangle = g$.
 \end{ax}
 
+\begin{ax}[Power Set]
+  For any set $A$, there exists a set $\mathcal{P} A$, the \emph{power set} of $A$; a set $Memb(A)$, and a function $\epsilon_A : Memb(A) \rightarrow A \times \mathcal{P} A$ such that, for sets $B$, $C$ and injective function $R : C \rightarrowtail A \times B$, there exists a unique function $\chi_R : B \rightarrow \mathcal{P} A$ such that
+  there exists $p : C \rightarrow Memb(A)$ such that:
+  \begin{itemize}
+    \item
+    $(\id{A} \times \chi_R) \circ R = \epsilon_A \circ p$
+    \item
+    for any set $X$ and functions $x : X \rightarrow Memb(A)$ and $y : X \rightarrow A \times B$, there exists a unique $m : X \rightarrow C$ such that $p \circ m = x$ and $R \circ m = y$
+  \end{itemize}
+\end{ax}
+
 \section{Unions}
 
 \begin{prop}
