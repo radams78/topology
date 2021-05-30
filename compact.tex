@@ -2893,3 +2893,73 @@ extends uniquely to a continuous map $Y_i \rightarrow \mathbb{R}$. Then $Y_1$ an
 Let $X$ be a completely regular space. The \emph{Stone-\u{C}ech compactification} of $X$, $\beta(X)$, is the compactification of $X$ such that, for every compact Hausdorff space $C$,
 every continuous function $X \rightarrow C$ extends uniquely to a continuous function $\beta(X) \rightarrow C$.
 \end{df}
+
+\section{Compactly Generated Spaces}
+
+\begin{df}[Compactly Generated]
+  A topological space $X$ is \emph{compactly generated} iff, for every $U \subseteq X$, if $U \cap C$ is open in $C$ for every compact $C \subseteq X$, then $U$ is open in $X$.
+\end{df}
+
+\begin{lm}
+  Let $X$ be a topological space. Then $X$ is compactly generated iff, for every $A \subseteq X$, if $A \cap C$ is closed in $C$ for every compact $C \subseteq X$, then $A$ is closed in $X$.
+\end{lm}
+
+\begin{proof}
+  \pf\ Easy. \qed
+\end{proof}
+
+\begin{prop}
+  Every locally compact space is compactly generated.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$X$ be locally compact.}}
+  \step{<1>2}{\pflet{$U$ be a set such that $U \cap C$ is open in $C$ for every compact $C \subseteq X$} \prove{$U$ is open in $X$}}
+  \step{<1>3}{\pflet{$x \in U$}}
+  \step{<1>4}{\pick\ a neighbourhood $V$ of $x$ and a compact $C \subseteq X$ such that $V \subseteq C$}
+  \step{<1>5}{$U \cap C$ is open in $C$}
+  \step{<1>6}{\pick\ an open set $W$ in $X$ such that $U \cap C = W \cap C$}
+  \step{<1>7}{$x \in V \cap W \subseteq U$}
+  \qed
+\end{proof}
+
+\begin{prop}
+  Every first countable space is compactly generated.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{\pflet{$X$ be first countable.}}
+  \step{<1>2}{\pflet{$A$ be a set such that $A \cap C$ is closed in $C$ for every compact $C \subseteq X$.} \prove{$A$ is closed in $X$.}}
+  \step{<1>3}{\pflet{$x \in \overline{A}$.} \prove{$x \in A$.}}
+  \step{<1>4}{\pick\ a sequence $(x_n)$ in $A$ that converges to $x$.}
+  \begin{proof}
+    \pf\ Theorem \ref{sequence_lemma}.
+  \end{proof}
+  \step{<1>5}{\pflet{$C = \{ x \} \cup \{ x_n : n \in \mathbb{Z}^+ \}$}}
+  \step{<1>6}{$C$ is compact.}
+  \step{<1>7}{$A \cap C$ is closed in $C$.}
+  \step{<1>8}{$x \in A$}
+  \qed
+\end{proof}
+
+\begin{prop}
+  \label{compactly_generated:continuous}
+  Let $X$ be a compactly generated space, $Y$ a topological space, and $f : X \rightarrow Y$. Then $f$ is continuous if and only if, for every compact $C \subseteq X$, the function $f \restriction_C : C \rightarrow Y$ is continuous.
+\end{prop}
+
+\begin{proof}
+  \pf
+  \step{<1>1}{If $f$ is continuous then, for every compact $C \subseteq X$, the function $f \restriction_C$ is continuous.}
+  \begin{proof}
+    \pf\ Proposition \ref{continuous:restriction}.
+  \end{proof}
+  \step{<1>2}{If, for every compact $C \subseteq X$, the function $f \restriction_C$ is continuous, then $f$ is continuous.}
+  \begin{proof}
+    \step{<2>1}{\pflet{$V \subseteq Y$ be open.}}
+    \step{<2>2}{For every compact $C \subseteq X$ we have $\inv{f}(V) \cap C$ is open.}
+    \step{<2>3}{$\inv{f}(V)$ is open.}
+  \end{proof}
+  \qed
+\end{proof}

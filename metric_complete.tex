@@ -637,6 +637,7 @@
 \end{proof}
 
 \begin{thm}[DC]
+  \label{metric:compact_complete_totally_bounded}
   A metric space is compact if and only if it is complete and totally bounded.
 \end{thm}
 
@@ -678,3 +679,112 @@
   \end{proof}
   \qed
 \end{proof}
+
+\begin{thm}[Ascoli's Theorem, Classical Version]
+  Let $X$ be a compact space. Give $\mathbb{R}^n$ either the Euclidean metric or the square metric. Give $\mathcal{C}(X, \mathbb{R}^n)$ the corresponding uniform topology. Let $\mathcal{F} \subseteq \mathcal{C}(X, \mathbb{R}^n)$. Then $\overline{\mathcal{F}}$ is compact if and only if $\mathcal{F}$ is equicontinuous and pointwise bounded.
+\end{thm}
+
+\begin{proof}
+  \pf
+  \step{0}{\pflet{$\rho$ be the sup metric on $\mathcal{C}(X, \mathbb{R}^n)$ and $\overline{\rho}$ the uniform metric.}}
+  \step{<1>1}{\pflet{$\mathcal{G} = \overline{\mathcal{F}}$}}
+  \step{<1>2}{If $\mathcal{G}$ is compact then $\mathcal{G}$ is equicontinuous and pointwise bounded.}
+  \begin{proof}
+    \step{1}{\assume{$\mathcal{G}$ is compact.}}
+    \step{2}{$\mathcal{G}$ is totally bounded under $\rho$ and $\overline{\rho}$.}
+    \begin{proof}
+      \pf\ Theorem \ref{metric:compact_complete_totally_bounded}.
+    \end{proof}
+    \step{3}{$\mathcal{G}$ is equicontinuous.}
+    \begin{proof}
+      \pf\ Lemma \ref{metric:totally_bounded_equicontinuous}.
+    \end{proof}
+    \step{4}{$\mathcal{G}$ is bounded under $\rho$}
+    \begin{proof}
+      \pf\ From \stepref{2}.
+    \end{proof}
+    \step{5}{$\mathcal{G}$ is pointwise bounded.}
+    \begin{proof}
+      \pf\ From \stepref{4}.
+    \end{proof}
+  \end{proof}
+  \step{<1>3}{If $\mathcal{F}$ is equicontinuous then $\mathcal{G}$ is equicontinuous.}
+  \begin{proof}
+    \step{1}{\assume{$\mathcal{F}$ is equicontinuous.}}
+    \step{2}{\pflet{$x_0 \in X$ and $\epsilon > 0$}}
+    \step{3}{\pick\ an open neighbourhood $U$ of $x_0$ such that, for all $y \in U$ and $f \in \mathcal{F}$, we have $d(f(x_0),f(y)) < \epsilon / 3$}
+    \step{4}{\pflet{$y \in U$ and $g \in \mathcal{G}$}}
+    \step{5}{\pick\ $f \in \mathcal{F} \cap B(g, \epsilon / 3)$}
+    \step{6}{$d(g(x_0),g(y)) < \epsilon$}
+    \begin{proof}
+      \pf
+      \begin{align*}
+        d(g(x_0), g(y)) & \leq d(g(x_0), f(x_0)) + d(f(x_0), f(y)) + d(f(y), g(y)) & (\text{Triangle inequality}) \\
+        & < \epsilon / 3 + \epsilon / 3 + \epsilon / 3 & (\text{\stepref{3}, \stepref{5}}) \\
+        & = \epsilon
+      \end{align*}
+    \end{proof}
+  \end{proof}
+  \step{3a}{If $\mathcal{F}$ is pointwise bounded then $\mathcal{G}$ is pointwise bounded.}
+  \begin{proof}
+    \step{1}{\assume{$\mathcal{F}$ is pointwise bounded.}}
+    \step{2}{\pflet{$a \in X$}}
+    \step{2a}{\pflet{$D = \diam \{ f(a) : f \in \mathcal{F} \}$}}
+    \step{3}{\pflet{$g, g' \in \mathcal{G}$} \prove{$d(g(a), g'(a)) < D + 2$}}
+    \step{4}{\pick\ $f, f' \in \mathcal{F}$ such that $\rho(f,g) < 1$ and $\rho(f',g') < 1$}
+    \step{5}{$d(g(a), g'(a)) < D + 2$}
+    \begin{proof}
+      \pf
+      \begin{align*}
+        d(g(a), g'(a)) & \leq d(g(a), f(a)) + d(f(a), f'(a)) + d(f'(a), g(a)) \\
+        & < 1 + D + 1
+      \end{align*}
+    \end{proof}
+  \end{proof}
+  \step{<1>4}{If $\mathcal{G}$ is equicontinuous and pointwise bounded then there exists a compact $Y \subseteq \mathbb{R}^n$ that includes $g(X)$ for all $g \in \mathcal{G}$}
+  \begin{proof}
+    \step{1}{\assume{$\mathcal{G}$ is equicontinuous and pointwise bounded.}}
+    \step{2}{$\{ U \text{open in } X : \forall x,y \in U. \forall g \in \mathcal{G}. d(g(x),g(y)) < 1 \}$ is an open cover of $X$}
+    \begin{proof}
+      \pf\ For all $a \in X$ there exists $U$ such that, for all $x \in U$ and $g \in \mathcal{G}$ we have $d(g(a), g(x)) < 1/2$.
+    \end{proof}
+    \step{3}{\pick\ a finite subcover $\{ U_1, \ldots, U_n \}$}
+    \step{4}{\pick\ $a_1 \in U_1$, \ldots, $a_n \in U_n$}
+    \step{5}{For each $i$, $\{ g(a_i) : g \in \mathcal{G} \}$ is bounded.}
+    \step{6}{\pick\ $N$ such that, for each $g \in \mathcal{G}$ and each $i$, we have $g(a_i) \in B(0, N)$}
+    \step{7}{\pflet{$Y = \overline{B(0, N+1)}$}}
+  \end{proof}
+  \step{<1>5}{If $\mathcal{F}$ is equicontinuous and pointwise bounded then $\mathcal{G}$ is compact.}
+  \begin{proof}
+    \step{1}{\assume{$\mathcal{F}$ is equicontinuous and pointwise bounded.}}
+    \step{2}{$\mathcal{G}$ is complete under the sup metric.}
+    \begin{proof}
+      \pf\ It is a closed subset of the complete metric space $\mathcal{C}(X, \mathbb{R}^n)$ under $\rho$.
+    \end{proof}
+    \step{3}{$\mathcal{G}$ is totally bounded under the sup metric.}
+    \begin{proof}
+      \step{3a}{\pick\ a compact $Y$ such that $g(X) \subseteq Y$ for all $g \in \mathcal{G}$}
+      \begin{proof}
+        \pf\ By \stepref{<1>4}
+      \end{proof}
+      \step{3b}{$\mathcal{G}$ is an equicontinuous subset of $\mathcal{C}(X, Y)$}
+      \qedstep
+      \begin{proof}
+        \pf\ Lemma \ref{metric:equicontinuous_totally_bounded}.
+      \end{proof}
+    \end{proof}
+    \qedstep
+    \begin{proof}
+      \pf\ Theorem \ref{metric:compact_complete_totally_bounded}.
+    \end{proof}
+  \end{proof}
+  \qed
+\end{proof}
+
+\begin{cor}
+  Let $X$ be a compact space. Give $\mathbb{R}^n$ either the square metric or the Euclidean metric. Give $\mathcal{C}(X, \mathbb{R}^n)$ the corresponding sup metric. A subspace $\mathcal{F}$ of $\mathcal{C}(X, \mathbb{R}^n)$ is compact if and only if it is closed, bounded and equicontinuous.
+\end{cor}
+
+\begin{cor}[Arzela's Theorem]
+  Let $X$ be a compact space and let $(f_n)$ be a sequence of continuous functions $X \rightarrow \mathbb{R}^k$. If the set $\{ f_n : n \in \mathbb{Z}^+ \}$ is pointwise bounded and equicontinuous, then the sequence $(f_n)$ has a uniformly convergent subsequence.
+\end{cor}

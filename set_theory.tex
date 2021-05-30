@@ -19,6 +19,10 @@ a function $g \circ f : A \rightarrow C$, the \emph{composite} of $f$ and $g$.
   A function $f : A \rightarrow B$ is \emph{injective}, $f : A \rightarrowtail B$, iff, for every set $X$ and functions $x, y : X \rightarrow A$, if $f \circ x = f \circ y$ then $x = y$.
 \end{df}
 
+\begin{df}[Surjective]
+  A function $f : A \rightarrow B$ is \emph{surjective}, $f : A \twoheadrightarrow B$, iff, for every set $X$ and functions $x, y : B \rightarrow X$, if $x \circ f = y \circ f$ then $x = y$.
+\end{df}
+
 \subsection{The Axiom of Associativity}
 
 \begin{ax}[Axiom of Associativity]
@@ -67,12 +71,92 @@ $h$, and similarly for more than three functions.
 
 Given a set $A$, we write $\id{A}$ for the identity function on $A$.
 
+\subsection{Retractions and Sections}
+
+\begin{df}[Retraction, Section]
+Let $r : A \rightarrow B$ and $s : B \rightarrow A$. Then $r$ is a \emph{retraction} of $s$ and $s$ is a \emph{section} of $r$ iff $r \circ s = \id{B}$.
+\end{df}
+
+\section{The Terminal Set}
+
 \begin{ax}[Terminal Set]
   There exists a \emph{terminal set} 1 such that, for every set $X$, there exists a unique function $! : X \rightarrow 1$.
 \end{ax}
 
+\begin{df}[Element]
+  An \emph{element} of a set $A$ is a function $1 \rightarrow A$. We write $a \in A$ for $a : 1 \rightarrow A$.
+
+  Given a function $f : A \rightarrow B$ and an element $a \in A$, we write $f(a)$ for $f \circ a$. Thus $f(a) \in B$.
+\end{df}
+
+\section{The Empty Set}
+
+\begin{ax}[Empty Set]
+  There exists an \emph{empty set} $\emptyset$ such that, for every set $X$, there exists a unique function $\emptyset \rightarrow X$.
+\end{ax}
+
+\section{Products}
+
 \begin{ax}[Products]
-  For any sets $A$ and $B$ there exists a set $A \times B$, the \emph{product} of $A$ and $B$, and functions $\pi_1 : A \times B \rightarrow A$, $\pi_2 : A \times B \rightarrow B$, the \emph{projections}, such that, for every set $X$ and functions $f : X \rightarrow A$, $g : X \rightarrow B$, there exists a unique function $\langle f, g \rangle : X \rightarrow A \times B$ such that $\pi_1 \circ \langle f, g \rangle = f$ and $\pi_2 \circ \langle f, g \rangle = g$.
+  For any sets $A$ and $B$ there exists a set $A \times B$, the \emph{(Cartesian) product} of $A$ and $B$, and functions $\pi_1 : A \times B \rightarrow A$, $\pi_2 : A \times B \rightarrow B$, the \emph{projections}, such that, for every set $X$ and functions $f : X \rightarrow A$, $g : X \rightarrow B$, there exists a unique function $\langle f, g \rangle : X \rightarrow A \times B$ such that $\pi_1 \circ \langle f, g \rangle = f$ and $\pi_2 \circ \langle f, g \rangle = g$.
+\end{ax}
+
+\begin{df}
+  Given functions $f : A \rightarrow B$ and $g : C \rightarrow D$, let
+  \[ f \times g = \langle f \circ \pi_1, g \circ \pi_2 \rangle : A \times C \rightarrow B \times D \enspace . \]
+\end{df}
+
+\section{Function Sets}
+
+\begin{ax}[Function Sets]
+  For any sets $A$ and $B$ there exists a set $A^B$, the \emph{function set} from $B$ to $A$, and a function $\epsilon : A^B \times B \rightarrow A$, the \emph{evaluation} map, such that, for every set $X$ and function $f : X \times B \rightarrow A$, there exists a unique function $\lambda f : X \rightarrow A^B$ such that
+  \[ f = \epsilon \circ (\lambda f \times \id{B}) : X \times B \rightarrow A \]
+\end{ax}
+
+\section{Inverse Images}
+
+\begin{df}[Inverse Image]
+  Let $f : X \rightarrow Y$ be a function and $y \in Y$ an element. Then an \emph{inverse image} of $y$ under $f$ consists of a set $\inv{f}(y)$ and a function $j : \inv{f}(y) \rightarrow X$ such that:
+  \begin{itemize}
+    \item
+    $f \circ j = y \circ ! : \inv{f}(y) \rightarrow Y$
+    \item
+    for every set $I$ and function $q : I \rightarrow X$ such that $f \circ q = y \circ !$ for all $t \in I$, there exists a unique $\overline{q} : I \rightarrow A$ such that $q = j \circ \overline{q}$
+  \end{itemize}
+\end{df}
+
+\begin{ax}[Inverse Images]
+  Given any function $f : X \rightarrow Y$ and element $y \in Y$, there exists an inverse image of $y$ under $f$.
+\end{ax}
+
+\section{The Subset Classifier}
+
+\begin{ax}[Subset Classifier]
+  There exists a set $\mathbf{2}$, the \emph{subset classifier}, and an element $\top \in \mathbf{2}$ such that, for any sets $A$, $X$ and any injective function $j : A \rightarrow X$, there exists a unique function $\chi : X \rightarrow \mathbf{2}$ such that $j$ is the inverse image of $\top$ under $\chi$.
+\end{ax}
+
+\section{The Axiom of Extensionality}
+
+\begin{ax}[Extensionality]
+  Let $f, g : A \rightarrow B$. If $f(x) = g(x) \in B$ for every $x \in A$ then $f = g$.
+\end{ax}
+
+\section{The Axiom of Non-degeneracy}
+
+\begin{ax}
+  The empty set has no emelements; i.e. there is no function $1 \rightarrow \emptyset$.
+\end{ax}
+
+\section{The Natural Numbers}
+
+\begin{ax}[Natural Numbers]
+  There exists a set $\mathbb{N}$, an element $0 \in \mathbb{N}$ and a function $s : \mathbb{N} \rightarrow \mathbb{N}$ such that, for every set $X$, element $a \in X$ and function $r : X \rightarrow X$, there exists a unique function $x : \mathbb{N} \rightarrow X$ such that $x(0) = a$ and $x \circ s = r \circ x$.
+\end{ax}
+
+\section{The Axiom of Choice}
+
+\begin{ax}[Choice]
+  Every surjective function has a section.
 \end{ax}
 
 \begin{ax}[Equalizers]
